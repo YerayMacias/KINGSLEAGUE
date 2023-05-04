@@ -12,6 +12,7 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
         V_ID_JORNADA NUMBER := 0;
         V_NUM_ENFRENTADOS NUMBER;
         V_ID_TEMPORADA NUMBER;
+        V_NUM_PARTIDOS NUMBER;
     BEGIN
         -- CREAR LA NUEVA TEMPORADA
         INSERT INTO TEMPORADAS(FECHA_INICIO, FECHA_FIN, PERIODO, ESTADO)
@@ -40,6 +41,9 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
             SELECT MIN(ID_JORNADA) INTO V_ID_JORNADA 
             FROM JORNADAS
             WHERE ID_TEMPORADA = V_ID_TEMPORADA;
+            
+            
+            
             FOR EQUIPO_VISITANTE IN (SELECT * FROM EQUIPOS) LOOP
                 
                 IF EQUIPO_LOCAL.ID_EQUIPO <> EQUIPO_VISITANTE.ID_EQUIPO THEN
@@ -76,23 +80,6 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
                                         FROM PARTIDOS_VISITANTES 
                                         WHERE ID_EQUIPO = EQUIPO_LOCAL.ID_EQUIPO 
                                         AND ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_LOCALES WHERE ID_EQUIPO = EQUIPO_VISITANTE.ID_EQUIPO)));
-                    
-                    /*
-                    SELECT NVL(COUNT(*), 0) INTO V_EQ1_JOR
-                    FROM PARTIDOS_LOCALES PL
-                    WHERE ID_PARTIDO IN (SELECT ID_PARTIDO
-                                        FROM PARTIDOS
-                                        WHERE ID_JORNADA = V_ID_JORNADA)
-                    AND ID_EQUIPO = EQUIPO_LOCAL.ID_EQUIPO;
-                    
-                    SELECT NVL(COUNT(*), 0) INTO V_EQ2_JOR
-                    FROM PARTIDOS_LOCALES PL
-                    WHERE ID_PARTIDO IN (SELECT ID_PARTIDO
-                                        FROM PARTIDOS
-                                        WHERE ID_JORNADA = V_ID_JORNADA)
-                    AND ID_EQUIPO = EQUIPO_VISITANTE.ID_EQUIPO;*/
-                    
-                   
 
                     IF V_CONTADOR = 0 /*AND V_EQ1_JOR = 0 AND V_EQ2_JOR = 0*/ THEN
                         V_ID_EQUIPO_LOCAL := EQUIPO_LOCAL.ID_EQUIPO;
@@ -111,15 +98,47 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
                         
                         V_NUM_ENFRENTADOS := V_NUM_ENFRENTADOS - 1;
                         --DBMS_OUTPUT.PUT_LINE(V_NUM_ENFRENTADOS);
-                        V_HORA_PARTIDO := to_char(TO_DATE(V_HORA_PARTIDO, 'HH24:MI') + (1/24), 'HH24:MI');
+                        
                         IF V_NUM_ENFRENTADOS = 0 THEN
                             V_ID_JORNADA := V_ID_JORNADA + 1;
                             V_NUM_ENFRENTADOS := 1;
-                            V_HORA_PARTIDO := '16:00';
+                            
                         END IF;
                     END IF;
                 END IF;
             END LOOP;
+            
+            /* SECCION PARA CAMBIAR HORA NO FUNCIONA
+            SELECT ID_TEMPORADA INTO V_ID_TEMPORADA 
+            FROM TEMPORADAS 
+            WHERE ROWNUM = 1
+            ORDER BY ID_TEMPORADA DESC;
+            
+            SELECT MIN(ID_JORNADA) INTO V_ID_JORNADA 
+            FROM JORNADAS
+            WHERE ID_TEMPORADA = V_ID_TEMPORADA;
+            
+            SELECT MIN(ID_PARTIDO) INTO V_ID_PARTIDO
+            FROM PARTIDOS
+            WHERE ID_JORNADA = V_ID_JORNADA;
+            
+            FOR i IN 1..11 LOOP
+                FOR j IN 1..6 LOOP
+                    UPDATE PARTIDOS
+                    SET HORA = V_HORA_PARTIDO
+                    WHERE ID_PARTIDO = V_ID_PARTIDO
+                    AND ID_JORNADA = V_ID_JORNADA;
+                    
+                    IF V_ID_PARTIDO = 1 THEN
+                        V_ID_PARTIDO := V_ID_PARTIDO +11;
+                    ELSE 
+                        V_ID_PARTIDO := V_ID_PARTIDO + 12;
+                    END IF;
+                    
+                    V_HORA_PARTIDO := to_char(TO_DATE(V_HORA_PARTIDO, 'HH24:MI') + (1/24), 'HH24:MI');
+                END LOOP;
+                V_HORA_PARTIDO := '17:00';
+            END LOOP;*/
             
         END LOOP;    
     END GENERAR_CALENDARIO;
@@ -129,8 +148,10 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
     AS
     BEGIN
         OPEN C_CURSOR FOR
-                SELECT P.ID_PARTIDO, PL.ID_EQUIPO AS LOCAL, PV.ID_EQUIPO AS VISITANTE, P.ID_JORNADA, P.HORA
-                FROM PARTIDOS P, PARTIDOS_LOCALES PL, PARTIDOS_VISITANTES PV
-                WHERE P.ID_PARTIDO = PL.ID_PARTIDO AND P.ID_PARTIDO = PV.ID_PARTIDO;
+                SELECT P.ID_PARTIDO, EL.NOMBRE AS LOCAL, EV.NOMBRE AS VISITANTE, P.ID_JORNADA, P.HORA
+                FROM PARTIDOS P, PARTIDOS_LOCALES PL, PARTIDOS_VISITANTES PV, EQUIPOS EL, EQUIPOS EV
+                WHERE P.ID_PARTIDO = PL.ID_PARTIDO AND P.ID_PARTIDO = PV.ID_PARTIDO
+                AND PL.ID_EQUIPO = EL.ID_EQUIPO AND PV.ID_EQUIPO = EV.ID_EQUIPO
+                GROUP BY P.ID_PARTIDO, EL.NOMBRE, EV.NOMBRE, P.ID_JORNADA, P.HORA;
     END VER_ENFRENTAMIENTOS;
 END KL_CALENDARIO;
