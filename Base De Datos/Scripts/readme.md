@@ -1,4 +1,4 @@
-***ORDEN DE EJECUCIÓN DE SCRIPTS
+ORDEN DE EJECUCIÓN DE SCRIPTS
 --------------------------------------------
 
 1. Ejecutar Creates/create_tables_eq4.sql
