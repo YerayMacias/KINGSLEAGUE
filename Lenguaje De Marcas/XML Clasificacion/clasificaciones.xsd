@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:element name="clasificacion" type="tipoClasificacion"/>
+      <xs:complexType name="tipoClasificacion">
+          <xs:sequence>
+                <xs:element name="equipo" type="infoEquipos" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="infoEquipos">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string" maxOccurs="1"/>
+            <xs:element name="victorias">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                </xs:simpleType>
+          </xs:element>
+          <xs:element name="derrotas">
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                      <xs:minInclusive value="0"/>
+                      </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+      </xs:sequence>
+    <xs:attribute name="posicion" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+</xs:schema>

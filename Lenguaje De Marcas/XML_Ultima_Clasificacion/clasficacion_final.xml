@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE jornada SYSTEM "clasificacion_final.dtd">-->
+<jornada  xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation = "clasificacion_final.xsd"  id_jornada="14" id_temporada="1" num_jornada="14">
+    
+    <fecha>26/03/2023</fecha>
+    
+    <partido id_partido="73" id_jornada="14">
+        <equipo_local>EL BARRIO</equipo_local>
+        <equipo_visitante>ANIQUILADORES FC</equipo_visitante>
+        
+        <goles_local>3</goles_local>
+        <goles_visitante>0</goles_visitante>
+        
+        <tipo_partido>PO</tipo_partido>
+        <hora>21:00</hora>
+      </partido>
+    
+    </jornada>

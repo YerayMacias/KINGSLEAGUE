@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:element name="jornada" type="tipoJornada"/>
+      <xs:complexType name="tipoJornada">
+          <xs:sequence>
+                <xs:element name="fecha" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="partido" type="infoPartidos" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+          <xs:attribute name="id_temporada" type="xs:integer" use="required"/>
+          <xs:attribute name="num_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="infoPartidos">
+        <xs:sequence>
+            <xs:element name="equipo_local" type="xs:string" maxOccurs="1"/>
+            <xs:element name="equipo_visitante" type="xs:string" maxOccurs="1"/>
+            
+            <xs:element name="goles_local">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                </xs:simpleType>
+          </xs:element>
+          
+          <xs:element name="goles_visitante">
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                      <xs:minInclusive value="0"/>
+                      </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          
+          <xs:element name="tipo_partido"  maxOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="FR"/>
+                    <xs:enumeration value="PO"/>
+                </xs:restriction>
+             </xs:simpleType>
+          </xs:element>
+          
+          <xs:element name="hora" type="xs:string" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id_partido" type="xs:integer" use="required"/>
+    <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+</xs:schema>

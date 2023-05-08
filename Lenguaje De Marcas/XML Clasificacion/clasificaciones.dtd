@@ -1,0 +1,6 @@
+<!ELEMENT clasificacion (equipo+)>
+<!ELEMENT equipo (nombre, victorias, derrotas)>
+<!ATTLIST equipo posicion CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT victorias (#PCDATA)>
+<!ELEMENT derrotas (#PCDATA)>

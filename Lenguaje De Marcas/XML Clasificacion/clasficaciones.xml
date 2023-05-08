@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE clasificacion SYSTEM "clasificaciones.dtd">
+<clasificacion  xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation = "clasificaciones.xsd">
+
+        <equipo  posicion="1º">
+             <nombre> ULTIMATE MOSTOLES </nombre> 
+             <victorias> 8 </victorias>
+             <derrotas> 3 </derrotas>
+        </equipo>
+        
+        <equipo posicion="2º">
+             <nombre> KUNISPORTS </nombre> 
+             <victorias> 7 </victorias>
+             <derrotas> 4 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="3º">
+             <nombre> LOS TRONCOS FC </nombre> 
+             <victorias> 7 </victorias>
+             <derrotas> 4 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="4º">
+             <nombre> SAIYANS FC </nombre> 
+             <victorias> 7 </victorias>
+             <derrotas> 4 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="5º">
+             <nombre> PORCINOS FC </nombre> 
+             <victorias> 7 </victorias>
+             <derrotas> 4 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="6º">
+             <nombre> ANIQUILADORES FC </nombre> 
+             <victorias> 6</victorias>
+             <derrotas> 5 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="7º">
+             <nombre> XBUYER TEAM </nombre> 
+             <victorias> 6 </victorias>
+             <derrotas> 5 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="8º">
+             <nombre> 1K FC </nombre> 
+             <victorias> 5 </victorias>
+             <derrotas> 6 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="9º">
+             <nombre> EL BARRIO </nombre> 
+             <victorias> 5 </victorias>
+             <derrotas> 6 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="10º">
+             <nombre> PIO FC </nombre> 
+             <victorias> 4 </victorias>
+             <derrotas> 7 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="11º">
+             <nombre> RAYO DE BARCELONA </nombre> 
+             <victorias> 3 </victorias>
+             <derrotas> 8 </derrotas>
+        </equipo>
+        
+        <equipo  posicion="12º">
+             <nombre>  JIJANTES FC</nombre> 
+             <victorias> 1 </victorias>
+             <derrotas> 10 </derrotas>
+        </equipo>
+        
+</clasificacion>
