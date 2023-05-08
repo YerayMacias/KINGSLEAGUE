@@ -2,30 +2,42 @@ package Modelo;
 
 import java.time.LocalDate;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class Temporada {
     private int ID;
     private LocalDate fechaInicio;
-    private LocalDate fechaSalida;
+    private LocalDate fechaFin;
     private String periodo;
     private String estado;
 
     public Temporada() {
     }
 
+    /**
+     * Constructor completo de Temporada
+     * Para instanciar un Temporada con todos los atributos
+     * @param ID
+     * @param fechaInicio
+     * @param fechaFin
+     * @param periodo INV(invierno) o VER(verano)
+     * @param estado Abierto o Cerrado
+     */
+    public Temporada(int ID, LocalDate fechaInicio, LocalDate fechaFin, String periodo, String estado) {
+        this.ID = ID;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.periodo = periodo;
+        this.estado = estado;
+    }
     public int getID() {
         return ID;
     }
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public Temporada(int ID, LocalDate fechaInicio, LocalDate fechaSalida, String periodo, String estado) {
-        this.ID = ID;
-        this.fechaInicio = fechaInicio;
-        this.fechaSalida = fechaSalida;
-        this.periodo = periodo;
-        this.estado = estado;
     }
 
     public LocalDate getFechaInicio() {
@@ -36,12 +48,12 @@ public class Temporada {
         this.fechaInicio = fechaInicio;
     }
 
-    public LocalDate getFechaSalida() {
-        return fechaSalida;
+    public LocalDate getFechaFin() {
+        return fechaFin;
     }
 
-    public void setFechaSalida(LocalDate fechaSalida) {
-        this.fechaSalida = fechaSalida;
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public String getPeriodo() {

@@ -1,7 +1,7 @@
 package Modelo;
 
 /**
- * @author Los mas duros de DAW
+ * @author
  * @version 1.0
  */
 public class Equipo {

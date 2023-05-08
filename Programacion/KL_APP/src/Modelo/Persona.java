@@ -1,5 +1,9 @@
 package Modelo;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class Persona {
     private int ID;
     private String nombre;
@@ -9,6 +13,14 @@ public class Persona {
     public Persona() {
     }
 
+    /**
+     * Constructor completo de Persona
+     * Para instanciar una Persona con todos los atributos
+     * @param ID
+     * @param nombre
+     * @param apellido
+     * @param DNI
+     */
     public Persona(int ID, String nombre, String apellido, String DNI) {
         this.ID = ID;
         this.nombre = nombre;
