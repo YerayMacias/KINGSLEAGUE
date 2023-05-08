@@ -2,6 +2,10 @@ package Modelo;
 
 import java.time.LocalDate;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class JugadorEquipo {
     private Jugador jugador;
     private Equipo equipo;

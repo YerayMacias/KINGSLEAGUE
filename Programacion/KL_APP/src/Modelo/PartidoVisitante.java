@@ -1,5 +1,9 @@
 package Modelo;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class PartidoVisitante {
     private Partido partido;
     private Equipo equipo;
@@ -8,6 +12,13 @@ public class PartidoVisitante {
     public PartidoVisitante() {
     }
 
+    /**
+     * Constructor completo de PartidoVisitante
+     * Para instanciar un PartidoVisitante con todos los atributos
+     * @param partido
+     * @param equipo
+     * @param goles
+     */
     public PartidoVisitante(Partido partido, Equipo equipo, int goles) {
         this.partido = partido;
         this.equipo = equipo;

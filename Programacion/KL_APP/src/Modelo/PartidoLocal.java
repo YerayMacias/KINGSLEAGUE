@@ -1,5 +1,9 @@
 package Modelo;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class PartidoLocal {
     private Partido partido;
     private Equipo equipo;
@@ -8,6 +12,13 @@ public class PartidoLocal {
     public PartidoLocal() {
     }
 
+    /**
+     * Constructor completo de PartidoLocal
+     * Para instanciar un PartidoLocal con todos los atributos
+     * @param partido
+     * @param equipo
+     * @param goles
+     */
     public PartidoLocal(Partido partido, Equipo equipo, int goles) {
         this.partido = partido;
         this.equipo = equipo;

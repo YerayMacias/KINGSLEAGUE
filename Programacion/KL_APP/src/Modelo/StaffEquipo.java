@@ -2,6 +2,10 @@ package Modelo;
 
 import java.time.LocalDate;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class StaffEquipo {
     private Staff jugador;
     private Equipo equipo;
@@ -12,6 +16,15 @@ public class StaffEquipo {
     public StaffEquipo() {
     }
 
+    /**
+     * Constructor completo de StaffEquipo
+     * Para instanciar un StaffEquipo con todos los atributos
+     * @param jugador Objeto Jugador
+     * @param equipo Objeto Equipo
+     * @param fechaInicio Inicio del contrato
+     * @param fechaFin Fin del contrato
+     * @param sueldo
+     */
     public StaffEquipo(Staff jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
         this.jugador = jugador;
         this.equipo = equipo;

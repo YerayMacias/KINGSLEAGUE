@@ -1,5 +1,9 @@
 package Modelo;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class Partido {
     private int ID;
     private String tipoPartido;

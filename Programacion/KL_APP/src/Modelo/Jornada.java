@@ -2,6 +2,10 @@ package Modelo;
 
 import java.time.LocalDate;
 
+/**
+ * @author
+ * @version 1.0
+ */
 public class Jornada {
     private int ID;
     private int numJornada;
