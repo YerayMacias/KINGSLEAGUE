@@ -1,78 +1,82 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE clasificacion SYSTEM "clasificaciones.dtd">
-<clasificacion  xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
-    xs:noNamespaceSchemaLocation = "clasificaciones.xsd">
 
-        <equipo  posicion="1º">
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+
+<clasificacion  xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation = "clasificaciones.xsd" >
+
+        <equipo posicion="1">
              <nombre> ULTIMATE MOSTOLES </nombre> 
              <victorias> 8 </victorias>
              <derrotas> 3 </derrotas>
         </equipo>
         
-        <equipo posicion="2º">
+        <equipo posicion="2">
              <nombre> KUNISPORTS </nombre> 
              <victorias> 7 </victorias>
              <derrotas> 4 </derrotas>
         </equipo>
         
-        <equipo  posicion="3º">
+        <equipo  posicion="3">
              <nombre> LOS TRONCOS FC </nombre> 
              <victorias> 7 </victorias>
              <derrotas> 4 </derrotas>
         </equipo>
         
-        <equipo  posicion="4º">
+        <equipo  posicion="4">
              <nombre> SAIYANS FC </nombre> 
              <victorias> 7 </victorias>
              <derrotas> 4 </derrotas>
         </equipo>
         
-        <equipo  posicion="5º">
+        <equipo  posicion="5">
              <nombre> PORCINOS FC </nombre> 
              <victorias> 7 </victorias>
              <derrotas> 4 </derrotas>
         </equipo>
         
-        <equipo  posicion="6º">
+        <equipo  posicion="6">
              <nombre> ANIQUILADORES FC </nombre> 
              <victorias> 6</victorias>
              <derrotas> 5 </derrotas>
         </equipo>
         
-        <equipo  posicion="7º">
+        <equipo  posicion="7">
              <nombre> XBUYER TEAM </nombre> 
              <victorias> 6 </victorias>
              <derrotas> 5 </derrotas>
         </equipo>
         
-        <equipo  posicion="8º">
+        <equipo  posicion="8">
              <nombre> 1K FC </nombre> 
              <victorias> 5 </victorias>
              <derrotas> 6 </derrotas>
         </equipo>
         
-        <equipo  posicion="9º">
+        <equipo  posicion="9">
              <nombre> EL BARRIO </nombre> 
              <victorias> 5 </victorias>
              <derrotas> 6 </derrotas>
         </equipo>
         
-        <equipo  posicion="10º">
+        <equipo  posicion="10">
              <nombre> PIO FC </nombre> 
              <victorias> 4 </victorias>
              <derrotas> 7 </derrotas>
         </equipo>
         
-        <equipo  posicion="11º">
+        <equipo  posicion="11">
              <nombre> RAYO DE BARCELONA </nombre> 
              <victorias> 3 </victorias>
              <derrotas> 8 </derrotas>
         </equipo>
         
-        <equipo  posicion="12º">
+        <equipo  posicion="12">
              <nombre>  JIJANTES FC</nombre> 
              <victorias> 1 </victorias>
              <derrotas> 10 </derrotas>
         </equipo>
         
+        <fecha_expiracion>2023-03-27</fecha_expiracion>
 </clasificacion>

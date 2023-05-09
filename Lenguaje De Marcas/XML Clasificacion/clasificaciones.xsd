@@ -1,32 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   
   <xs:element name="clasificacion" type="tipoClasificacion"/>
-      <xs:complexType name="tipoClasificacion">
-          <xs:sequence>
-                <xs:element name="equipo" type="infoEquipos" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-    </xs:complexType>
-    
-    <xs:complexType name="infoEquipos">
-        <xs:sequence>
-            <xs:element name="nombre" type="xs:string" maxOccurs="1"/>
-            <xs:element name="victorias">
-                <xs:simpleType>
-                    <xs:restriction base="xs:integer">
-                          <xs:minInclusive value="0"/>
-                      </xs:restriction>
-                </xs:simpleType>
-          </xs:element>
-          <xs:element name="derrotas">
-              <xs:simpleType>
-                <xs:restriction base="xs:integer">
-                      <xs:minInclusive value="0"/>
-                      </xs:restriction>
-              </xs:simpleType>
-          </xs:element>
+  
+  <xs:complexType name="tipoClasificacion">
+      <xs:sequence>
+          <xs:element name="equipo"  type="tipoEquipo" maxOccurs="unbounded" />
+          <xs:element name="fecha_expiracion" type="xs:date" />
       </xs:sequence>
-    <xs:attribute name="posicion" type="xs:string" use="required"/>
-    </xs:complexType>
-    
+  </xs:complexType>
+  
+  <xs:complexType name="tipoEquipo">
+        <xs:sequence>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="victorias" type="tipoResultado" />
+          <xs:element name="derrotas" type="tipoResultado" /> 
+        </xs:sequence>
+        <xs:attribute name="posicion" type="xs:integer" use="required"/>
+  </xs:complexType>
+  <xs:simpleType name="tipoResultado">
+        <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+        </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
