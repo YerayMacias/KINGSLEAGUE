@@ -7,6 +7,7 @@ package Modelo;
 public class Partido {
     private int ID;
     private String tipoPartido;
+    private String hora;
     private Equipo equipoGanador;
     private Jornada jornada;
 
@@ -24,6 +25,14 @@ public class Partido {
     public Partido(int ID, String tipoPartido, Equipo equipoGanador, Jornada jornada) {
         this.ID = ID;
         this.tipoPartido = tipoPartido;
+        this.equipoGanador = equipoGanador;
+        this.jornada = jornada;
+    }
+
+    public Partido(int ID, String tipoPartido, String hora, Equipo equipoGanador, Jornada jornada) {
+        this.ID = ID;
+        this.tipoPartido = tipoPartido;
+        this.hora = hora;
         this.equipoGanador = equipoGanador;
         this.jornada = jornada;
     }
@@ -48,11 +57,23 @@ public class Partido {
         return equipoGanador;
     }
 
+    public void setEquipoGanador(Equipo equipoGanador) {
+        this.equipoGanador = equipoGanador;
+    }
+
     public Jornada getJornada() {
         return jornada;
     }
 
     public void setJornada(Jornada jornada) {
         this.jornada = jornada;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

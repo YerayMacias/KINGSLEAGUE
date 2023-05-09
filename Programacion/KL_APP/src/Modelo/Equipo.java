@@ -4,7 +4,7 @@ package Modelo;
  * @author
  * @version 1.0
  */
-public class Equipo {
+public class    Equipo {
     private int ID;
     private String nombre;
     private long presupuesto;
@@ -23,6 +23,10 @@ public class Equipo {
         this.ID = ID;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
+    }
+
+    public Equipo(int ID) {
+        this.ID = ID;
     }
 
     public int getID() {
