@@ -57,6 +57,23 @@ public class TJornadas {
 
     public static Jornada buscarPorFecha(Jornada jorn) throws Exception {
         BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jornadas where fecha = ?");
+        ps.setDate(1,Date.valueOf(jorn.getFecha()));
+        ResultSet resultado = ps.executeQuery();
+        Jornada jornada;
+        if (resultado.next())
+        {
+            jornada = new Jornada();
+            jornada.setID(resultado.getInt("id_jornada"));
+        }
+        else
+            jornada = null;
+        BaseDato.cerrarConexion();
+        return jornada;
+    }
+
+    public static Jornada buscarPorID(Jornada jorn) throws Exception {
+        BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jornadas where id_jornada = ?");
         ps.setInt(1,jorn.getID());
         ResultSet resultado = ps.executeQuery();
