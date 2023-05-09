@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
 
 <!DOCTYPE temporada SYSTEM "KingsLeague_jornadas_DTD.dtd">
 

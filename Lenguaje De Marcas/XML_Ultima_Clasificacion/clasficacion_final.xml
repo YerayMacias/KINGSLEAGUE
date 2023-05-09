@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--<!DOCTYPE jornada SYSTEM "clasificacion_final.dtd">-->
+
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+
+<!DOCTYPE jornada SYSTEM "clasificacion_final.dtd">
+
 <jornada  xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
     xs:noNamespaceSchemaLocation = "clasificacion_final.xsd"  id_jornada="14" id_temporada="1" num_jornada="14">
     
-    <fecha>26/03/2023</fecha>
+    <fecha>2023-03-26</fecha>
     
     <partido id_partido="73" id_jornada="14">
         <equipo_local>EL BARRIO</equipo_local>
@@ -13,7 +17,9 @@
         <goles_visitante>0</goles_visitante>
         
         <tipo_partido>PO</tipo_partido>
-        <hora>21:00</hora>
+        <hora>21:00:00</hora>
       </partido>
+      
+      <fecha_expiracion>2023-03-27</fecha_expiracion>
     
     </jornada>
