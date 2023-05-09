@@ -16,6 +16,11 @@ public class Temporada {
     public Temporada() {
     }
 
+    public Temporada(LocalDate fechaInicio, LocalDate fechaFin) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }
+
     /**
      * Constructor completo de Temporada
      * Para instanciar un Temporada con todos los atributos
