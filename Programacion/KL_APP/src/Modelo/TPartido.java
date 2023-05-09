@@ -47,7 +47,7 @@ public class TPartido {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from partidos");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            Partido partido = new Partido(result.getInt("id_partido"),result.getString("tipo_partido"),result.getString("hora"),result.getInt("id_jornada"),result.getInt("id_equipo_ganador"));
+            Partido partido = new Partido(result.getInt("id_partido"),result.getString("tipo_partido"),result.getString("hora"), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_ganador"))),TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
             listaPartidos.add(partido);
         }
         return listaPartidos;
@@ -66,8 +66,8 @@ public class TPartido {
             partido2.setID(result.getInt("id_partido"));
             partido2.setTipoPartido(result.getString("tipo_partido"));
             partido2.setHora(result.getString("hora"));
-            partido2.setJornada(TJornadas.buscarJornada(result.getInt("id_jornada")));
-            partido2.setEquipoGanador(TEquipo.buscaPorId(new Equipo(result.getInt("id_equipo_ganador"))));
+            partido2.setJornada(TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
+            partido2.setEquipoGanador(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_ganador"))));
         }
         else
             partido2 = null;

@@ -15,6 +15,10 @@ public class Jornada {
     public Jornada() {
     }
 
+    public Jornada(int ID) {
+        this.ID = ID;
+    }
+
     /**
      *
      * Constructor completo de Jornada

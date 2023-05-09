@@ -68,7 +68,7 @@ public class TEquipo {
         return listaEquipos;
     }
 
-    public static Equipo buscaPorId(Equipo equipo) throws Exception {
+    public static Equipo buscarPorId(Equipo equipo) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos where id_equipo = ?");
         ps.setInt(1,equipo.getID());
