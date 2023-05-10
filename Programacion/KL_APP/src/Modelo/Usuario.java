@@ -14,6 +14,11 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     /**
      * Constructor completo de Usuario
      * Para instanciar un Usuario con todos los atributos

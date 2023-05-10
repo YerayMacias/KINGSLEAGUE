@@ -29,14 +29,14 @@ public class vLogin {
         pfPassword.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                super.focusGained(e);
                 pfPassword.setText("");
             }
         });
         bIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.abrirVentanaPrincipal();
+                validar(tfNombre.getText(), pfPassword.getText());
+                Main.crearVentanaPrincipal();
             }
         });
     }
@@ -50,6 +50,15 @@ public class vLogin {
         tfNombre.setBorder(BorderFactory.createCompoundBorder(tfNombre.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
         pfPassword.setBorder(BorderFactory.createCompoundBorder(pfPassword.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
 
+    }
+
+    public void validar(String nombre, String contraseña){
+        // validar datos
+        try {
+            Main.validarUsuario(nombre, contraseña);
+        } catch (Exception e) {
+            System.out.println("Problemas " + e.getMessage());;
+        }
     }
 
     public static void main(String[] args) {
