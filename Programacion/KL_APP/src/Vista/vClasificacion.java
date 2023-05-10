@@ -10,6 +10,9 @@ public class vClasificacion {
     private JPanel pTitulo;
     private JPanel pHeader;
     private JPanel pPrincipal;
+    private JMenu mEquipos;
+    private JMenu mPartidos;
+    private JMenu mClasificacion;
 
     public JPanel getpPrincipal() {
         return pPrincipal;

@@ -18,6 +18,9 @@ public class Main {
 
     private static JFrame vPrincipal;
     private static JFrame vLogin;
+    private static JFrame vEquipos;
+    private static JFrame vClasificacion;
+    private static JFrame vPartidos;
     private static Usuario usuario;
     public static void main(String[] args){
         // Test para probar conexion con la base de datos
@@ -41,15 +44,37 @@ public class Main {
         vLogin.setVisible(true);
     }
 
-    public static void crearVentanaPrincipal() {
+    public static void crearVentanaPrincipal(String admin) {
         vLogin.dispose();
         vPrincipal = new JFrame("vPrincipal");
-        vPrincipal.setContentPane(new vPrincipal().getpPrincipal());
+        vPrincipal.setContentPane(new vPrincipal(admin).getpPrincipal());
         vPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vPrincipal.setLocationRelativeTo(null);
         vPrincipal.pack();
         vPrincipal.setVisible(true);
     }
+
+    /* public static void crearVentanaClasificacion() {
+        vLogin.dispose();
+        vClasificacion = new JFrame("vClasificacion");
+        vClasificacion.setContentPane(new vPrincipal().getpPrincipal());
+        vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vClasificacion.setLocationRelativeTo(null);
+        vClasificacion.pack();
+        vClasificacion.setVisible(true);
+    }
+
+    public static void crearVentanaPartidos() {
+        vLogin.dispose();
+        vPartidos = new JFrame("vPartidos");
+        vPartidos.setContentPane(new vPrincipal().getpPrincipal());
+        vPartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPartidos.setLocationRelativeTo(null);
+        vPartidos.pack();
+        vPartidos.setVisible(true);
+    }
+
+     */
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
