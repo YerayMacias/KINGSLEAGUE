@@ -1,6 +1,8 @@
 package Controlador;
 
 import Modelo.BaseDato;
+import Modelo.TUsuarios;
+import Modelo.Usuario;
 import Vista.vLogin;
 import Vista.vPrincipal;
 
@@ -16,6 +18,7 @@ public class Main {
 
     private static JFrame vPrincipal;
     private static JFrame vLogin;
+    private static Usuario usuario;
     public static void main(String[] args){
         // Test para probar conexion con la base de datos
         /*
@@ -38,7 +41,7 @@ public class Main {
         vLogin.setVisible(true);
     }
 
-    public static void abrirVentanaPrincipal() {
+    public static void crearVentanaPrincipal() {
         vLogin.dispose();
         vPrincipal = new JFrame("vPrincipal");
         vPrincipal.setContentPane(new vPrincipal().getpPrincipal());
@@ -46,5 +49,13 @@ public class Main {
         vPrincipal.setLocationRelativeTo(null);
         vPrincipal.pack();
         vPrincipal.setVisible(true);
+    }
+
+    public static void validarUsuario(String nombre, String password) throws Exception {
+        usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
+        if (usuario != null){
+            if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
+            else Main.crearVentanaPrincipal("N");
+        } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
 }

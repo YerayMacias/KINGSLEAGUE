@@ -11,7 +11,7 @@ public class TEquipo {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO EQUIPOS (NOMBRE, PRESUPUESTO) VALUES (?, ?);");
         ps.setString(1, equipo.getNombre());
-        ps.setLong(2, equipo.getPresupuesto());
+        ps.setDouble(2, equipo.getPresupuesto());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
@@ -30,7 +30,7 @@ public class TEquipo {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update equipos set nombre = ?, presupuesto = ? where id_equipo = ?");
         ps.setString(1, equipos.getNombre());
-        ps.setLong(2, equipos.getPresupuesto());
+        ps.setDouble(2, equipos.getPresupuesto());
         ps.setInt(3, equipos.getID());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
