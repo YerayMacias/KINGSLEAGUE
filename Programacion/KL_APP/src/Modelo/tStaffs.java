@@ -16,7 +16,7 @@ public class tStaffs {
         ps.setString(1, staff.getNombre());
         ps.setString(2, staff.getApellido());
         ps.setString(3, staff.getDNI());
-        ps.setString(4, staff.getRol());
+        ps.setString(4, staff.getRol().toString());
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
@@ -27,7 +27,7 @@ public class tStaffs {
         ps.setString(1, staff.getNombre());
         ps.setString(2, staff.getApellido());
         ps.setString(3, staff.getDNI());
-        ps.setString(4, staff.getRol());
+        ps.setString(4, staff.getRol().toString());
         ps.setInt(5, staff.getID());
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
@@ -39,7 +39,13 @@ public class tStaffs {
         ps.setString(1, staff.getDNI());
         ResultSet result = ps.executeQuery();
         if (result.next()){
-             staff = new Staff(result.getInt("id_staff"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), result.getString("rol"));
+            Staff.tROl tROl = null;
+            switch (result.getString("rol")){
+                case "ENTRENADOR1" -> tROl = Staff.tROl.ENTRENADOR1;
+                case "ENTRENADOR2" -> tROl = Staff.tROl.ENTRENADOR2;
+                case "ANALISTA" -> tROl = Staff.tROl.ANALISTA;
+            }
+             staff = new Staff(result.getInt("id_staff"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), tROl);
         } else
             throw new Exception("Staff no encontrado");
         return staff;
@@ -51,7 +57,13 @@ public class tStaffs {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staffs");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            Staff staff = new Staff(result.getInt("id_staff"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), result.getString("rol"));
+            Staff.tROl tROl = null;
+            switch (result.getString("rol")){
+                case "ENTRENADOR1" -> tROl = Staff.tROl.ENTRENADOR1;
+                case "ENTRENADOR2" -> tROl = Staff.tROl.ENTRENADOR2;
+                case "ANALISTA" -> tROl = Staff.tROl.ANALISTA;
+            }
+            Staff staff = new Staff(result.getInt("id_staff"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), tROl);
             listaStaffs.add(staff);
         }
         return listaStaffs;

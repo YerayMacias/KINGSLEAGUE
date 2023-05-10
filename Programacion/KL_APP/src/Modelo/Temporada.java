@@ -10,10 +10,20 @@ public class Temporada {
     private int ID;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private String periodo;
-    private String estado;
+    public enum tPeriodo {VER, INV}
+    private tPeriodo periodo;
+    public enum tEstado {ABIERTO, CERRADO}
+    private tEstado estado;
 
     public Temporada() {
+    }
+
+    public Temporada(int ID, LocalDate fechaInicio, LocalDate fechaFin, tEstado estado, tPeriodo periodo) {
+        this.ID = ID;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+        this.periodo = periodo;
     }
 
     public Temporada(LocalDate fechaInicio, LocalDate fechaFin) {
@@ -21,22 +31,6 @@ public class Temporada {
         this.fechaFin = fechaFin;
     }
 
-    /**
-     * Constructor completo de Temporada
-     * Para instanciar un Temporada con todos los atributos
-     * @param ID
-     * @param fechaInicio
-     * @param fechaFin
-     * @param periodo INV(invierno) o VER(verano)
-     * @param estado Abierto o Cerrado
-     */
-    public Temporada(int ID, LocalDate fechaInicio, LocalDate fechaFin, String periodo, String estado) {
-        this.ID = ID;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.periodo = periodo;
-        this.estado = estado;
-    }
     public int getID() {
         return ID;
     }
@@ -61,19 +55,19 @@ public class Temporada {
         this.fechaFin = fechaFin;
     }
 
-    public String getPeriodo() {
+    public tPeriodo getPeriodo() {
         return periodo;
     }
 
-    public void setPeriodo(String periodo) {
+    public void setPeriodo(tPeriodo periodo) {
         this.periodo = periodo;
     }
 
-    public String getEstado() {
+    public tEstado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(tEstado estado) {
         this.estado = estado;
     }
 }

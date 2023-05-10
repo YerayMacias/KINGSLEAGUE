@@ -14,8 +14,8 @@ public class TTemporadas {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into temporadas values (?,?,?,?)");
         ps.setDate(1, Date.valueOf(temp.getFechaInicio()));
         ps.setDate(2, Date.valueOf(temp.getFechaFin()));
-        ps.setString(3, temp.getEstado());
-        ps.setString(4, temp.getPeriodo());
+        ps.setString(3, temp.getEstado().toString());
+        ps.setString(4, temp.getPeriodo().toString());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
@@ -25,8 +25,8 @@ public class TTemporadas {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update temporadas set fecha_inicio = ?, fecha_fin = ?, estado = ?, periodo = ? where id_temporada = ?`");
         ps.setDate(1, Date.valueOf(temp.getFechaInicio()));
         ps.setDate(2, Date.valueOf(temp.getFechaFin()));
-        ps.setString(3, temp.getEstado());
-        ps.setString(4, temp.getPeriodo());
+        ps.setString(3, temp.getEstado().toString());
+        ps.setString(4, temp.getPeriodo().toString());
         ps.setInt(5,temp.getID());
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
@@ -48,9 +48,19 @@ public class TTemporadas {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas");
         ResultSet resultado = ps.executeQuery();
         Temporada temporada;
+        Temporada.tEstado tEstado;
+        Temporada.tPeriodo tPeriodo;
         while (resultado.next())
         {
-            temporada = new Temporada(resultado.getInt("id_temporada"), resultado.getDate("fecha_inicio").toLocalDate(), resultado.getDate("fecha_fin").toLocalDate(), resultado.getString("estado"), resultado.getString("periodo"));
+            if (resultado.getString("estado").equalsIgnoreCase("ABIERTO"))
+                tEstado = Temporada.tEstado.ABIERTO;
+            else tEstado = Temporada.tEstado.CERRADO;
+
+            if (resultado.getString("periodo").equalsIgnoreCase("INV"))
+                tPeriodo = Temporada.tPeriodo.INV;
+            else tPeriodo = Temporada.tPeriodo.VER;
+
+            temporada = new Temporada(resultado.getInt("id_temporada"), resultado.getDate("fecha_inicio").toLocalDate(), resultado.getDate("fecha_fin").toLocalDate(), tEstado, tPeriodo);
             listaTemporadas.add(temporada);
         }
         BaseDato.cerrarConexion();

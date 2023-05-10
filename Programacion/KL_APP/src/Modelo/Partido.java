@@ -6,7 +6,8 @@ package Modelo;
  */
 public class Partido {
     private int ID;
-    private String tipoPartido;
+    public enum tPartido {FR,PO};
+    private tPartido tipoPartido;
     private String hora;
     private Equipo equipoGanador;
     private Jornada jornada;
@@ -14,22 +15,7 @@ public class Partido {
     public Partido() {
     }
 
-    /**
-     * Constructor completo de Partido
-     * Para instanciar un partido con todos los atributos
-     * @param ID
-     * @param tipoPartido
-     * @param equipoGanador Objeto Equipo(Ganador)
-     * @param jornada Objeto Jornada
-     */
-    public Partido(int ID, String tipoPartido, Equipo equipoGanador, Jornada jornada) {
-        this.ID = ID;
-        this.tipoPartido = tipoPartido;
-        this.equipoGanador = equipoGanador;
-        this.jornada = jornada;
-    }
-
-    public Partido(int ID, String tipoPartido, String hora, Equipo equipoGanador, Jornada jornada) {
+    public Partido(int ID, tPartido tipoPartido, String hora, Equipo equipoGanador, Jornada jornada) {
         this.ID = ID;
         this.tipoPartido = tipoPartido;
         this.hora = hora;
@@ -45,12 +31,20 @@ public class Partido {
         this.ID = ID;
     }
 
-    public String getTipoPartido() {
+    public tPartido getTipoPartido() {
         return tipoPartido;
     }
 
-    public void setTipoPartido(String tipoPartido) {
+    public void setTipoPartido(tPartido tipoPartido) {
         this.tipoPartido = tipoPartido;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public Equipo getEquipoGanador() {
@@ -67,13 +61,5 @@ public class Partido {
 
     public void setJornada(Jornada jornada) {
         this.jornada = jornada;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
     }
 }
