@@ -48,7 +48,10 @@
                 </constraints>
                 <properties>
                   <background color="-16777216"/>
+                  <font size="16" style="1"/>
                   <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
                   <opaque value="false"/>
                   <text value="Equipos"/>
                 </properties>
@@ -61,6 +64,11 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <opaque value="false"/>
                   <text value="Partidos"/>
                 </properties>
                 <border type="none"/>
@@ -72,6 +80,11 @@
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <opaque value="false"/>
                   <text value="Clasificaciones"/>
                 </properties>
                 <border type="none"/>
@@ -96,7 +109,12 @@
                 </constraints>
                 <properties>
                   <actionCommand value=""/>
+                  <font size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <horizontalTextPosition value="4"/>
                   <label value="Iker Unai Z."/>
+                  <opaque value="false"/>
                   <text value="Iker Unai Z."/>
                 </properties>
                 <border type="none"/>

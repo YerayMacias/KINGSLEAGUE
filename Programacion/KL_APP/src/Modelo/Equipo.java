@@ -7,7 +7,7 @@ package Modelo;
 public class    Equipo {
     private int ID;
     private String nombre;
-    private long presupuesto;
+    private double presupuesto;
 
     public Equipo() {
     }
@@ -19,7 +19,7 @@ public class    Equipo {
      * @param nombre
      * @param presupuesto
      */
-    public Equipo(int ID, String nombre, long presupuesto) {
+    public Equipo(int ID, String nombre, double presupuesto) {
         this.ID = ID;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
@@ -45,11 +45,11 @@ public class    Equipo {
         this.nombre = nombre;
     }
 
-    public long getPresupuesto() {
+    public double getPresupuesto() {
         return presupuesto;
     }
 
-    public void setPresupuesto(long presupuesto) {
+    public void setPresupuesto(double presupuesto) {
         this.presupuesto = presupuesto;
     }
 }
