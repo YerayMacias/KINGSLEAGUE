@@ -36,7 +36,6 @@ public class vLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 validar(tfNombre.getText(), pfPassword.getText());
-                Main.crearVentanaPrincipal();
             }
         });
     }
@@ -52,10 +51,10 @@ public class vLogin {
 
     }
 
-    public void validar(String nombre, String contraseña){
+    public void validar(String nombre, String password){
         // validar datos
         try {
-            Main.validarUsuario(nombre, contraseña);
+            Main.validarUsuario(nombre, password);
         } catch (Exception e) {
             System.out.println("Problemas " + e.getMessage());;
         }

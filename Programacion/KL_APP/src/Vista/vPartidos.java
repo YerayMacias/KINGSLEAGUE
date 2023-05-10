@@ -11,6 +11,9 @@ public class vPartidos {
     private JPanel pPartidos;
     private JPanel pHeader;
     private JPanel pContenedor;
+    private JMenu mEquipos;
+    private JMenu mPartidos;
+    private JMenu mClasificacion;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
