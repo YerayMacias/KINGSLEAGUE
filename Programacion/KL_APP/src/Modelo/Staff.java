@@ -5,11 +5,11 @@ package Modelo;
  * @version 1.0
  */
 public class Staff extends Persona{
-    private String rol;
+    public enum tROl{ENTRENADOR1, ENTRENADOR2, ANALISTA}
+    private tROl rol;
 
     public Staff() {
     }
-
     /**
      * Constructor completo de Staff
      * Para instanciar un Staff con todos los atributos
@@ -19,19 +19,20 @@ public class Staff extends Persona{
      * @param DNI
      * @param rol
      */
-    public Staff(int ID, String nombre, String apellido, String DNI, String rol) {
+    public Staff(int ID, String nombre, String apellido, String DNI, tROl rol) {
         super(ID, nombre, apellido, DNI);
         this.rol = rol;
     }
 
-    public Staff(String rol) {
+    public Staff(tROl rol) {
         this.rol = rol;
     }
-    public String getRol() {
+
+    public tROl getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(tROl rol) {
         this.rol = rol;
     }
 }

@@ -5,41 +5,33 @@ package Modelo;
  * @version 1.0
  */
 public class Jugador extends Persona{
-    private String posicion;
-    private String tipoJugador;
+    public enum tPosicion{DC, DF, P, MC}
+    private tPosicion posicion;
+    public enum tTipoJugador{HABITUAL,WILDCARD}
+    private tTipoJugador tipoJugador;
 
     public Jugador() {
     }
 
-    /**
-     * Constructor completo de Jugador
-     * Para instanciar un jugador con todos los atributos
-     * @param ID
-     * @param nombre
-     * @param apellido
-     * @param DNI
-     * @param posicion
-     * @param tipoJugador
-     */
-    public Jugador(int ID, String nombre, String apellido, String DNI, String posicion, String tipoJugador) {
+    public Jugador(int ID, String nombre, String apellido, String DNI, tPosicion posicion, tTipoJugador tipoJugador) {
         super(ID, nombre, apellido, DNI);
         this.posicion = posicion;
         this.tipoJugador = tipoJugador;
     }
 
-    public String getPosicion() {
+    public tPosicion getPosicion() {
         return posicion;
     }
 
-    public void setPosicion(String posicion) {
+    public void setPosicion(tPosicion posicion) {
         this.posicion = posicion;
     }
 
-    public String getTipoJugador() {
+    public tTipoJugador getTipoJugador() {
         return tipoJugador;
     }
 
-    public void setTipoJugador(String tipoJugador) {
+    public void setTipoJugador(tTipoJugador tipoJugador) {
         this.tipoJugador = tipoJugador;
     }
 }
