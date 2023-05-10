@@ -20,17 +20,7 @@ public class Main {
     private static JFrame vLogin;
     private static Usuario usuario;
     public static void main(String[] args){
-        // Test para probar conexion con la base de datos
-        /*
-        try {
-            BaseDato.abrirConexion();
-            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from Jugadores");
-            ResultSet resultado = ps.executeQuery();
-            while (resultado.next())
-                System.out.println(resultado.getString("nombre"));
-        } catch (Exception e){
-            System.out.println("Error");
-        } */
+
         crearVentanaLogin();
     }
     public static void crearVentanaLogin(){
