@@ -18,7 +18,7 @@
 
 ---------Ejecutar view_clasificaciones.sql
 --MAC:
-@"$HOME/Desktop/KINGSLEAGUE/Base De Datos/Scripts/VIEWS/view_clasificaciones.sql"
+--@"$HOME/Desktop/KINGSLEAGUE/Base De Datos/Scripts/VIEWS/view_clasificaciones.sql"
 
 --WINDOWS:
 @"$HOME\Desktop\KINGSLEAGUE\Base De Datos\Scripts\VIEWS\view_clasificaciones.sql"
@@ -26,7 +26,7 @@
 
 ---------Ejecutar TRG_GEN_JORNADAS.SQL
 --MAC:
-@"$HOME/Desktop/KINGSLEAGUE/Base De Datos/Scripts/Triggers/TRG_GEN_JORNADAS.SQL"
+--@"$HOME/Desktop/KINGSLEAGUE/Base De Datos/Scripts/Triggers/TRG_GEN_JORNADAS.SQL"
 
 --WINDOWS:
 @"$HOME\Desktop\KINGSLEAGUE\Base De Datos\Scripts\Triggers\TRG_GEN_JORNADAS.SQL"
