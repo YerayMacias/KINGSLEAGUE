@@ -24,17 +24,19 @@ public class Main {
     private static Usuario usuario;
     public static void main(String[] args){
         // Test para probar conexion con la base de datos
-        /*
+
         try {
             BaseDato.abrirConexion();
             PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from Jugadores");
             ResultSet resultado = ps.executeQuery();
             while (resultado.next())
                 System.out.println(resultado.getString("nombre"));
+            BaseDato.cerrarConexion();
         } catch (Exception e){
+            BaseDato.cerrarConexion();
             System.out.println("Error");
-        } */
-        crearVentanaLogin();
+        }
+        //crearVentanaLogin();
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -54,6 +56,7 @@ public class Main {
         vPrincipal.setVisible(true);
     }
 
+<<<<<<< HEAD
     /* public static void crearVentanaClasificacion() {
         vLogin.dispose();
         vClasificacion = new JFrame("vClasificacion");
@@ -77,10 +80,13 @@ public class Main {
      */
 
     public static void validarUsuario(String nombre, String password) throws Exception {
+=======
+    /*public static void validarUsuario(String nombre, String password) throws Exception {
+>>>>>>> c9030d548aef34868fa62ca82f990d875361cc05
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
             if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
-    }
+    }*/
 }
