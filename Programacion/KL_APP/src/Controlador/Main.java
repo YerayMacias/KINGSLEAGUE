@@ -25,6 +25,9 @@ public class Main {
     public static JFrame vPartidos;
     public static Usuario usuario;
     public static void main(String[] args){
+<<<<<<< HEAD
+
+=======
         // Test para probar conexion con la base de datos
 
        /* try {
@@ -38,6 +41,7 @@ public class Main {
             BaseDato.cerrarConexion();
             System.out.println("Error");
         } */
+>>>>>>> main
         crearVentanaLogin();
     }
     public static void crearVentanaLogin(){

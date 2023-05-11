@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+  
+  <xs:element name="jornada" type="tipoJornada"/>
+      <xs:complexType name="tipoJornada">
+          <xs:sequence>
+                <xs:element name="fecha" type="xs:date" minOccurs="0"/>
+                <xs:element name="partido" type="infoPartidos" minOccurs="1" maxOccurs="6"/>
+                <xs:element name="fecha_expiracion" type="xs:date"/>
+          </xs:sequence>
+          <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+          <xs:attribute name="id_temporada" type="xs:integer" use="required"/>
+          <xs:attribute name="num_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="infoPartidos">
+        <xs:sequence>
+            <xs:element name="equipo_local" type="xs:string" maxOccurs="1"/>
+            <xs:element name="equipo_visitante" type="xs:string" maxOccurs="1"/>
+            <xs:element name="goles_local" type="tGoles_local"/>
+            <xs:element name="goles_visitante" type="tGoles_visitante"/>
+            <xs:element name="tipo_partido" type="tTipo_partido"/>
+            <xs:element name="hora" type="xs:time" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id_partido" type="xs:integer" use="required"/>
+    <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="tGoles_local">
+        <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+          </xs:restriction>
+    </xs:simpleType>
+
+  <xs:simpleType name="tGoles_visitante">
+    <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0"/>
+          </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tTipo_partido">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="FR"/>
+        <xs:enumeration value="PO"/>
+    </xs:restriction>
+ </xs:simpleType>
+
+</xs:schema>

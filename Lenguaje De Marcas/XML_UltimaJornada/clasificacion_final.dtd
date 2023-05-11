@@ -1,0 +1,20 @@
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+
+<!ELEMENT jornada (fecha, partido, fecha_expiracion)>
+<!ATTLIST jornada id_jornada NMTOKEN #REQUIRED
+                  id_temporada CDATA #REQUIRED
+                  num_jornada CDATA #REQUIRED>
+
+<!ELEMENT fecha (#PCDATA)>
+<!ELEMENT fecha_expiracion (#PCDATA)>
+
+<!ELEMENT partido (equipo_local, equipo_visitante, goles_local, goles_visitante, tipo_partido, hora)>
+<!ATTLIST partido id_partido NMTOKEN #REQUIRED
+                  id_jornada NMTOKEN #REQUIRED>
+
+<!ELEMENT equipo_local (#PCDATA)>
+<!ELEMENT equipo_visitante (#PCDATA)>
+<!ELEMENT goles_local (#PCDATA)>
+<!ELEMENT goles_visitante (#PCDATA)>
+<!ELEMENT tipo_partido (#PCDATA)>
+<!ELEMENT hora (#PCDATA)>
