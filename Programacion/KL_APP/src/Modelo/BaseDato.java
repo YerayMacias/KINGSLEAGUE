@@ -40,6 +40,7 @@ public class BaseDato {
         }
     }
 
+    /*
     public static void generarCalendario() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call KL_CALENDARIO.GENERAR_CALENDARIO()}");
@@ -65,4 +66,5 @@ public class BaseDato {
         statement.close();
         cerrarConexion();
     }
+    */
 }

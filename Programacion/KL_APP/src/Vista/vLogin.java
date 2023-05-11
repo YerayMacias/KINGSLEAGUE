@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.regex.Pattern;
 
 public class vLogin {
     private JPanel pPrincipal;
@@ -54,7 +55,17 @@ public class vLogin {
     public void validar(String nombre, String password){
         // validar datos
         try {
+<<<<<<< HEAD
             Main.validarUsuario(nombre, password);
+=======
+            if (nombre.length() < 3)
+                throw new Exception();
+        } catch (Exception e){
+            System.out.println("Problemas con: " + e.getMessage());
+        }
+        try {
+            //Main.validarUsuario(nombre, contraseña);
+>>>>>>> c9030d548aef34868fa62ca82f990d875361cc05
         } catch (Exception e) {
             System.out.println("Problemas " + e.getMessage());;
         }
