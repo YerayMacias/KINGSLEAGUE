@@ -1,6 +1,10 @@
 package Vista;
 
+import Controlador.Main;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class vPartidos {
     private JPanel pMenu;
@@ -23,11 +27,25 @@ public class vPartidos {
     private JMenuItem miEquipo;
 
     public vPartidos(String admin) {
-
+        if (!admin.equalsIgnoreCase("S"))
+            ocultarCosasAdmin();
+        miCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();;
+                Main.crearVentanaLogin();
+            }
+        });
     }
 
     public JPanel getpPrincipal() {
         return pPrincipal;
+    }
+
+    public void ocultarCosasAdmin(){
+        miPanel.setVisible(false);
+        miBaseDatos.setVisible(false);
+        miUsuarios.setVisible(false);
     }
 
 }

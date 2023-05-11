@@ -1,6 +1,10 @@
 package Vista;
 
+import Controlador.Main;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class vClasificacion {
     private JPanel pMenu;
@@ -22,9 +26,22 @@ public class vClasificacion {
     private JMenuItem miEquipo;
 
     public vClasificacion(String admin) {
-
+        if (!admin.equalsIgnoreCase("S"))
+            ocultarCosasAdmin();
+        miCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();;
+                Main.crearVentanaLogin();
+            }
+        });
     }
 
+    public void ocultarCosasAdmin(){
+        miPanel.setVisible(false);
+        miBaseDatos.setVisible(false);
+        miUsuarios.setVisible(false);
+    }
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
