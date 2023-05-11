@@ -18,12 +18,12 @@ import java.sql.SQLException;
  */
 public class Main {
 
-    private static JFrame vPrincipal;
-    private static JFrame vLogin;
-    private static JFrame vEquipos;
-    private static JFrame vClasificacion;
-    private static JFrame vPartidos;
-    private static Usuario usuario;
+    public static JFrame vPrincipal;
+    public static JFrame vLogin;
+    public static JFrame vEquipos;
+    public static JFrame vClasificacion;
+    public static JFrame vPartidos;
+    public static Usuario usuario;
     public static void main(String[] args){
         // Test para probar conexion con la base de datos
 
@@ -44,8 +44,8 @@ public class Main {
         vLogin = new JFrame("vLogin");
         vLogin.setContentPane(new vLogin().getpPrincipal());
         vLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vLogin.setLocationRelativeTo(null);
         vLogin.pack();
+        vLogin.setLocationRelativeTo(null);
         vLogin.setVisible(true);
     }
 
@@ -54,8 +54,8 @@ public class Main {
         vPrincipal = new JFrame("vPrincipal");
         vPrincipal.setContentPane(new vPrincipal(admin).getpPrincipal());
         vPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vPrincipal.setLocationRelativeTo(null);
         vPrincipal.pack();
+        vPrincipal.setLocationRelativeTo(null);
         vPrincipal.setVisible(true);
     }
 
@@ -85,6 +85,4 @@ public class Main {
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
-
-
 }

@@ -32,6 +32,8 @@ public class vPrincipal {
     }
 
     public vPrincipal(String admin) {
+        if (!admin.equalsIgnoreCase("S"))
+            ocultarCosasAdmin();
         miPartidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,8 +48,19 @@ public class vPrincipal {
             }
         });
 
-        /* public void validar(String admin) {
+        miCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();;
+                Main.crearVentanaLogin();
 
-        }*/
+            }
+        });
+
+    }
+    public void ocultarCosasAdmin(){
+        miPanel.setVisible(false);
+        miBaseDatos.setVisible(false);
+        miUsuarios.setVisible(false);
     }
 }
