@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="pPrincipal" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1140" height="400"/>
+      <xy x="20" y="20" width="1264" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -18,7 +18,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="16801" class="javax.swing.JMenuBar" layout-manager="GridLayoutManager" row-count="1" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="16801" class="javax.swing.JMenuBar" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -43,55 +43,6 @@
                 <border type="none"/>
                 <children/>
               </grid>
-              <grid id="7ad4b" class="javax.swing.JMenu" binding="mEquipos" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16777216"/>
-                  <font size="16" style="1"/>
-                  <foreground color="-1"/>
-                  <horizontalAlignment value="0"/>
-                  <horizontalTextPosition value="0"/>
-                  <opaque value="false"/>
-                  <text value="Equipos"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="89984" class="javax.swing.JMenu" binding="mPartidos" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font size="16" style="1"/>
-                  <foreground color="-1"/>
-                  <horizontalAlignment value="0"/>
-                  <horizontalTextPosition value="0"/>
-                  <opaque value="false"/>
-                  <text value="Partidos"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="70dc1" class="javax.swing.JMenu" binding="mClasificacion" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font size="16" style="1"/>
-                  <foreground color="-1"/>
-                  <horizontalAlignment value="0"/>
-                  <horizontalTextPosition value="0"/>
-                  <opaque value="false"/>
-                  <text value="Clasificacion"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
               <component id="dde34" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -104,9 +55,34 @@
                   <text value=""/>
                 </properties>
               </component>
-              <grid id="63cb" class="javax.swing.JMenu" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+              <component id="f93e9" class="javax.swing.JLabel" binding="lNombre">
                 <constraints>
-                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16" style="1"/>
+                  <text value="Iker Unai Z."/>
+                </properties>
+              </component>
+              <component id="753f2" class="javax.swing.JMenuItem" binding="miBaseDatos">
+                <constraints>
+                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="50"/>
+                    <preferred-size width="-1" height="50"/>
+                    <maximum-size width="-1" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-4513997"/>
+                  <font size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <opaque value="true"/>
+                  <text value="Base de Datos"/>
+                </properties>
+              </component>
+              <grid id="9c0e4" class="javax.swing.JMenu" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                <constraints>
+                  <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <icon value="assets/848006 (1).png"/>
@@ -114,14 +90,14 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="38b3a" class="javax.swing.JLabel">
+                  <component id="9d77c" class="javax.swing.JLabel">
                     <constraints/>
                     <properties>
                       <alignmentX value="0.6"/>
                       <text value="‎ "/>
                     </properties>
                   </component>
-                  <component id="a8a68" class="javax.swing.JLabel">
+                  <component id="604d0" class="javax.swing.JLabel" binding="lNombreMenu">
                     <constraints/>
                     <properties>
                       <alignmentX value="0.5"/>
@@ -130,7 +106,7 @@
                       <toolTipText value=""/>
                     </properties>
                   </component>
-                  <component id="40c21" class="javax.swing.JLabel">
+                  <component id="cea2b" class="javax.swing.JLabel" binding="lTipoUsuario">
                     <constraints/>
                     <properties>
                       <alignmentX value="0.5"/>
@@ -140,28 +116,35 @@
                       <text value="Administrador"/>
                     </properties>
                   </component>
-                  <component id="46be0" class="javax.swing.JLabel">
+                  <component id="5708b" class="javax.swing.JLabel">
                     <constraints/>
                     <properties>
                       <alignmentX value="0.0"/>
                       <text value="‎ "/>
                     </properties>
                   </component>
-                  <component id="8f076" class="javax.swing.JMenuItem">
+                  <component id="c561c" class="javax.swing.JMenuItem" binding="miPerfil">
                     <constraints/>
                     <properties>
                       <icon value="assets/user-svgrepo-com (1).png"/>
                       <text value="Perfil"/>
                     </properties>
                   </component>
-                  <component id="8e062" class="javax.swing.JMenuItem">
+                  <component id="73c8f" class="javax.swing.JMenuItem" binding="miPanel">
+                    <constraints/>
+                    <properties>
+                      <icon value="assets/slider-horizontal-svgrepo-com (1).png"/>
+                      <text value="Panel de Adm."/>
+                    </properties>
+                  </component>
+                  <component id="691d" class="javax.swing.JMenuItem" binding="miCerrarSesion">
                     <constraints/>
                     <properties>
                       <icon value="assets/login-svgrepo-com (1).png"/>
                       <text value="Cerrar Sesión"/>
                     </properties>
                   </component>
-                  <component id="31723" class="javax.swing.JLabel">
+                  <component id="49dc0" class="javax.swing.JLabel">
                     <constraints/>
                     <properties>
                       <text value="‎ "/>
@@ -169,13 +152,44 @@
                   </component>
                 </children>
               </grid>
-              <component id="f93e9" class="javax.swing.JLabel" binding="lNombre">
+              <component id="6bc79" class="javax.swing.JMenuItem" binding="miUsuarios">
                 <constraints>
-                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
-                  <text value="Iker Unai Z."/>
+                  <opaque value="false"/>
+                  <text value="Usuarios"/>
+                </properties>
+              </component>
+              <component id="3257a" class="javax.swing.JMenuItem" binding="miClasificacion">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16" style="1"/>
+                  <opaque value="false"/>
+                  <text value="Clasificacion"/>
+                </properties>
+              </component>
+              <component id="a0695" class="javax.swing.JMenuItem" binding="miPartidos">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16" style="1"/>
+                  <opaque value="false"/>
+                  <text value="Partidos"/>
+                </properties>
+              </component>
+              <component id="25982" class="javax.swing.JMenuItem" binding="miEquipo">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16" style="1"/>
+                  <opaque value="false"/>
+                  <text value="Equipos"/>
                 </properties>
               </component>
             </children>
