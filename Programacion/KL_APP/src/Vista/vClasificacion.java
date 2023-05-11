@@ -10,16 +10,25 @@ public class vClasificacion {
     private JPanel pTitulo;
     private JPanel pHeader;
     private JPanel pPrincipal;
+    private JMenuItem miBaseDatos;
+    private JLabel lNombreMenu;
+    private JLabel lTipoUsuario;
+    private JMenuItem miPerfil;
+    private JMenuItem miPanel;
+    private JMenuItem miCerrarSesion;
+    private JMenuItem miUsuarios;
+    private JMenuItem miClasificacion;
+    private JMenuItem miPartidos;
+    private JMenuItem miEquipo;
+
+    public vClasificacion(String admin) {
+
+    }
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("vClasificacion");
-        frame.setContentPane(new vClasificacion().getpPrincipal());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+
+
 }
