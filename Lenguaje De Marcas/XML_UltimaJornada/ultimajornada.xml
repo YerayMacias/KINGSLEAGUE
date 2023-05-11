@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<!DOCTYPE JORNADA SYSTEM "ultimajornada.dtd">
+<JORNADA xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="ultimajornada.xsd" id_jornada="14" id_temporada="1" num_jornada="14">
+  <FECHA>2023-03-26</FECHA>
+  
+   <PARTIDO id_partido="73" id_jornada="14">
+    <EQUIPO_LOCAL>EL BARRIO</EQUIPO_LOCAL>
+    <EQUIPO_VISITANTE>ANIQUILADORES FC</EQUIPO_VISITANTE>
+    <GOLES_LOCAL>3</GOLES_LOCAL>
+    <GOLES_VISITANTE>0</GOLES_VISITANTE>
+    <TIPO_PARTIDO>PO</TIPO_PARTIDO>
+    <HORA>21:00:00.000</HORA>
+   </PARTIDO>
+  
+  <FECHA_EXPIRACION>2023-03-28</FECHA_EXPIRACION>
+ </JORNADA>
