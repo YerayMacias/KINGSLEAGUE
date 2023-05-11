@@ -3,7 +3,9 @@ package Controlador;
 import Modelo.BaseDato;
 import Modelo.TUsuarios;
 import Modelo.Usuario;
+import Vista.vClasificacion;
 import Vista.vLogin;
+import Vista.vPartidos;
 import Vista.vPrincipal;
 
 import javax.swing.*;
@@ -25,7 +27,7 @@ public class Main {
     public static void main(String[] args){
         // Test para probar conexion con la base de datos
 
-        try {
+       /* try {
             BaseDato.abrirConexion();
             PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from Jugadores");
             ResultSet resultado = ps.executeQuery();
@@ -35,13 +37,14 @@ public class Main {
         } catch (Exception e){
             BaseDato.cerrarConexion();
             System.out.println("Error");
-        }
-        //crearVentanaLogin();
+        } */
+        crearVentanaLogin();
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
         vLogin.setContentPane(new vLogin().getpPrincipal());
         vLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vLogin.setLocationRelativeTo(null);
         vLogin.pack();
         vLogin.setVisible(true);
     }
@@ -56,37 +59,32 @@ public class Main {
         vPrincipal.setVisible(true);
     }
 
-<<<<<<< HEAD
-    /* public static void crearVentanaClasificacion() {
-        vLogin.dispose();
-        vClasificacion = new JFrame("vClasificacion");
-        vClasificacion.setContentPane(new vPrincipal().getpPrincipal());
-        vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vClasificacion.setLocationRelativeTo(null);
-        vClasificacion.pack();
-        vClasificacion.setVisible(true);
-    }
-
-    public static void crearVentanaPartidos() {
-        vLogin.dispose();
+    public static void crearVentanaPartidos(String admin) {
         vPartidos = new JFrame("vPartidos");
-        vPartidos.setContentPane(new vPrincipal().getpPrincipal());
+        vPartidos.setContentPane(new vPartidos(admin).getpPrincipal());
         vPartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vPartidos.setLocationRelativeTo(null);
         vPartidos.pack();
         vPartidos.setVisible(true);
     }
 
-     */
+    public static void crearVentanaClasificacion(String admin) {
+        vClasificacion = new JFrame("vClasificacion");
+        vClasificacion.setContentPane(new vClasificacion(admin).getpPrincipal());
+        vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vClasificacion.setLocationRelativeTo(null);
+        vClasificacion.pack();
+        vClasificacion.setVisible(true);
+    }
+
 
     public static void validarUsuario(String nombre, String password) throws Exception {
-=======
-    /*public static void validarUsuario(String nombre, String password) throws Exception {
->>>>>>> c9030d548aef34868fa62ca82f990d875361cc05
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
             if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
-    }*/
+    }
+
+
 }

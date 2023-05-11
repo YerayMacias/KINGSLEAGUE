@@ -11,19 +11,23 @@ public class vPartidos {
     private JPanel pPartidos;
     private JPanel pHeader;
     private JPanel pContenedor;
-    private JMenu mEquipos;
-    private JMenu mPartidos;
-    private JMenu mClasificacion;
+    private JMenuItem miBaseDatos;
+    private JMenuItem miUsuarios;
+    private JLabel lNombreMenu;
+    private JLabel lTipoUsuario;
+    private JMenuItem miPerfil;
+    private JMenuItem miPanel;
+    private JMenuItem miCerrarSesion;
+    private JMenuItem miClasificacion;
+    private JMenuItem miPartidos;
+    private JMenuItem miEquipo;
+
+    public vPartidos(String admin) {
+
+    }
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("vPartidos");
-        frame.setContentPane(new vPartidos().getpPrincipal());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

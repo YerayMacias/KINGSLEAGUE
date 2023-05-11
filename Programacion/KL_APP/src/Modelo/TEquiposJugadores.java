@@ -44,17 +44,17 @@ public class TEquiposJugadores {
     }
 
 
-    public static ArrayList<JugadorEquipo> buscarTodos() throws Exception {
+    /* public static ArrayList<JugadorEquipo> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<JugadorEquipo> listaJugadoresEquipo = new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidentes");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            JugadorEquipo jugadorEquipo = new JugadorEquipo((tJugadores.buscarPorId(result.getInt("id_jugador"))))
+            JugadorEquipo jugadorEquipo = new JugadorEquipo((tJugadores.buscarPorId(result.getInt("id_jugador"))));
             listaJugadoresEquipo.add(jugadorEquipo);
         }
         return listaJugadoresEquipo;
-    }
+    }*/
 
     public static Presidente buscarPorDNI(Presidente presidente) throws Exception{
         BaseDato.abrirConexion();

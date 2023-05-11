@@ -14,28 +14,40 @@ public class vPrincipal {
     private JPanel pDatos;
     private JPanel pPartidos;
     private JLabel lNombre;
-    private JMenu mEquipos;
     private JMenu mPartidos;
     private JMenu mClasificacion;
+    private JMenuItem miEquipo;
+    private JMenuItem miPartidos;
+    private JMenuItem miClasificacion;
+    private JMenuItem miPanel;
+    private JLabel lNombreMenu;
+    private JLabel lTipoUsuario;
+    private JMenuItem miPerfil;
+    private JMenuItem miCerrarSesion;
+    private JMenuItem miBaseDatos;
+    private JMenuItem miUsuarios;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
     public vPrincipal(String admin) {
-        mPartidos.addActionListener(new ActionListener() {
+        miPartidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // Main.crearVentanaPartidos();
+                Main.crearVentanaPartidos(admin);
             }
         });
 
-        mClasificacion.addActionListener(new ActionListener() {
+        miClasificacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // Main.crearVentanaClasificacion();
+                Main.crearVentanaClasificacion(admin);
             }
         });
 
+        /* public void validar(String admin) {
+
+        }*/
     }
 }

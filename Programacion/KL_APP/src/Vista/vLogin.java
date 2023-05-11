@@ -55,9 +55,7 @@ public class vLogin {
     public void validar(String nombre, String password){
         // validar datos
         try {
-<<<<<<< HEAD
             Main.validarUsuario(nombre, password);
-=======
             if (nombre.length() < 3)
                 throw new Exception();
         } catch (Exception e){
@@ -65,7 +63,6 @@ public class vLogin {
         }
         try {
             //Main.validarUsuario(nombre, contraseña);
->>>>>>> c9030d548aef34868fa62ca82f990d875361cc05
         } catch (Exception e) {
             System.out.println("Problemas " + e.getMessage());;
         }
