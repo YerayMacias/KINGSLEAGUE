@@ -1,10 +1,7 @@
 package Controlador;
 
 import Modelo.*;
-import Vista.vClasificacion;
-import Vista.vLogin;
-import Vista.vPartidos;
-import Vista.vPrincipal;
+import Vista.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,8 +60,8 @@ public class Main {
         vPartidos = new JFrame("vPartidos");
         vPartidos.setContentPane(new vPartidos(admin).getpPrincipal());
         vPartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vPartidos.setLocationRelativeTo(null);
         vPartidos.pack();
+        vPartidos.setLocationRelativeTo(null);
         vPartidos.setVisible(true);
     }
 
@@ -75,6 +72,15 @@ public class Main {
         vClasificacion.setLocationRelativeTo(null);
         vClasificacion.pack();
         vClasificacion.setVisible(true);
+    }
+
+    public static void crearVentanaEquipos(String admin) {
+        vEquipos = new JFrame("vEquipos");
+        vEquipos.setContentPane(new vEquipos(admin).getpPrincipal());
+        vEquipos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vEquipos.setLocationRelativeTo(null);
+        vEquipos.pack();
+        vEquipos.setVisible(true);
     }
 
 
