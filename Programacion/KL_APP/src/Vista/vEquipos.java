@@ -1,6 +1,10 @@
 package Vista;
 
+import Controlador.Main;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class vEquipos {
     private JLabel lNombre;
@@ -37,11 +41,42 @@ public class vEquipos {
     private JScrollPane spScroll;
 
      public vEquipos(String admin) {
+        inicializar();
+         if (!admin.equalsIgnoreCase("S"))
+             ocultarCosasAdmin();
+         miCerrarSesion.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 Main.vEquipos.dispose();;
+                 Main.crearVentanaLogin();
+             }
+         });
 
-    }
+         miClasificacion.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 Main.vEquipos.dispose();;
+                 Main.crearVentanaClasificacion(admin);
+             }
+         });
+
+         miPartidos.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 Main.vEquipos.dispose();;
+                 Main.crearVentanaPartidos(admin);
+             }
+         });
+     }
 
     public JPanel getpPrincipal() {
         return pPrincipal;
+    }
+
+    public void ocultarCosasAdmin(){
+        miPanel.setVisible(false);
+        miBaseDatos.setVisible(false);
+        miUsuarios.setVisible(false);
     }
 
     public void inicializar() {
