@@ -107,10 +107,32 @@ public class Main {
     public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){
         GridLayout grid = new GridLayout(7,1);
         JPanel panelJornada = new JPanel(grid);
+        JPanel panelPartido = new JPanel(new GridLayout(1, 3));
+        ArrayList<JPanel> panelesPartidos = new ArrayList<>();
         JLabel labelTitulo = new JLabel();
-        JLabel labelPartidos = new JLabel();
+        JLabel labelNombreEquipoLocal = new JLabel();
+        JLabel labelNombreEquipoVisitante = new JLabel();
+        JLabel labelResultado = new JLabel();
+        ArrayList<Integer> partidoJornadaPosicion = new ArrayList<>();
+        int z = 0;
         for (int x = 0; x < listaPartidos.size(); x++) {
-            
+            labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
+            while (partidoJornadaPosicion.size() < 7){
+                if (listaPartidos.get(z).getJornada().getID() == listaJornadas.get(x).getID()){
+                    partidoJornadaPosicion.add(z);
+                }
+            }
+            panelJornada.add(labelTitulo);
+            for (int a = 0; a < partidoJornadaPosicion.size(); a++) {
+                labelNombreEquipoLocal.setText(listaEquiposLocales.get(partidoJornadaPosicion.get(a)).getNombre());
+                labelNombreEquipoVisitante.setText(listaEquiposVisitantes.get(partidoJornadaPosicion.get(a)).getNombre());
+                labelResultado.setText(listaGolesLocales.get(z) + "-" + listaGolesVisitante.get(z));
+                panelPartido.add(labelNombreEquipoLocal);
+                panelPartido.add(labelResultado);
+                panelPartido.add(labelNombreEquipoVisitante);
+                panelJornada.add(panelPartido);
+            }
+            panelPartido.add(panelJornada);
         }
     }
 }
