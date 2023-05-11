@@ -36,8 +36,12 @@ public class vEquipos {
     private JPanel pPrincipal;
     private JScrollPane spScroll;
 
-    public vEquipos(String admin) {
+     public vEquipos(String admin) {
 
+    }
+
+    public JPanel getpPrincipal() {
+        return pPrincipal;
     }
 
     public void inicializar() {

@@ -57,6 +57,13 @@ public class vPrincipal {
             }
         });
 
+        miEquipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaEquipos(admin);
+            }
+        });
     }
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
