@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -59,8 +60,8 @@ public class vLogin {
                 contador++;
                 if (contador%2!=0) {
                     pfPassword.setEchoChar((char) 0);
-                    ImageIcon icono = new ImageIcon("/src/assets/visible-on.png");
-                    bVisible.setIcon(icono);
+                    // Icon icono = new ImageIcon("/src/assets/visible-on.png");
+                    // bVisible.setIcon(icono);
                 } else {
                     pfPassword.setEchoChar('•');
                 }
@@ -73,6 +74,9 @@ public class vLogin {
     }
 
     public void inicializar() {
+        bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bIniciarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button1.requestFocus();
         tfNombre.setBorder(BorderFactory.createCompoundBorder(tfNombre.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
         pfPassword.setBorder(BorderFactory.createCompoundBorder(pfPassword.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));

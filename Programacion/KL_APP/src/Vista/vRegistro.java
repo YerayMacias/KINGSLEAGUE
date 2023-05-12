@@ -1,6 +1,7 @@
 package Vista;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -17,13 +18,62 @@ public class vRegistro {
     private JPanel pPrincipal;
     private JTextField tfEmail;
     private JPasswordField pfPasswordAdm;
+    private JButton bVisible;
+    private JButton bVisible2;
+    private JButton bVisibleAdm;
+    private int contador;
 
     public vRegistro() {
         inicializar();
-        ckAdmin.addActionListener(new ActionListener() {
+         ckAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pfPasswordAdm.setVisible(true);
+                if (ckAdmin.isSelected()) {
+                    pfPasswordAdm.setVisible(true);
+                    bVisibleAdm.setVisible(true);
+                } else {
+                    pfPasswordAdm.setVisible(false);
+                    bVisibleAdm.setVisible(false);
+                }
+            }
+        });
+        bVisible.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contador++;
+                if (contador%2!=0) {
+                    pfPassword.setEchoChar((char) 0);
+                    // Icon icono = new ImageIcon("/src/assets/visible-on.png");
+                    // bVisible.setIcon(icono);
+                } else {
+                    pfPassword.setEchoChar('•');
+                }
+            }
+        });
+        bVisible2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contador++;
+                if (contador%2!=0) {
+                    pfPassword2.setEchoChar((char) 0);
+                    // Icon icono = new ImageIcon("/src/assets/visible-on.png");
+                    // bVisible.setIcon(icono);
+                } else {
+                    pfPassword2.setEchoChar('•');
+                }
+            }
+        });
+        bVisibleAdm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contador++;
+                if (contador%2!=0) {
+                    pfPasswordAdm.setEchoChar((char) 0);
+                    // Icon icono = new ImageIcon("/src/assets/visible-on.png");
+                    // bVisible.setIcon(icono);
+                } else {
+                    pfPasswordAdm.setEchoChar('•');
+                }
             }
         });
     }
@@ -34,7 +84,13 @@ public class vRegistro {
 
     public void inicializar() {
 
+        bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bVisible2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bVisibleAdm.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         pfPasswordAdm.setVisible(false);
+        bVisibleAdm.setVisible(false);
 
         tfNombre.addFocusListener(new FocusAdapter() {
             @Override
