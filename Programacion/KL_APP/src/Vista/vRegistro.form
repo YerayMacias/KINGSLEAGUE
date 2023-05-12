@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.vLogin">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.vRegistro">
   <grid id="27dc6" binding="pPrincipal" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="20" right="0"/>
+    <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="908" height="901"/>
+      <xy x="20" y="20" width="820" height="558"/>
     </constraints>
     <properties>
       <background color="-1488097"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="2a29" binding="pInfo" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="8d404" binding="pInfo" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="50" left="50" bottom="0" right="50"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -20,7 +20,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="64bef" class="javax.swing.JLabel">
+          <component id="978f5" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -29,17 +29,17 @@
               <text value=""/>
             </properties>
           </component>
-          <grid id="a104a" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="bddc3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <opaque value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="2d54d" class="javax.swing.JButton" binding="bIniciarSesion">
+              <component id="6a344" class="javax.swing.JButton" binding="bRegistro">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="40"/>
@@ -48,24 +48,12 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <text value="INICIAR SESIÓN"/>
-                </properties>
-              </component>
-              <component id="40f4e" class="javax.swing.JButton" binding="bRegistro">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
-                    <preferred-size width="-1" height="40"/>
-                    <maximum-size width="-1" height="40"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <text value="REGISTRATE"/>
+                  <text value="REGISTRARSE"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <component id="d5749" class="javax.swing.JTextField" binding="tfNombre">
+          <component id="ece6d" class="javax.swing.JTextField" binding="tfNombre">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="55"/>
@@ -79,12 +67,12 @@
               <font style="1"/>
               <foreground color="-1"/>
               <margin top="2" left="6" bottom="2" right="6"/>
-              <text value="Nombre de Usuario"/>
+              <text value="NOMBRE DE USUARIO"/>
             </properties>
           </component>
-          <component id="68171" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="75635" class="javax.swing.JButton" binding="button1" default-binding="true">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <opaque value="false"/>
@@ -92,9 +80,9 @@
               <visible value="false"/>
             </properties>
           </component>
-          <component id="7717b" class="javax.swing.JPasswordField" binding="pfPassword">
+          <component id="5834c" class="javax.swing.JPasswordField" binding="pfPassword">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="50"/>
                 <preferred-size width="150" height="50"/>
                 <maximum-size width="-1" height="50"/>
@@ -108,17 +96,17 @@
               <text value="CONTRASEÑA"/>
             </properties>
           </component>
-          <grid id="27e82" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="b7bde" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="3" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="8" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <opaque value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="41431" class="javax.swing.JLabel">
+              <component id="b9361" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -130,17 +118,17 @@
               </component>
             </children>
           </grid>
-          <grid id="ae23f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="be8e0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="8" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <opaque value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="ef9be" class="javax.swing.JLabel">
+              <component id="88a27" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -152,20 +140,64 @@
               </component>
             </children>
           </grid>
-          <component id="3eb5e" class="javax.swing.JButton" binding="bVisible">
+          <component id="87114" class="javax.swing.JTextField" binding="tfEmail">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="20" height="25"/>
-                <preferred-size width="20" height="25"/>
-                <maximum-size width="20" height="25"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="55"/>
+                <preferred-size width="150" height="55"/>
+                <maximum-size width="-1" height="55"/>
               </grid>
             </constraints>
             <properties>
-              <borderPainted value="false"/>
-              <contentAreaFilled value="false"/>
-              <icon value="assets/visible-off.png"/>
+              <background color="-16777216"/>
+              <caretColor color="-4496384"/>
+              <font style="1"/>
+              <foreground color="-1"/>
+              <margin top="2" left="6" bottom="2" right="6"/>
+              <text value="EMAIL"/>
+            </properties>
+          </component>
+          <component id="f4784" class="javax.swing.JPasswordField" binding="pfPassword2">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="50"/>
+                <preferred-size width="150" height="50"/>
+                <maximum-size width="-1" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16777216"/>
+              <caretColor color="-4496384"/>
+              <font style="1"/>
+              <foreground color="-1"/>
+              <text value="CONFIRMAR CONTRASEÑA"/>
+            </properties>
+          </component>
+          <component id="16908" class="javax.swing.JCheckBox" binding="ckAdmin">
+            <constraints>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Arial Black" size="12" style="1"/>
+              <foreground color="-262147"/>
               <opaque value="false"/>
-              <text value=""/>
+              <text value="¿Eres Administrador?"/>
+            </properties>
+          </component>
+          <component id="d70b5" class="javax.swing.JPasswordField" binding="pfPasswordAdm">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="50"/>
+                <preferred-size width="150" height="50"/>
+                <maximum-size width="-1" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16777216"/>
+              <caretColor color="-4496384"/>
+              <font style="1"/>
+              <foreground color="-1"/>
+              <text value="CONTRASEÑA ADMIN"/>
             </properties>
           </component>
         </children>
