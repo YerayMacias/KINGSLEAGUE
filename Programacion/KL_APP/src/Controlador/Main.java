@@ -116,6 +116,14 @@ public class Main {
         crearPanelesJornadas(listaPartidos, listaJornadas, listaEquiposLocales, listaEquiposVisitantes, listaGolesLocales, listaGolesVisitante);
     }
 
+    public static String buscarNombre() {
+        return usuario.getUsername();
+    }
+
+    public static String buscarAdmin() {
+        return usuario.getAdmin();
+    }
+
     public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){
         GridLayout grid = new GridLayout(7,1);
         JPanel panelJornada = new JPanel(grid);

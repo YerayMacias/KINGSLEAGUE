@@ -510,7 +510,7 @@
                           <defaultCapable value="true"/>
                           <focusPainted value="false"/>
                           <focusable value="true"/>
-                          <font name="Arial Black" size="20" style="3"/>
+                          <font name="Arial Black" size="18" style="3"/>
                           <foreground color="-1"/>
                           <hideActionText value="false"/>
                           <icon value="assets/Logos/aniquiladores-inverse.png"/>
