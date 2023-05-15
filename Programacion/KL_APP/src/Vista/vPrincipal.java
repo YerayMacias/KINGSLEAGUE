@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Main;
+import Modelo.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,14 +27,17 @@ public class vPrincipal {
     private JMenuItem miCerrarSesion;
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
+    private Usuario usuario;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
     public vPrincipal(String admin) {
+
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
+        inicializar();
         miPartidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,6 +68,18 @@ public class vPrincipal {
                 Main.crearVentanaEquipos(admin);
             }
         });
+    }
+
+    public void inicializar() {
+        lNombreMenu.setText(Main.buscarNombre());
+        lNombre.setText(Main.buscarNombre());
+        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+            lTipoUsuario.setText("Administrador");
+        } else {
+            lTipoUsuario.setText("Usuario");
+        }
+
+
     }
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);

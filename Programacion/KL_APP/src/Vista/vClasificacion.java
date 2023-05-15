@@ -28,6 +28,7 @@ public class vClasificacion {
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
+        inicializar();
         miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,6 +36,40 @@ public class vClasificacion {
                 Main.crearVentanaLogin();
             }
         });
+
+        miEquipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();;
+                Main.crearVentanaEquipos(admin);
+            }
+        });
+
+        miClasificacion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();;
+                Main.crearVentanaClasificacion(admin);
+            }
+        });
+
+        miPartidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();;
+                Main.crearVentanaPartidos(admin);
+            }
+        });
+    }
+
+    public void inicializar() {
+        lNombreMenu.setText(Main.buscarNombre());
+        lNombre.setText(Main.buscarNombre());
+        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+            lTipoUsuario.setText("Administrador");
+        } else {
+            lTipoUsuario.setText("Usuario");
+        }
     }
 
     public void ocultarCosasAdmin(){

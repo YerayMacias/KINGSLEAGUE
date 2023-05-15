@@ -18,9 +18,11 @@ public class vLogin {
     private JPasswordField pfPassword;
     private JButton button1;
     private JButton bVisible;
+    private JLabel icono;
     private int contador;
 
     public vLogin() {
+        inicializar();
 
         tfNombre.addFocusListener(new FocusAdapter() {
             @Override
@@ -40,7 +42,7 @@ public class vLogin {
                 pfPassword.setEchoChar('•');
             }
         });
-        inicializar();
+
         bIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,7 +79,7 @@ public class vLogin {
         bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bIniciarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        button1.requestFocus();
+        bVisible.requestFocus();
         tfNombre.setBorder(BorderFactory.createCompoundBorder(tfNombre.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
         pfPassword.setBorder(BorderFactory.createCompoundBorder(pfPassword.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
         pfPassword.setEchoChar((char) 0);

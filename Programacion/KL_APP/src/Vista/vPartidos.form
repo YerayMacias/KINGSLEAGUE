@@ -63,6 +63,7 @@
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
+                  <foreground color="-1"/>
                   <text value="Iker Unai Z."/>
                 </properties>
               </component>
@@ -88,6 +89,7 @@
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
+                  <foreground color="-1"/>
                   <opaque value="false"/>
                   <text value="Usuarios"/>
                 </properties>
@@ -170,6 +172,7 @@
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
+                  <foreground color="-1"/>
                   <opaque value="false"/>
                   <text value="Clasificacion"/>
                 </properties>
@@ -180,6 +183,7 @@
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
+                  <foreground color="-1"/>
                   <opaque value="false"/>
                   <text value="Partidos"/>
                 </properties>
@@ -190,6 +194,7 @@
                 </constraints>
                 <properties>
                   <font size="16" style="1"/>
+                  <foreground color="-1"/>
                   <opaque value="false"/>
                   <text value="Equipos"/>
                 </properties>

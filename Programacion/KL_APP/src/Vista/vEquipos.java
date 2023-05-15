@@ -80,6 +80,13 @@ public class vEquipos {
     }
 
     public void inicializar() {
+        lNombreMenu.setText(Main.buscarNombre());
+        lNombre.setText(Main.buscarNombre());
+        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+            lTipoUsuario.setText("Administrador");
+        } else {
+            lTipoUsuario.setText("Usuario");
+        }
         spScroll.getVerticalScrollBar().setUnitIncrement(20);
     }
 
