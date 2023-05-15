@@ -1,10 +1,22 @@
-package Modelo;
+package Modelo.ClaseObjetos;
 
-import java.sql.Date;
+import Modelo.ClasesBaseDato.BaseDato;
+import Modelo.ClasesBaseDato.Usuario;
+import oracle.jdbc.proxy.annotation.Pre;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.NavigableSet;
 
 public class TUsuarios {
+    public static void insert(Usuario usuario) throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO usuarios(username, email, password, admin) values(?,?,?,?);");
+        ps.setString(1,usuario.getUsername());
+        ps.setString(2,usuario.getEmail());
+        ps.setString(3,usuario.getPassword());
+        ps.setString(4,usuario.getAdmin());
+    }
     public static Usuario buscarPorUsernamePassword(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from usuarios where username = ? and password = ?");

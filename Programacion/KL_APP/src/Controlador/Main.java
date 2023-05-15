@@ -1,6 +1,11 @@
 package Controlador;
 
-import Modelo.*;
+import Modelo.ClaseObjetos.TPartido;
+import Modelo.ClaseObjetos.TUsuarios;
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Jornada;
+import Modelo.ClasesBaseDato.Partido;
+import Modelo.ClasesBaseDato.Usuario;
 import Vista.*;
 
 import javax.swing.*;

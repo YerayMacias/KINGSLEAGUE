@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
 
 /**
  * @author
@@ -11,6 +11,10 @@ public class Persona {
     private String DNI;
 
     public Persona() {
+    }
+
+    public Persona(int ID) {
+        this.ID = ID;
     }
 
     /**

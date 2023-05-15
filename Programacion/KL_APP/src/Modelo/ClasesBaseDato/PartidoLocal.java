@@ -1,4 +1,7 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
+
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Partido;
 
 /**
  * @author

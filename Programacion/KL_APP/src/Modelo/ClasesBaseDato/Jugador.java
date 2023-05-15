@@ -1,16 +1,20 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
 
 /**
  * @author
  * @version 1.0
  */
-public class Jugador extends Persona{
+public class Jugador extends Persona {
     public enum tPosicion{DC, DF, P, MC}
     private tPosicion posicion;
     public enum tTipoJugador{HABITUAL,WILDCARD}
     private tTipoJugador tipoJugador;
 
     public Jugador() {
+    }
+
+    public Jugador(int ID) {
+        super(ID);
     }
 
     public Jugador(int ID, String nombre, String apellido, String DNI, tPosicion posicion, tTipoJugador tipoJugador) {

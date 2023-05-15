@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
+  <xs:element name="TEMPORADA"  type="tTemporada"/>
+  
+    <xs:complexType name="tTemporada">
+      <xs:sequence>
+          <xs:element name="FECHA_INICIO" type="xs:date"/>
+          <xs:element name="FECHA_FIN" type="xs:date"/>
+          <xs:element name="ESTADO" type="tEstado"/>
+          <xs:element name="PERIODO" type="tPeriodo"/>
+          <xs:element name="JORNADAS" type="tJornadas"/>
+          <xs:element name="FECHA_EXPIRACION" type="xs:date"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="tEstado">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ABIERTO"/>
+        <xs:enumeration value="CERRADO"/>
+      </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tPeriodo">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="INV"/>
+        <xs:enumeration value="VER"/>
+      </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="tJornadas">
+      <xs:sequence>
+        <xs:element name="JORNADA" type="tJornada" maxOccurs="14" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tJornada">
+      <xs:sequence>
+        <xs:element name="FECHA" type="xs:date"/>
+        <xs:element name="PARTIDO" type="tPartido" maxOccurs="6" minOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+      <xs:attribute name="id_temporada" type="xs:integer" use="required"/>
+      <xs:attribute name="num_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="tPartido">
+      <xs:sequence>
+        <xs:element name="EQUIPO_LOCAL" type="xs:string"/>
+        <xs:element name="EQUIPO_VISITANTE" type="xs:string"/>
+        <xs:element name="GOLES_LOCAL" type="tGoles_local"/>
+        <xs:element name="GOLES_VISITANTE" type="tGoles_visitante"/>
+        <xs:element name="TIPO_PARTIDO" type="tTipo_partido"/>
+        <xs:element name="HORA" type="xs:time"/>
+      </xs:sequence>
+      <xs:attribute name="id_partido" type="xs:integer" use="required"/>
+      <xs:attribute name="id_jornada" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="tGoles_local">
+        <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+          </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tGoles_visitante">
+        <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+          </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tTipo_partido">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="FR"/>
+        <xs:enumeration value="PO"/>
+      </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

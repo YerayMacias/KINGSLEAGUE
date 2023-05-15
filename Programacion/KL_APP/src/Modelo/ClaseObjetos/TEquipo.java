@@ -1,4 +1,7 @@
-package Modelo;
+package Modelo.ClaseObjetos;
+
+import Modelo.ClasesBaseDato.BaseDato;
+import Modelo.ClasesBaseDato.Equipo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

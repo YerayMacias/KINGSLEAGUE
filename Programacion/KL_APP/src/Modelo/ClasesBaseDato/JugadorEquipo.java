@@ -1,4 +1,7 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
+
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Jugador;
 
 import java.time.LocalDate;
 
@@ -6,38 +9,43 @@ import java.time.LocalDate;
  * @author
  * @version 1.0
  */
-public class StaffEquipo {
-    private Staff jugador;
+public class JugadorEquipo {
+    private Jugador jugador;
     private Equipo equipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double sueldo;
+    private double clausula;
 
-    public StaffEquipo() {
+    public JugadorEquipo() {
     }
 
     /**
-     * Constructor completo de StaffEquipo
-     * Para instanciar un StaffEquipo con todos los atributos
-     * @param jugador Objeto Jugador
-     * @param equipo Objeto Equipo
+     * Constructor completo de JugadorEquipo
+     * Para instanciar un jugador que pertenece a un equipo con todos los atributos
+     * @param jugador Objeto jugador
+     * @param equipo Objeto equipo
      * @param fechaInicio Inicio del contrato
      * @param fechaFin Fin del contrato
      * @param sueldo
+     * @param clausula
+     * @see Jugador
+     * @see Equipo
      */
-    public StaffEquipo(Staff jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
+    public JugadorEquipo(Jugador jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo, double clausula) {
         this.jugador = jugador;
         this.equipo = equipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.sueldo = sueldo;
+        this.clausula = clausula;
     }
 
-    public Staff getJugador() {
+    public Jugador getJugador() {
         return jugador;
     }
 
-    public void setJugador(Staff jugador) {
+    public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
 
@@ -71,5 +79,13 @@ public class StaffEquipo {
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
+    }
+
+    public double getClausula() {
+        return clausula;
+    }
+
+    public void setClausula(double clausula) {
+        this.clausula = clausula;
     }
 }
