@@ -8,19 +8,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.util.regex.Pattern;
 
 public class vLogin {
     private JPanel pPrincipal;
     private JTextField tfNombre;
     private JPanel pInfo;
     private JButton bIniciarSesion;
-    private JButton REGISTRATEButton;
+    private JButton bRegistro;
     private JPasswordField pfPassword;
     private JButton button1;
+    private JButton bVisible;
+    private int contador;
 
     public vLogin() {
-        inicializar();
+
         tfNombre.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -33,10 +34,37 @@ public class vLogin {
                 pfPassword.setText("");
             }
         });
+        pfPassword.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                pfPassword.setEchoChar('•');
+            }
+        });
+        inicializar();
         bIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 validar(tfNombre.getText(), pfPassword.getText());
+            }
+        });
+        bRegistro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vLogin.dispose();
+                Main.crearVentanaRegistro();
+            }
+        });
+        bVisible.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contador++;
+                if (contador%2!=0) {
+                    pfPassword.setEchoChar((char) 0);
+                    // Icon icono = new ImageIcon("/src/assets/visible-on.png");
+                    // bVisible.setIcon(icono);
+                } else {
+                    pfPassword.setEchoChar('•');
+                }
             }
         });
     }
@@ -46,9 +74,13 @@ public class vLogin {
     }
 
     public void inicializar() {
+        bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bIniciarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button1.requestFocus();
         tfNombre.setBorder(BorderFactory.createCompoundBorder(tfNombre.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
         pfPassword.setBorder(BorderFactory.createCompoundBorder(pfPassword.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));
+        pfPassword.setEchoChar((char) 0);
 
     }
 
@@ -59,7 +91,7 @@ public class vLogin {
             if (nombre.length() < 3)
                 throw new Exception();
         } catch (Exception e){
-            System.out.println("Problemas con: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "FAILED LOGIN", JOptionPane.WARNING_MESSAGE);
         }
         try {
             //Main.validarUsuario(nombre, contraseña);
