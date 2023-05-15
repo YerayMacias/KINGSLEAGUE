@@ -12,7 +12,6 @@ public class vPartidos {
     private JPanel pCombo;
     private JComboBox cbJornadas;
     private JPanel pPrincipal;
-    private JPanel pPartidos;
     private JPanel pHeader;
     private JPanel pContenedor;
     private JMenuItem miBaseDatos;
@@ -25,6 +24,8 @@ public class vPartidos {
     private JMenuItem miClasificacion;
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
+    private JScrollPane spScroll;
+    private JPanel pPartidos;
 
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))

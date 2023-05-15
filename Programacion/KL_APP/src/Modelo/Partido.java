@@ -15,6 +15,10 @@ public class Partido {
     public Partido() {
     }
 
+    public Partido(int ID) {
+        this.ID = ID;
+    }
+
     public Partido(int ID, tPartido tipoPartido, String hora, Equipo equipoGanador, Jornada jornada) {
         this.ID = ID;
         this.tipoPartido = tipoPartido;

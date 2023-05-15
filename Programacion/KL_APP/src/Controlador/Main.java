@@ -1,17 +1,15 @@
 package Controlador;
 
-import Modelo.BaseDato;
-import Modelo.TUsuarios;
-import Modelo.Usuario;
+import Modelo.*;
 import Vista.vClasificacion;
 import Vista.vLogin;
 import Vista.vPartidos;
 import Vista.vPrincipal;
 
 import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
+import java.util.ArrayList;
+
 /**
  * @author
  * @version 1.0
@@ -86,5 +84,27 @@ public class Main {
             if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
+    }
+
+    public static void buscarPartidosTemporada() throws Exception {
+        ArrayList<Object> listaTodos = TPartido.buscarPartidosTemporada();
+        // Coincidentes
+        ArrayList<Partido> listaPartidos = (ArrayList<Partido>) listaTodos.get(0);
+        ArrayList<Jornada> listaJornadas = (ArrayList<Jornada>) listaTodos.get(0);
+        ArrayList<Equipo> listaEquiposLocales = (ArrayList<Equipo>) listaTodos.get(0);
+        ArrayList<Equipo> listaEquiposVisitantes = (ArrayList<Equipo>) listaTodos.get(0);
+        ArrayList<Integer> listaGolesLocales = (ArrayList<Integer>) listaTodos.get(0);
+        ArrayList<Integer> listaGolesVisitante = (ArrayList<Integer>) listaTodos.get(0);
+        crearPanelesJornadas(listaPartidos, listaJornadas, listaEquiposLocales, listaEquiposVisitantes, listaGolesLocales, listaGolesVisitante);
+    }
+
+    public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){
+        GridLayout grid = new GridLayout(7,1);
+        JPanel panelJornada = new JPanel(grid);
+        JLabel labelTitulo = new JLabel();
+        JLabel labelPartidos = new JLabel();
+        for (int x = 0; x < listaPartidos.size(); x++) {
+            
+        }
     }
 }
