@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
 
 import java.time.LocalDate;
 
@@ -6,43 +6,38 @@ import java.time.LocalDate;
  * @author
  * @version 1.0
  */
-public class JugadorEquipo {
-    private Jugador jugador;
+public class StaffEquipo {
+    private Staff jugador;
     private Equipo equipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double sueldo;
-    private double clausula;
 
-    public JugadorEquipo() {
+    public StaffEquipo() {
     }
 
     /**
-     * Constructor completo de JugadorEquipo
-     * Para instanciar un jugador que pertenece a un equipo con todos los atributos
-     * @param jugador Objeto jugador
-     * @param equipo Objeto equipo
+     * Constructor completo de StaffEquipo
+     * Para instanciar un StaffEquipo con todos los atributos
+     * @param jugador Objeto Jugador
+     * @param equipo Objeto Equipo
      * @param fechaInicio Inicio del contrato
      * @param fechaFin Fin del contrato
      * @param sueldo
-     * @param clausula
-     * @see Jugador
-     * @see Equipo
      */
-    public JugadorEquipo(Jugador jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo, double clausula) {
+    public StaffEquipo(Staff jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
         this.jugador = jugador;
         this.equipo = equipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.sueldo = sueldo;
-        this.clausula = clausula;
     }
 
-    public Jugador getJugador() {
+    public Staff getJugador() {
         return jugador;
     }
 
-    public void setJugador(Jugador jugador) {
+    public void setJugador(Staff jugador) {
         this.jugador = jugador;
     }
 
@@ -76,13 +71,5 @@ public class JugadorEquipo {
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
-    }
-
-    public double getClausula() {
-        return clausula;
-    }
-
-    public void setClausula(double clausula) {
-        this.clausula = clausula;
     }
 }

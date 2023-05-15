@@ -1,4 +1,9 @@
-package Modelo;
+package Modelo.ClaseObjetos;
+
+import Modelo.ClasesBaseDato.BaseDato;
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Jugador;
+import Modelo.ClasesBaseDato.JugadorEquipo;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -6,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class TEquiposJugadores {
+public class TJugadorEquipo {
 
     public static void insert(JugadorEquipo jugadorEquipo) throws SQLException {
         BaseDato.abrirConexion();
@@ -44,27 +49,36 @@ public class TEquiposJugadores {
     }
 
 
-    /* public static ArrayList<JugadorEquipo> buscarTodos() throws Exception {
+    public static ArrayList<JugadorEquipo> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<JugadorEquipo> listaJugadoresEquipo = new ArrayList<>();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidentes");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos_jugadores");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            JugadorEquipo jugadorEquipo = new JugadorEquipo((tJugadores.buscarPorId(result.getInt("id_jugador"))));
+            JugadorEquipo jugadorEquipo = new JugadorEquipo(tJugadores.buscarPorID(new Jugador(result.getInt("id_jugador"))),TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getDate("fecha_inicio").toLocalDate(), result.getDate("fecha_fin").toLocalDate(),result.getDouble("sueldo"),result.getDouble("clausula"));
             listaJugadoresEquipo.add(jugadorEquipo);
         }
         return listaJugadoresEquipo;
-    }*/
+    }
 
-    public static Presidente buscarPorDNI(Presidente presidente) throws Exception{
+    public static JugadorEquipo buscarPorId(JugadorEquipo jugadorEquipo) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidente where dni=?");
-        ps.setString(1, presidente.getDNI());
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos_jugadores where id_jugador = ?");
+        ps.setInt(1,jugadorEquipo.getEquipo().getID());
         ResultSet result = ps.executeQuery();
-        if (result.next()){
-            presidente = new Presidente(result.getInt("id_presidente"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))));
-        } else
-            throw new Exception("Staff no encontrado");
-        return presidente;
+        JugadorEquipo jugadorEquipo2;
+        if (result.next())
+        {
+            jugadorEquipo2 = new JugadorEquipo();
+            jugadorEquipo2.setJugador(tJugadores.buscarPorID(new Jugador(result.getInt("id_jugador"))));
+            jugadorEquipo2.setEquipo(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))));
+            jugadorEquipo2.setSueldo(result.getDouble("sueldo"));
+            jugadorEquipo2.setFechaInicio(result.getDate("fecha_inicio").toLocalDate());
+            jugadorEquipo2.setFechaFin(result.getDate("fecha_fin").toLocalDate());
+            jugadorEquipo2.setClausula(result.getDouble("clausula"));
+        }
+        else
+            jugadorEquipo2 = null;
+        return jugadorEquipo2;
     }
 }

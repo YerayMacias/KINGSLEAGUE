@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
 
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;

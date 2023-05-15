@@ -1,7 +1,6 @@
-package Modelo;
+package Modelo.ClasesBaseDato;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * @author

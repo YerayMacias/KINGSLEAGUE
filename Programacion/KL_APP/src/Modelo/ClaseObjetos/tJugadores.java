@@ -1,4 +1,7 @@
-package Modelo;
+package Modelo.ClaseObjetos;
+
+import Modelo.ClasesBaseDato.BaseDato;
+import Modelo.ClasesBaseDato.Jugador;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,4 +89,22 @@ public class tJugadores {
         BaseDato.cerrarConexion();
     }
 
+    public static Jugador buscarPorID(Jugador jugador) throws Exception{
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where id= ?");
+        ps.setInt(1,jugador.getID());
+        ResultSet result = ps.executeQuery();
+        Jugador jugador2;
+        if (result.next())
+        {
+            jugador2 = new Jugador();
+            jugador2.setID(result.getInt("id_equipo"));
+            jugador2.setNombre(result.getString("nombre"));
+            jugador2.setApellido(result.getString("apellido"));
+            jugador2.setDNI(result.getString("dni"));
+        }
+        else
+            jugador2 = null;
+        return jugador2;
+    }
 }

@@ -1,23 +1,23 @@
 <!--LOS IDS SON DE TIPO INTEGER YA QUE EN LA BASE DE DATOS SON AUTOINCREMENTALES-->
 
-<!ELEMENT temporada (fecha_inicio,fecha_fin,estado,periodo,jornadas,fecha_expiracion)>
-<!ELEMENT fecha_inicio (#PCDATA)>
-<!ELEMENT fecha_fin (#PCDATA)>
-<!ELEMENT estado (#PCDATA)>
-<!ELEMENT periodo (#PCDATA)>
-<!ELEMENT jornadas (jornada*)>
-<!ELEMENT fecha_expiracion (#PCDATA)>
-<!ELEMENT jornada (fecha,partido*)>
-<!ATTLIST jornada id_jornada CDATA #REQUIRED
+<!ELEMENT TEMPORADA (FECHA_INICIO,FECHA_FIN,ESTADO,PERIODO,JORNADAS,FECHA_EXPIRACION)>
+<!ELEMENT FECHA_INICIO (#PCDATA)>
+<!ELEMENT FECHA_FIN (#PCDATA)>
+<!ELEMENT ESTADO (#PCDATA)>
+<!ELEMENT PERIODO (#PCDATA)>
+<!ELEMENT JORNADAS (JORNADA*)>
+<!ELEMENT FECHA_EXPIRACION (#PCDATA)>
+<!ELEMENT JORNADA (FECHA,PARTIDO*)>
+<!ATTLIST JORNADA id_jornada CDATA #REQUIRED
           id_temporada CDATA #REQUIRED
           num_jornada CDATA #REQUIRED>
-<!ELEMENT fecha (#PCDATA)>
-<!ELEMENT partido (equipo_local,equipo_visitante,goles_local,goles_visitante,tipo_partido,hora)>
-<!ATTLIST partido id_partido CDATA #REQUIRED
+<!ELEMENT FECHA (#PCDATA)>
+<!ELEMENT PARTIDO (EQUIPO_LOCAL,EQUIPO_VISITANTE,GOLES_LOCAL,GOLES_VISITANTE,TIPO_PARTIDO,HORA)>
+<!ATTLIST PARTIDO id_partido CDATA #REQUIRED
             id_jornada CDATA #REQUIRED>
-<!ELEMENT equipo_local (#PCDATA)>
-<!ELEMENT equipo_visitante (#PCDATA)>
-<!ELEMENT goles_local (#PCDATA)>
-<!ELEMENT goles_visitante (#PCDATA)>
-<!ELEMENT tipo_partido (#PCDATA)>
-<!ELEMENT hora (#PCDATA)>
+<!ELEMENT EQUIPO_LOCAL (#PCDATA)>
+<!ELEMENT EQUIPO_VISITANTE (#PCDATA)>
+<!ELEMENT GOLES_LOCAL (#PCDATA)>
+<!ELEMENT GOLES_VISITANTE (#PCDATA)>
+<!ELEMENT TIPO_PARTIDO (#PCDATA)>
+<!ELEMENT HORA (#PCDATA)>
