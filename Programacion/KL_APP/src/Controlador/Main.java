@@ -86,8 +86,8 @@ public class Main {
         vClasificacion = new JFrame("vClasificacion");
         vClasificacion.setContentPane(new vClasificacion(admin).getpPrincipal());
         vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vClasificacion.setLocationRelativeTo(null);
         vClasificacion.pack();
+        vClasificacion.setLocationRelativeTo(null);
         vClasificacion.setVisible(true);
     }
 
@@ -95,8 +95,8 @@ public class Main {
         vEquipos = new JFrame("vEquipos");
         vEquipos.setContentPane(new vEquipos(admin).getpPrincipal());
         vEquipos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vEquipos.setLocationRelativeTo(null);
         vEquipos.pack();
+        vEquipos.setLocationRelativeTo(null);
         vEquipos.setVisible(true);
     }
 
@@ -127,6 +127,13 @@ public class Main {
 
     public static String buscarAdmin() {
         return usuario.getAdmin();
+    }
+
+    public static void registrarUsuario(String username, String email, String password, String admin) throws Exception {
+        // Insertar
+        usuario = new Usuario(username, email, password, admin);
+        // .add
+        TUsuarios.insert(usuario);
     }
 
     public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){

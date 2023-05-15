@@ -1,9 +1,10 @@
 package Vista;
 
 import Controlador.Main;
-import Modelo.Usuario;
+import Modelo.ClaseObjetos.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -27,7 +28,7 @@ public class vPrincipal {
     private JMenuItem miCerrarSesion;
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
-    private Usuario usuario;
+    private JMenu mIconoPerfil;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -79,6 +80,15 @@ public class vPrincipal {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
     }
     public void ocultarCosasAdmin(){
