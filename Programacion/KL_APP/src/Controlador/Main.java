@@ -20,6 +20,7 @@ public class Main {
 
     public static JFrame vPrincipal;
     public static JFrame vLogin;
+    public static JFrame vRegistro;
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
@@ -47,8 +48,19 @@ public class Main {
         vLogin.setContentPane(new vLogin().getpPrincipal());
         vLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vLogin.pack();
+        vLogin.setSize(830, 480);
         vLogin.setLocationRelativeTo(null);
         vLogin.setVisible(true);
+    }
+
+    public static void crearVentanaRegistro(){
+        vRegistro = new JFrame("vRegistro");
+        vRegistro.setContentPane(new vRegistro().getpPrincipal());
+        vRegistro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vRegistro.pack();
+        vRegistro.setSize(830, 680);
+        vRegistro.setLocationRelativeTo(null);
+        vRegistro.setVisible(true);
     }
 
     public static void crearVentanaPrincipal(String admin) {
@@ -107,6 +119,14 @@ public class Main {
         ArrayList<Integer> listaGolesLocales = (ArrayList<Integer>) listaTodos.get(0);
         ArrayList<Integer> listaGolesVisitante = (ArrayList<Integer>) listaTodos.get(0);
         crearPanelesJornadas(listaPartidos, listaJornadas, listaEquiposLocales, listaEquiposVisitantes, listaGolesLocales, listaGolesVisitante);
+    }
+
+    public static String buscarNombre() {
+        return usuario.getUsername();
+    }
+
+    public static String buscarAdmin() {
+        return usuario.getAdmin();
     }
 
     public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){

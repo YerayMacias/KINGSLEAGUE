@@ -30,11 +30,35 @@ public class vPartidos {
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
+        inicializar();
         miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vPartidos.dispose();;
+                Main.vPartidos.dispose();
                 Main.crearVentanaLogin();
+            }
+        });
+        miEquipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaEquipos(admin);
+            }
+        });
+
+        miClasificacion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaClasificacion(admin);
+            }
+        });
+
+        miPartidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPartidos(admin);
             }
         });
     }
@@ -43,6 +67,15 @@ public class vPartidos {
         return pPrincipal;
     }
 
+    public void inicializar() {
+        lNombreMenu.setText(Main.buscarNombre());
+        lNombre.setText(Main.buscarNombre());
+        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+            lTipoUsuario.setText("Administrador");
+        } else {
+            lTipoUsuario.setText("Usuario");
+        }
+    }
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
