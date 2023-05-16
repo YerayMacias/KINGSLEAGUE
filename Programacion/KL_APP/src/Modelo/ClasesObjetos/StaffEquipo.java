@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * @version 1.0
  */
 public class StaffEquipo {
-    private Staff jugador;
+    private Staff staff;
     private Equipo equipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -19,26 +19,26 @@ public class StaffEquipo {
     /**
      * Constructor completo de StaffEquipo
      * Para instanciar un StaffEquipo con todos los atributos
-     * @param jugador Objeto Jugador
+     * @param staff Objeto Jugador
      * @param equipo Objeto Equipo
      * @param fechaInicio Inicio del contrato
      * @param fechaFin Fin del contrato
      * @param sueldo
      */
-    public StaffEquipo(Staff jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
-        this.jugador = jugador;
+    public StaffEquipo(Staff staff, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
+        this.staff = staff;
         this.equipo = equipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.sueldo = sueldo;
     }
 
-    public Staff getJugador() {
-        return jugador;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setJugador(Staff jugador) {
-        this.jugador = jugador;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     public Equipo getEquipo() {
