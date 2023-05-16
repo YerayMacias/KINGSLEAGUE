@@ -1,6 +1,11 @@
 package Vista;
 
+import Controlador.Main;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class vPartidos {
     private JPanel pMenu;
@@ -8,22 +13,86 @@ public class vPartidos {
     private JPanel pCombo;
     private JComboBox cbJornadas;
     private JPanel pPrincipal;
-    private JPanel pPartidos;
     private JPanel pHeader;
     private JPanel pContenedor;
-    private JMenu mEquipos;
-    private JMenu mPartidos;
-    private JMenu mClasificacion;
+    private JMenuItem miBaseDatos;
+    private JMenuItem miUsuarios;
+    private JLabel lNombreMenu;
+    private JLabel lTipoUsuario;
+    private JMenuItem miPerfil;
+    private JMenuItem miPanel;
+    private JMenuItem miCerrarSesion;
+    private JMenuItem miClasificacion;
+    private JMenuItem miPartidos;
+    private JMenuItem miEquipo;
+    private JScrollPane spScroll;
+    private JPanel pPartidos;
+    private JMenu mIconoPerfil;
+
+    public vPartidos(String admin) {
+        if (!admin.equalsIgnoreCase("S"))
+            ocultarCosasAdmin();
+        inicializar();
+        miCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaLogin();
+            }
+        });
+        miEquipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaEquipos(admin);
+            }
+        });
+
+        miClasificacion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaClasificacion(admin);
+            }
+        });
+
+        miPartidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPartidos(admin);
+            }
+        });
+    }
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("vPartidos");
-        frame.setContentPane(new vPartidos().getpPrincipal());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    public void inicializar() {
+        lNombreMenu.setText(Main.buscarNombre());
+        lNombre.setText(Main.buscarNombre());
+        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+            lTipoUsuario.setText("Administrador");
+        } else {
+            lTipoUsuario.setText("Usuario");
+        }
+
+        miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
     }
+    public void ocultarCosasAdmin(){
+        miPanel.setVisible(false);
+        miBaseDatos.setVisible(false);
+        miUsuarios.setVisible(false);
+    }
+
 }
