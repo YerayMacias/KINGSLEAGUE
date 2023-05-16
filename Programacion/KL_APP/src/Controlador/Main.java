@@ -40,12 +40,12 @@ public class Main {
             System.out.println("Error");
         } */
 
-        // crearVentanaLogin();
-        try {
+        crearVentanaLogin();
+        /* try {
             crearVentanaPrueba();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        } */
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -162,9 +162,13 @@ public class Main {
     }
 
     public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
-        // Insertar
         usuario = new Usuario(username, email, password, admin);
-        // .add
         TUsuarios.insert(usuario);
     }
+
+    public static String getPassAdm() throws Exception {
+        Usuario usuarioAdm = TUsuarios.buscarPorUsername(new Usuario("ADMIN"));
+        return usuarioAdm.getPassword();
+    }
+
 }

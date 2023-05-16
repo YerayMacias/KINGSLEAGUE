@@ -79,4 +79,25 @@ public class TUsuarios {
         BaseDato.cerrarConexion();
         return usuario;
     }
+
+    public static Usuario buscarPorUsername(Usuario usuario) throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from usuarios where username = ?");
+        ps.setString(1, usuario.getUsername());
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next())
+        {
+            usuario = new Usuario();
+            usuario.setID(resultado.getInt("id_usuario"));
+            usuario.setUsername(resultado.getString("username"));
+            usuario.setPassword(resultado.getString("password"));
+            usuario.setEmail(resultado.getString("email"));
+            usuario.setAdmin(Usuario.tUsuario.valueOf(resultado.getString("admin")));
+        }
+        else
+            usuario = null;
+        BaseDato.cerrarConexion();
+        return usuario;
+    }
+
 }
