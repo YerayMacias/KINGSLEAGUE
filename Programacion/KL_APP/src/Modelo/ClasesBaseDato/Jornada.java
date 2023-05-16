@@ -1,6 +1,7 @@
 package Modelo.ClasesBaseDato;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * @author
@@ -11,6 +12,7 @@ public class Jornada {
     private int numJornada;
     private LocalDate fecha;
     private Temporada temporada;
+    private ArrayList<Partido> listaPartidos;
 
     public Jornada() {
     }
@@ -33,6 +35,14 @@ public class Jornada {
         this.numJornada = numJornada;
         this.fecha = fecha;
         this.temporada = temporada;
+    }
+
+    public Jornada(int ID, int numJornada, LocalDate fecha, Temporada temporada, ArrayList<Partido> listaPartidos) {
+        this.ID = ID;
+        this.numJornada = numJornada;
+        this.fecha = fecha;
+        this.temporada = temporada;
+        this.listaPartidos = listaPartidos;
     }
 
     public int getID() {
@@ -65,5 +75,13 @@ public class Jornada {
 
     public void setTemporada(Temporada temporada) {
         this.temporada = temporada;
+    }
+
+    public ArrayList<Partido> getListaPartidos() {
+        return listaPartidos;
+    }
+
+    public void setListaPartidos(ArrayList<Partido> listaPartidos) {
+        this.listaPartidos = listaPartidos;
     }
 }
