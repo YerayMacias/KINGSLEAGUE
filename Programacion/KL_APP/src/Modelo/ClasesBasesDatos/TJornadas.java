@@ -100,7 +100,7 @@ public class TJornadas {
         ps.setInt(1,jornada.getTemporada().getID());
         ResultSet resultado = ps.executeQuery();
         while (resultado.next()){
-            jornada = new Jornada(resultado.getInt("id_jornada"), resultado.getInt("num_jornada"), resultado.getDate("fecha").toLocalDate(), TTemporadas.buscarTemporada(new Temporada(resultado.getInt("id_temporada"))));
+            jornada = new Jornada(resultado.getInt("id_jornada"), resultado.getInt("num_jornada"), resultado.getDate("fecha").toLocalDate(), TTemporadas.buscarPorID(new Temporada(resultado.getInt("id_temporada"))));
             Partido partido = new Partido();
             partido.setJornada(jornada);
             ArrayList<Partido> listaPartidos = TPartido.buscarPorIDJornada(partido);

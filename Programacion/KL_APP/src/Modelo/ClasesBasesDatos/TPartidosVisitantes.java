@@ -11,12 +11,11 @@ import java.sql.ResultSet;
 public class TPartidosVisitantes {
     public static PartidoVisitante buscarPorPartido(PartidoVisitante partidoVisitante) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOSLOCALES WHERE ID_PARTIDO = ?");
-        ps.setInt(1, partidoVisitante   .getPartido().getID());
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOS_VISITANTES WHERE ID_PARTIDO = ?");
+        ps.setInt(1, partidoVisitante.getPartido().getID());
         ResultSet result = ps.executeQuery();
-        Partido.tPartido tPartido;
         if (result.next()){
-            partidoVisitante = new PartidoVisitante(TPartido.buscarPorIDPartido(new Partido(result.getInt("id_partido"))), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getInt("goles"));
+            partidoVisitante = new PartidoVisitante(partidoVisitante.getPartido(), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getInt("goles"));
         }
         BaseDato.cerrarConexion();
         return partidoVisitante;

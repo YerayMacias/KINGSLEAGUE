@@ -65,7 +65,7 @@ public class TPartido {
     public static ArrayList<Partido> buscarPorIDJornada(Partido partido) throws Exception {
         BaseDato.abrirConexion();
         ArrayList<Partido> listaPartidos = new ArrayList<>();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos where id_jornada = ?");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from partidos where id_jornada = ?");
         ps.setInt(1,partido.getJornada().getID());
         ResultSet result = ps.executeQuery();
         Partido partido2;
@@ -81,6 +81,7 @@ public class TPartido {
             partido2.setHora(result.getString("hora"));
             partido2.setJornada(TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
             partido2.setEquipoGanador(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_ganador"))));
+            listaPartidos.add(partido2);
         }
         return listaPartidos;
     }

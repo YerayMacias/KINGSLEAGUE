@@ -25,6 +25,10 @@ public class PartidoVisitante {
         this.goles = goles;
     }
 
+    public PartidoVisitante(Partido partido) {
+        this.partido = partido;
+    }
+
     public Partido getPartido() {
         return partido;
     }
