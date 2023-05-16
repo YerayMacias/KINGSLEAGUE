@@ -12,7 +12,11 @@ import Modelo.ClaseObjetos.TPartido;
 import Modelo.ClaseObjetos.TTemporadas;
 import Modelo.ClaseObjetos.TUsuarios;
 import Modelo.ClasesBaseDato.*;
+<<<<<<< Updated upstream
 >>>>>>> main
+=======
+>>>>>>> 5920cd717d97038b2ac5422708e55a3363e132f7
+>>>>>>> Stashed changes
 import Vista.*;
 
 import javax.swing.*;
