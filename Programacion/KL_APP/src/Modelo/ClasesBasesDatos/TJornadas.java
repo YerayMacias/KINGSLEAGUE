@@ -1,6 +1,5 @@
 package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesObjetos.BaseDato;
 import Modelo.ClasesObjetos.Jornada;
 import Modelo.ClasesObjetos.Partido;
 import Modelo.ClasesObjetos.Temporada;
