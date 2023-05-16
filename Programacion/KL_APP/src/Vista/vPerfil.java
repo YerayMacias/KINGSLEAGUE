@@ -36,6 +36,8 @@ public class vPerfil {
     private JButton bGuardarDatos;
     private JLabel lTipoUsuarioTitulo;
 
+
+
     public vPerfil(String admin) {
         inicializar();
         if (!admin.equalsIgnoreCase("S"))
@@ -65,9 +67,7 @@ public class vPerfil {
         });
     }
 
-    public JPanel getpPrincipal() {
-        return pPrincipal;
-    }
+
 
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
@@ -77,15 +77,17 @@ public class vPerfil {
 
     public void inicializar() {
 
+        tfNombre.setText(Main.buscarNombre());
         lNombreTitulo.setText(Main.buscarNombre());
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
+
         if (Main.buscarAdmin().equalsIgnoreCase("S")) {
             lTipoUsuario.setText("Administrador");
-            lTipoUsuarioTitulo.setText("Administrador");
+            lTipoUsuarioTitulo.setText("ADMINISTRADOR");
         } else {
             lTipoUsuario.setText("Usuario");
-            lTipoUsuarioTitulo.setText("Usuario");
+            lTipoUsuarioTitulo.setText("USUARIO");
         }
 
         bGuardarDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -98,6 +100,10 @@ public class vPerfil {
         miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    public JPanel getpPrincipal() {
+        return pPrincipal;
     }
 
 }
