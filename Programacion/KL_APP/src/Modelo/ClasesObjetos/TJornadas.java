@@ -2,6 +2,7 @@ package Modelo.ClasesObjetos;
 
 import Modelo.ClasesBaseDato.BaseDato;
 import Modelo.ClasesBaseDato.Jornada;
+import Modelo.ClasesBaseDato.Partido;
 import Modelo.ClasesBaseDato.Temporada;
 
 import java.sql.Date;
@@ -91,6 +92,24 @@ public class TJornadas {
             jornada = null;
         BaseDato.cerrarConexion();
         return jornada;
+    }
+
+    public static ArrayList<Jornada> buscarPorTemporada(Jornada jornada) throws Exception {
+        BaseDato.abrirConexion();
+        ArrayList<Jornada> listaJornadas = new ArrayList<>();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jornadas where id_temporada = ?");
+        ps.setInt(1,jornada.getTemporada().getID());
+        ResultSet resultado = ps.executeQuery();
+        while (resultado.next()){
+            jornada = new Jornada(resultado.getInt("id_jornada"), resultado.getInt("num_jornada"), resultado.getDate("fecha").toLocalDate(), TTemporadas.buscarTemporada(new Temporada(resultado.getInt("id_temporada"))));
+            Partido partido = new Partido();
+            partido.setJornada(jornada);
+            ArrayList<Partido> listaPartidos = TPartido.buscarPorIDJornada(partido);
+            jornada.setListaPartidos(listaPartidos);
+            listaJornadas.add(jornada);
+        }
+        BaseDato.cerrarConexion();
+        return listaJornadas;
     }
 
 }

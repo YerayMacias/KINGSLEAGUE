@@ -87,5 +87,25 @@ public class TTemporadas {
         BaseDato.cerrarConexion();
         return temporada;
     }
+    public static Temporada buscarPorID(Temporada temp) throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas where id_temporada=?");
+        ps.setInt(1, temp.getID());
+        ResultSet resultado = ps.executeQuery();
+        Temporada temporada;
+        if (resultado.next())
+        {
+            temporada = new Temporada();
+            temporada.setID(resultado.getInt("id_temporada"));
+            temporada.setEstado(Temporada.tEstado.valueOf(resultado.getString("estado")));
+            temporada.setPeriodo(Temporada.tPeriodo.valueOf(resultado.getString("periodo")));
+            temporada.setFechaFin(resultado.getDate("fecha_fin").toLocalDate());
+            temporada.setFechaInicio(resultado.getDate("fecha_inicio").toLocalDate());
+        }
+        else
+            temporada = null;
+        BaseDato.cerrarConexion();
+        return temporada;
+    }
 
 }
