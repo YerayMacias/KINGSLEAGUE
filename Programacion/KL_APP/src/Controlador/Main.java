@@ -1,11 +1,10 @@
 package Controlador;
 
+import Modelo.ClaseObjetos.TJornadas;
 import Modelo.ClaseObjetos.TPartido;
+import Modelo.ClaseObjetos.TTemporadas;
 import Modelo.ClaseObjetos.TUsuarios;
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jornada;
-import Modelo.ClasesBaseDato.Partido;
-import Modelo.ClasesBaseDato.Usuario;
+import Modelo.ClasesBaseDato.*;
 import Vista.*;
 
 import javax.swing.*;
@@ -109,16 +108,24 @@ public class Main {
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
 
-    public static void buscarPartidosTemporada() throws Exception {
-        ArrayList<Object> listaTodos = TPartido.buscarPartidosTemporada();
-        // Coincidentes
-        ArrayList<Partido> listaPartidos = (ArrayList<Partido>) listaTodos.get(0);
-        ArrayList<Jornada> listaJornadas = (ArrayList<Jornada>) listaTodos.get(0);
-        ArrayList<Equipo> listaEquiposLocales = (ArrayList<Equipo>) listaTodos.get(0);
-        ArrayList<Equipo> listaEquiposVisitantes = (ArrayList<Equipo>) listaTodos.get(0);
-        ArrayList<Integer> listaGolesLocales = (ArrayList<Integer>) listaTodos.get(0);
-        ArrayList<Integer> listaGolesVisitante = (ArrayList<Integer>) listaTodos.get(0);
-        crearPanelesJornadas(listaPartidos, listaJornadas, listaEquiposLocales, listaEquiposVisitantes, listaGolesLocales, listaGolesVisitante);
+    public static void buscarJornadasTemporada() throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
+        ArrayList<Jornada> listaJornadas = TJornadas.buscarPorTemporada(jornada);
+        crearPanelesJornadas(listaJornadas);
+    }
+
+    public static void crearPanelesJornadas(ArrayList<Jornada> listaJornadas){
+        JLabel labelTitulo = new JLabel();
+        JPanel panelPartido;
+        JPanel panelContenedor = new JPanel(new GridLayout(7, 1));
+        for (int x = 0; x < listaJornadas.size(); x++) {
+            labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
+            for (int y = 0; y < listaJornadas.get(x).getListaPartidos().size(); y++) {
+                panelPartido = new JPanel(new GridLayout(1, 3));
+                panelPartido.add(new JLabel(TPartidosLocales.buscarPorPartido()));
+            }
+        }
     }
 
     public static String buscarNombre() {
@@ -134,37 +141,5 @@ public class Main {
         usuario = new Usuario(username, email, password, admin);
         // .add
         TUsuarios.insert(usuario);
-    }
-
-    public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){
-        GridLayout grid = new GridLayout(7,1);
-        JPanel panelJornada = new JPanel(grid);
-        JPanel panelPartido = new JPanel(new GridLayout(1, 3));
-        ArrayList<JPanel> panelesPartidos = new ArrayList<>();
-        JLabel labelTitulo = new JLabel();
-        JLabel labelNombreEquipoLocal = new JLabel();
-        JLabel labelNombreEquipoVisitante = new JLabel();
-        JLabel labelResultado = new JLabel();
-        ArrayList<Integer> partidoJornadaPosicion = new ArrayList<>();
-        int z = 0;
-        for (int x = 0; x < listaPartidos.size(); x++) {
-            labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
-            while (partidoJornadaPosicion.size() < 7){
-                if (listaPartidos.get(z).getJornada().getID() == listaJornadas.get(x).getID()){
-                    partidoJornadaPosicion.add(z);
-                }
-            }
-            panelJornada.add(labelTitulo);
-            for (int a = 0; a < partidoJornadaPosicion.size(); a++) {
-                labelNombreEquipoLocal.setText(listaEquiposLocales.get(partidoJornadaPosicion.get(a)).getNombre());
-                labelNombreEquipoVisitante.setText(listaEquiposVisitantes.get(partidoJornadaPosicion.get(a)).getNombre());
-                labelResultado.setText(listaGolesLocales.get(z) + "-" + listaGolesVisitante.get(z));
-                panelPartido.add(labelNombreEquipoLocal);
-                panelPartido.add(labelResultado);
-                panelPartido.add(labelNombreEquipoVisitante);
-                panelJornada.add(panelPartido);
-            }
-            panelPartido.add(panelJornada);
-        }
     }
 }
