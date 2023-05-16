@@ -25,6 +25,10 @@ public class PartidoLocal {
         this.goles = goles;
     }
 
+    public PartidoLocal(Partido partido) {
+        this.partido = partido;
+    }
+
     public Partido getPartido() {
         return partido;
     }

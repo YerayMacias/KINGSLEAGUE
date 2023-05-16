@@ -1,11 +1,5 @@
 package Modelo.ClasesBasesDatos;
 
-<<<<<<< Updated upstream
-
-import Modelo.ClasesObjetos.BaseDato;
-import Modelo.ClasesObjetos.Temporada;
-=======
->>>>>>> Stashed changes
 import Modelo.ClasesObjetos.Usuario;
 import oracle.jdbc.proxy.annotation.Pre;
 

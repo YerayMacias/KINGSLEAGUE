@@ -1,25 +1,10 @@
 package Controlador;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import Modelo.ClasesBasesDatos.TJornadas;
 import Modelo.ClasesBasesDatos.TTemporadas;
-=======
 import Modelo.ClasesBasesDatos.*;
->>>>>>> Stashed changes
 import Modelo.ClasesObjetos.*;
-=======
 
-import Modelo.ClasesObjetos.TPartido;
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jornada;
-import Modelo.ClasesBaseDato.Partido;
-import Modelo.ClasesBaseDato.Usuario;
-import Modelo.ClasesObjetos.TJornadas;
-import Modelo.ClasesObjetos.TPartido;
-import Modelo.ClasesObjetos.TTemporadas;
-import Modelo.ClasesObjetos.
-import Modelo.ClasesBaseDato.*;
->>>>>>> Stashed changes
+
 import Vista.*;
 
 import javax.swing.*;
@@ -145,13 +130,9 @@ public class Main {
             for (int y = 0; y < listaJornadas.get(x).getListaPartidos().size(); y++) {
                 panelPartido = new JPanel(new GridLayout(1, 3));
 
-                PartidoLocal partidoLocal = new PartidoLocal();
-                partidoLocal.setPartido(listaJornadas.get(x).getListaPartidos().get(y));
-                partidoLocal = TPartidosLocales.buscarPorPartido(partidoLocal);
+                PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(x).getListaPartidos().get(y)));
 
-                PartidoVisitante partidoVisitante = new PartidoVisitante();
-                partidoVisitante.setPartido(listaJornadas.get(x).getListaPartidos().get(y));
-                partidoVisitante = TPartidosVisitantes.buscarPorPartido(partidoVisitante);
+                PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(x).getListaPartidos().get(y)));
 
                 panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre()));
                 panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles()));
