@@ -1,4 +1,4 @@
-package Modelo.ClasesBaseDato;
+package Modelo.ClasesObjetos;
 
 /**
  * @author

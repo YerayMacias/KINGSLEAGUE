@@ -1,5 +1,6 @@
 package Controlador;
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import Modelo.ClasesObjetos.TPartido;
 import Modelo.ClasesBaseDato.Equipo;
@@ -13,6 +14,12 @@ import Modelo.ClaseObjetos.TTemporadas;
 import Modelo.ClaseObjetos.TUsuarios;
 import Modelo.ClasesBaseDato.*;
 >>>>>>> main
+=======
+import Modelo.ClasesBasesDatos.TJornadas;
+import Modelo.ClasesBasesDatos.TTemporadas;
+import Modelo.ClasesBasesDatos.TUsuarios;
+import Modelo.ClasesObjetos.*;
+>>>>>>> Stashed changes
 import Vista.*;
 
 import javax.swing.*;
