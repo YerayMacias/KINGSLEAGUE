@@ -1,7 +1,7 @@
-package Modelo.ClasesObjetos;
+package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesBaseDato.BaseDato;
-import Modelo.ClasesBaseDato.Temporada;
+import Modelo.ClasesObjetos.BaseDato;
+import Modelo.ClasesObjetos.Temporada;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;

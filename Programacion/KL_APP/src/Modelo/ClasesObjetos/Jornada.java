@@ -1,4 +1,4 @@
-package Modelo.ClasesBaseDato;
+package Modelo.ClasesObjetos;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

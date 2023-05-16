@@ -1,9 +1,9 @@
-package Modelo.ClasesObjetos;
+package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesBaseDato.BaseDato;
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jornada;
-import Modelo.ClasesBaseDato.Partido;
+import Modelo.ClasesObjetos.BaseDato;
+import Modelo.ClasesObjetos.Equipo;
+import Modelo.ClasesObjetos.Jornada;
+import Modelo.ClasesObjetos.Partido;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

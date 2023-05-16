@@ -1,18 +1,7 @@
 package Controlador;
-
-<<<<<<< HEAD
-import Modelo.ClasesObjetos.TPartido;
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jornada;
-import Modelo.ClasesBaseDato.Partido;
-import Modelo.ClasesBaseDato.Usuario;
-=======
-import Modelo.ClaseObjetos.TJornadas;
-import Modelo.ClaseObjetos.TPartido;
-import Modelo.ClaseObjetos.TTemporadas;
-import Modelo.ClaseObjetos.TUsuarios;
-import Modelo.ClasesBaseDato.*;
->>>>>>> main
+import Modelo.ClasesBasesDatos.TJornadas;
+import Modelo.ClasesBasesDatos.TTemporadas;
+import Modelo.ClasesObjetos.*;
 import Vista.*;
 
 import javax.swing.*;
@@ -148,6 +137,6 @@ public class Main {
         // Insertar
         usuario = new Usuario(username, email, password, admin);
         // .add
-        Modelo.ClaseObjetos.TUsuarios.insert(usuario);
+        TUsuarios.insert(usuario);
     }
 }

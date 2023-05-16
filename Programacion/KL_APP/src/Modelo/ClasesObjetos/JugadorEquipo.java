@@ -1,7 +1,4 @@
-package Modelo.ClasesBaseDato;
-
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jugador;
+package Modelo.ClasesObjetos;
 
 import java.time.LocalDate;
 
