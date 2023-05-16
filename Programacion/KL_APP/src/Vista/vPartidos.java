@@ -67,6 +67,15 @@ public class vPartidos {
                 Main.crearVentanaPartidos(admin);
             }
         });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPerfil(admin);
+            }
+        });
+
         cbJornadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
