@@ -50,7 +50,7 @@ public class vEquipos {
          miCerrarSesion.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
+                 Main.vEquipos.dispose();
                  Main.crearVentanaLogin();
              }
          });
@@ -58,7 +58,7 @@ public class vEquipos {
          miClasificacion.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
+                 Main.vEquipos.dispose();
                  Main.crearVentanaClasificacion(admin);
              }
          });
@@ -66,10 +66,18 @@ public class vEquipos {
          miPartidos.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
+                 Main.vEquipos.dispose();
                  Main.crearVentanaPartidos(admin);
              }
          });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                Main.crearVentanaEquipos(admin);
+            }
+        });
      }
 
     public JPanel getpPrincipal() {

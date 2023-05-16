@@ -66,6 +66,14 @@ public class vPrincipal {
                 Main.crearVentanaEquipos(admin);
             }
         });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaPerfil(admin);
+            }
+        });
     }
 
     public void inicializar() {

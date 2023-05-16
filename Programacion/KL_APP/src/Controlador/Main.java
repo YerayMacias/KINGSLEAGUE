@@ -25,6 +25,7 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
+    public static JFrame vPerfil;
     public static Usuario usuario;
     private static ArrayList<Jornada> listaJornadas;
     private static int posicion;
@@ -108,6 +109,14 @@ public class Main {
         vEquipos.pack();
         vEquipos.setLocationRelativeTo(null);
         vEquipos.setVisible(true);
+    }
+
+    public static void crearVentanaPerfil(String admin) {
+        vPerfil = new JFrame("vPerfil");
+        vPerfil.setContentPane(new vPerfil(admin).getpPrincipal());
+        vPerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPerfil.pack();
+        vPerfil.setVisible(true);
     }
 
 
