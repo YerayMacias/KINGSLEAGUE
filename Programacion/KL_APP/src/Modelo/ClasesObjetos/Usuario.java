@@ -82,7 +82,8 @@ public class Usuario {
         return admin;
     }
 
-    public void tUsuario(tUsuario admin) {
+    public void setAdmin(tUsuario admin) {
         this.admin = admin;
     }
+
 }

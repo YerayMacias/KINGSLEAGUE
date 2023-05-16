@@ -1,7 +1,21 @@
 package Controlador;
+<<<<<<< Updated upstream
 import Modelo.ClasesBasesDatos.TJornadas;
 import Modelo.ClasesBasesDatos.TTemporadas;
 import Modelo.ClasesObjetos.*;
+=======
+
+import Modelo.ClasesObjetos.TPartido;
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Jornada;
+import Modelo.ClasesBaseDato.Partido;
+import Modelo.ClasesBaseDato.Usuario;
+import Modelo.ClasesObjetos.TJornadas;
+import Modelo.ClasesObjetos.TPartido;
+import Modelo.ClasesObjetos.TTemporadas;
+import Modelo.ClasesObjetos.
+import Modelo.ClasesBaseDato.*;
+>>>>>>> Stashed changes
 import Vista.*;
 
 import javax.swing.*;
