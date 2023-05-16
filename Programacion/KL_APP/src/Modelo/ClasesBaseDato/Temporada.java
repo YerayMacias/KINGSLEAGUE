@@ -31,6 +31,10 @@ public class Temporada {
         this.fechaFin = fechaFin;
     }
 
+    public Temporada(int ID) {
+        this.ID = ID;
+    }
+
     public int getID() {
         return ID;
     }

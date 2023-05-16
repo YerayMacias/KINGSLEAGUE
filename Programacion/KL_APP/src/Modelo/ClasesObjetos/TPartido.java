@@ -70,7 +70,7 @@ public class TPartido {
         ps.setInt(1,partido.getJornada().getID());
         ResultSet result = ps.executeQuery();
         Partido partido2;
-        if (result.next())
+        while (result.next())
         {
             partido2 = new Partido();
             partido2.setID(result.getInt("id_partido"));
@@ -101,40 +101,4 @@ public class TPartido {
         return partido;
     }
 
-    public static ArrayList<Object> buscarPartidosTemporada() throws Exception{
-        BaseDato.abrirConexion();
-        // ArrayList coincidentes
-        ArrayList<Partido> listaPartidos = new ArrayList<>();
-        ArrayList<Jornada> listaJornadas = new ArrayList<>();
-        ArrayList<Equipo> listaEquiposLocales = new ArrayList<>();
-        ArrayList<Equipo> listaEquiposVisitantes = new ArrayList<>();
-        ArrayList<Integer> listaGolesLocales = new ArrayList<>();
-        ArrayList<Integer> listaGolesVisitante = new ArrayList<>();
-
-        ArrayList<Object> listaTodos= new ArrayList<>();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT P.ID_PARTIDO, P.ID_JORNADA, EL.ID_EQUIPO, EV.ID_EQUIPO, PL.GOLES, PV.GOLES\n" +
-                "FROM PARTIDOS P, EQUIPOS EL, EQUIPOS EV, PARTIDOS_LOCALES PL, PARTIDOS_VISITANTES PV\n" +
-                "WHERE  P.ID_PARTIDO = PL.ID_PARTIDO AND P.ID_PARTIDO = PV.ID_PARTIDO\n" +
-                "AND EL.ID_EQUIPO = PL.ID_EQUIPO AND EV.ID_EQUIPO = PV.ID_EQUIPO\n" +
-                "AND P.ID_JORNADA IN (SELECT ID_JORNADA FROM JORNADAS WHERE ID_TEMPORADA = (SELECT MAX(ID_TEMPORADA) FROM TEMPORADAS))\n" +
-                "ORDER BY P.ID_PARTIDO;");
-        ResultSet result = ps.executeQuery();
-
-        while (result.next()){
-            listaPartidos.add(buscarPorIDPartido(new Partido(result.getInt("P.ID_PARTIDO"))));
-            listaJornadas.add(TJornadas.buscarPorID(new Jornada(result.getInt("P.ID_JORNADA"))));
-            listaEquiposLocales.add(TEquipo.buscarPorId(new Equipo(result.getInt("EL.ID_EQUIPO"))));
-            listaEquiposVisitantes.add(TEquipo.buscarPorId(new Equipo(result.getInt("EV.ID_EQUIPO"))));
-            listaGolesLocales.add(result.getInt("PL.GOLES"));
-            listaGolesVisitante.add(result.getInt("PV.GOLES"));
-        }
-        BaseDato.cerrarConexion();
-        listaTodos.add(listaPartidos);
-        listaTodos.add(listaJornadas);
-        listaTodos.add(listaEquiposLocales);
-        listaTodos.add(listaEquiposVisitantes);
-        listaTodos.add(listaGolesLocales);
-        listaTodos.add(listaGolesVisitante);
-        return listaTodos;
-    }
 }
