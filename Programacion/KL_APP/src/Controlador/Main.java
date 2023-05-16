@@ -25,8 +25,10 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
+    public static JFrame vPerfil;
     public static Usuario usuario;
     private static ArrayList<Jornada> listaJornadas;
+    private static int posicion;
     public static void main(String[] args){
 
         // Test para probar conexion con la base de datos
@@ -43,19 +45,14 @@ public class Main {
             System.out.println("Error");
         } */
 
-        //crearVentanaLogin();
-        try {
-            BaseDato.abrirConexion();
-            PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM equipos");
-            ResultSet result = ps.executeQuery();
-            while (result.next()){
-                System.out.println(result.getString("nombre"));
-            }
-            BaseDato.cerrarConexion();
-            // crearVentanaPrueba();
+        crearVentanaLogin();
+        /*try {
+            buscarJornadasTemporada();
+
+            crearVentanaPrueba();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -114,6 +111,14 @@ public class Main {
         vEquipos.setVisible(true);
     }
 
+    public static void crearVentanaPerfil(String admin) {
+        vPerfil = new JFrame("vPerfil");
+        vPerfil.setContentPane(new vPerfil(admin).getpPrincipal());
+        vPerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPerfil.pack();
+        vPerfil.setVisible(true);
+    }
+
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
@@ -123,31 +128,34 @@ public class Main {
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
 
-    public static JPanel buscarJornadasTemporada() throws Exception {
+    public static void buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
         listaJornadas = TJornadas.buscarPorTemporada(jornada);
-        return crearPanelesUltimaJornada(listaJornadas);
+
+        posicion = listaJornadas.size() -1;
     }
 
-    public static JPanel crearPanelesUltimaJornada(ArrayList<Jornada> listaJornadas) throws Exception {
+    public static JPanel crearPanelesJornadas() throws Exception {
         JLabel labelTitulo = new JLabel();
         JPanel panelPartido;
         JPanel panelContenedor = new JPanel(new GridLayout(7, 1));
 
-        int ultimaPosicion = listaJornadas.size() - 1;
-        labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(listaJornadas.size() -1).getNumJornada()));
+        labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(posicion).getNumJornada()));
+        labelTitulo.setHorizontalAlignment(SwingConstants.LEFT);
+        labelTitulo.setFont(new Font("Arial",1, 19));
+
         panelContenedor.add(labelTitulo);
-        for (int y = 0; y < listaJornadas.get(ultimaPosicion).getListaPartidos().size(); y++) {
+        for (int y = 0; y < listaJornadas.get(posicion).getListaPartidos().size(); y++) {
             panelPartido = new JPanel(new GridLayout(1, 3));
 
-            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(ultimaPosicion).getListaPartidos().get(y)));
+            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(posicion).getListaPartidos().get(y)));
 
-            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(ultimaPosicion).getListaPartidos().get(y)));
+            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(posicion).getListaPartidos().get(y)));
 
-            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre()));
-            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles()));
-            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre()));
+            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre(), SwingConstants.CENTER));
 
             panelContenedor.add(panelPartido);
         }
@@ -156,13 +164,24 @@ public class Main {
 
     public static void crearVentanaPrueba() throws Exception {
         JFrame frame = new JFrame("vLogin");
-        frame.setContentPane(buscarJornadasTemporada());
+        frame.setContentPane(crearPanelesJornadas());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+    public static ArrayList<String> rellenarComboJornadas(){
+        ArrayList<String> itemsCombo = new ArrayList<>();
+        listaJornadas.forEach(item -> itemsCombo.add("Jornada " + item.getNumJornada()));
+        return itemsCombo;
+    }
 
+    public static void actualizarPosicion(int cBoxPosicion){
+        posicion = cBoxPosicion;
+    }
+
+    public static void actualizarVPartidos(){
+        SwingUtilities.updateComponentTreeUI(vPartidos);
+    }
     public static String buscarNombre() {
         return usuario.getUsername();
     }
