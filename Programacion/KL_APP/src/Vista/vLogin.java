@@ -27,19 +27,30 @@ public class vLogin {
         tfNombre.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                tfNombre.setText("");
+                if (tfNombre.getText().trim().equals("NOMBRE DE USUARIO")) {
+                    tfNombre.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(tfNombre.getText().isEmpty()) {
+                    tfNombre.setText("NOMBRE DE USUARIO");
+                }
             }
         });
         pfPassword.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPassword.setText("");
+                if (pfPassword.getText().trim().equals("CONTRASEÑA")) {
+                    pfPassword.setEchoChar('•');
+                    pfPassword.setText("");
+                }
             }
-        });
-        pfPassword.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                pfPassword.setEchoChar('•');
+
+            public void focusLost(FocusEvent e) {
+                if(pfPassword.getText().isEmpty()) {
+                    pfPassword.setText("CONTRASEÑA");
+                }
             }
         });
 
@@ -69,6 +80,7 @@ public class vLogin {
                 }
             }
         });
+
     }
 
     public JPanel getpPrincipal() {

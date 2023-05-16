@@ -156,18 +156,43 @@ public class vRegistro {
         bVisibleAdm.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        pfPassword.setEchoChar((char) 0);
+        pfPassword2.setEchoChar((char) 0);
+        pfPasswordAdm.setEchoChar((char) 0);
 
         pfPasswordAdm.setVisible(false);
         bVisibleAdm.setVisible(false);
-        if (tfNombre.getText().equals("NOMBRE DE USUARIO")) {
+
+        if (tfNombre.getText().trim().equals("NOMBRE DE USUARIO")) {
             tfNombre.setText("");
         }
+
+        tfNombre.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (tfNombre.getText().trim().equals("NOMBRE DE USUARIO")) {
+                    tfNombre.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(tfNombre.getText().isEmpty()) {
+                    tfNombre.setText("NOMBRE DE USUARIO");
+                }
+            }
+        });
 
         tfEmail.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (tfEmail.getText().trim().equals("NOMBRE DE USUARIO")) {
-                    tfNombre.setText("");
+                if (tfEmail.getText().trim().equals("EMAIL")) {
+                    tfEmail.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(tfEmail.getText().isEmpty()) {
+                   tfEmail.setText("EMAIL");
                 }
             }
         });
@@ -175,41 +200,49 @@ public class vRegistro {
         pfPassword.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPassword.setText("");
+                if (pfPassword.getText().trim().equals("CONTRASEÑA")) {
+                    pfPassword.setEchoChar('•');
+                    pfPassword.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(pfPassword.getText().isEmpty()) {
+                    pfPassword.setText("CONTRASEÑA");
+                }
             }
         });
-        pfPassword.setEchoChar((char) 0);
-        pfPassword.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                pfPassword.setEchoChar('•');
-            }
-        });
+
 
         pfPassword2.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPassword2.setText("");
+                if (pfPassword2.getText().trim().equals("CONFIRMAR CONTRASEÑA")) {
+                    pfPassword2.setEchoChar('•');
+                    pfPassword2.setText("");
+                }
             }
-        });
-        pfPassword2.setEchoChar((char) 0);
-        pfPassword2.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                pfPassword2.setEchoChar('•');
+
+            public void focusLost(FocusEvent e) {
+                if(pfPassword2.getText().isEmpty()) {
+                    pfPassword2.setText("CONFIRMAR CONTRASEÑA");
+                }
             }
         });
 
         pfPasswordAdm.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPasswordAdm.setText("");
+                if (pfPasswordAdm.getText().trim().equals("CONTRASEÑA ADMINISTRADOR")) {
+                    pfPasswordAdm.setEchoChar('•');
+                    pfPasswordAdm.setText("");
+                }
             }
-        });
-        pfPasswordAdm.setEchoChar((char) 0);
-        pfPasswordAdm.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {pfPasswordAdm.setEchoChar('•');
+
+            public void focusLost(FocusEvent e) {
+                if(pfPasswordAdm.getText().isEmpty()) {
+                    pfPasswordAdm.setText("CONTRASEÑA ADMINISTRADOR");
+                }
             }
         });
 

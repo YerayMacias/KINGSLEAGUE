@@ -79,7 +79,7 @@
               <font style="1"/>
               <foreground color="-1"/>
               <margin top="2" left="6" bottom="2" right="6"/>
-              <text value="Nombre de Usuario"/>
+              <text value="NOMBRE DE USUARIO"/>
             </properties>
           </component>
           <component id="68171" class="javax.swing.JButton" binding="button1" default-binding="true">
