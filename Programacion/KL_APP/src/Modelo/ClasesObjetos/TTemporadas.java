@@ -1,4 +1,4 @@
-package Modelo.ClaseObjetos;
+package Modelo.ClasesObjetos;
 
 import Modelo.ClasesBaseDato.BaseDato;
 import Modelo.ClasesBaseDato.Temporada;

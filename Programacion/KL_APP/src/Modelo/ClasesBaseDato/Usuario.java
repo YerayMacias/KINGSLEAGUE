@@ -9,12 +9,14 @@ public class Usuario {
     private String username;
     private String email;
     private String password;
-    private String admin;
+    private tUsuario admin;
+
+    public enum tUsuario {S, N};
 
     public Usuario() {
     }
 
-    public Usuario(String username, String email, String password, String admin) {
+    public Usuario(String username, String email, String password, tUsuario admin) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -26,6 +28,8 @@ public class Usuario {
         this.password = password;
     }
 
+
+
     /**
      * Constructor completo de Usuario
      * Para instanciar un Usuario con todos los atributos
@@ -35,7 +39,7 @@ public class Usuario {
      * @param password
      * @param admin S o N
      */
-    public Usuario(int ID, String username, String email, String password, String admin) {
+    public Usuario(int ID, String username, String email, String password, tUsuario admin) {
         this.ID = ID;
         this.username = username;
         this.email = email;
@@ -74,11 +78,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getAdmin() {
+    public tUsuario getAdmin() {
         return admin;
     }
 
-    public void setAdmin(String admin) {
+    public void tUsuario(tUsuario admin) {
         this.admin = admin;
     }
 }

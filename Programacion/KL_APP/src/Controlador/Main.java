@@ -1,7 +1,6 @@
 package Controlador;
 
-import Modelo.ClaseObjetos.TPartido;
-import Modelo.ClaseObjetos.TUsuarios;
+import Modelo.ClasesObjetos.TPartido;
 import Modelo.ClasesBaseDato.Equipo;
 import Modelo.ClasesBaseDato.Jornada;
 import Modelo.ClasesBaseDato.Partido;
@@ -102,9 +101,9 @@ public class Main {
 
 
     public static void validarUsuario(String nombre, String password) throws Exception {
-        usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
+        usuario = Modelo.ClaseObjetos.TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
-            if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
+            if (usuario.getAdmin().toString().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
@@ -126,14 +125,14 @@ public class Main {
     }
 
     public static String buscarAdmin() {
-        return usuario.getAdmin();
+        return usuario.getAdmin().toString();
     }
 
-    public static void registrarUsuario(String username, String email, String password, String admin) throws Exception {
+    public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
         // Insertar
         usuario = new Usuario(username, email, password, admin);
         // .add
-        TUsuarios.insert(usuario);
+        Modelo.ClaseObjetos.TUsuarios.insert(usuario);
     }
 
     public static void crearPanelesJornadas(ArrayList<Partido> listaPartidos, ArrayList<Jornada> listaJornadas, ArrayList<Equipo> listaEquiposLocales, ArrayList<Equipo> listaEquiposVisitantes, ArrayList<Integer> listaGolesLocales, ArrayList<Integer> listaGolesVisitante){
