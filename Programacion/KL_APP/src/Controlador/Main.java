@@ -1,7 +1,11 @@
 package Controlador;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import Modelo.ClasesBasesDatos.TJornadas;
 import Modelo.ClasesBasesDatos.TTemporadas;
+=======
+import Modelo.ClasesBasesDatos.*;
+>>>>>>> Stashed changes
 import Modelo.ClasesObjetos.*;
 =======
 
@@ -51,7 +55,12 @@ public class Main {
             System.out.println("Error");
         } */
 
-        crearVentanaLogin();
+        // crearVentanaLogin();
+        try {
+            crearVentanaPrueba();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -112,31 +121,55 @@ public class Main {
 
 
     public static void validarUsuario(String nombre, String password) throws Exception {
-        usuario = Modelo.ClaseObjetos.TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
+        usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
             if (usuario.getAdmin().toString().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
 
-    public static void buscarJornadasTemporada() throws Exception {
+    public static JPanel buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
         ArrayList<Jornada> listaJornadas = TJornadas.buscarPorTemporada(jornada);
-        crearPanelesJornadas(listaJornadas);
+        return crearPanelesJornadas(listaJornadas);
     }
 
-    public static void crearPanelesJornadas(ArrayList<Jornada> listaJornadas){
+    public static JPanel crearPanelesJornadas(ArrayList<Jornada> listaJornadas) throws Exception {
         JLabel labelTitulo = new JLabel();
         JPanel panelPartido;
         JPanel panelContenedor = new JPanel(new GridLayout(7, 1));
         for (int x = 0; x < listaJornadas.size(); x++) {
             labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
+            panelContenedor.add(labelTitulo);
             for (int y = 0; y < listaJornadas.get(x).getListaPartidos().size(); y++) {
                 panelPartido = new JPanel(new GridLayout(1, 3));
-                panelPartido.add(new JLabel(TPartidosLocales.buscarPorPartido()));
+
+                PartidoLocal partidoLocal = new PartidoLocal();
+                partidoLocal.setPartido(listaJornadas.get(x).getListaPartidos().get(y));
+                partidoLocal = TPartidosLocales.buscarPorPartido(partidoLocal);
+
+                PartidoVisitante partidoVisitante = new PartidoVisitante();
+                partidoVisitante.setPartido(listaJornadas.get(x).getListaPartidos().get(y));
+                partidoVisitante = TPartidosVisitantes.buscarPorPartido(partidoVisitante);
+
+                panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre()));
+                panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles()));
+                panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre()));
+
+                panelContenedor.add(panelPartido);
             }
         }
+        return panelContenedor;
+    }
+
+    public static void crearVentanaPrueba() throws Exception {
+        JFrame frame = new JFrame("vLogin");
+        frame.setContentPane(buscarJornadasTemporada());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     public static String buscarNombre() {

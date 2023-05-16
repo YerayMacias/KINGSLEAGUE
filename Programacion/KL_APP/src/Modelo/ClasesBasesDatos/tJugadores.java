@@ -1,6 +1,5 @@
 package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesObjetos.BaseDato;
 import Modelo.ClasesObjetos.Jugador;
 
 import java.sql.PreparedStatement;

@@ -1,6 +1,5 @@
 package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesObjetos.BaseDato;
 import Modelo.ClasesObjetos.Temporada;
 
 import java.sql.Date;

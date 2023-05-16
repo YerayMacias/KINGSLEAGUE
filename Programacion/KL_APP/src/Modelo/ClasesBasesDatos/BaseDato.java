@@ -1,4 +1,4 @@
-package Modelo.ClasesObjetos;
+package Modelo.ClasesBasesDatos;
 
 import java.sql.*;
 
