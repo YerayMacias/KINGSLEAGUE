@@ -9,6 +9,8 @@ import Vista.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,7 @@ public class Main {
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
     public static Usuario usuario;
+    private static ArrayList<Jornada> listaJornadas;
     public static void main(String[] args){
 
         // Test para probar conexion con la base de datos
@@ -40,12 +43,19 @@ public class Main {
             System.out.println("Error");
         } */
 
-        crearVentanaLogin();
-        /* try {
-            crearVentanaPrueba();
+        //crearVentanaLogin();
+        try {
+            BaseDato.abrirConexion();
+            PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM equipos");
+            ResultSet result = ps.executeQuery();
+            while (result.next()){
+                System.out.println(result.getString("nombre"));
+            }
+            BaseDato.cerrarConexion();
+            // crearVentanaPrueba();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } */
+        }
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -116,30 +126,30 @@ public class Main {
     public static JPanel buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
-        ArrayList<Jornada> listaJornadas = TJornadas.buscarPorTemporada(jornada);
-        return crearPanelesJornadas(listaJornadas);
+        listaJornadas = TJornadas.buscarPorTemporada(jornada);
+        return crearPanelesUltimaJornada(listaJornadas);
     }
 
-    public static JPanel crearPanelesJornadas(ArrayList<Jornada> listaJornadas) throws Exception {
+    public static JPanel crearPanelesUltimaJornada(ArrayList<Jornada> listaJornadas) throws Exception {
         JLabel labelTitulo = new JLabel();
         JPanel panelPartido;
         JPanel panelContenedor = new JPanel(new GridLayout(7, 1));
-        for (int x = 0; x < listaJornadas.size(); x++) {
-            labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
-            panelContenedor.add(labelTitulo);
-            for (int y = 0; y < listaJornadas.get(x).getListaPartidos().size(); y++) {
-                panelPartido = new JPanel(new GridLayout(1, 3));
 
-                PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(x).getListaPartidos().get(y)));
+        int ultimaPosicion = listaJornadas.size() - 1;
+        labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(listaJornadas.size() -1).getNumJornada()));
+        panelContenedor.add(labelTitulo);
+        for (int y = 0; y < listaJornadas.get(ultimaPosicion).getListaPartidos().size(); y++) {
+            panelPartido = new JPanel(new GridLayout(1, 3));
 
-                PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(x).getListaPartidos().get(y)));
+            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(ultimaPosicion).getListaPartidos().get(y)));
 
-                panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre()));
-                panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles()));
-                panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre()));
+            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(ultimaPosicion).getListaPartidos().get(y)));
 
-                panelContenedor.add(panelPartido);
-            }
+            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre()));
+            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles()));
+            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre()));
+
+            panelContenedor.add(panelPartido);
         }
         return panelContenedor;
     }

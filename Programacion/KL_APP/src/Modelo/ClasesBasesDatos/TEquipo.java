@@ -48,6 +48,7 @@ public class TEquipo {
             Equipo equipo = new Equipo(result.getInt("id_equipo"),result.getString("nombre"),result.getLong("presupuesto"));
             listaEquipos.add(equipo);
         }
+        BaseDato.cerrarConexion();
         return listaEquipos;
     }
 
@@ -67,6 +68,7 @@ public class TEquipo {
         }
         else
             equipo2 = null;
+        BaseDato.cerrarConexion();
         return listaEquipos;
     }
 
@@ -85,6 +87,7 @@ public class TEquipo {
         }
         else
             equipo2 = null;
+        BaseDato.cerrarConexion();
         return equipo2;
     }
 }
