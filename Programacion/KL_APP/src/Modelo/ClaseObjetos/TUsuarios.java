@@ -16,6 +16,12 @@ public class TUsuarios {
         ps.setString(2,usuario.getEmail());
         ps.setString(3,usuario.getPassword());
         ps.setString(4,usuario.getAdmin());
+        ps.executeUpdate();
+        BaseDato.cerrarConexion();
+    }
+
+    public static void update(Usuario usuario) throws Exception{
+
     }
     public static Usuario buscarPorUsernamePassword(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
