@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,6 +27,7 @@ public class vPartidos {
     private JMenuItem miEquipo;
     private JScrollPane spScroll;
     private JPanel pPartidos;
+    private JMenu mIconoPerfil;
 
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -75,6 +77,17 @@ public class vPartidos {
         } else {
             lTipoUsuario.setText("Usuario");
         }
+
+        miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
     }
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);

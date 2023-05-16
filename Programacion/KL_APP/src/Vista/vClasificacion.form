@@ -81,7 +81,7 @@
                   <text value="Base de Datos"/>
                 </properties>
               </component>
-              <grid id="9c0e4" class="javax.swing.JMenu" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+              <grid id="9c0e4" class="javax.swing.JMenu" binding="mIconoPerfil" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
                 <constraints>
                   <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>

@@ -1,5 +1,7 @@
 package Vista;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +23,7 @@ public class vRegistro {
     private JButton bVisible;
     private JButton bVisible2;
     private JButton bVisibleAdm;
+    private JButton bAtras;
     private int contador;
 
     public vRegistro() {
@@ -76,6 +79,20 @@ public class vRegistro {
                 }
             }
         });
+
+        bAtras.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vRegistro.dispose();
+                Main.crearVentanaLogin();
+            }
+        });
+        bRegistro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public JPanel getpPrincipal() {
@@ -88,6 +105,7 @@ public class vRegistro {
         bVisible2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleAdm.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         pfPasswordAdm.setVisible(false);
         bVisibleAdm.setVisible(false);

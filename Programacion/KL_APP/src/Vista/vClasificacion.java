@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,7 @@ public class vClasificacion {
     private JMenuItem miClasificacion;
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
+    private JMenu mIconoPerfil;
 
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -70,6 +72,16 @@ public class vClasificacion {
         } else {
             lTipoUsuario.setText("Usuario");
         }
+
+        miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     public void ocultarCosasAdmin(){
