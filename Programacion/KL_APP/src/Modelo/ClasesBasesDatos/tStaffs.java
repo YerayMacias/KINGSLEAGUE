@@ -1,6 +1,8 @@
 package Modelo.ClasesBasesDatos;
 
+import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Staff;
+import Modelo.ClasesObjetos.Temporada;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,4 +80,31 @@ public class tStaffs {
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
-}
+
+    public static Staff buscarPorId(Staff staff) throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staff where id_equipo = ?");
+        ps.setInt(1, staff.getID());
+        ResultSet result = ps.executeQuery();
+        Staff staff2;
+        Staff.tROl tRol;
+        if (result.next()) {
+            staff2 = new Staff();
+            staff2.setID(result.getInt("id_staff"));
+            staff2.setNombre(result.getString("nombre"));
+            staff2.setApellido(result.getString("apellido"));
+            staff2.setDNI(result.getString("dni"));
+            if (result.getString("ROL").equalsIgnoreCase("ENTRENADOR1")) {
+                tRol = Staff.tROl.ENTRENADOR1;
+            } else if(result.getString("ROL").equalsIgnoreCase("ENTRENADOR2"))
+            {
+                tRol = Staff.tROl.ENTRENADOR2;
+            } else
+                tRol = Staff.tROl.ANALISTA;
+            }
+        else
+            staff2 = null;
+            BaseDato.cerrarConexion();
+            return staff2;
+        }
+    }

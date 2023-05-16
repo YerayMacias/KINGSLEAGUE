@@ -24,6 +24,10 @@ public class Staff extends Persona{
         this.rol = rol;
     }
 
+    public Staff(int ID) {
+        super(ID);
+    }
+
     public Staff(tROl rol) {
         this.rol = rol;
     }
