@@ -1,10 +1,18 @@
 package Controlador;
 
+<<<<<<< HEAD
+import Modelo.ClasesObjetos.TPartido;
+import Modelo.ClasesBaseDato.Equipo;
+import Modelo.ClasesBaseDato.Jornada;
+import Modelo.ClasesBaseDato.Partido;
+import Modelo.ClasesBaseDato.Usuario;
+=======
 import Modelo.ClaseObjetos.TJornadas;
 import Modelo.ClaseObjetos.TPartido;
 import Modelo.ClaseObjetos.TTemporadas;
 import Modelo.ClaseObjetos.TUsuarios;
 import Modelo.ClasesBaseDato.*;
+>>>>>>> main
 import Vista.*;
 
 import javax.swing.*;
@@ -101,9 +109,9 @@ public class Main {
 
 
     public static void validarUsuario(String nombre, String password) throws Exception {
-        usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
+        usuario = Modelo.ClaseObjetos.TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
-            if (usuario.getAdmin().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
+            if (usuario.getAdmin().toString().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
@@ -133,13 +141,13 @@ public class Main {
     }
 
     public static String buscarAdmin() {
-        return usuario.getAdmin();
+        return usuario.getAdmin().toString();
     }
 
-    public static void registrarUsuario(String username, String email, String password, String admin) throws Exception {
+    public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
         // Insertar
         usuario = new Usuario(username, email, password, admin);
         // .add
-        TUsuarios.insert(usuario);
+        Modelo.ClaseObjetos.TUsuarios.insert(usuario);
     }
 }
