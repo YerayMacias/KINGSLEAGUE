@@ -142,14 +142,14 @@ public class Main {
         vPlayOffs.setVisible(true);
     }
 
-    public static void crearVentanaEquiposJugadores(){
+   /* public static void crearVentanaEquiposJugadores(){
         vEquiposJugadores = new JFrame("vRegistro");
-        vEquiposJugadores.setContentPane(new vEqui);
+        vEquiposJugadores.setContentPane(new vEquiposJugadores);
         vEquiposJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vEquiposJugadores.pack();
         vEquiposJugadores.setLocationRelativeTo(null);
         vEquiposJugadores.setVisible(true);
-    }
+    } */
 
 
     public static void validarUsuario(String nombre, String password) throws Exception {
