@@ -41,6 +41,7 @@ public class vPerfil {
     private JButton bVisibleViejo;
     private JButton bVisibleNew;
     private JButton bVisibleNew2;
+    private JButton bGuardarCambios1;
     private int contador;
     private String passUser;
     private String usuario;
@@ -141,17 +142,8 @@ public class vPerfil {
         bGuardarDatos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pattern pat = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                Matcher mat = pat.matcher(tfEmail.getText());
 
-
-                if (tfNombre.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "El campo 'Nombre de Usuario' es obligatorio");
-                    tfNombre.setForeground(Color.red);
-                } else if (!mat.matches()) {
-                    JOptionPane.showMessageDialog(null, "El email no tiene un formato válido (ejemplo@gmail.com)");
-                    tfEmail.setForeground(Color.red);
-                } else if (pfPassVieja.getText().isEmpty() || pfPassNew.getText().isEmpty() || pfPassNew2.getText().isEmpty()) {
+                 if (pfPassVieja.getText().isEmpty() || pfPassNew.getText().isEmpty() || pfPassNew2.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Los campos de 'Contraseña' son obligatorios");
                 } else if (!pfPassNew.getText().equals(pfPassNew2.getText())) {
                     JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
@@ -164,12 +156,9 @@ public class vPerfil {
                         if (!pfPassVieja.getText().equals(passUser)) {
                             throw new Exception("La contraseña antigua es incorrecta");
                         }
-                        Main.updateUsuario(tfNombre.getText(), tfEmail.getText(), pfPassNew.getText());
+                        Main.updateUsuarioPass(usuario, pfPassNew.getText());
                         JOptionPane.showMessageDialog(null, "Cambios realizados correctamente");
                         pfPassNew2.setForeground(null);
-                        pfPassNew.setForeground(null);
-                        tfNombre.setForeground(null);
-                        tfEmail.setForeground(null);
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, ex.getMessage(), "FAILED CHANGES", JOptionPane.WARNING_MESSAGE);
                         pfPassVieja.setForeground(Color.red);
@@ -178,6 +167,36 @@ public class vPerfil {
 
                 }
             }
+        });
+
+        bGuardarCambios1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Pattern pat = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                Matcher mat = pat.matcher(tfEmail.getText());
+
+                if (pfPassVieja.getText().isEmpty() && pfPassNew.getText().isEmpty() && pfPassNew2.getText().isEmpty()) {
+                    if (tfNombre.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "El campo 'Nombre de Usuario' es obligatorio");
+                        tfNombre.setForeground(Color.red);
+                    } else if (!mat.matches()) {
+                        JOptionPane.showMessageDialog(null, "El email no tiene un formato válido (ejemplo@gmail.com)");
+                        tfEmail.setForeground(Color.red);
+                    } else {
+                        try {
+                            Main.updateUsuario(tfNombre.getText(), tfEmail.getText());
+                            JOptionPane.showMessageDialog(null, "Cambios realizados correctamente");
+                            tfNombre.setForeground(null);
+                            tfEmail.setForeground(null);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+
+            }
+
         });
     }
 
