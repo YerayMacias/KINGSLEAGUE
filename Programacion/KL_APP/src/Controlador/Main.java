@@ -6,10 +6,34 @@ import Modelo.ClasesObjetos.*;
 
 
 import Vista.*;
+import Vista.CRUDEquipos.dActualizarEquipo;
+import Vista.CRUDEquipos.dBorrarEquipo;
+import Vista.CRUDEquipos.dBuscarEquipo;
+import Vista.CRUDEquipos.dInsertarEquipo;
+import Vista.CRUDJornada.dActualizarJornada;
+import Vista.CRUDJornada.dBorrarJornada;
+import Vista.CRUDJornada.dBuscarJornada;
+import Vista.CRUDJornada.dInsertarJornada;
 import Vista.CRUDJugadores.dBorrarJugadores;
 import Vista.CRUDJugadores.dBuscarJugadores;
 import Vista.CRUDJugadores.dInsertJugadores;
 import Vista.CRUDJugadores.dActualizarJugadores;
+import Vista.CRUDPresidentes.dActualizarPresidente;
+import Vista.CRUDPresidentes.dBorrarPresidente;
+import Vista.CRUDPresidentes.dBuscarPresidente;
+import Vista.CRUDPresidentes.dInsertarPresidente;
+import Vista.CRUDStaffs.dActualizarStaff;
+import Vista.CRUDStaffs.dBorrarStaff;
+import Vista.CRUDStaffs.dBuscarStaff;
+import Vista.CRUDStaffs.dInsertarStaff;
+import Vista.CRUDTemporadas.dActualizarTemporada;
+import Vista.CRUDTemporadas.dBorrarTemporada;
+import Vista.CRUDTemporadas.dBuscarTemporada;
+import Vista.CRUDTemporadas.dInsertarTemporada;
+import Vista.CRUDUsuario.dActualizarUsuario;
+import Vista.CRUDUsuario.dBorrarUsuario;
+import Vista.CRUDUsuario.dBuscarUsuarios;
+import Vista.CRUDUsuario.dInsertarUsuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +57,30 @@ public class Main {
     public static JDialog dBorrarJugadores;
     public static JDialog dUpdatearJugadores;
     public static JDialog dBuscarJugadores;
+    public static JDialog dInsertarEquipo;
+    public static JDialog dBuscarEquipo;
+    public static JDialog dBorrarEquipo;
+    public static JDialog dActualizarEquipo;
+    public static JDialog dInsertarJornada;
+    public static JDialog dBorrarJornada;
+    public static JDialog dBuscarJornada;
+    public static JDialog dActualizarJornada;
+    public static JDialog dInsertarPresidentes;
+    public static JDialog dBorrarPresidentes;
+    public static JDialog dBuscarPresidentes;
+    public static JDialog dActualizarPresidentes;
+    public static JDialog dActualizarStaff;
+    public static JDialog dBorrarStaff;
+    public static JDialog dBuscarStaff;
+    public static JDialog dInsertarStaff;
+    public static JDialog dInsertarTemporada;
+    public static JDialog dBuscarTemporada;
+    public static JDialog dActualizarTemporada;
+    public static JDialog dBorrarTemporada;
+    public static JDialog dActualizarUsuario;
+    public static JDialog dInsertarUsuario;
+    public static JDialog dBorrarUsuario;
+    public static JDialog dBuscarUsuarios;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -142,12 +190,7 @@ public class Main {
         vAdminPanel.setVisible(true);
     }
 
-    public static void crearVentanaInsertJugador(String admin) {
-        dInsertarJugadores  = new dInsertJugadores();
-        dInsertarJugadores.pack();
-        dInsertarJugadores.setVisible(true);
-        System.exit(0);
-    }
+
 
     public static void crearVentanaPlayOffs(String admin) {
         vPlayOffs = new JFrame("vPlayOffs");
@@ -324,7 +367,12 @@ public class Main {
         jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
         tJugadores.insert(jugador);
     }
-
+    public static void crearVentanaInsertJugador(String admin) {
+        dInsertarJugadores  = new dInsertJugadores();
+        dInsertarJugadores.pack();
+        dInsertarJugadores.setVisible(true);
+        System.exit(0);
+    }
 
     public static void crearVentanaBorrarJugadores(String admin) {
         dBorrarJugadores  = new dBorrarJugadores();
@@ -338,13 +386,172 @@ public class Main {
         dUpdatearJugadores.pack();
         dUpdatearJugadores.setVisible(true);
         System.exit(0);
-
     }
 
     public static void crearVentanaBuscarjugadores(String admin) {
         dBuscarJugadores  = new dBuscarJugadores();
         dBuscarJugadores.pack();
         dBuscarJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertEquipo(String admin) {
+        dInsertarEquipo  = new dInsertarEquipo();
+        dInsertarEquipo.pack();
+        dInsertarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarEquipo(String admin) {
+        dBorrarEquipo  = new dBorrarEquipo();
+        dBorrarEquipo.pack();
+        dBorrarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaUpdateEquipo(String admin) {
+        dActualizarEquipo  = new dActualizarEquipo();
+        dActualizarEquipo.pack();
+        dActualizarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarEquipo(String admin) {
+        dBuscarEquipo = new dBuscarEquipo();
+        dBuscarEquipo.pack();
+        dBuscarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertJornada (String admin) {
+        dInsertarJornada  = new dInsertarJornada();
+        dInsertarJornada.pack();
+        dInsertarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarJornada (String admin) {
+        dBorrarJornada  = new dBorrarJornada();
+        dBorrarJornada.pack();
+        dBorrarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaUpdateJornada (String admin) {
+        dActualizarJornada  = new dActualizarJornada();
+        dActualizarJornada.pack();
+        dActualizarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarJornada (String admin) {
+        dBuscarJornada  = new dBuscarJornada();
+        dBuscarJornada.pack();
+        dBuscarJornada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertarPresidente (String admin) {
+        dInsertarPresidentes  = new dInsertarPresidente();
+        dInsertarPresidentes.pack();
+        dInsertarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarPresidente (String admin) {
+        dBorrarPresidentes = new dBorrarPresidente();
+        dBorrarPresidentes.pack();
+        dBorrarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaActualizarPresidente (String admin) {
+        dActualizarPresidentes = new dActualizarPresidente();
+        dActualizarPresidentes.pack();
+        dActualizarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarPresidente (String admin) {
+        dBuscarPresidentes = new dBuscarPresidente();
+        dBuscarPresidentes.pack();
+        dBuscarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertStaff (String admin) {
+        dInsertarStaff  = new dInsertarStaff();
+        dInsertarStaff.pack();
+        dInsertarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarStaff (String admin) {
+        dBorrarStaff  = new dBorrarStaff();
+        dBorrarStaff.pack();
+        dBorrarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaActualizarStaff(String admin) {
+        dActualizarStaff  = new dActualizarStaff();
+        dActualizarStaff.pack();
+        dActualizarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarStaff (String admin) {
+        dBuscarStaff  = new dBuscarStaff();
+        dBuscarStaff.pack();
+        dBuscarStaff.setVisible(true);
+        System.exit(0);
+    }
+
+
+    public static void crearVentanaInsertTemporada(String admin) {
+        dInsertarTemporada  = new dInsertarTemporada();
+        dInsertarTemporada.pack();
+        dInsertarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarTemporada(String admin) {
+        dBorrarTemporada  = new dBorrarTemporada();
+        dBorrarTemporada.pack();
+        dBorrarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarTemporada(String admin) {
+        dActualizarTemporada  = new dActualizarTemporada();
+        dActualizarTemporada.pack();
+        dActualizarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarTemporada(String admin) {
+        dBuscarTemporada  = new dBuscarTemporada();
+        dBuscarTemporada.pack();
+        dBuscarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertUsuario(String admin) {
+        dInsertarUsuario  = new dInsertarUsuario();
+        dInsertarUsuario.pack();
+        dInsertarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarUsuario(String admin) {
+        dBorrarUsuario  = new dBorrarUsuario();
+        dBorrarUsuario.pack();
+        dBorrarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarUsuario(String admin) {
+        dActualizarUsuario  = new dActualizarUsuario();
+        dActualizarUsuario.pack();
+        dActualizarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarUsuarios(String admin) {
+        dBuscarUsuarios = new dBuscarUsuarios();
+        dBuscarUsuarios.pack();
+        dBuscarUsuarios.setVisible(true);
         System.exit(0);
     }
 }
