@@ -46,7 +46,11 @@ public class vPrincipal {
         miClasificacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaClasificacion(admin);
+                try {
+                    Main.crearVentanaClasificacion(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 

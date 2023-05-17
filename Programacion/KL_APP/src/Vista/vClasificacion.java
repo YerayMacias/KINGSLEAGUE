@@ -83,6 +83,10 @@ public class vClasificacion {
         miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
+    public void generarPanelClasificacion() throws Exception {
+        Main.buscarClasificacion();
+        pClasificacion.add(Main.crearPanelesClasificacion());
+    }
 
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
@@ -94,5 +98,8 @@ public class vClasificacion {
     }
 
 
-
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        pClasificacion = new JPanel(new GridLayout(16,1));
+    }
 }
