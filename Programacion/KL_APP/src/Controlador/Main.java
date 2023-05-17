@@ -28,6 +28,11 @@ public class Main {
     public static JFrame vPerfil;
     public static Usuario usuario;
     private static ArrayList<Jornada> listaJornadas;
+    private static ArrayList<Equipo> listaEquipos;
+    private static ArrayList<Integer> listaVictorias;
+    private static ArrayList<Integer> listaDerrotas;
+    private static ArrayList<Integer> listaPosicion;
+
     private static int posicion;
     public static void main(String[] args){
 
@@ -45,14 +50,13 @@ public class Main {
             System.out.println("Error");
         } */
 
-        crearVentanaLogin();
-        /*try {
-            buscarJornadasTemporada();
-
+        //crearVentanaLogin();
+        try {
+            buscarClasificacion();
             crearVentanaPrueba();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }*/
+        }
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -164,7 +168,7 @@ public class Main {
 
     public static void crearVentanaPrueba() throws Exception {
         JFrame frame = new JFrame("vLogin");
-        frame.setContentPane(crearPanelesJornadas());
+        frame.setContentPane(crearPanelesClasificacion());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -197,6 +201,12 @@ public class Main {
         usuario = new Usuario(username, email, password, admin);
         TUsuarios.insert(usuario);
     }
+    public static void updateUsuario(String username, String email, String password) throws Exception {
+        usuario = TUsuarios.buscarPorUsername(new Usuario(username));
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        TUsuarios.update(usuario);
+    }
 
     public static String getPassAdm() throws Exception {
         Usuario usuarioAdm = TUsuarios.buscarPorUsername(new Usuario("ADMIN"));
@@ -208,7 +218,30 @@ public class Main {
         return user.getPassword();
     }
 
-    public static void buscarClasificacion(){
+    public static void buscarClasificacion() throws Exception {
+        ArrayList<Object> listaArrays = TTemporadas.buscarClasificacion();
+        listaEquipos = (ArrayList<Equipo>) listaArrays.get(0);
+        listaVictorias = (ArrayList<Integer>) listaArrays.get(1);
+        listaDerrotas = (ArrayList<Integer>) listaArrays.get(2);
+        listaPosicion = (ArrayList<Integer>) listaArrays.get(3);
+    }
 
+    public static JPanel crearPanelesClasificacion(){
+        GridLayout gridLayout = new GridLayout();
+        gridLayout.setColumns(1);
+        gridLayout.setRows(listaDerrotas.size() +1 );
+        JPanel panelContenedor = new JPanel(gridLayout);
+        JLabel label = new JLabel("CLASIFICACION KING'S LEAGUE", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", 1, 24));
+        panelContenedor.add(label);
+        for (int x = 0; x < listaEquipos.size(); x++) {
+            JPanel panelPosicion = new JPanel(new GridLayout(1,4));
+            panelPosicion.add(new JLabel(listaPosicion.get(x).toString()));
+            panelPosicion.add(new JLabel(listaEquipos.get(x).getNombre()));
+            panelPosicion.add(new JLabel(listaVictorias.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaDerrotas.get(x).toString(), SwingConstants.CENTER));
+            panelContenedor.add(panelPosicion);
+        }
+        return panelContenedor;
     }
 }

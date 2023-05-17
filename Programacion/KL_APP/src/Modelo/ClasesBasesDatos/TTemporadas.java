@@ -114,30 +114,36 @@ public class TTemporadas {
 
     public static ArrayList<Object> buscarClasificacion() throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from clasificacion");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select rownum, equipo, victorias, derrotas from clasificacion");
         ResultSet resultado = ps.executeQuery();
         // Arrays coincidentes
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
         ArrayList<Integer> listaVictorias = new ArrayList<>();
         ArrayList<Integer> listaDerrotas = new ArrayList<>();
+        ArrayList<Integer> listaPosicion = new ArrayList<>();
 
         // Array contenedor de los anteriores
-
         ArrayList<Object> listaArrays = new ArrayList<>();
         while (resultado.next()){
             Equipo equipo = new Equipo();
-            equipo.setNombre(resultado.getString("nombre"));
+            equipo.setNombre(resultado.getString("equipo"));
             equipo = TEquipo.buscarPorNombre(equipo);
             listaEquipos.add(equipo);
+
             int victorias = resultado.getInt("victorias");
             listaVictorias.add(victorias);
+
             int derrotas = resultado.getInt("derrotas");
             listaDerrotas.add(derrotas);
+
+            int posicion = resultado.getInt("rownum");
+            listaPosicion.add(posicion);
         }
         BaseDato.cerrarConexion();
         listaArrays.add(listaEquipos);
         listaArrays.add(listaVictorias);
         listaArrays.add(listaDerrotas);
+        listaArrays.add(listaPosicion);
         return listaArrays;
     }
 
