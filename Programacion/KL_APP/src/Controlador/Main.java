@@ -24,10 +24,12 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
+    public static JFrame vEquiposJugadores;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
-    public static Usuario usuario;
+    private static Usuario usuario;
+    private static Jugador jugador;
     private static ArrayList<Jornada> listaJornadas;
     private static ArrayList<Equipo> listaEquipos;
     private static ArrayList<Integer> listaVictorias;
@@ -138,6 +140,15 @@ public class Main {
         vPlayOffs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vPlayOffs.pack();
         vPlayOffs.setVisible(true);
+    }
+
+    public static void crearVentanaEquiposJugadores(){
+        vEquiposJugadores = new JFrame("vRegistro");
+        vEquiposJugadores.setContentPane(new vEqui);
+        vEquiposJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vEquiposJugadores.pack();
+        vEquiposJugadores.setLocationRelativeTo(null);
+        vEquiposJugadores.setVisible(true);
     }
 
 
@@ -288,4 +299,16 @@ public class Main {
         listaEquipos.forEach(equipo -> listaColores.add(equipo.getColor()));
         return listaColores;
     }
+
+    public static void insertJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
+        jugador = new Jugador();
+        jugador.setNombre(nombre);
+        jugador.setApellido(apellido);
+        jugador.setDNI(DNI);
+        jugador.setPosicion(Jugador.tPosicion.valueOf(posicion));
+        jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
+        tJugadores.insert(jugador);
+    }
+
+
 }

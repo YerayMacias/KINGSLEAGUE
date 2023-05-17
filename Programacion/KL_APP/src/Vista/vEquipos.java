@@ -173,7 +173,8 @@ public class vEquipos {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        pSecundario = new JPanel(new GridLayout(4,4));
-        BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        pSecundario = new JPanel(new GridLayout(4,4,4,4));
+        pSecundario.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
     }
 }
