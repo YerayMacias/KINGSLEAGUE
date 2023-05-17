@@ -1,26 +1,32 @@
-package Vista;
+package Vista.CRUDJugadores;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class dBorrarJugadores extends JDialog {
+public class dInsertJugadores extends JDialog {
     private JPanel contentPane;
-    private JButton bBorrar;
-    private JButton bCancelar;
+    private JButton buttonOK;
+    private JButton buttonCancel;
+    private JTextField tfNombre;
+    private JTextField tfApellido;
     private JTextField tfDNI;
+    private JComboBox cbPosicion;
+    private JComboBox cbTipojugador;
 
-    public dBorrarJugadores() {
+    public dInsertJugadores() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(bBorrar);
+        getRootPane().setDefaultButton(buttonOK);
 
-        bBorrar.addActionListener(new ActionListener() {
+        buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        bCancelar.addActionListener(new ActionListener() {
+        buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -40,10 +46,16 @@ public class dBorrarJugadores extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        bBorrar.addActionListener(new ActionListener() {
+        buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Main.borrarJugador(tfDNI.getText());
+                Pattern pat = Pattern.compile("[0-9]{8}[A-Za-z]");
+                Matcher mat = pat.matcher(tfDNI.getText());
+                if (mat.matches()) {
+                  //  Main.insertJugador(tfNombre.getText(), tfApellido.getText(), tfDNI.getText()), cbPosicion.getSelectedItem().toString(), cbTipojugador.getSelectedItem().toString();
+                } else {
+                    JOptionPane.showMessageDialog(null, "El formato del dni no es correcto introduzcalo de la siguiente manera 12345678X");
+                }
             }
         });
     }
@@ -59,9 +71,10 @@ public class dBorrarJugadores extends JDialog {
     }
 
     public static void main(String[] args) {
-        dBorrarJugadores dialog = new dBorrarJugadores();
+        dInsertJugadores dialog = new dInsertJugadores();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
     }
 }
+

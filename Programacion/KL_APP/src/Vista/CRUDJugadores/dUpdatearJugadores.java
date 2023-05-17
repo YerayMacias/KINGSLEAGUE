@@ -1,4 +1,4 @@
-package Vista;
+package Vista.CRUDJugadores;
 
 import javax.swing.*;
 import java.awt.event.*;
