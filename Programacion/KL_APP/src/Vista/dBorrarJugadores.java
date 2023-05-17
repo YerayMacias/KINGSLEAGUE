@@ -2,7 +2,7 @@ package Vista;
 
 import javax.swing.*;
 import java.awt.event.*;
-
+import Controlador.*;
 public class dBorrarJugadores extends JDialog {
     private JPanel contentPane;
     private JButton bBorrar;
@@ -43,7 +43,7 @@ public class dBorrarJugadores extends JDialog {
         bBorrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.borrarJugador(tfDNI.getText());
+                //Main.borrarJugador(tfDNI.getText());
             }
         });
     }

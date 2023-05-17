@@ -109,6 +109,7 @@ public class vAdminPanel {
                 Main.crearVentanaPerfil(admin);
             }
         });
+        /*
         bInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,7 +133,7 @@ public class vAdminPanel {
             public void actionPerformed(ActionEvent e) {
                 Main.crearVentanaBuscarjugadores(admin);
             }
-        });
+        });*/
     }
 
    public void inicializar() {
