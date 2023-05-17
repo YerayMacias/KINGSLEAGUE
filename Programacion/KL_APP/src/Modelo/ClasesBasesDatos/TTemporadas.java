@@ -109,24 +109,47 @@ public class TTemporadas {
         return temporada;
     }
 
+    public static Temporada buscarUltimaTemporada() throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas where id_temporada=(select max(id_temporada) from temporadas)");
+        ResultSet resultado = ps.executeQuery();
+        Temporada temporada;
+        if (resultado.next())
+        {
+            temporada = new Temporada();
+            temporada.setID(resultado.getInt("id_temporada"));
+            temporada.setEstado(Temporada.tEstado.valueOf(resultado.getString("estado")));
+            temporada.setPeriodo(Temporada.tPeriodo.valueOf(resultado.getString("periodo")));
+            temporada.setFechaFin(resultado.getDate("fecha_fin").toLocalDate());
+            temporada.setFechaInicio(resultado.getDate("fecha_inicio").toLocalDate());
+        }
+        else
+            temporada = null;
+        BaseDato.cerrarConexion();
+        return temporada;
+    }
+
     // Aunque no sea un crud de la tabla de Temporadas
     // Es la tabla de clasificacion de la temporada
 
     public static ArrayList<Object> buscarClasificacion() throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select rownum, equipo, victorias, derrotas from clasificacion");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select rownum, nombre, victorias, derrotas, goles_a_favor, goles_en_contra, diferencia_goles from clasificacion");
         ResultSet resultado = ps.executeQuery();
         // Arrays coincidentes
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
         ArrayList<Integer> listaVictorias = new ArrayList<>();
         ArrayList<Integer> listaDerrotas = new ArrayList<>();
+        ArrayList<Integer> listaGolesFavor = new ArrayList<>();
+        ArrayList<Integer> listaGolesContra = new ArrayList<>();
+        ArrayList<Integer> listaDiferenciaGoles = new ArrayList<>();
         ArrayList<Integer> listaPosicion = new ArrayList<>();
 
         // Array contenedor de los anteriores
         ArrayList<Object> listaArrays = new ArrayList<>();
         while (resultado.next()){
             Equipo equipo = new Equipo();
-            equipo.setNombre(resultado.getString("equipo"));
+            equipo.setNombre(resultado.getString("nombre"));
             equipo = TEquipo.buscarPorNombre(equipo);
             listaEquipos.add(equipo);
 
@@ -136,6 +159,15 @@ public class TTemporadas {
             int derrotas = resultado.getInt("derrotas");
             listaDerrotas.add(derrotas);
 
+            int golesFavor = resultado.getInt("goles_a_favor");
+            listaGolesFavor.add(derrotas);
+
+            int golesContra = resultado.getInt("goles_en_contra");
+            listaGolesContra.add(derrotas);
+
+            int diferenciaGoles = resultado.getInt("diferencia_goles");
+            listaDiferenciaGoles.add(derrotas);
+
             int posicion = resultado.getInt("rownum");
             listaPosicion.add(posicion);
         }
@@ -143,6 +175,9 @@ public class TTemporadas {
         listaArrays.add(listaEquipos);
         listaArrays.add(listaVictorias);
         listaArrays.add(listaDerrotas);
+        listaArrays.add(listaGolesFavor);
+        listaArrays.add(listaGolesContra);
+        listaArrays.add(listaDiferenciaGoles);
         listaArrays.add(listaPosicion);
         return listaArrays;
     }
