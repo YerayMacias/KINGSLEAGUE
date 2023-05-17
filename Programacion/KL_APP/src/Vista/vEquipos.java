@@ -161,13 +161,13 @@ public class vEquipos {
                 }
             });
             bEquipo.setBackground(new Color(hex(listaColores.get(x))));
+            bEquipo.setForeground(Color.WHITE);
             pSecundario.add(bEquipo);
         }
     }
 
     private int hex( String color_hex ) {
         String color = color_hex.substring(1, color_hex.length());
-        System.out.println(color);
         return Integer.parseInt(color,  16 );
     }
 
