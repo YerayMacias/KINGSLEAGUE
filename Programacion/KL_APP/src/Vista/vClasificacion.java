@@ -10,10 +10,7 @@ import java.awt.event.ActionListener;
 public class vClasificacion {
     private JPanel pMenu;
     private JLabel lNombre;
-    private JPanel pCombo;
     private JPanel pClasificacion;
-    private JPanel pTitulo;
-    private JPanel pHeader;
     private JPanel pPrincipal;
     private JMenuItem miBaseDatos;
     private JLabel lNombreMenu;
@@ -26,6 +23,8 @@ public class vClasificacion {
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
     private JMenu mIconoPerfil;
+    private JPanel pTitulo;
+    private JPanel pCombo;
 
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
