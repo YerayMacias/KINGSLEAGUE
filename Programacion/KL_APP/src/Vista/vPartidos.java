@@ -43,6 +43,13 @@ public class vPartidos {
                 Main.crearVentanaLogin();
             }
         });
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
         miEquipo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

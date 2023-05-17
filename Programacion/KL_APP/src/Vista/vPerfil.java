@@ -64,6 +64,14 @@ public class vPerfil {
             }
         });
 
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPerfil.dispose();;
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
+
         bVisibleNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

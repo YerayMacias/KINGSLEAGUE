@@ -124,6 +124,14 @@ public class Main {
         vPerfil.setVisible(true);
     }
 
+    public static void crearVentanaPanelAdmin (String admin) {
+        JFrame frame = new JFrame("vAdminPanel");
+        frame.setContentPane(new vAdminPanel().getpPrincipal());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));

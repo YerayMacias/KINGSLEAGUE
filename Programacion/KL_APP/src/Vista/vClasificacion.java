@@ -49,6 +49,13 @@ public class vClasificacion {
                 Main.crearVentanaEquipos(admin);
             }
         });
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();;
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
 
         miPartidos.addActionListener(new ActionListener() {
             @Override
