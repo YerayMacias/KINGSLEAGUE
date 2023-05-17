@@ -47,6 +47,7 @@ public class vEquipos {
     private JScrollPane spScroll;
     private JMenu mIconoPerfil;
     private JPanel pSecundario;
+    private JMenuItem miPlayOffs;
     // private J
 
     public vEquipos(String admin) {
@@ -80,6 +81,14 @@ public class vEquipos {
                  Main.crearVentanaPartidos(admin);
              }
          });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
 
         miPanel.addActionListener(new ActionListener() {
             @Override
@@ -116,8 +125,10 @@ public class vEquipos {
         } else {
             lTipoUsuario.setText("Usuario");
         }
+
         spScroll.getVerticalScrollBar().setUnitIncrement(20);
 
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -162,6 +173,7 @@ public class vEquipos {
             });
             bEquipo.setBackground(new Color(hex(listaColores.get(x))));
             bEquipo.setForeground(Color.WHITE);
+            bEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
             pSecundario.add(bEquipo);
         }
     }

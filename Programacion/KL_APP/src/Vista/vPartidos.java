@@ -27,6 +27,7 @@ public class vPartidos {
     private JMenu mIconoPerfil;
     private JPanel pTitulo;
     private JPanel pCombo;
+    private JMenuItem miPlayOffs;
 
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -78,6 +79,14 @@ public class vPartidos {
             }
         });
 
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
+
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +124,7 @@ public class vPartidos {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
