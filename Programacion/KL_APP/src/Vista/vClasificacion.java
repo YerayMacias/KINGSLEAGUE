@@ -30,7 +30,11 @@ public class vClasificacion {
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
-        inicializar();
+        try {
+            inicializar();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,14 +51,6 @@ public class vClasificacion {
             }
         });
 
-        miClasificacion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.vClasificacion.dispose();;
-                Main.crearVentanaClasificacion(admin);
-            }
-        });
-
         miPartidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,7 +60,7 @@ public class vClasificacion {
         });
     }
 
-    public void inicializar() {
+    public void inicializar() throws Exception {
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
         if (Main.buscarAdmin().equalsIgnoreCase("S")) {
@@ -82,6 +78,7 @@ public class vClasificacion {
         miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        generarPanelClasificacion();
     }
     public void generarPanelClasificacion() throws Exception {
         Main.buscarClasificacion();
@@ -100,6 +97,6 @@ public class vClasificacion {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        pClasificacion = new JPanel(new GridLayout(16,1));
+        pClasificacion = new JPanel(new GridLayout(1,1));
     }
 }

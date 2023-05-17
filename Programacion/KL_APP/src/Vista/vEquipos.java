@@ -59,7 +59,11 @@ public class vEquipos {
              @Override
              public void actionPerformed(ActionEvent e) {
                  Main.vEquipos.dispose();
-                 Main.crearVentanaClasificacion(admin);
+                 try {
+                     Main.crearVentanaClasificacion(admin);
+                 } catch (Exception ex) {
+                     throw new RuntimeException(ex);
+                 }
              }
          });
 

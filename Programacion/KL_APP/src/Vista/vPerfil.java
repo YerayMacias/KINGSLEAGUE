@@ -106,7 +106,11 @@ public class vPerfil {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vPerfil.dispose();;
-                Main.crearVentanaClasificacion(admin);
+                try {
+                    Main.crearVentanaClasificacion(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
