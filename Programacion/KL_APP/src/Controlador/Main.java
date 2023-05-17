@@ -268,4 +268,10 @@ public class Main {
         listaEquipos.forEach(equipo -> listaURL.add(equipo.getUrl()));
         return listaURL;
     }
+
+    public static ArrayList<String> getColores(){
+        ArrayList<String> listaColores = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaColores.add(equipo.getColor()));
+        return listaColores;
+    }
 }
