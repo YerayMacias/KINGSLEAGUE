@@ -36,6 +36,10 @@ public class Main {
     private static ArrayList<Equipo> listaEquipos;
     private static ArrayList<Integer> listaVictorias;
     private static ArrayList<Integer> listaDerrotas;
+    private static ArrayList<Integer> listaGolesFavor;
+    private static ArrayList<Integer> listaGolesContra;
+    private static ArrayList<Integer> listaDiferenciaGoles;
+
     private static ArrayList<Integer> listaPosicion;
 
     private static int posicion;
@@ -169,7 +173,7 @@ public class Main {
 
     public static void buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
-        jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
+        jornada.setTemporada(TTemporadas.buscarUltimaTemporada());
         listaJornadas = TJornadas.buscarPorTemporada(jornada);
         posicion = listaJornadas.size() -1;
     }
@@ -261,23 +265,42 @@ public class Main {
         listaEquipos = (ArrayList<Equipo>) listaArrays.get(0);
         listaVictorias = (ArrayList<Integer>) listaArrays.get(1);
         listaDerrotas = (ArrayList<Integer>) listaArrays.get(2);
-        listaPosicion = (ArrayList<Integer>) listaArrays.get(3);
+        listaGolesFavor = (ArrayList<Integer>) listaArrays.get(3);
+        listaGolesContra = (ArrayList<Integer>) listaArrays.get(4);
+        listaDiferenciaGoles = (ArrayList<Integer>) listaArrays.get(5);
+        listaPosicion = (ArrayList<Integer>) listaArrays.get(6);
     }
 
     public static JPanel crearPanelesClasificacion(){
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(1);
-        gridLayout.setRows(listaDerrotas.size() +1 );
+        gridLayout.setRows(listaDerrotas.size() +2 );
         JPanel panelContenedor = new JPanel(gridLayout);
         JLabel label = new JLabel("CLASIFICACION KING'S LEAGUE", SwingConstants.CENTER);
         label.setFont(new Font("Arial", 1, 24));
         panelContenedor.add(label);
+
+        // Leyenda
+
+        JPanel panelLeyenda = new JPanel(new GridLayout(1, 7));
+        panelLeyenda.add(new JLabel("POS", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("EQ", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("PG", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("PP", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("GF", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("GC", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("DG", SwingConstants.CENTER));
+        panelContenedor.add(panelLeyenda);
+
         for (int x = 0; x < listaEquipos.size(); x++) {
-            JPanel panelPosicion = new JPanel(new GridLayout(1,4));
-            panelPosicion.add(new JLabel(listaPosicion.get(x).toString()));
+            JPanel panelPosicion = new JPanel(new GridLayout(1,7));
+            panelPosicion.add(new JLabel(listaPosicion.get(x).toString(), SwingConstants.CENTER));
             panelPosicion.add(new JLabel(listaEquipos.get(x).getNombre()));
             panelPosicion.add(new JLabel(listaVictorias.get(x).toString(), SwingConstants.CENTER));
             panelPosicion.add(new JLabel(listaDerrotas.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaGolesFavor.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaGolesContra.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaDiferenciaGoles.get(x).toString(), SwingConstants.CENTER));
             panelContenedor.add(panelPosicion);
         }
         return panelContenedor;
