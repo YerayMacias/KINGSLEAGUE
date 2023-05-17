@@ -45,7 +45,7 @@ public class TEquipo {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            Equipo equipo = new Equipo(result.getInt("id_equipo"),result.getString("nombre"),result.getLong("presupuesto"));
+            Equipo equipo = new Equipo(result.getInt("id_equipo"),result.getString("nombre"),result.getLong("presupuesto"), result.getString("color"), result.getURL("url"));
             listaEquipos.add(equipo);
         }
         BaseDato.cerrarConexion();

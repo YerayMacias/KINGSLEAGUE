@@ -115,4 +115,8 @@ public class vEquipos {
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
+    public void crearBotonesEquipos(){
+
+    }
+
 }

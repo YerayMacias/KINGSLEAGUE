@@ -1,5 +1,7 @@
 package Modelo.ClasesObjetos;
 
+import java.net.URL;
+
 /**
  * @author
  * @version 1.0
@@ -8,6 +10,8 @@ public class    Equipo {
     private int ID;
     private String nombre;
     private double presupuesto;
+    private String color;
+    private URL url;
 
     public Equipo() {
     }
@@ -23,6 +27,14 @@ public class    Equipo {
         this.ID = ID;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
+    }
+
+    public Equipo(int ID, String nombre, double presupuesto, String color, URL url) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.color = color;
+        this.url = url;
     }
 
     public Equipo(int ID) {
@@ -51,5 +63,21 @@ public class    Equipo {
 
     public void setPresupuesto(double presupuesto) {
         this.presupuesto = presupuesto;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(URL url) {
+        this.url = url;
     }
 }
