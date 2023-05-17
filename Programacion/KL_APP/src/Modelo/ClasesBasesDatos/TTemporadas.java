@@ -1,5 +1,6 @@
 package Modelo.ClasesBasesDatos;
 
+import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Temporada;
 
 import java.sql.Date;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TTemporadas {
 
@@ -105,6 +107,38 @@ public class TTemporadas {
             temporada = null;
         BaseDato.cerrarConexion();
         return temporada;
+    }
+
+    // Aunque no sea un crud de la tabla de Temporadas
+    // Es la tabla de clasificacion de la temporada
+
+    public static ArrayList<Object> buscarClasificacion() throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from clasificacion");
+        ResultSet resultado = ps.executeQuery();
+        // Arrays coincidentes
+        ArrayList<Equipo> listaEquipos = new ArrayList<>();
+        ArrayList<Integer> listaVictorias = new ArrayList<>();
+        ArrayList<Integer> listaDerrotas = new ArrayList<>();
+
+        // Array contenedor de los anteriores
+
+        ArrayList<Object> listaArrays = new ArrayList<>();
+        while (resultado.next()){
+            Equipo equipo = new Equipo();
+            equipo.setNombre(resultado.getString("nombre"));
+            equipo = TEquipo.buscarPorNombre(equipo);
+            listaEquipos.add(equipo);
+            int victorias = resultado.getInt("victorias");
+            listaVictorias.add(victorias);
+            int derrotas = resultado.getInt("derrotas");
+            listaDerrotas.add(derrotas);
+        }
+        BaseDato.cerrarConexion();
+        listaArrays.add(listaEquipos);
+        listaArrays.add(listaVictorias);
+        listaArrays.add(listaDerrotas);
+        return listaArrays;
     }
 
 }

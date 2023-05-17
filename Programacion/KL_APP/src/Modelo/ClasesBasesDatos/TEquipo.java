@@ -52,9 +52,8 @@ public class TEquipo {
         return listaEquipos;
     }
 
-    public static ArrayList<Equipo> buscarPorNombre(Equipo equipo) throws Exception {
+    public static Equipo buscarPorNombre(Equipo equipo) throws Exception {
         BaseDato.abrirConexion();
-        ArrayList<Equipo> listaEquipos = new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos where nombre = ?");
         ps.setString(1,equipo.getNombre());
         ResultSet result = ps.executeQuery();
@@ -69,7 +68,7 @@ public class TEquipo {
         else
             equipo2 = null;
         BaseDato.cerrarConexion();
-        return listaEquipos;
+        return equipo2;
     }
 
     public static Equipo buscarPorId(Equipo equipo) throws Exception {

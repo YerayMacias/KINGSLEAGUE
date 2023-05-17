@@ -203,4 +203,12 @@ public class Main {
         return usuarioAdm.getPassword();
     }
 
+    public static String getPassUser(String usuario) throws Exception {
+        Usuario user = TUsuarios.buscarPorUsername(new Usuario(usuario));
+        return user.getPassword();
+    }
+
+    public static void buscarClasificacion(){
+
+    }
 }
