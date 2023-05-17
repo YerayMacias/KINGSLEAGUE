@@ -242,7 +242,7 @@
             <margin top="20" left="15" bottom="0" right="15"/>
             <constraints/>
             <properties>
-              <visible value="false"/>
+              <visible value="true"/>
             </properties>
             <border type="none"/>
             <children>
@@ -310,7 +310,7 @@
                         <properties>
                           <actionCommand value=""/>
                           <background color="-5063845"/>
-                          <borderPainted value="true"/>
+                          <borderPainted value="false"/>
                           <contentAreaFilled value="false"/>
                           <defaultCapable value="true"/>
                           <focusPainted value="false"/>
@@ -591,7 +591,7 @@
                         <properties>
                           <actionCommand value=""/>
                           <background color="-15705531"/>
-                          <borderPainted value="true"/>
+                          <borderPainted value="false"/>
                           <contentAreaFilled value="false"/>
                           <defaultCapable value="true"/>
                           <focusPainted value="false"/>
