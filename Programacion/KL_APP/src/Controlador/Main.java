@@ -6,6 +6,10 @@ import Modelo.ClasesObjetos.*;
 
 
 import Vista.*;
+import Vista.CRUDJugadores.dBorrarJugadores;
+import Vista.CRUDJugadores.dBuscarJugadores;
+import Vista.CRUDJugadores.dInsertJugadores;
+import Vista.CRUDJugadores.dActualizarJugadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +29,10 @@ public class Main {
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
     public static JFrame vEquiposJugadores;
+    public static JDialog dInsertarJugadores;
+    public static JDialog dBorrarJugadores;
+    public static JDialog dUpdatearJugadores;
+    public static JDialog dBuscarJugadores;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -132,6 +140,13 @@ public class Main {
         vAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vAdminPanel.pack();
         vAdminPanel.setVisible(true);
+    }
+
+    public static void crearVentanaInsertJugador(String admin) {
+        dInsertarJugadores  = new dInsertJugadores();
+        dInsertarJugadores.pack();
+        dInsertarJugadores.setVisible(true);
+        System.exit(0);
     }
 
     public static void crearVentanaPlayOffs(String admin) {
@@ -311,4 +326,25 @@ public class Main {
     }
 
 
+    public static void crearVentanaBorrarJugadores(String admin) {
+        dBorrarJugadores  = new dBorrarJugadores();
+        dBorrarJugadores.pack();
+        dBorrarJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarJugadores(String admin) {
+        dUpdatearJugadores  = new dActualizarJugadores();
+        dUpdatearJugadores.pack();
+        dUpdatearJugadores.setVisible(true);
+        System.exit(0);
+
+    }
+
+    public static void crearVentanaBuscarjugadores(String admin) {
+        dBuscarJugadores  = new dBuscarJugadores();
+        dBuscarJugadores.pack();
+        dBuscarJugadores.setVisible(true);
+        System.exit(0);
+    }
 }

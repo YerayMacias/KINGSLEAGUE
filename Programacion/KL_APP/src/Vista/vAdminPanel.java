@@ -67,7 +67,7 @@ public class vAdminPanel {
         inicializar();
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
-       /* miCerrarSesion.addActionListener(new ActionListener() {
+        miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();;
@@ -121,7 +121,7 @@ public class vAdminPanel {
         bInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertsJugadores(admin);
+                Main.crearVentanaInsertJugador(admin);
             }
         });
         bDelete.addActionListener(new ActionListener() {
@@ -141,7 +141,7 @@ public class vAdminPanel {
             public void actionPerformed(ActionEvent e) {
                 Main.crearVentanaBuscarjugadores(admin);
             }
-        });*/
+        });
     }
 
 

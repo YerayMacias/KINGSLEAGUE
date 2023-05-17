@@ -1,5 +1,7 @@
 package Vista.CRUDJugadores;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
