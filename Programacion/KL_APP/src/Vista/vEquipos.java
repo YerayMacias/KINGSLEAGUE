@@ -139,6 +139,8 @@ public class vEquipos {
         // Coincidentes
         ArrayList<String> listaNombres = Main.getNombreEquipos();
         ArrayList<URL> listaURL = Main.getURLImagen();
+        ArrayList<String> listaColores = Main.getColores();
+
         JButton bEquipo;
         for (int x = 0; x < listaNombres.size(); x++) {
             Image img;
@@ -158,8 +160,14 @@ public class vEquipos {
                     //Main.crearVentanaEquiposJugadores(nombre);
                 }
             });
+            bEquipo.setBackground(new Color(hex(listaColores.get(x))));
             pSecundario.add(bEquipo);
         }
+    }
+
+    private int hex( String color_hex ) {
+        String color = color_hex.substring(1, color_hex.length()-1);
+        return Integer.parseInt(color,  16 );
     }
 
     private void createUIComponents() {
