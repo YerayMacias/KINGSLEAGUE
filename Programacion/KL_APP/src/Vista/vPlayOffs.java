@@ -16,6 +16,18 @@ public class vPlayOffs {
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
     private JPanel pPrincipal;
+    private JPanel pTitulo;
+    private JPanel pCombo;
+    private JPanel pDatos;
+    private JPanel pCuartosIzqTop;
+    private JPanel pFinal;
+    private JPanel pCuartosDerTop;
+    private JPanel pCuartosIzqBot;
+    private JPanel pCuartosDerBot;
+    private JPanel pFinalDer;
+    private JPanel pFinalIzq;
+    private JPanel pSemiIzqTop;
+    private JPanel pSemiIzq;
 
     public vPlayOffs(String admin) {
 
