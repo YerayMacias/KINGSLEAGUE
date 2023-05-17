@@ -25,6 +25,7 @@ public class Main {
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
     public static JFrame vPerfil;
+    public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
     public static Usuario usuario;
     private static ArrayList<Jornada> listaJornadas;
@@ -131,6 +132,14 @@ public class Main {
         vAdminPanel.setVisible(true);
     }
 
+    public static void crearVentanaPlayOffs(String admin) {
+        vPlayOffs = new JFrame("vPlayOffs");
+        vPlayOffs.setContentPane(new vPlayOffs(admin).getpPrincipal());
+        vPlayOffs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPlayOffs.pack();
+        vPlayOffs.setVisible(true);
+    }
+
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
@@ -209,9 +218,14 @@ public class Main {
         usuario = new Usuario(username, email, password, admin);
         TUsuarios.insert(usuario);
     }
-    public static void updateUsuario(String username, String email, String password) throws Exception {
+    public static void updateUsuario(String username, String email) throws Exception {
         usuario = TUsuarios.buscarPorUsername(new Usuario(username));
         usuario.setEmail(email);
+        TUsuarios.update(usuario);
+    }
+
+    public static void updateUsuarioPass(String username, String password) throws Exception {
+        usuario = TUsuarios.buscarPorUsername(new Usuario(username));
         usuario.setPassword(password);
         TUsuarios.update(usuario);
     }
