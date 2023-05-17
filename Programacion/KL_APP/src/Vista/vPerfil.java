@@ -1,7 +1,6 @@
 package Vista;
 
 import Controlador.Main;
-import Modelo.ClasesObjetos.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,13 +34,14 @@ public class vPerfil {
     private JPasswordField pfPassNew;
     private JPasswordField pfPassNew2;
     private JPanel pGuardar2;
-    private JButton bGuardarDatos;
+    private JButton bGuardarPass;
     private JLabel lTipoUsuarioTitulo;
     private JPasswordField pfPassVieja;
     private JButton bVisibleViejo;
     private JButton bVisibleNew;
     private JButton bVisibleNew2;
-    private JButton bGuardarCambios1;
+    private JButton bGuardarDatos;
+    private JMenuItem miPlayOffs;
     private int contador;
     private String passUser;
     private String usuario;
@@ -139,7 +139,15 @@ public class vPerfil {
             }
         });
 
-        bGuardarDatos.addActionListener(new ActionListener() {
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPerfil.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
+
+        bGuardarPass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -169,7 +177,7 @@ public class vPerfil {
             }
         });
 
-        bGuardarCambios1.addActionListener(new ActionListener() {
+        bGuardarDatos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -231,7 +239,7 @@ public class vPerfil {
         bVisibleNew.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleNew2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleViejo.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        bGuardarDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bGuardarPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));

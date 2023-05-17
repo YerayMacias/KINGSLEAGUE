@@ -61,12 +61,13 @@ public class vAdminPanel {
     private JButton bBuscarTodosJ;
     private JPanel pTitulo;
     private JPanel pCombo;
+    private JMenuItem miPlayOffs;
 
     public vAdminPanel (String admin) {
         inicializar();
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
-        miCerrarSesion.addActionListener(new ActionListener() {
+       /* miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();;
@@ -99,6 +100,14 @@ public class vAdminPanel {
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();;
                 Main.crearVentanaEquipos(admin);
+            }
+        });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vAdminPanel.dispose();
+                Main.crearVentanaPlayOffs(admin);
             }
         });
 
@@ -136,6 +145,7 @@ public class vAdminPanel {
         });*/
     }
 
+
    public void inicializar() {
        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
            lTipoUsuario.setText("Administrador");
@@ -143,6 +153,7 @@ public class vAdminPanel {
            lTipoUsuario.setText("Usuario");
        }
 
+       miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
        miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
        miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
        miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));

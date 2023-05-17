@@ -43,7 +43,11 @@ public class dBorrarJugadores extends JDialog {
         bBorrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
                 //Main.borrarJugador(tfDNI.getText());
+=======
+                // Main.borrarJugador(tfDNI.getText());
+>>>>>>> main
             }
         });
     }

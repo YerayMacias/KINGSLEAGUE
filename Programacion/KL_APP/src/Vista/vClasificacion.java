@@ -25,6 +25,7 @@ public class vClasificacion {
     private JMenu mIconoPerfil;
     private JPanel pTitulo;
     private JPanel pCombo;
+    private JMenuItem miPlayOffs;
 
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -64,6 +65,14 @@ public class vClasificacion {
                 Main.crearVentanaPartidos(admin);
             }
         });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vClasificacion.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
     }
 
     public void inicializar() throws Exception {
@@ -75,6 +84,7 @@ public class vClasificacion {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
