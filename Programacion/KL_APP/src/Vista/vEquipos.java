@@ -75,7 +75,7 @@ public class vEquipos {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vEquipos.dispose();
-                Main.crearVentanaEquipos(admin);
+                Main.crearVentanaPerfil(admin);
             }
         });
      }
