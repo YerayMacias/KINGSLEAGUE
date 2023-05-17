@@ -45,6 +45,11 @@ public class Jornada {
         this.listaPartidos = listaPartidos;
     }
 
+    public Jornada(int numJornada, LocalDate fecha) {
+        this.numJornada = numJornada;
+        this.fecha = fecha;
+    }
+
     public int getID() {
         return ID;
     }

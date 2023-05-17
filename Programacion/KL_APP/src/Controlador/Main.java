@@ -38,6 +38,8 @@ import Vista.CRUDUsuario.dInsertarUsuario;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -561,13 +563,14 @@ public class Main {
         return tJugadores.delete(jugador);
     }
 
-    public static void actualizarJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) {
+    public static void actualizarJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
         jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setApellido(apellido);
         jugador.setDNI(DNI);
         jugador.setPosicion(Jugador.tPosicion.valueOf(posicion));
         jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
+        tJugadores.update(jugador);
     }
 
     public static String buscarTodosJugadores() throws Exception {
@@ -604,4 +607,34 @@ public class Main {
     }
 
 
+    public static void insertarJornada(int id_temporada, int num_jornada, String fecha) throws Exception {
+        Jornada jornada = new Jornada(num_jornada,LocalDate.parse(fecha));
+        jornada.setFecha(LocalDate.parse(fecha));
+        Temporada temporada = TTemporadas.buscarPorID(new Temporada(id_temporada));
+        jornada.setTemporada(temporada);
+        TJornadas.insert(jornada);
+    }
+
+    public static int borrarJornada(int id_jornada) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setID(id_jornada);
+        return TJornadas.delete(jornada);
+    }
+
+    public static void actualizarJornada(int id_temporada, int num_jornada, String fecha) throws SQLException {
+        Jornada jornada = new Jornada();
+        jornada.setTemporada(new Temporada(id_temporada));
+        jornada.setNumJornada(num_jornada);
+        jornada.setFecha(LocalDate.parse(fecha));
+        TJornadas.update(jornada);
+    }
+
+    public static String buscarTodasLasJornadas() throws Exception {
+        ArrayList<Jornada> listaJornadas = TJornadas.buscarTodo();
+        String datos = "";
+        for (int x = 0 ; x < listaJornadas.size();x++) {
+            datos += "ID_JORNADA" + listaJornadas.get(x).getID() + "\n Temporada: " + listaJornadas.get(x).getTemporada().getID() + "\n nºJornada" + listaJornadas.get(x).getNumJornada() + "\n Fecha: " + listaJornadas.get(x).getFecha();
+        }
+        return datos;
+    }
 }

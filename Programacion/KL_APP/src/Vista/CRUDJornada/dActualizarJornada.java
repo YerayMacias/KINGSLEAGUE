@@ -1,12 +1,19 @@
 package Vista.CRUDJornada;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class dActualizarJornada extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
+    private JSpinner spTemporada;
+    private JSpinner spJornada;
+    private JTextField tfFecha;
 
     public dActualizarJornada() {
         setContentPane(contentPane);
@@ -39,6 +46,16 @@ public class dActualizarJornada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.actualizarJornada((Integer) spTemporada.getValue(), (Integer) spJornada.getValue(),tfFecha.getText());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {

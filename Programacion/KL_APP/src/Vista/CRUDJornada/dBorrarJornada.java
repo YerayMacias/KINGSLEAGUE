@@ -1,5 +1,7 @@
 package Vista.CRUDJornada;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,6 +9,7 @@ public class dBorrarJornada extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox comboBox1;
 
     public dBorrarJornada() {
         setContentPane(contentPane);
@@ -39,6 +42,16 @@ public class dBorrarJornada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.borrarJornada(Integer.parseInt(comboBox1.getSelectedItem().toString()));
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {

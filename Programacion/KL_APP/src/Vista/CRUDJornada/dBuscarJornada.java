@@ -7,6 +7,10 @@ public class dBuscarJornada extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JButton consultarTodosButton;
+    private JComboBox cbFecha;
+    private JComboBox cbID;
+    private JComboBox cbTemporada;
 
     public dBuscarJornada() {
         setContentPane(contentPane);
@@ -39,6 +43,24 @@ public class dBuscarJornada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        cbFecha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        cbID.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        cbTemporada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void onOK() {

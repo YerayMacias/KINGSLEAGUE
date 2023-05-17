@@ -50,7 +50,11 @@ public class dActualizarJugadores extends JDialog {
         buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.actualizarJugador(tfNombre.getText(),tfApellido.getText(),tfDNI.getText(),cbPosicion.getSelectedItem().toString(),cbTipo.getSelectedItem().toString());
+                try {
+                    Main.actualizarJugador(tfNombre.getText(),tfApellido.getText(),tfDNI.getText(),cbPosicion.getSelectedItem().toString(),cbTipo.getSelectedItem().toString());
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
