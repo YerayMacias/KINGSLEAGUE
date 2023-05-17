@@ -10,8 +10,6 @@ import Vista.*;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -250,13 +248,15 @@ public class Main {
         listaEquipos = TEquipo.buscarTodos();
     }
 
-    public static void getNombreEquipos(){
+    public static ArrayList<String> getNombreEquipos(){
         ArrayList<String> listaNombres = new ArrayList<>();
         listaEquipos.forEach(equipo -> listaNombres.add(equipo.getNombre()));
+        return listaNombres;
     }
 
-    public static void getURLImagen(){
+    public static ArrayList<URL> getURLImagen(){
         ArrayList<URL> listaURL = new ArrayList<>();
         listaEquipos.forEach(equipo -> listaURL.add(equipo.getUrl()));
+        return listaURL;
     }
 }
