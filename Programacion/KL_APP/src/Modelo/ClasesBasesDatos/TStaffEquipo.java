@@ -28,8 +28,7 @@ public class TStaffEquipo {
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
-
-
+    
     public static void update(StaffEquipo staffEquipo) throws Exception
     {
         BaseDato.abrirConexion();
@@ -41,7 +40,6 @@ public class TStaffEquipo {
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
-
     public static ArrayList<StaffEquipo> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<StaffEquipo> listaStaffsEquipos = new ArrayList<>();
@@ -51,27 +49,7 @@ public class TStaffEquipo {
             StaffEquipo staffEquipo = new StaffEquipo(tStaffs.buscarPorId(new Staff(result.getInt("id_staffs"))),TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getDate("fecha_inicio").toLocalDate(), result.getDate("fecha_fin").toLocalDate(),result.getDouble("sueldo"));
             listaStaffsEquipos.add(staffEquipo);
         }
+        BaseDato.cerrarConexion();
         return listaStaffsEquipos;
-    }
-
-    public static JugadorEquipo buscarPorId(JugadorEquipo jugadorEquipo) throws Exception {
-        BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos_jugadores where id_jugador = ?");
-        ps.setInt(1,jugadorEquipo.getEquipo().getID());
-        ResultSet result = ps.executeQuery();
-        JugadorEquipo jugadorEquipo2;
-        if (result.next())
-        {
-            jugadorEquipo2 = new JugadorEquipo();
-            jugadorEquipo2.setJugador(tJugadores.buscarPorID(new Jugador(result.getInt("id_jugador"))));
-            jugadorEquipo2.setEquipo(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))));
-            jugadorEquipo2.setSueldo(result.getDouble("sueldo"));
-            jugadorEquipo2.setFechaInicio(result.getDate("fecha_inicio").toLocalDate());
-            jugadorEquipo2.setFechaFin(result.getDate("fecha_fin").toLocalDate());
-            jugadorEquipo2.setClausula(result.getDouble("clausula"));
-        }
-        else
-            jugadorEquipo2 = null;
-        return jugadorEquipo2;
     }
 }
