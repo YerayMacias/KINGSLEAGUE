@@ -27,6 +27,7 @@ public class Main {
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
     public static JFrame vPerfil;
+    public static JFrame vAdminPanel;
     public static Usuario usuario;
     private static ArrayList<Jornada> listaJornadas;
     private static ArrayList<Equipo> listaEquipos;
@@ -125,11 +126,11 @@ public class Main {
     }
 
     public static void crearVentanaPanelAdmin (String admin) {
-        JFrame frame = new JFrame("vAdminPanel");
-        frame.setContentPane(new vAdminPanel().getpPrincipal());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        vAdminPanel = new JFrame("vAdminPanel");
+        vAdminPanel.setContentPane(new vAdminPanel(admin).getpPrincipal());
+        vAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vAdminPanel.pack();
+        vAdminPanel.setVisible(true);
     }
 
 
