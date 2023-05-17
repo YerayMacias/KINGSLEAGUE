@@ -13,19 +13,23 @@ public class TPartido {
 
     public static void insert(Partido partido) throws SQLException {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO PARTIDOS (TIPO_PARTIDO, HORA, ID_JORNADA, ID_EQUIPO_GANADOR) VALUES (?,?,?,?);");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO PARTIDOS (TIPO_PARTIDO, HORA, ID_JORNADA, ID_EQUIPO_LOCAL, " +
+                "ID_EQUIPO_VISITANTE, GOLES_LOCAL, GOLES_VISITANTE) VALUES (?,?,?,?,?,?,?)");
         ps.setString(1, partido.getTipoPartido().toString());
         ps.setString(2, partido.getHora());
         ps.setInt(3, partido.getJornada().getID());
-        ps.setInt(4, partido.getEquipoGanador().getID());
+        ps.setInt(4, partido.getLocal().getID());
+        ps.setInt(5, partido.getVisitante().getID());
+        ps.setInt(6, partido.getGolesLocal());
+        ps.setInt(7, partido.getGolesVisitante());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
 
     public static void delete(Partido partido) throws SQLException {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM PARTIDOS where id_jornada = ?");
-        ps.setInt(1, partido.getJornada().getID());
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM PARTIDOS where id_partido = ?");
+        ps.setInt(1, partido.getID());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
@@ -34,12 +38,15 @@ public class TPartido {
     public static void update(Partido partido) throws Exception
     {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("update PARTIDOS set TIPO_PARTIDO = ?, HORA = ?,ID_JORNADA= ?,ID_EQUIPO_GANADOR = ? where id_partido = ?");
-        ps.setString(1, partido.getTipoPartido().toString()   );
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("update PARTIDOS set TIPO_PARTIDO = ?, HORA = ?,ID_JORNADA= ?,ID_EQUIPO_LOCAL = ?, ID_EQUIPO_VISITANTE=?, GOLES_LOCAL=?, GOLES_VISITANTE=? where id_partido = ?");
+        ps.setString(1, partido.getTipoPartido().toString());
         ps.setString(2, partido.getHora());
         ps.setInt(3,partido.getJornada().getID());
-        ps.setInt(4, partido.getEquipoGanador().getID());
-        ps.setInt(5,partido.getID());
+        ps.setInt(4, partido.getLocal().getID());
+        ps.setInt(5, partido.getVisitante().getID());
+        ps.setInt(6, partido.getGolesLocal());
+        ps.setInt(7, partido.getGolesVisitante());
+        ps.setInt(8,partido.getID());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
@@ -56,7 +63,14 @@ public class TPartido {
                 tipoPartido = Partido.tPartido.FR;
             else tipoPartido = Partido.tPartido.PO;
 
-            Partido partido = new Partido(result.getInt("id_partido"),tipoPartido,result.getString("hora"), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_ganador"))),TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
+            Partido partido = new Partido(result.getInt("id_partido"),
+                    tipoPartido,result.getString("hora"),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_local"))),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_visitante"))),
+                    result.getInt("goles_local"),
+                    result.getInt("goles_visitante"),
+                    TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada")))
+                    );
             listaPartidos.add(partido);
         }
         return listaPartidos;
@@ -68,20 +82,25 @@ public class TPartido {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from partidos where id_jornada = ?");
         ps.setInt(1,partido.getJornada().getID());
         ResultSet result = ps.executeQuery();
-        Partido partido2;
+
         while (result.next())
         {
-            partido2 = new Partido();
-            partido2.setID(result.getInt("id_partido"));
+            partido = new Partido();
+            partido.setID(result.getInt("id_partido"));
             Partido.tPartido tipoPartido;
-            if (result.getString("tipo_partido").equalsIgnoreCase("FR"))
-                tipoPartido = Partido.tPartido.FR;
+
+            if (result.getString("tipo_partido").equalsIgnoreCase("FR")) tipoPartido = Partido.tPartido.FR;
             else tipoPartido = Partido.tPartido.PO;
-            partido2.setTipoPartido(tipoPartido);
-            partido2.setHora(result.getString("hora"));
-            partido2.setJornada(TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
-            partido2.setEquipoGanador(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_ganador"))));
-            listaPartidos.add(partido2);
+
+            partido.setTipoPartido(tipoPartido);
+            partido.setHora(result.getString("hora"));
+            partido.setJornada(TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
+            partido.setLocal(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_local"))));
+            partido.setVisitante(TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_visitante"))));
+            partido.setGolesLocal(result.getInt("goles_local"));
+            partido.setGolesVisitante(result.getInt("goles_visitante"));
+
+            listaPartidos.add(partido);
         }
         return listaPartidos;
     }
@@ -95,7 +114,14 @@ public class TPartido {
         if (result.next()){
             if (result.getString("tipo_partido").equalsIgnoreCase("FR")) tPartido = Partido.tPartido.FR;
             else tPartido = Partido.tPartido.PO;
-            partido = new Partido(result.getInt("id_partido"), tPartido, result.getString("hora"), TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada"))));
+            partido = new Partido(result.getInt("id_partido"),
+                    tPartido,result.getString("hora"),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_local"))),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_visitante"))),
+                    result.getInt("goles_local"),
+                    result.getInt("goles_visitante"),
+                    TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada")))
+            );
         }
         BaseDato.cerrarConexion();
         return partido;

@@ -10,6 +10,8 @@ import Vista.*;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,7 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
-    public static JFrame vEquiposJugadores;
+    public static JDialog dEquiposJugadores;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -41,17 +43,17 @@ public class Main {
 
         // Test para probar conexion con la base de datos
 
-       /* try {
+        /*try {
             BaseDato.abrirConexion();
-            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from Jugadores");
+            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from equipos");
             ResultSet resultado = ps.executeQuery();
             while (resultado.next())
                 System.out.println(resultado.getString("nombre"));
             BaseDato.cerrarConexion();
         } catch (Exception e){
             BaseDato.cerrarConexion();
-            System.out.println("Error");
-        } */
+            System.out.println("Error " + e.getMessage());
+        }*/
 
         crearVentanaLogin();
         /*try {
@@ -142,6 +144,11 @@ public class Main {
         vPlayOffs.setVisible(true);
     }
 
+    public static void crearDialogoEquiposJugadores(){
+        dEquiposJugadores = new dEquiposJugadores();
+        dEquiposJugadores.pack();
+        dEquiposJugadores.setVisible(true);
+    }
    /* public static void crearVentanaEquiposJugadores(){
         vEquiposJugadores = new JFrame("vRegistro");
         vEquiposJugadores.setContentPane(new vEquiposJugadores);
@@ -164,7 +171,6 @@ public class Main {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
         listaJornadas = TJornadas.buscarPorTemporada(jornada);
-
         posicion = listaJornadas.size() -1;
     }
 
@@ -181,13 +187,12 @@ public class Main {
         for (int y = 0; y < listaJornadas.get(posicion).getListaPartidos().size(); y++) {
             panelPartido = new JPanel(new GridLayout(1, 3));
 
-            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(posicion).getListaPartidos().get(y)));
 
-            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(posicion).getListaPartidos().get(y)));
+            Partido partido = TPartido.buscarPorIDPartido(new Partido(listaJornadas.get(posicion).getListaPartidos().get(y).getID()));
 
-            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre(), SwingConstants.CENTER));
-            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles(), SwingConstants.CENTER));
-            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getLocal().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getGolesLocal() + " - " + partido.getGolesVisitante(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getVisitante().getNombre(), SwingConstants.CENTER));
 
             panelContenedor.add(panelPartido);
         }
