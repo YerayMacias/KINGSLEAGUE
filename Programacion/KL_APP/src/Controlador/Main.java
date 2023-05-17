@@ -50,13 +50,13 @@ public class Main {
             System.out.println("Error");
         } */
 
-        //crearVentanaLogin();
-        try {
+        crearVentanaLogin();
+        /*try {
             buscarClasificacion();
             crearVentanaPrueba();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -97,7 +97,7 @@ public class Main {
         vPartidos.setVisible(true);
     }
 
-    public static void crearVentanaClasificacion(String admin) {
+    public static void crearVentanaClasificacion(String admin) throws Exception {
         vClasificacion = new JFrame("vClasificacion");
         vClasificacion.setContentPane(new vClasificacion(admin).getpPrincipal());
         vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
