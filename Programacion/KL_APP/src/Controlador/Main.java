@@ -9,6 +9,7 @@ import Vista.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -243,5 +244,19 @@ public class Main {
             panelContenedor.add(panelPosicion);
         }
         return panelContenedor;
+    }
+
+    public static void buscarEquipos() throws Exception {
+        listaEquipos = TEquipo.buscarTodos();
+    }
+
+    public static void getNombreEquipos(){
+        ArrayList<String> listaNombres = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaNombres.add(equipo.getNombre()));
+    }
+
+    public static void getURLImagen(){
+        ArrayList<URL> listaURL = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaURL.add(equipo.getUrl()));
     }
 }
