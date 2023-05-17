@@ -26,6 +26,7 @@ public class vPrincipal {
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
     private JMenu mIconoPerfil;
+    private JMenuItem miPlayOffs;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -71,6 +72,14 @@ public class vPrincipal {
             }
         });
 
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
+
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,6 +105,7 @@ public class vPrincipal {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
