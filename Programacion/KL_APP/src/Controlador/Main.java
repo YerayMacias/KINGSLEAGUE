@@ -189,6 +189,9 @@ public class Main {
     public static String buscarAdmin() {
         return usuario.getAdmin().toString();
     }
+    public static String buscarCorreo(){
+        return usuario.getEmail();
+    }
 
     public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
         usuario = new Usuario(username, email, password, admin);
