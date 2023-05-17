@@ -75,6 +75,14 @@ public class vEquipos {
              }
          });
 
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();;
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
+
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -28,7 +28,7 @@ public class TStaffEquipo {
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
-    
+
     public static void update(StaffEquipo staffEquipo) throws Exception
     {
         BaseDato.abrirConexion();
