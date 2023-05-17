@@ -166,7 +166,8 @@ public class vEquipos {
     }
 
     private int hex( String color_hex ) {
-        String color = color_hex.substring(1, color_hex.length()-1);
+        String color = color_hex.substring(1, color_hex.length());
+        System.out.println(color);
         return Integer.parseInt(color,  16 );
     }
 
