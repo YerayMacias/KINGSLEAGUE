@@ -80,7 +80,3 @@ public class dInsertJugadores extends JDialog {
         System.exit(0);
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> main
