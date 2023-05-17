@@ -78,6 +78,13 @@ public class vPrincipal {
                 Main.crearVentanaPerfil(admin);
             }
         });
+
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
     }
 
     public void inicializar() {

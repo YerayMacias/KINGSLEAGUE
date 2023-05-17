@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class TJornadas {
 
-    public static void insertar(Jornada jorn) throws Exception
+    public static void insert(Jornada jorn) throws Exception
     {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into jornadas values (?,?,?)");

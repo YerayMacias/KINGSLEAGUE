@@ -11,11 +11,8 @@ import java.util.ArrayList;
 public class vPartidos {
     private JPanel pMenu;
     private JLabel lNombre;
-    private JPanel pCombo;
     private JComboBox cbJornadas;
     private JPanel pPrincipal;
-    private JPanel pHeader;
-    private JPanel pContenedor;
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
     private JLabel lNombreMenu;
@@ -28,6 +25,8 @@ public class vPartidos {
     private JMenuItem miEquipo;
     private JPanel pPartidos;
     private JMenu mIconoPerfil;
+    private JPanel pTitulo;
+    private JPanel pCombo;
 
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -42,6 +41,13 @@ public class vPartidos {
             public void actionPerformed(ActionEvent e) {
                 Main.vPartidos.dispose();
                 Main.crearVentanaLogin();
+            }
+        });
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPanelAdmin(admin);
             }
         });
         miEquipo.addActionListener(new ActionListener() {
