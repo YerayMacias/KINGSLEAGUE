@@ -109,7 +109,31 @@ public class vAdminPanel {
                 Main.crearVentanaPerfil(admin);
             }
         });
-   }
+        bInsert.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaInsertsJugadores(admin);
+            }
+        });
+        bDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaBorrarJugadores(admin);
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaActualizarJugadores(admin);
+            }
+        });
+        bBuscarTodosJ.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaBuscarjugadores(admin);
+            }
+        });
+    }
 
    public void inicializar() {
        if (Main.buscarAdmin().equalsIgnoreCase("S")) {
