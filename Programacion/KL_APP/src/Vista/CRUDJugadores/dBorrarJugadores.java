@@ -3,7 +3,10 @@ package Vista.CRUDJugadores;
 import Controlador.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class dBorrarJugadores extends JDialog {
     private JPanel contentPane;
@@ -45,7 +48,20 @@ public class dBorrarJugadores extends JDialog {
         bBorrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Main.borrarJugador(tfDNI.getText());
+                Pattern pat = Pattern.compile("[0-9]{8}[A-Za-z]");
+                Matcher mat = pat.matcher(tfDNI.getText());
+                if (!mat.matches()) {
+                    JOptionPane.showMessageDialog(null, "DNI no válido");
+                    tfDNI.setText("");
+                    tfDNI.setBackground(Color.red);
+                } else {
+                    try {
+                        Main.borrarJugador(tfDNI.getText());
+                        JOptionPane.showMessageDialog(null," El jugador con dni " + tfDNI.getText() + " ha sido borrado");
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
     }

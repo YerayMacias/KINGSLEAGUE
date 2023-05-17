@@ -56,6 +56,7 @@ public class dInsertJugadores extends JDialog {
                 if (mat.matches()) {
                     try {
                         Main.insertJugador(tfNombre.getText(), tfApellido.getText(), tfDNI.getText(),cbPosicion.getSelectedItem().toString(), cbTipojugador.getSelectedItem().toString());
+                        JOptionPane.showMessageDialog(null,"El jugador ha sido insertado");
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }

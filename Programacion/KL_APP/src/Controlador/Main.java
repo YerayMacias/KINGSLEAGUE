@@ -554,4 +554,54 @@ public class Main {
         dBuscarUsuarios.setVisible(true);
         System.exit(0);
     }
+
+    public static int borrarJugador(String DNI) throws Exception {
+        jugador = new Jugador();
+        jugador.setDNI(DNI);
+        return tJugadores.delete(jugador);
+    }
+
+    public static void actualizarJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) {
+        jugador = new Jugador();
+        jugador.setNombre(nombre);
+        jugador.setApellido(apellido);
+        jugador.setDNI(DNI);
+        jugador.setPosicion(Jugador.tPosicion.valueOf(posicion));
+        jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
+    }
+
+    public static String buscarTodosJugadores() throws Exception {
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+                datos += "ID_JUGADOR" + listaJugadores.get(x).getID() + "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                        + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+    public static String buscarTodosLosJugadorPorID(String id_jugador) throws Exception {
+        jugador = new Jugador();
+        jugador.setID(Integer.parseInt(id_jugador));
+        String datos = "";
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorID(jugador);
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+
+    public static String buscarTodosLosJugadorPorDNI(String dni) throws Exception {
+        jugador = new Jugador();
+        jugador.setDNI(dni);
+        String datos = "";
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorDNI(jugador);
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+
+
 }

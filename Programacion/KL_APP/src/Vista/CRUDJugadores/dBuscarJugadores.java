@@ -1,10 +1,20 @@
 package Vista.CRUDJugadores;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class dBuscarJugadores extends JDialog {
     private JPanel contentPane;
+    private JButton bConsultar;
+    private JComboBox cbID;
+    private JComboBox cbDNI;
+    private JButton cancelarButton;
+    private JButton aceptarButton;
+    private JTextArea taCTJ;
+    private JTextArea taCJID;
+    private JTextArea taCJDNI;
     private JButton buttonOK;
     private JButton buttonCancel;
 
@@ -39,6 +49,53 @@ public class dBuscarJugadores extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        bConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String datos = null;
+                try {
+                    datos = Main.buscarTodosJugadores();
+                    taCTJ.setText(datos);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        cbID.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String id_jugador = cbID.getSelectedItem().toString();
+
+                    String datos = Main.buscarTodosLosJugadorPorID(id_jugador);
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion del Jugador");
+                    } else {
+                        taCJID.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        cbDNI.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              try {
+                  String dni = cbDNI.getSelectedItem().toString();
+
+                  String datos = Main.buscarTodosLosJugadorPorDNI(dni);
+
+                  if (datos == null) {
+                      throw new Exception("No se encuentra la informacion del Jugador");
+                  } else {
+                      taCJDNI.setText(datos);
+                  }
+              } catch (Exception ex) {
+                  JOptionPane.showMessageDialog(null,ex.getMessage());
+              }
+            }
+        });
     }
 
     private void onOK() {
