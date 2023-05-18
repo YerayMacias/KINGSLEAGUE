@@ -102,14 +102,14 @@ public class Main {
     private static Usuario usuario;
     private static Jugador jugador;
     private static ArrayList<Jornada> listaJornadas;
-    private static ArrayList<Equipo> listaEquipos;
+    public static ArrayList<Equipo> listaEquipos;
     private static ArrayList<Integer> listaVictorias;
     private static ArrayList<Integer> listaDerrotas;
     private static ArrayList<Integer> listaGolesFavor;
     private static ArrayList<Integer> listaGolesContra;
     private static ArrayList<Integer> listaDiferenciaGoles;
 
-    private static ArrayList<Integer> listaPosicion;
+    public static ArrayList<Integer> listaPosicion;
 
     private static int posicion;
     public static void main(String[] args){
@@ -211,7 +211,7 @@ public class Main {
 
 
 
-    public static void crearVentanaPlayOffs(String admin) {
+    public static void crearVentanaPlayOffs(String admin) throws Exception {
         vPlayOffs = new JFrame("vPlayOffs");
         vPlayOffs.setContentPane(new vPlayOffs(admin).getpPrincipal());
         vPlayOffs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

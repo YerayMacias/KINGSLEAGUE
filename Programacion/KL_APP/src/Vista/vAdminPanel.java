@@ -65,6 +65,7 @@ public class vAdminPanel {
     private JButton bUpdateEquipos;
     private JButton bBuscarTodosEquipos;
     private JButton bBuscarJornadas;
+    private JMenuItem miPrincipal;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -118,7 +119,11 @@ public class vAdminPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();
-                Main.crearVentanaPlayOffs(admin);
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -126,8 +131,15 @@ public class vAdminPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();
-                ;
                 Main.crearVentanaPerfil(admin);
+            }
+        });
+
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vAdminPanel.dispose();
+                Main.crearVentanaPrincipal(admin);
             }
         });
 
@@ -310,6 +322,7 @@ public class vAdminPanel {
                 lTipoUsuario.setText("Usuario");
             }
 
+            miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
             miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
             miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
             miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
