@@ -34,6 +34,7 @@ public class vEquipoJugadores {
     }
 
     private JButton bSiguiente;
+    private JButton bSalir;
 
     public vEquipoJugadores(String equipo) throws Exception {
 
@@ -60,8 +61,6 @@ public class vEquipoJugadores {
                     tfPosicion.setText(Main.getPosicionSelect());
                     tfTipoJugador.setText(Main.getTipoJugadorSelect());
                 }
-
-
             }
         });
         bSiguiente.addActionListener(new ActionListener() {
@@ -101,6 +100,12 @@ public class vEquipoJugadores {
                 tfApellido.setText(Main.getApellidoSelect());
                 tfPosicion.setText(Main.getPosicionSelect());
                 tfTipoJugador.setText(Main.getTipoJugadorSelect());
+            }
+        });
+        bSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipoJugadores.dispose();
             }
         });
     }
