@@ -245,3 +245,27 @@ ORA-04088: error during execution of trigger 'SYSTEM.INSCRIPCIONES_KINGS_LEAGUE_
 */
 
 
+CREATE OR REPLACE FUNCTION VALIDAR_MINIMO_EQUIPOS(id_equipo IN NUMBER)
+  RETURN VARCHAR2
+IS
+  v_minimo CONSTANT NUMBER := 12;
+BEGIN
+  IF id_equipo < v_minimo THEN
+    RETURN 'La cantidad de equipos es insuficiente, se necesitan' || v_minimo || ' equipos.';
+  ELSE
+    RETURN 'La cantidad de equipos es correcta.';
+  END IF;
+END;
+
+
+CREATE OR REPLACE TRIGGER CONTROLAR_MINIMO_EQUIPOS
+BEFORE INSERT OR UPDATE ON equipos
+FOR EACH ROW
+DECLARE
+  v_valido BOOLEAN;
+BEGIN
+  v_valido := VALIDAR_MINIMO_EQUIPOS(:NEW.cantidad);
+  IF NOT v_valido THEN
+    RAISE_APPLICATION_ERROR(-20001, 'No se cumple con el requisito de minimo de equipos.');
+  END IF;
+END;
