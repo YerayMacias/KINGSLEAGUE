@@ -10,11 +10,7 @@ import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Jornada;
 import Modelo.ClasesObjetos.Partido;
 import Modelo.ClasesObjetos.Usuario;
-import Modelo.ClasesBasesDatos.TJornadas;
-import Modelo.ClasesBasesDatos.TPartido;
-import Modelo.ClasesBasesDatos.TTemporadas;
 import Modelo.ClasesBasesDatos.TUsuarios;
-import Modelo.ClasesObjetos.*;
 import Vista.*;
 import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
@@ -50,8 +46,6 @@ import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -114,6 +108,8 @@ public class Main {
 
     private static ArrayList<Jugador> listaJugadores;
     private static ArrayList<Usuario> listaUsuarios;
+
+    private static ArrayList<Temporada> listaTemporada;
     private static int numJugador;
 
     private static int posicion;
@@ -745,6 +741,12 @@ public class Main {
         listaJornadas.forEach(jornada -> listaJornadasID.add(String.valueOf(jornada.getID())));
         return listaJornadasID;
     }
+    public static ArrayList<String> crearIDTemporada() throws Exception {
+        listaTemporada = TTemporadas.buscarTodo();
+        ArrayList<String> listaTemporadaID = new ArrayList<>();
+        listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getID())));
+        return listaTemporadaID;
+    }
 
     public static ArrayList<String> crearUsuarios() throws Exception {
         listaUsuarios = TUsuarios.buscarTodo();
@@ -827,6 +829,40 @@ public class Main {
         return datos;
     }
 
+    public static void insertarTemporada(String fecha_inicio,String fecha_fin,String estado,String periodo) throws Exception {
+        Temporada temporada = new Temporada();
+        temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
+        temporada.setFechaFin(LocalDate.parse(fecha_fin));
+        temporada.setEstado(Temporada.tEstado.valueOf(estado));
+        temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
+        TTemporadas.insertar(temporada);
+    }
+
+    public static void ActualizarTemporada(String id_temporada,String fecha_inicio,String fecha_fin,String estado,String periodo) throws SQLException {
+        Temporada temporada = new Temporada();
+        temporada.setID(Integer.parseInt(id_temporada));
+        temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
+        temporada.setFechaFin(LocalDate.parse(fecha_fin));
+        temporada.setEstado(Temporada.tEstado.valueOf(estado));
+        temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
+        TTemporadas.update(temporada);
+    }
+
+    public static int borrarTemporada(String id_temporada) throws Exception {
+        Temporada temporada = new Temporada();
+        temporada.setID(Integer.parseInt(id_temporada));
+        return TTemporadas.delete(temporada);
+    }
+
+    public static String buscarTodasLasTemporadas() throws Exception {
+        ArrayList<Temporada> listaTemporadas = TTemporadas.buscarTodo();
+        String datos = "";
+        for (int x = 0 ; x < listaTemporadas.size();x++) {
+            datos += "\n ID_TEMPORAD" + listaTemporadas.get(x).getID() + "\n\nFechaInicio: " + listaTemporadas.get(x).getFechaInicio() + "\nFechaFin: " + listaTemporadas.get(x).getFechaFin()
+                    + "\nEstado: " + listaTemporadas.get(x).getEstado() + "\nPeriodo" + listaTemporadas.get(x).getPeriodo();
+        }
+        return datos;
+    }
    /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
         Jornada jornada = new Jornada();
         ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
