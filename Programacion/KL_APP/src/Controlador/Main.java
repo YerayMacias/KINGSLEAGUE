@@ -16,6 +16,9 @@ import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
 import Vista.CRUDEquipos.dBuscarEquipo;
 import Vista.CRUDEquipos.dInsertarEquipo;
+import Vista.CRUDEquiposStaff.dActualizarEquiposStaff;
+import Vista.CRUDEquiposStaff.dBuscarEquiposStaff;
+import Vista.CRUDEquiposStaff.dInsertarEquiposStaff;
 import Vista.CRUDJornada.dActualizarJornada;
 import Vista.CRUDJornada.dBorrarJornada;
 import Vista.CRUDJornada.dBuscarJornada;
@@ -68,6 +71,7 @@ public class Main {
     public static JDialog dInsertarEquipo;
     public static JDialog dBuscarEquipo;
     public static JDialog dBorrarEquipo;
+    public static JDialog dBuscarEquiposStaff;
     public static JDialog dActualizarEquipo;
     public static JDialog dInsertarJornada;
     public static JDialog dBorrarJornada;
@@ -88,8 +92,10 @@ public class Main {
     public static JDialog dActualizarUsuario;
     public static JDialog dInsertarUsuario;
     public static JDialog dBorrarUsuario;
+    public static JDialog dActualizarEquiposStaff;
     public static JDialog dBuscarUsuarios;
     public static JDialog dEquiposJugadores;
+    public static JDialog dInsertarEquiposStaff;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -933,6 +939,34 @@ public class Main {
         datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
                 + "\n Rol" + staff.getRol();
         return datos;
+    }
+
+    public static void crearVentanaInsertarStaffEquipo(String admin) {
+        dInsertarEquiposStaff  = new dInsertarEquiposStaff();
+        dInsertarEquiposStaff.pack();
+        dInsertarEquiposStaff.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarStaffEquipo(String admin) {
+        dBuscarEquiposStaff  = new dBuscarEquiposStaff();
+        dBuscarEquiposStaff.pack();
+        dBuscarEquiposStaff.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarStaffEquipo(String admin) {
+        dActualizarEquiposStaff  = new dActualizarEquiposStaff();
+        dActualizarEquiposStaff.pack();
+        dActualizarEquiposStaff.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarStaffEquipo(String admin) {
+        dBuscarEquiposStaff  = new dBuscarEquiposStaff();
+        dBuscarEquiposStaff.pack();
+        dBuscarEquiposStaff.setVisible(true);
+        System.exit(0);
     }
    /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
         Jornada jornada = new Jornada();

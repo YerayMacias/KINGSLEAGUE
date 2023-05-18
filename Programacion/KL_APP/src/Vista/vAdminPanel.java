@@ -35,7 +35,6 @@ public class vAdminPanel {
     private JButton bDeleteP;
     private JButton bUpdateP;
     private JButton bBuscarTodosP;
-    private JButton bBuscarPorIDPartido;
     private JButton bInsertarPres;
     private JButton bDeletePres;
     private JButton bUpdatePres;
@@ -58,6 +57,10 @@ public class vAdminPanel {
     private JButton bBuscarTodosEquipos;
     private JButton bBuscarJornadas;
     private JMenuItem miPrincipal;
+    private JButton SEinsert;
+    private JButton SEDelete;
+    private JButton SEUpdate;
+    private JButton SEBuscar;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -304,6 +307,30 @@ public class vAdminPanel {
             }
         });
 
+        SEinsert.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaInsertarStaffEquipo(admin);
+            }
+        });
+        SEDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaBorrarStaffEquipo(admin);
+            }
+        });
+        SEUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaActualizarStaffEquipo(admin);
+            }
+        });
+        SEBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaBuscarStaffEquipo(admin);
+            }
+        });
     }
 
 
