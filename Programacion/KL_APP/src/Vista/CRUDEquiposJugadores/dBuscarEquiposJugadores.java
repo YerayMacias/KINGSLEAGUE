@@ -14,7 +14,6 @@ public class dBuscarEquiposJugadores extends JDialog {
     private JButton bConsultar;
     private JPanel pTodos;
     private JTextArea taTodos;
-    private JButton consultarTodosButton;
     private JComboBox cbID;
 
     public dBuscarEquiposJugadores() {
@@ -48,12 +47,6 @@ public class dBuscarEquiposJugadores extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        buttonOK.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         bConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,6 +78,14 @@ public class dBuscarEquiposJugadores extends JDialog {
     }
 
     public void inicializar() {
+
+        taTodos.setEditable(false);
+
+        pTodos.add(new JScrollPane(taTodos));
+        taTodos.setRows(20);
+        taTodos.setColumns(40);
+        taTodos.setLineWrap(true);
+
         try {
             ArrayList<String> idCBox = Main.crearIdJugadores();
             idCBox.forEach(id ->cbID.addItem(id));
