@@ -1,12 +1,19 @@
 package Vista.CRUDStaffs;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class dActualizarStaff extends JDialog {
     private JPanel contentPane;
+    private JComboBox cbID;
+    private JTextField tfNombre;
+    private JTextField tfApellido;
+    private JTextField tfDNI;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField tfRol;
 
     public dActualizarStaff() {
         setContentPane(contentPane);
@@ -39,6 +46,16 @@ public class dActualizarStaff extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.actualizarStaff(tfNombre.getText(),tfRol.getText(),tfApellido.getText(),tfRol.getText(),cbID.getSelectedItem().toString());
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {

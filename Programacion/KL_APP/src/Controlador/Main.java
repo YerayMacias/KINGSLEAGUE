@@ -110,6 +110,7 @@ public class Main {
     private static ArrayList<Usuario> listaUsuarios;
 
     private static ArrayList<Temporada> listaTemporada;
+    private static ArrayList<Staff> listaStaff;
     private static int numJugador;
 
     private static int posicion;
@@ -748,6 +749,20 @@ public class Main {
         return listaTemporadaID;
     }
 
+    public static ArrayList<String> crearStaff() throws Exception {
+        listaStaff = tStaffs.buscarTodos();
+        ArrayList<String> listaStaffID = new ArrayList<>();
+        listaStaff.forEach(staff -> listaStaffID.add(String.valueOf(staff.getID())));
+        return listaStaffID;
+    }
+
+    public static ArrayList<String> crearStaffDNI() throws Exception {
+        listaStaff = tStaffs.buscarTodos();
+        ArrayList<String> listaStaffDNI = new ArrayList<>();
+        listaStaff.forEach(staff -> listaStaffDNI.add(String.valueOf(staff.getDNI())));
+        return listaStaffDNI;
+    }
+
     public static ArrayList<String> crearUsuarios() throws Exception {
         listaUsuarios = TUsuarios.buscarTodo();
         ArrayList<String> listaUsuariosUser = new ArrayList<>();
@@ -861,6 +876,62 @@ public class Main {
             datos += "\n ID_TEMPORAD" + listaTemporadas.get(x).getID() + "\n\nFechaInicio: " + listaTemporadas.get(x).getFechaInicio() + "\nFechaFin: " + listaTemporadas.get(x).getFechaFin()
                     + "\nEstado: " + listaTemporadas.get(x).getEstado() + "\nPeriodo" + listaTemporadas.get(x).getPeriodo();
         }
+        return datos;
+    }
+
+    public static void insertarStaff(String nombre,String apellido,String dni,String rol) throws Exception {
+        Staff staff = new Staff();
+        staff.setNombre(nombre);
+        staff.setApellido(apellido);
+        staff.setDNI(dni);
+        staff.setRol(Staff.tROl.valueOf(rol));
+        tStaffs.insert(staff);
+
+    }
+
+    public static int borrarStaff(String dni) throws Exception {
+        Staff staff = new Staff();
+        staff.setDNI(dni);
+        return tStaffs.delete(staff);
+    }
+
+    public static void actualizarStaff(String idStaff,String nombre,String apellido,String dni,String rol) throws Exception {
+        Staff staff = new Staff();
+        staff.setID(Integer.parseInt(idStaff));
+        staff.setNombre(nombre);
+        staff.setApellido(apellido);
+        staff.setDNI(dni);
+        staff.setRol(Staff.tROl.valueOf(rol));
+        tStaffs.update(staff);
+    }
+
+    public static String buscarTodosStaff() throws Exception {
+        ArrayList<Staff> listaStaff = tStaffs.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaStaff.size();x++) {
+            datos += "\n ID_STAFF" + listaStaff.get(x).getID() + "\n\nNombre: " + listaStaff.get(x).getNombre() + "\nApellido: " + listaStaff.get(x).getApellido()
+                    + "\nDNI: " + listaStaff.get(x).getDNI() + "\nRol" + listaStaff.get(x).getRol();
+        }
+        return datos;
+    }
+
+    public static String buscarStaffId(String id) throws Exception {
+        Staff staff = new Staff();
+        staff.setID(Integer.parseInt(id));
+        String datos = "";
+        staff = tStaffs.buscarPorId(staff);
+        datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
+                + "\n Rol" + staff.getRol();
+        return datos;
+    }
+
+    public static String buscarStaffDNI(String dni) throws Exception {
+        Staff staff = new Staff();
+        staff.setDNI(dni);
+        String datos = "";
+        staff = tStaffs.buscarPorDNI(staff);
+        datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
+                + "\n Rol" + staff.getRol();
         return datos;
     }
    /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
