@@ -63,10 +63,12 @@ public class vPlayOffs {
     private JLabel lEquipoFinalDer;
     private JLabel lEquipoFinalIzq;
     private JMenuItem miPrincipal;
+    private JPanel pGanador;
 
     public vPlayOffs(String admin) throws Exception {
         inicializar();
         semis();
+        finalKL();
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
 
@@ -252,7 +254,42 @@ public class vPlayOffs {
             lEquipoSemiDerBot.setText(equipoVisitante4.getNombre());
         }
     }
+    public void finalKL() throws Exception {
+        Equipo preset = new Equipo();
+        preset.setNombre(lEquipo1.getText());
+        Equipo equipoLocal = TEquipo.buscarPorNombre(preset);
+        preset = new Equipo();
+        preset.setNombre(lEquipo5.getText());
+        Equipo equipoVisitante = TEquipo.buscarPorNombre(preset);
+        Partido partido = new Partido();
+        partido.setLocal(equipoLocal);
+        partido.setVisitante(equipoVisitante);
+        Partido partido2 = TPartido.buscarSemis(partido);
+        int n = Main.obtenerGanador(partido2);
+        if (n == 1) {
+            lEquipoFinalIzq.setText(equipoLocal.getNombre());
+        } else {
+            lEquipoFinalIzq.setText(equipoVisitante.getNombre());
+        }
 
+
+        Equipo preset2 = new Equipo();
+        preset2.setNombre(lEquipo6.getText());
+        Equipo equipoLocal2 = TEquipo.buscarPorNombre(preset2);
+        preset2 = new Equipo();
+        preset2.setNombre(lEquipo7.getText());
+        Equipo equipoVisitante2 = TEquipo.buscarPorNombre(preset2);
+        Partido partido3 = new Partido();
+        partido3.setLocal(equipoLocal);
+        partido3.setVisitante(equipoVisitante);
+        Partido partido4 = TPartido.buscarSemis2(partido3);
+         n = Main.obtenerGanador(partido4);
+        if (n == 1) {
+            lEquipoFinalDer.setText(equipoLocal2.getNombre());
+        } else {
+            lEquipoFinalDer.setText(equipoVisitante2.getNombre());
+        }
+    }
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
