@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Main;
+import Modelo.ClasesObjetos.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class vRegistro {
     private JPanel pInfo;
@@ -25,6 +28,7 @@ public class vRegistro {
     private JButton bVisibleAdm;
     private JButton bAtras;
     private int contador;
+    private String passAdm;
 
     public vRegistro() {
         inicializar();
@@ -90,7 +94,53 @@ public class vRegistro {
         bRegistro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Pattern pat = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                Matcher mat = pat.matcher(tfEmail.getText());
 
+
+                if (tfNombre.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El campo 'Nombre de Usuario' es obligatorio");
+                    tfNombre.setForeground(Color.red);
+                } else if (!mat.matches()) {
+                    JOptionPane.showMessageDialog(null, "El email no tiene un formato válido (ejemplo@gmail.com)");
+                    tfEmail.setForeground(Color.red);
+                } else if (pfPassword.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El campo 'Contraseña' es obligatorio");
+                    pfPassword.setForeground(Color.red);
+                } else if (!pfPassword.getText().equals(pfPassword2.getText())) {
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+                    pfPassword.setForeground(Color.red);
+                    pfPassword2.setForeground(Color.red);
+                } else if (ckAdmin.isSelected()) {
+                    try {
+                        passAdm = Main.getPassAdm();
+                        if (!pfPasswordAdm.getText().equals(passAdm)) {
+                            throw new Exception("La contraseña de Adminisrtador es incorrecta");
+                        }
+                        Main.registrarUsuario(tfNombre.getText(), tfEmail.getText(), pfPassword.getText(), Usuario.tUsuario.valueOf("S"));
+                        JOptionPane.showMessageDialog(null, "El usuario " + tfNombre.getText() + " ha sido insertado");
+                        pfPassword2.setForeground(Color.red);
+                        pfPassword.setForeground(Color.red);
+                        pfPasswordAdm.setForeground(Color.red);
+                        tfEmail.setForeground(Color.red);
+                        tfNombre.setForeground(Color.red);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "FAILED LOGIN", JOptionPane.WARNING_MESSAGE);
+                        pfPasswordAdm.setForeground(Color.red);
+                    }
+                } else {
+                    try {
+                        Main.registrarUsuario(tfNombre.getText(), tfEmail.getText(), pfPassword.getText(), Usuario.tUsuario.valueOf("N"));
+                        JOptionPane.showMessageDialog(null, "El usuario " + tfNombre.getText() + " ha sido insertado");
+                        pfPassword2.setForeground(Color.red);
+                        pfPassword.setForeground(Color.red);
+                        tfEmail.setForeground(Color.red);
+                        tfNombre.setForeground(Color.red);
+                    } catch (Exception exc) {
+                        JOptionPane.showMessageDialog(null, exc.getMessage());
+                    }
+
+                }
             }
         });
     }
@@ -106,61 +156,93 @@ public class vRegistro {
         bVisibleAdm.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        pfPassword.setEchoChar((char) 0);
+        pfPassword2.setEchoChar((char) 0);
+        pfPasswordAdm.setEchoChar((char) 0);
 
         pfPasswordAdm.setVisible(false);
         bVisibleAdm.setVisible(false);
 
+        if (tfNombre.getText().trim().equals("NOMBRE DE USUARIO")) {
+            tfNombre.setText("");
+        }
+
         tfNombre.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                tfNombre.setText("");
+                if (tfNombre.getText().trim().equals("NOMBRE DE USUARIO")) {
+                    tfNombre.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(tfNombre.getText().isEmpty()) {
+                    tfNombre.setText("NOMBRE DE USUARIO");
+                }
             }
         });
+
         tfEmail.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                tfEmail.setText("");
+                if (tfEmail.getText().trim().equals("EMAIL")) {
+                    tfEmail.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(tfEmail.getText().isEmpty()) {
+                   tfEmail.setText("EMAIL");
+                }
             }
         });
 
         pfPassword.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPassword.setText("");
+                if (pfPassword.getText().trim().equals("CONTRASEÑA")) {
+                    pfPassword.setEchoChar('•');
+                    pfPassword.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if(pfPassword.getText().isEmpty()) {
+                    pfPassword.setText("CONTRASEÑA");
+                }
             }
         });
-        pfPassword.setEchoChar((char) 0);
-        pfPassword.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                pfPassword.setEchoChar('•');
-            }
-        });
+
 
         pfPassword2.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPassword2.setText("");
+                if (pfPassword2.getText().trim().equals("CONFIRMAR CONTRASEÑA")) {
+                    pfPassword2.setEchoChar('•');
+                    pfPassword2.setText("");
+                }
             }
-        });
-        pfPassword2.setEchoChar((char) 0);
-        pfPassword2.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                pfPassword2.setEchoChar('•');
+
+            public void focusLost(FocusEvent e) {
+                if(pfPassword2.getText().isEmpty()) {
+                    pfPassword2.setText("CONFIRMAR CONTRASEÑA");
+                }
             }
         });
 
         pfPasswordAdm.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                pfPasswordAdm.setText("");
+                if (pfPasswordAdm.getText().trim().equals("CONTRASEÑA ADMINISTRADOR")) {
+                    pfPasswordAdm.setEchoChar('•');
+                    pfPasswordAdm.setText("");
+                }
             }
-        });
-        pfPasswordAdm.setEchoChar((char) 0);
-        pfPasswordAdm.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {pfPasswordAdm.setEchoChar('•');
+
+            public void focusLost(FocusEvent e) {
+                if(pfPasswordAdm.getText().isEmpty()) {
+                    pfPasswordAdm.setText("CONTRASEÑA ADMINISTRADOR");
+                }
             }
         });
 

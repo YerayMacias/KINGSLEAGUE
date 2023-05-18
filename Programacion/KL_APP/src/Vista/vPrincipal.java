@@ -26,6 +26,7 @@ public class vPrincipal {
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
     private JMenu mIconoPerfil;
+    private JMenuItem miPlayOffs;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -46,7 +47,11 @@ public class vPrincipal {
         miClasificacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaClasificacion(admin);
+                try {
+                    Main.crearVentanaClasificacion(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -66,6 +71,29 @@ public class vPrincipal {
                 Main.crearVentanaEquipos(admin);
             }
         });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaPlayOffs(admin);
+            }
+        });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaPerfil(admin);
+            }
+        });
+
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
     }
 
     public void inicializar() {
@@ -77,6 +105,7 @@ public class vPrincipal {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));

@@ -1,5 +1,11 @@
 package Controlador;
+import Modelo.ClasesBasesDatos.TJornadas;
+import Modelo.ClasesBasesDatos.TTemporadas;
+import Modelo.ClasesBasesDatos.*;
+import Modelo.ClasesObjetos.*;
 
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 import Modelo.ClasesObjetos.TPartido;
 import Modelo.ClasesBaseDato.Equipo;
@@ -17,10 +23,43 @@ import Modelo.ClasesBaseDato.*;
 =======
 >>>>>>> 5920cd717d97038b2ac5422708e55a3363e132f7
 >>>>>>> Stashed changes
+=======
+>>>>>>> 0a24ff05a5b0b008950a6ec80b9af14e366a6352
 import Vista.*;
+import Vista.CRUDEquipos.dActualizarEquipo;
+import Vista.CRUDEquipos.dBorrarEquipo;
+import Vista.CRUDEquipos.dBuscarEquipo;
+import Vista.CRUDEquipos.dInsertarEquipo;
+import Vista.CRUDJornada.dActualizarJornada;
+import Vista.CRUDJornada.dBorrarJornada;
+import Vista.CRUDJornada.dBuscarJornada;
+import Vista.CRUDJornada.dInsertarJornada;
+import Vista.CRUDJugadores.dBorrarJugadores;
+import Vista.CRUDJugadores.dBuscarJugadores;
+import Vista.CRUDJugadores.dInsertJugadores;
+import Vista.CRUDJugadores.dActualizarJugadores;
+import Vista.CRUDPresidentes.dActualizarPresidente;
+import Vista.CRUDPresidentes.dBorrarPresidente;
+import Vista.CRUDPresidentes.dBuscarPresidente;
+import Vista.CRUDPresidentes.dInsertarPresidente;
+import Vista.CRUDStaffs.dActualizarStaff;
+import Vista.CRUDStaffs.dBorrarStaff;
+import Vista.CRUDStaffs.dBuscarStaff;
+import Vista.CRUDStaffs.dInsertarStaff;
+import Vista.CRUDTemporadas.dActualizarTemporada;
+import Vista.CRUDTemporadas.dBorrarTemporada;
+import Vista.CRUDTemporadas.dBuscarTemporada;
+import Vista.CRUDTemporadas.dInsertarTemporada;
+import Vista.CRUDUsuario.dActualizarUsuario;
+import Vista.CRUDUsuario.dBorrarUsuario;
+import Vista.CRUDUsuario.dBuscarUsuarios;
+import Vista.CRUDUsuario.dInsertarUsuario;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +74,47 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
-    public static Usuario usuario;
+    public static JFrame vEquiposJugadores;
+    public static JDialog dInsertarJugadores;
+    public static JDialog dBorrarJugadores;
+    public static JDialog dUpdatearJugadores;
+    public static JDialog dBuscarJugadores;
+    public static JDialog dInsertarEquipo;
+    public static JDialog dBuscarEquipo;
+    public static JDialog dBorrarEquipo;
+    public static JDialog dActualizarEquipo;
+    public static JDialog dInsertarJornada;
+    public static JDialog dBorrarJornada;
+    public static JDialog dBuscarJornada;
+    public static JDialog dActualizarJornada;
+    public static JDialog dInsertarPresidentes;
+    public static JDialog dBorrarPresidentes;
+    public static JDialog dBuscarPresidentes;
+    public static JDialog dActualizarPresidentes;
+    public static JDialog dActualizarStaff;
+    public static JDialog dBorrarStaff;
+    public static JDialog dBuscarStaff;
+    public static JDialog dInsertarStaff;
+    public static JDialog dInsertarTemporada;
+    public static JDialog dBuscarTemporada;
+    public static JDialog dActualizarTemporada;
+    public static JDialog dBorrarTemporada;
+    public static JDialog dActualizarUsuario;
+    public static JDialog dInsertarUsuario;
+    public static JDialog dBorrarUsuario;
+    public static JDialog dBuscarUsuarios;
+    public static JFrame vPerfil;
+    public static JFrame vPlayOffs;
+    public static JFrame vAdminPanel;
+    private static Usuario usuario;
+    private static Jugador jugador;
+    private static ArrayList<Jornada> listaJornadas;
+    private static ArrayList<Equipo> listaEquipos;
+    private static ArrayList<Integer> listaVictorias;
+    private static ArrayList<Integer> listaDerrotas;
+    private static ArrayList<Integer> listaPosicion;
+
+    private static int posicion;
     public static void main(String[] args){
 
         // Test para probar conexion con la base de datos
@@ -53,6 +132,12 @@ public class Main {
         } */
 
         crearVentanaLogin();
+        /*try {
+            buscarClasificacion();
+            crearVentanaPrueba();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }*/
     }
     public static void crearVentanaLogin(){
         vLogin = new JFrame("vLogin");
@@ -93,7 +178,7 @@ public class Main {
         vPartidos.setVisible(true);
     }
 
-    public static void crearVentanaClasificacion(String admin) {
+    public static void crearVentanaClasificacion(String admin) throws Exception {
         vClasificacion = new JFrame("vClasificacion");
         vClasificacion.setContentPane(new vClasificacion(admin).getpPrincipal());
         vClasificacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,9 +196,44 @@ public class Main {
         vEquipos.setVisible(true);
     }
 
+    public static void crearVentanaPerfil(String admin) {
+        vPerfil = new JFrame("vPerfil");
+        vPerfil.setContentPane(new vPerfil(admin).getpPrincipal());
+        vPerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPerfil.pack();
+        vPerfil.setVisible(true);
+    }
+
+    public static void crearVentanaPanelAdmin (String admin) {
+        vAdminPanel = new JFrame("vAdminPanel");
+        vAdminPanel.setContentPane(new vAdminPanel(admin).getpPrincipal());
+        vAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vAdminPanel.pack();
+        vAdminPanel.setVisible(true);
+    }
+
+
+
+    public static void crearVentanaPlayOffs(String admin) {
+        vPlayOffs = new JFrame("vPlayOffs");
+        vPlayOffs.setContentPane(new vPlayOffs(admin).getpPrincipal());
+        vPlayOffs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vPlayOffs.pack();
+        vPlayOffs.setVisible(true);
+    }
+
+   /* public static void crearVentanaEquiposJugadores(){
+        vEquiposJugadores = new JFrame("vRegistro");
+        vEquiposJugadores.setContentPane(new vEquiposJugadores);
+        vEquiposJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vEquiposJugadores.pack();
+        vEquiposJugadores.setLocationRelativeTo(null);
+        vEquiposJugadores.setVisible(true);
+    } */
+
 
     public static void validarUsuario(String nombre, String password) throws Exception {
-        usuario = Modelo.ClaseObjetos.TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
+        usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null){
             if (usuario.getAdmin().toString().equalsIgnoreCase("S")) Main.crearVentanaPrincipal("S");
             else Main.crearVentanaPrincipal("N");
@@ -123,23 +243,57 @@ public class Main {
     public static void buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
-        ArrayList<Jornada> listaJornadas = TJornadas.buscarPorTemporada(jornada);
-        crearPanelesJornadas(listaJornadas);
+        listaJornadas = TJornadas.buscarPorTemporada(jornada);
+
+        posicion = listaJornadas.size() -1;
     }
 
-    public static void crearPanelesJornadas(ArrayList<Jornada> listaJornadas){
+    public static JPanel crearPanelesJornadas() throws Exception {
         JLabel labelTitulo = new JLabel();
         JPanel panelPartido;
         JPanel panelContenedor = new JPanel(new GridLayout(7, 1));
-        for (int x = 0; x < listaJornadas.size(); x++) {
-            labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(x).getNumJornada()));
-            for (int y = 0; y < listaJornadas.get(x).getListaPartidos().size(); y++) {
-                panelPartido = new JPanel(new GridLayout(1, 3));
-                panelPartido.add(new JLabel(TPartidosLocales.buscarPorPartido()));
-            }
+
+        labelTitulo.setText("JORNADA " + String.valueOf(listaJornadas.get(posicion).getNumJornada()));
+        labelTitulo.setHorizontalAlignment(SwingConstants.LEFT);
+        labelTitulo.setFont(new Font("Arial",1, 19));
+
+        panelContenedor.add(labelTitulo);
+        for (int y = 0; y < listaJornadas.get(posicion).getListaPartidos().size(); y++) {
+            panelPartido = new JPanel(new GridLayout(1, 3));
+
+            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(posicion).getListaPartidos().get(y)));
+
+            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(posicion).getListaPartidos().get(y)));
+
+            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre(), SwingConstants.CENTER));
+
+            panelContenedor.add(panelPartido);
         }
+        return panelContenedor;
     }
 
+    public static void crearVentanaPrueba() throws Exception {
+        JFrame frame = new JFrame("vLogin");
+        frame.setContentPane(crearPanelesClasificacion());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    public static ArrayList<String> rellenarComboJornadas(){
+        ArrayList<String> itemsCombo = new ArrayList<>();
+        listaJornadas.forEach(item -> itemsCombo.add("Jornada " + item.getNumJornada()));
+        return itemsCombo;
+    }
+
+    public static void actualizarPosicion(int cBoxPosicion){
+        posicion = cBoxPosicion;
+    }
+
+    public static void actualizarVPartidos(){
+        SwingUtilities.updateComponentTreeUI(vPartidos);
+    }
     public static String buscarNombre() {
         return usuario.getUsername();
     }
@@ -147,11 +301,360 @@ public class Main {
     public static String buscarAdmin() {
         return usuario.getAdmin().toString();
     }
+    public static String buscarCorreo(){
+        return usuario.getEmail();
+    }
 
     public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
-        // Insertar
         usuario = new Usuario(username, email, password, admin);
-        // .add
-        Modelo.ClaseObjetos.TUsuarios.insert(usuario);
+        TUsuarios.insert(usuario);
+    }
+    public static void updateUsuario(String username, String email) throws Exception {
+        usuario = TUsuarios.buscarPorUsername(new Usuario(username));
+        usuario.setEmail(email);
+        TUsuarios.update(usuario);
+    }
+
+    public static void updateUsuarioPass(String username, String password) throws Exception {
+        usuario = TUsuarios.buscarPorUsername(new Usuario(username));
+        usuario.setPassword(password);
+        TUsuarios.update(usuario);
+    }
+
+    public static String getPassAdm() throws Exception {
+        Usuario usuarioAdm = TUsuarios.buscarPorUsername(new Usuario("ADMIN"));
+        return usuarioAdm.getPassword();
+    }
+
+    public static String getPassUser(String usuario) throws Exception {
+        Usuario user = TUsuarios.buscarPorUsername(new Usuario(usuario));
+        return user.getPassword();
+    }
+
+    public static void buscarClasificacion() throws Exception {
+        ArrayList<Object> listaArrays = TTemporadas.buscarClasificacion();
+        listaEquipos = (ArrayList<Equipo>) listaArrays.get(0);
+        listaVictorias = (ArrayList<Integer>) listaArrays.get(1);
+        listaDerrotas = (ArrayList<Integer>) listaArrays.get(2);
+        listaPosicion = (ArrayList<Integer>) listaArrays.get(3);
+    }
+
+    public static JPanel crearPanelesClasificacion(){
+        GridLayout gridLayout = new GridLayout();
+        gridLayout.setColumns(1);
+        gridLayout.setRows(listaDerrotas.size() +1 );
+        JPanel panelContenedor = new JPanel(gridLayout);
+        JLabel label = new JLabel("CLASIFICACION KING'S LEAGUE", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", 1, 24));
+        panelContenedor.add(label);
+        for (int x = 0; x < listaEquipos.size(); x++) {
+            JPanel panelPosicion = new JPanel(new GridLayout(1,4));
+            panelPosicion.add(new JLabel(listaPosicion.get(x).toString()));
+            panelPosicion.add(new JLabel(listaEquipos.get(x).getNombre()));
+            panelPosicion.add(new JLabel(listaVictorias.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaDerrotas.get(x).toString(), SwingConstants.CENTER));
+            panelContenedor.add(panelPosicion);
+        }
+        return panelContenedor;
+    }
+
+    public static void buscarEquipos() throws Exception {
+        listaEquipos = TEquipo.buscarTodos();
+    }
+
+    public static ArrayList<String> getNombreEquipos(){
+        ArrayList<String> listaNombres = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaNombres.add(equipo.getNombre()));
+        return listaNombres;
+    }
+
+    public static ArrayList<URL> getURLImagen(){
+        ArrayList<URL> listaURL = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaURL.add(equipo.getUrl()));
+        return listaURL;
+    }
+
+    public static ArrayList<String> getColores(){
+        ArrayList<String> listaColores = new ArrayList<>();
+        listaEquipos.forEach(equipo -> listaColores.add(equipo.getColor()));
+        return listaColores;
+    }
+
+    public static void insertJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
+        jugador = new Jugador();
+        jugador.setNombre(nombre);
+        jugador.setApellido(apellido);
+        jugador.setDNI(DNI);
+        jugador.setPosicion(Jugador.tPosicion.valueOf(posicion));
+        jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
+        tJugadores.insert(jugador);
+    }
+    public static void crearVentanaInsertJugador(String admin) {
+        dInsertarJugadores  = new dInsertJugadores();
+        dInsertarJugadores.pack();
+        dInsertarJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarJugadores(String admin) {
+        dBorrarJugadores  = new dBorrarJugadores();
+        dBorrarJugadores.pack();
+        dBorrarJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarJugadores(String admin) {
+        dUpdatearJugadores  = new dActualizarJugadores();
+        dUpdatearJugadores.pack();
+        dUpdatearJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarjugadores(String admin) {
+        dBuscarJugadores  = new dBuscarJugadores();
+        dBuscarJugadores.pack();
+        dBuscarJugadores.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertEquipo(String admin) {
+        dInsertarEquipo  = new dInsertarEquipo();
+        dInsertarEquipo.pack();
+        dInsertarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarEquipo(String admin) {
+        dBorrarEquipo  = new dBorrarEquipo();
+        dBorrarEquipo.pack();
+        dBorrarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaUpdateEquipo(String admin) {
+        dActualizarEquipo  = new dActualizarEquipo();
+        dActualizarEquipo.pack();
+        dActualizarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarEquipo(String admin) {
+        dBuscarEquipo = new dBuscarEquipo();
+        dBuscarEquipo.pack();
+        dBuscarEquipo.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertJornada (String admin) {
+        dInsertarJornada  = new dInsertarJornada();
+        dInsertarJornada.pack();
+        dInsertarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarJornada (String admin) {
+        dBorrarJornada  = new dBorrarJornada();
+        dBorrarJornada.pack();
+        dBorrarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaUpdateJornada (String admin) {
+        dActualizarJornada  = new dActualizarJornada();
+        dActualizarJornada.pack();
+        dActualizarJornada.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarJornada (String admin) {
+        dBuscarJornada  = new dBuscarJornada();
+        dBuscarJornada.pack();
+        dBuscarJornada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertarPresidente (String admin) {
+        dInsertarPresidentes  = new dInsertarPresidente();
+        dInsertarPresidentes.pack();
+        dInsertarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarPresidente (String admin) {
+        dBorrarPresidentes = new dBorrarPresidente();
+        dBorrarPresidentes.pack();
+        dBorrarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaActualizarPresidente (String admin) {
+        dActualizarPresidentes = new dActualizarPresidente();
+        dActualizarPresidentes.pack();
+        dActualizarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarPresidente (String admin) {
+        dBuscarPresidentes = new dBuscarPresidente();
+        dBuscarPresidentes.pack();
+        dBuscarPresidentes.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertStaff (String admin) {
+        dInsertarStaff  = new dInsertarStaff();
+        dInsertarStaff.pack();
+        dInsertarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBorrarStaff (String admin) {
+        dBorrarStaff  = new dBorrarStaff();
+        dBorrarStaff.pack();
+        dBorrarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaActualizarStaff(String admin) {
+        dActualizarStaff  = new dActualizarStaff();
+        dActualizarStaff.pack();
+        dActualizarStaff.setVisible(true);
+        System.exit(0);
+    }
+    public static void crearVentanaBuscarStaff (String admin) {
+        dBuscarStaff  = new dBuscarStaff();
+        dBuscarStaff.pack();
+        dBuscarStaff.setVisible(true);
+        System.exit(0);
+    }
+
+
+    public static void crearVentanaInsertTemporada(String admin) {
+        dInsertarTemporada  = new dInsertarTemporada();
+        dInsertarTemporada.pack();
+        dInsertarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarTemporada(String admin) {
+        dBorrarTemporada  = new dBorrarTemporada();
+        dBorrarTemporada.pack();
+        dBorrarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarTemporada(String admin) {
+        dActualizarTemporada  = new dActualizarTemporada();
+        dActualizarTemporada.pack();
+        dActualizarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarTemporada(String admin) {
+        dBuscarTemporada  = new dBuscarTemporada();
+        dBuscarTemporada.pack();
+        dBuscarTemporada.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaInsertUsuario(String admin) {
+        dInsertarUsuario  = new dInsertarUsuario();
+        dInsertarUsuario.pack();
+        dInsertarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBorrarUsuario(String admin) {
+        dBorrarUsuario  = new dBorrarUsuario();
+        dBorrarUsuario.pack();
+        dBorrarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaActualizarUsuario(String admin) {
+        dActualizarUsuario  = new dActualizarUsuario();
+        dActualizarUsuario.pack();
+        dActualizarUsuario.setVisible(true);
+        System.exit(0);
+    }
+
+    public static void crearVentanaBuscarUsuarios(String admin) {
+        dBuscarUsuarios = new dBuscarUsuarios();
+        dBuscarUsuarios.pack();
+        dBuscarUsuarios.setVisible(true);
+        System.exit(0);
+    }
+
+    public static int borrarJugador(String DNI) throws Exception {
+        jugador = new Jugador();
+        jugador.setDNI(DNI);
+        return tJugadores.delete(jugador);
+    }
+
+    public static void actualizarJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
+        jugador = new Jugador();
+        jugador.setNombre(nombre);
+        jugador.setApellido(apellido);
+        jugador.setDNI(DNI);
+        jugador.setPosicion(Jugador.tPosicion.valueOf(posicion));
+        jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
+        tJugadores.update(jugador);
+    }
+
+    public static String buscarTodosJugadores() throws Exception {
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+                datos += "ID_JUGADOR" + listaJugadores.get(x).getID() + "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                        + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+    public static String buscarTodosLosJugadorPorID(String id_jugador) throws Exception {
+        jugador = new Jugador();
+        jugador.setID(Integer.parseInt(id_jugador));
+        String datos = "";
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorID(jugador);
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+
+    public static String buscarTodosLosJugadorPorDNI(String dni) throws Exception {
+        jugador = new Jugador();
+        jugador.setDNI(dni);
+        String datos = "";
+        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorDNI(jugador);
+        for (int x = 0 ; x < listaJugadores.size();x++) {
+            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+        }
+        return datos;
+    }
+
+
+    public static void insertarJornada(int id_temporada, int num_jornada, String fecha) throws Exception {
+        Jornada jornada = new Jornada(num_jornada,LocalDate.parse(fecha));
+        jornada.setFecha(LocalDate.parse(fecha));
+        Temporada temporada = TTemporadas.buscarPorID(new Temporada(id_temporada));
+        jornada.setTemporada(temporada);
+        TJornadas.insert(jornada);
+    }
+
+    public static int borrarJornada(int id_jornada) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setID(id_jornada);
+        return TJornadas.delete(jornada);
+    }
+
+    public static void actualizarJornada(int id_temporada, int num_jornada, String fecha) throws SQLException {
+        Jornada jornada = new Jornada();
+        jornada.setTemporada(new Temporada(id_temporada));
+        jornada.setNumJornada(num_jornada);
+        jornada.setFecha(LocalDate.parse(fecha));
+        TJornadas.update(jornada);
+    }
+
+    public static String buscarTodasLasJornadas() throws Exception {
+        ArrayList<Jornada> listaJornadas = TJornadas.buscarTodo();
+        String datos = "";
+        for (int x = 0 ; x < listaJornadas.size();x++) {
+            datos += "ID_JORNADA" + listaJornadas.get(x).getID() + "\n Temporada: " + listaJornadas.get(x).getTemporada().getID() + "\n nºJornada" + listaJornadas.get(x).getNumJornada() + "\n Fecha: " + listaJornadas.get(x).getFecha();
+        }
+        return datos;
     }
 }
