@@ -14,6 +14,7 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
         V_NUM_ENFRENTADOS NUMBER;
         V_ID_TEMPORADA NUMBER;
         V_NUM_PARTIDOS NUMBER;
+        V_ID_PARTIDO_MAX NUMBER;
     BEGIN
         -- CREAR LA NUEVA TEMPORADA
         INSERT INTO TEMPORADAS(FECHA_INICIO, FECHA_FIN, PERIODO, ESTADO)
@@ -49,100 +50,44 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
                 
                 IF EQUIPO_LOCAL.ID_EQUIPO <> EQUIPO_VISITANTE.ID_EQUIPO THEN
                     
-                    /*
-                    SELECT NVL(COUNT(*), 0) INTO V_CONTADOR
-                    FROM PARTIDOS_LOCALES PL, PARTIDOS_VISITANTES PV
-                    WHERE PL.ID_EQUIPO --= EQUIPO_LOCAL.ID_EQUIPO
-                        IN (EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO)
-                    AND PV.ID_EQUIPO --= EQUIPO_LOCAL.ID_EQUIPO
-                        IN (EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO)
-                    AND PL.ID_PARTIDO = PV.ID_PARTIDO;
-                    
-                    SELECT COUNT(*) INTO V_CONTADOR
-                    FROM PARTIDOS
-                    WHERE (ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_LOCALES WHERE ID_EQUIPO IN (EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO))
-                    OR ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_VISITANTES WHERE ID_EQUIPO IN(EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO)))
-                    AND ID_JORNADA = V_ID_JORNADA /*--(SELECT ID_JORNADA FROM TEMPORADAS WHERE ID_TEMPORADA = V_ID_TEMPORADA);
-                    */
-                    /*
-                    SELECT COUNT(ID_PARTIDO) INTO V_CONTADOR
-                    FROM PARTIDOS
-                    WHERE (ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_LOCALES WHERE ID_EQUIPO IN (EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO))
-                    OR ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_VISITANTES WHERE ID_EQUIPO IN(EQUIPO_LOCAL.ID_EQUIPO, EQUIPO_VISITANTE.ID_EQUIPO)))
-                    AND ID_JORNADA IN (SELECT ID_JORNADA FROM TEMPORADAS WHERE ID_TEMPORADA = V_ID_TEMPORADA);*/
-                    
                     SELECT COUNT(P.ID_PARTIDO) INTO V_CONTADOR
                     FROM PARTIDOS P
                     WHERE (P.ID_PARTIDO IN (SELECT ID_PARTIDO 
-                                            FROM PARTIDOS_LOCALES 
-                                            WHERE ID_EQUIPO = EQUIPO_LOCAL.ID_EQUIPO 
-                                            AND ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_VISITANTES WHERE ID_EQUIPO = EQUIPO_VISITANTE.ID_EQUIPO))
+                                            FROM PARTIDOS 
+                                            WHERE ID_EQUIPO_LOCAL = EQUIPO_LOCAL.ID_EQUIPO 
+                                            AND ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS WHERE ID_EQUIPO_VISITANTE = EQUIPO_VISITANTE.ID_EQUIPO))
                     OR P.ID_PARTIDO IN (SELECT ID_PARTIDO 
-                                        FROM PARTIDOS_VISITANTES 
-                                        WHERE ID_EQUIPO = EQUIPO_LOCAL.ID_EQUIPO 
-                                        AND ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS_LOCALES WHERE ID_EQUIPO = EQUIPO_VISITANTE.ID_EQUIPO)))
+                                        FROM PARTIDOS 
+                                        WHERE ID_EQUIPO_VISITANTE = EQUIPO_LOCAL.ID_EQUIPO 
+                                        AND ID_PARTIDO IN (SELECT ID_PARTIDO FROM PARTIDOS WHERE ID_EQUIPO_LOCAL = EQUIPO_VISITANTE.ID_EQUIPO)))
                     AND p.id_jornada IN (SELECT ID_JORNADA FROM JORNADAS WHERE ID_TEMPORADA = (SELECT MAX(ID_TEMPORADA) FROM TEMPORADAS));
 
                     IF V_CONTADOR = 0 /*AND V_EQ1_JOR = 0 AND V_EQ2_JOR = 0*/ THEN
                         V_ID_EQUIPO_LOCAL := EQUIPO_LOCAL.ID_EQUIPO;
                         V_ID_EQUIPO_VISITANTE := EQUIPO_VISITANTE.ID_EQUIPO;
 
-                        INSERT INTO PARTIDOS (TIPO_PARTIDO, HORA, ID_JORNADA) VALUES
-                        ('FR', V_HORA_PARTIDO,V_ID_JORNADA);
+                        INSERT INTO PARTIDOS (TIPO_PARTIDO, HORA, ID_JORNADA, ID_EQUIPO_LOCAL, ID_EQUIPO_VISITANTE, GOLES_LOCAL, GOLES_VISITANTE) 
+                        VALUES ('FR', V_HORA_PARTIDO,V_ID_JORNADA, V_ID_EQUIPO_LOCAL, V_ID_EQUIPO_VISITANTE, NULL, NULL);
                         
-                        SELECT ID_PARTIDO INTO V_ID_PARTIDO FROM PARTIDOS WHERE ROWNUM = 1 ORDER BY ID_PARTIDO DESC;
-
-                        INSERT INTO PARTIDOS_LOCALES(ID_EQUIPO, ID_PARTIDO) VALUES 
-                        (V_ID_EQUIPO_LOCAL, V_ID_PARTIDO);
-
-                        INSERT INTO PARTIDOS_VISITANTES(ID_EQUIPO, ID_PARTIDO) VALUES 
-                        (V_ID_EQUIPO_VISITANTE, V_ID_PARTIDO);
-                        
-                        V_NUM_ENFRENTADOS := V_NUM_ENFRENTADOS - 1;
-                        --DBMS_OUTPUT.PUT_LINE(V_NUM_ENFRENTADOS);
-                        
-                        IF V_NUM_ENFRENTADOS = 0 THEN
-                            V_ID_JORNADA := V_ID_JORNADA + 1;
-                            V_NUM_ENFRENTADOS := 1;
+                        V_ID_JORNADA := V_ID_JORNADA + 1;
                             
-                        END IF;
                     END IF;
                 END IF;
             END LOOP;
-            
-            /* SECCION PARA CAMBIAR HORA NO FUNCIONA
-            SELECT ID_TEMPORADA INTO V_ID_TEMPORADA 
-            FROM TEMPORADAS 
-            WHERE ROWNUM = 1
-            ORDER BY ID_TEMPORADA DESC;
-            
-            SELECT MIN(ID_JORNADA) INTO V_ID_JORNADA 
-            FROM JORNADAS
-            WHERE ID_TEMPORADA = V_ID_TEMPORADA;
-            
-            SELECT MIN(ID_PARTIDO) INTO V_ID_PARTIDO
-            FROM PARTIDOS
-            WHERE ID_JORNADA = V_ID_JORNADA;
-            
-            FOR i IN 1..11 LOOP
-                FOR j IN 1..6 LOOP
-                    UPDATE PARTIDOS
-                    SET HORA = V_HORA_PARTIDO
-                    WHERE ID_PARTIDO = V_ID_PARTIDO
-                    AND ID_JORNADA = V_ID_JORNADA;
-                    
-                    IF V_ID_PARTIDO = 1 THEN
-                        V_ID_PARTIDO := V_ID_PARTIDO +11;
-                    ELSE 
-                        V_ID_PARTIDO := V_ID_PARTIDO + 12;
-                    END IF;
-                    
-                    V_HORA_PARTIDO := to_char(TO_DATE(V_HORA_PARTIDO, 'HH24:MI') + (1/24), 'HH24:MI');
-                END LOOP;
-                V_HORA_PARTIDO := '17:00';
-            END LOOP;*/
-            
         END LOOP;    
+
+        SELECT MIN(ID_PARTIDO) INTO V_ID_PARTIDO
+        FROM PARTIDOS
+        WHERE ID_JORNADA IN (SELECT ID_JORNADA FROM JORNADAS WHERE ID_TEMPORADA = V_ID_TEMPORADA);
+        
+        V_ID_PARTIDO_MAX := V_ID_PARTIDO + 65;
+        
+        FOR i IN V_ID_PARTIDO..V_ID_PARTIDO_MAX LOOP
+            UPDATE PARTIDOS
+            SET ID_JORNADA = 14 + MOD((i - 1), 11) + 1
+            WHERE ID_PARTIDO = i;
+        END LOOP;
+        COMMIT;
     END GENERAR_CALENDARIO;
 
     PROCEDURE VER_ENFRENTAMIENTOS
@@ -151,10 +96,9 @@ create or replace PACKAGE BODY KL_CALENDARIO AS
     BEGIN
         OPEN C_CURSOR FOR
                 SELECT P.ID_PARTIDO, EL.NOMBRE AS LOCAL, EV.NOMBRE AS VISITANTE, P.ID_JORNADA, P.HORA
-                FROM PARTIDOS P, PARTIDOS_LOCALES PL, PARTIDOS_VISITANTES PV, EQUIPOS EL, EQUIPOS EV
-                WHERE P.ID_PARTIDO = PL.ID_PARTIDO AND P.ID_PARTIDO = PV.ID_PARTIDO
-                AND PL.ID_EQUIPO = EL.ID_EQUIPO AND PV.ID_EQUIPO = EV.ID_EQUIPO
+                FROM PARTIDOS P, EQUIPOS EL, EQUIPOS EV
+                WHERE P.ID_EQUIPO_LOCAL = EL.ID_EQUIPO AND P.ID_EQUIPO_VISITANTE = EV.ID_EQUIPO
                 AND P.ID_JORNADA IN (SELECT ID_JORNADA FROM JORNADAS WHERE ID_TEMPORADA = (SELECT max(id_temporada) from temporadas))
-                GROUP BY P.ID_PARTIDO, EL.NOMBRE, EV.NOMBRE, P.ID_JORNADA, P.HORA;
+                ORDER BY P.ID_JORNADA, P.ID_PARTIDO;
     END VER_ENFRENTAMIENTOS;
 END KL_CALENDARIO;
