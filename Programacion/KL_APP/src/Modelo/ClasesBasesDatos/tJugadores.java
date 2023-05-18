@@ -4,6 +4,7 @@ import Modelo.ClasesObjetos.Jugador;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class tJugadores {
@@ -115,5 +116,31 @@ public class tJugadores {
         }
         BaseDato.cerrarConexion();
         return jugador2;
+    }
+
+    public static ArrayList<Jugador> buscarPorEquipo(int numEquipo) throws SQLException {
+        BaseDato.abrirConexion();
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where id_jugador in " +
+                "(select id_jugador from equipos_jugadores where id_equipo = ?)");
+        ps.setString(1, String.valueOf(numEquipo));
+        ResultSet result = ps.executeQuery();
+        while (result.next()){
+            Jugador.tPosicion tPosicion = null;
+            switch (result.getString("posicion")){
+                case "DC" -> tPosicion = Jugador.tPosicion.DC;
+                case "DF" -> tPosicion = Jugador.tPosicion.DF;
+                case "P" -> tPosicion = Jugador.tPosicion.P;
+                case "MC" -> tPosicion = Jugador.tPosicion.MC;
+            }
+            Jugador.tTipoJugador tTipoJugador = null;
+            switch (result.getString("tipo_jugador")){
+                case "HABITUAL" -> tTipoJugador = Jugador.tTipoJugador.HABITUAL;
+                case "WILDCARD" -> tTipoJugador = Jugador.tTipoJugador.WILDCARD;
+            }
+            Jugador jugador = new Jugador(result.getString("nombre"), result.getString("apellido"), tPosicion, tTipoJugador);
+            listaJugadores.add(jugador);
+        }
+        return listaJugadores;
     }
 }
