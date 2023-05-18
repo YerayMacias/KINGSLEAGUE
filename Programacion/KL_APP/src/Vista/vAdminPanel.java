@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.StringTokenizer;
 
 public class vAdminPanel {
     private JLabel lNombre;
@@ -24,8 +23,6 @@ public class vAdminPanel {
     private JPanel pPrincipal;
     private JButton bInsert;
     private JButton bDelete;
-    private JButton bBuscarDNI;
-    private JButton bBuscarPorID;
     private JButton bInsertE;
     private JButton bDeleteE;
     private JButton bBuscarPorIDE;

@@ -1,5 +1,7 @@
 package Vista.CRUDJornada;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -11,8 +13,14 @@ public class dBuscarJornada extends JDialog {
     private JComboBox cbFecha;
     private JComboBox cbID;
     private JComboBox cbTemporada;
+    private JTextArea taCJT;
+    private JPanel pTodos;
+    private JTextArea taFecha;
+    private JTextArea taID;
+    private JTextArea taTemporada;
 
     public dBuscarJornada() {
+        inicializar();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -61,16 +69,41 @@ public class dBuscarJornada extends JDialog {
 
             }
         });
+        consultarTodosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String datos = null;
+
+                try {
+                    datos = Main.buscarTodasLasJornadas();
+                    taCJT.setText(datos);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {
         // add your code here
-        dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
+    }
+
+    private void inicializar() {
+
+        taCJT.setEditable(false);
+        taFecha.setEditable(false);
+        taTemporada.setEditable(false);
+        taID.setEditable(false);
+
+        pTodos.add(new JScrollPane(taCJT));
+        taCJT.setRows(20);
+        taCJT.setColumns(40);
+        taCJT.setLineWrap(true);
     }
 
     public static void main(String[] args) {

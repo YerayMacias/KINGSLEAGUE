@@ -52,7 +52,7 @@ public class TJornadas {
         Jornada jornada;
         while (resultado.next())
         {
-            jornada = new Jornada(resultado.getInt("id_jornada"), resultado.getInt("num_jornada"), resultado.getDate("fecha").toLocalDate(), TTemporadas.buscarTemporada(new Temporada(resultado.getDate("fecha_inicio").toLocalDate(), resultado.getDate("fecha_fin").toLocalDate())));
+            jornada = new Jornada(resultado.getInt("id_jornada"), resultado.getInt("num_jornada"), resultado.getDate("fecha").toLocalDate(), TTemporadas.buscarPorID(new Temporada(resultado.getInt("id_temporada"))));
             listaJornadas.add(jornada);
         }
         BaseDato.cerrarConexion();

@@ -10,24 +10,26 @@ public class dBuscarJugadores extends JDialog {
     private JButton bConsultar;
     private JComboBox cbID;
     private JComboBox cbDNI;
-    private JButton cancelarButton;
-    private JButton aceptarButton;
     private JTextArea taCTJ;
     private JTextArea taCJID;
     private JTextArea taCJDNI;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JPanel pTitulo;
+    private JPanel pTodos;
+    private JTextArea taTodos;
 
     public dBuscarJugadores() {
+        inicializar();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+             public void actionPerformed(ActionEvent e) {
+                  onOK();
+                     }
+           });
 
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -78,7 +80,7 @@ public class dBuscarJugadores extends JDialog {
                 }
             }
         });
-        cbDNI.addActionListener(new ActionListener() {
+         cbDNI.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
               try {
@@ -99,12 +101,10 @@ public class dBuscarJugadores extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 
@@ -113,5 +113,17 @@ public class dBuscarJugadores extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void inicializar() {
+
+        taCTJ.setEditable(false);
+        taCJDNI.setEditable(false);
+        taCJID.setEditable(false);
+
+        pTodos.add(new JScrollPane(taCTJ));
+        taCTJ.setRows(20);
+        taCTJ.setColumns(40);
+        taCTJ.setLineWrap(true);
     }
 }
