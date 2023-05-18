@@ -1,5 +1,6 @@
 package Modelo.ClasesBasesDatos;
 
+import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Jugador;
 
 import java.sql.PreparedStatement;
@@ -118,12 +119,12 @@ public class tJugadores {
         return jugador2;
     }
 
-    public static ArrayList<Jugador> buscarPorEquipo(int numEquipo) throws SQLException {
+    public static ArrayList<Jugador> buscarPorEquipo(Equipo equipo) throws SQLException {
         BaseDato.abrirConexion();
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where id_jugador in " +
                 "(select id_jugador from equipos_jugadores where id_equipo = ?)");
-        ps.setString(1, String.valueOf(numEquipo));
+        ps.setInt(1, equipo.getID());
         ResultSet result = ps.executeQuery();
         while (result.next()){
             Jugador.tPosicion tPosicion = null;

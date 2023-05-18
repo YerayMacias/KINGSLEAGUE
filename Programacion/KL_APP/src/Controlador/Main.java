@@ -677,8 +677,8 @@ public class Main {
         return datos;
     }
 
-    public static void crearVentanaEquipoJugadores(String equipo, int numEquipo) throws Exception {
-        datosSeleccionarJugadorEquipo(numEquipo);
+    public static void crearVentanaEquipoJugadores(String equipo) throws Exception {
+        datosSeleccionarJugadorEquipo(equipo);
         vEquipoJugadores = new JFrame("vEquipoJugadores");
         vEquipoJugadores.setContentPane(new vEquipoJugadores(equipo).getpPrincipal());
         vEquipoJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -686,8 +686,11 @@ public class Main {
         vEquipoJugadores.setVisible(true);
     }
 
-    public static void datosSeleccionarJugadorEquipo(int numEquipo) throws Exception {
-        listaJugadores = tJugadores.buscarPorEquipo(numEquipo);
+    public static void datosSeleccionarJugadorEquipo(String equipo) throws Exception {
+        Equipo equipo2 = new Equipo();
+        equipo2.setNombre(equipo);
+        Equipo equipo1 = TEquipo.buscarPorNombre(equipo2);
+        listaJugadores = tJugadores.buscarPorEquipo(equipo1);
     }
 
     public static String getNombreSelect() {
