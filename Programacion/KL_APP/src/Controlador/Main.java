@@ -731,6 +731,20 @@ public class Main {
         return listaDNIJugadores;
     }
 
+    public static ArrayList<String> crearFechaJornadas() throws Exception {
+        listaJornadas = TJornadas.buscarTodo();
+        ArrayList<String> listaFechaJornadas = new ArrayList<>();
+        listaJornadas.forEach(jornada -> listaFechaJornadas.add(String.valueOf(jornada.getFecha())));
+        return listaFechaJornadas;
+    }
+
+    public static ArrayList<String> crearIdJornada() throws Exception {
+        listaJornadas = TJornadas.buscarTodo();
+        ArrayList<String> listaJornadasID = new ArrayList<>();
+        listaJornadas.forEach(jornada -> listaJornadasID.add(String.valueOf(jornada.getID())));
+        return listaJornadasID;
+    }
+
     public static int obtenerGanador(Partido partido) {
         if (partido.getGolesLocal() > partido.getGolesVisitante()) {
             return 1;
@@ -739,4 +753,33 @@ public class Main {
         }
         return 0;
     }
+
+    public static String buscarJornadaFecha(String fecha) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setFecha(LocalDate.parse(fecha));
+        String datos = "";
+        jornada = TJornadas.buscarPorFecha(jornada);
+        datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
+        return datos;
+    }
+
+    public static String buscarJornadaID(String ID) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setID(Integer.parseInt(ID));
+        String datos = "";
+        jornada = TJornadas.buscarPorID(jornada);
+        datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
+        return datos;
+    }
+
+   /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
+        Jornada jornada = new Jornada();
+        ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
+        String datos = "";
+        for (int x = 0 ; x < listaJornadas.size();x++) {
+            datos += "ID_JUGADOR"  + listaJugadores.get(x).getID() + ":" + "\n"+ "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador() + "\n" +"\n";
+        }
+        return datos;
+    } */
 }

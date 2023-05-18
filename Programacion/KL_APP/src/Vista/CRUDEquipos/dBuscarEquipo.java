@@ -81,7 +81,7 @@ public class dBuscarEquipo extends JDialog {
                 }
             }
         }); */
-        cbID.addActionListener(new ActionListener() {
+      /*  cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -98,7 +98,7 @@ public class dBuscarEquipo extends JDialog {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
             }
-        });
+        }); */
     }
 
     private void onOK() {

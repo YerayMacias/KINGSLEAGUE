@@ -4,6 +4,7 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dBuscarJornada extends JDialog {
     private JPanel contentPane;
@@ -21,6 +22,7 @@ public class dBuscarJornada extends JDialog {
 
     public dBuscarJornada() {
         inicializar();
+        crearArrays();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -51,13 +53,13 @@ public class dBuscarJornada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-      /*  cbFecha.addActionListener(new ActionListener() {
+       cbFecha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String fecha = cbFecha.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasJornadasFecha(fecha);
+                    String datos = Main.buscarJornadaFecha(fecha);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
@@ -67,14 +69,14 @@ public class dBuscarJornada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        }); */
-     /*   cbID.addActionListener(new ActionListener() {
+        });
+      cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String id_jornada = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasJornadasID(id_jornada);
+                    String datos = Main.buscarJornadaID(id_jornada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
@@ -84,8 +86,8 @@ public class dBuscarJornada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        }); */
-       /* cbTemporada.addActionListener(new ActionListener() {
+        });
+        /*cbTemporada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -147,5 +149,18 @@ public class dBuscarJornada extends JDialog {
         System.exit(0);
     }
 
-
+    private void crearArrays() {
+        try {
+            ArrayList<String> idCBox = Main.crearFechaJornadas();
+            idCBox.forEach(fecha -> cbFecha.addItem(fecha));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+             ArrayList<String> dniCBox = Main.crearIdJornada();
+           dniCBox.forEach(id -> cbID.addItem(id));
+             } catch (Exception exc) {
+                 System.out.println("problemas");
+            }
+    }
 }
