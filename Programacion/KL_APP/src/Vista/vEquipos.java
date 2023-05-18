@@ -26,25 +26,8 @@ public class vEquipos {
     private JMenuItem miEquipo;
     private JPanel pTitulo;
     private JPanel pCombo;
-    private JPanel pEquiposGeneral;
-    private JPanel pColumnaIzq;
-    private JPanel pJijantes;
-    private JPanel pPIO;
-    private JPanel p1KFC;
     private JButton b1KFC;
-    private JPanel pSaiyans;
-    private JPanel pKuni;
-    private JPanel pPorcinos;
-    private JPanel pAniquiladores;
-    private JPanel pMostoles;
-    private JPanel pColumnaCentral;
-    private JPanel pColumnaDer;
-    private JPanel pTroncos;
-    private JPanel pRayo;
-    private JPanel pBarrio;
-    private JPanel pBuyer;
     private JPanel pPrincipal;
-    private JScrollPane spScroll;
     private JMenu mIconoPerfil;
     private JPanel pSecundario;
     private JMenuItem miPlayOffs;
@@ -61,7 +44,7 @@ public class vEquipos {
     private JButton bUltimateMostoles;
     private JButton bXbuyerTeam;
 
-    int numEquipo;
+    private String nombreEquipo;
     // private J
 
     public vEquipos(String admin) {
@@ -132,138 +115,7 @@ public class vEquipos {
             }
         });
 
-        b1KFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 1;
-                    Main.crearVentanaEquipoJugadores(b1KFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bAniquiladoresFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 2;
-                    Main.crearVentanaEquipoJugadores(bAniquiladoresFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bElBarrio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 3;
-                    Main.crearVentanaEquipoJugadores(bElBarrio.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bJijantesFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 4;
-                    Main.crearVentanaEquipoJugadores(bJijantesFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bKunisports.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 5;
-                    Main.crearVentanaEquipoJugadores(bKunisports.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bLosTroncos.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 6;
-                    Main.crearVentanaEquipoJugadores(bLosTroncos.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bPioFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 7;
-                    Main.crearVentanaEquipoJugadores(bPioFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bPorcinosFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 8;
-                    Main.crearVentanaEquipoJugadores(bPorcinosFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bRayoDeBarcelona.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 9;
-                    Main.crearVentanaEquipoJugadores(bRayoDeBarcelona.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bSaiyansFC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 10;
-                    Main.crearVentanaEquipoJugadores(bSaiyansFC.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bUltimateMostoles.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 11;
-                    Main.crearVentanaEquipoJugadores(bUltimateMostoles.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        bXbuyerTeam.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    numEquipo = 12;
-                    Main.crearVentanaEquipoJugadores(bXbuyerTeam.getText(), numEquipo);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
+
      }
 
     public JPanel getpPrincipal() {
@@ -285,7 +137,6 @@ public class vEquipos {
             lTipoUsuario.setText("Usuario");
         }
 
-        spScroll.getVerticalScrollBar().setUnitIncrement(20);
 
         miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -327,8 +178,12 @@ public class vEquipos {
             bEquipo.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String nombre = listaNombres.get(posicion);
-                    //Main.crearVentanaEquiposJugadores(nombre);
+                    nombreEquipo = listaNombres.get(posicion);
+                    try {
+                        Main.crearVentanaEquipoJugadores(nombreEquipo);
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             bEquipo.setBackground(new Color(hex(listaColores.get(x))));
