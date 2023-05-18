@@ -416,88 +416,75 @@ public class Main {
         dInsertarJugadores  = new dInsertJugadores();
         dInsertarJugadores.pack();
         dInsertarJugadores.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarJugadores(String admin) {
         dBorrarJugadores  = new dBorrarJugadores();
         dBorrarJugadores.pack();
         dBorrarJugadores.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarJugadores(String admin) {
         dUpdatearJugadores  = new dActualizarJugadores();
         dUpdatearJugadores.pack();
         dUpdatearJugadores.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarjugadores(String admin) {
         dBuscarJugadores  = new dBuscarJugadores();
         dBuscarJugadores.pack();
         dBuscarJugadores.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaInsertEquipo(String admin) {
         dInsertarEquipo  = new dInsertarEquipo();
         dInsertarEquipo.pack();
         dInsertarEquipo.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarEquipo(String admin) {
         dBorrarEquipo  = new dBorrarEquipo();
         dBorrarEquipo.pack();
         dBorrarEquipo.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaUpdateEquipo(String admin) {
         dActualizarEquipo  = new dActualizarEquipo();
         dActualizarEquipo.pack();
         dActualizarEquipo.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarEquipo(String admin) {
         dBuscarEquipo = new dBuscarEquipo();
         dBuscarEquipo.pack();
         dBuscarEquipo.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaInsertJornada (String admin) {
         dInsertarJornada  = new dInsertarJornada();
         dInsertarJornada.pack();
         dInsertarJornada.setVisible(true);
-        System.exit(0);
     }
     public static void crearVentanaBorrarJornada (String admin) {
         dBorrarJornada  = new dBorrarJornada();
         dBorrarJornada.pack();
         dBorrarJornada.setVisible(true);
-        System.exit(0);
     }
     public static void crearVentanaUpdateJornada (String admin) {
         dActualizarJornada  = new dActualizarJornada();
         dActualizarJornada.pack();
         dActualizarJornada.setVisible(true);
-        System.exit(0);
     }
     public static void crearVentanaBuscarJornada (String admin) {
         dBuscarJornada  = new dBuscarJornada();
         dBuscarJornada.pack();
         dBuscarJornada.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaInsertarPresidente (String admin) {
         dInsertarPresidentes  = new dInsertarPresidente();
         dInsertarPresidentes.pack();
         dInsertarPresidentes.setVisible(true);
-        System.exit(0);
     }
     public static void crearVentanaBorrarPresidente (String admin) {
         dBorrarPresidentes = new dBorrarPresidente();
@@ -620,8 +607,8 @@ public class Main {
         ArrayList<Jugador> listaJugadores = tJugadores.buscarTodos();
         String datos = "";
         for (int x = 0 ; x < listaJugadores.size();x++) {
-                datos += "ID_JUGADOR" + listaJugadores.get(x).getID() + "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
-                        + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
+                datos += "ID_JUGADOR"  + listaJugadores.get(x).getID() + ":" + "\n"+ "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n Apellido: " + listaJugadores.get(x).getApellido()
+                        + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador() + "\n" +"\n";
         }
         return datos;
     }
@@ -672,7 +659,7 @@ public class Main {
         ArrayList<Jornada> listaJornadas = TJornadas.buscarTodo();
         String datos = "";
         for (int x = 0 ; x < listaJornadas.size();x++) {
-            datos += "ID_JORNADA" + listaJornadas.get(x).getID() + "\n Temporada: " + listaJornadas.get(x).getTemporada().getID() + "\n nºJornada" + listaJornadas.get(x).getNumJornada() + "\n Fecha: " + listaJornadas.get(x).getFecha();
+            datos += "\n ID_JORNADA" + listaJornadas.get(x).getID() + "\n\nTemporada: " + listaJornadas.get(x).getTemporada().getID() + "\nNºJornada: " + listaJornadas.get(x).getNumJornada() + "\nFecha: " + listaJornadas.get(x).getFecha() + "\n";
         }
         return datos;
     }
