@@ -69,6 +69,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import Vista.*;
 
 /**
  * @author
@@ -758,6 +759,7 @@ public class Main {
         }
         return 0;
     }
+
 
     public static void crearDialogoInformes(String tipo){
         dInformes = new dInformes(tipo);
