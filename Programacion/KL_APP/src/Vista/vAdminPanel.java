@@ -66,6 +66,10 @@ public class vAdminPanel {
     private JButton bBuscarTodosEquipos;
     private JButton bBuscarJornadas;
 
+    public JPanel getpPrincipal() {
+        return pPrincipal;
+    }
+
     public vAdminPanel (String admin) {
         inicializar();
         if (!admin.equalsIgnoreCase("S"))
@@ -73,7 +77,8 @@ public class vAdminPanel {
         miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vAdminPanel.dispose();;
+                Main.vAdminPanel.dispose();
+                ;
                 Main.crearVentanaLogin();
             }
         });
@@ -81,7 +86,8 @@ public class vAdminPanel {
         miClasificacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vAdminPanel.dispose();;
+                Main.vAdminPanel.dispose();
+                ;
                 try {
                     Main.crearVentanaClasificacion(admin);
                 } catch (Exception ex) {
@@ -93,7 +99,8 @@ public class vAdminPanel {
         miPartidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vAdminPanel.dispose();;
+                Main.vAdminPanel.dispose();
+                ;
                 Main.crearVentanaPartidos(admin);
             }
         });
@@ -101,7 +108,8 @@ public class vAdminPanel {
         miEquipo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vAdminPanel.dispose();;
+                Main.vAdminPanel.dispose();
+                ;
                 Main.crearVentanaEquipos(admin);
             }
         });
@@ -117,11 +125,12 @@ public class vAdminPanel {
         miPerfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.vAdminPanel.dispose();;
+                Main.vAdminPanel.dispose();
+                ;
                 Main.crearVentanaPerfil(admin);
             }
         });
-        /*
+
         bInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -290,44 +299,44 @@ public class vAdminPanel {
                 Main.crearVentanaBuscarUsuarios(admin);
             }
         });
+
     }
 
 
-   public void inicializar() {
-       if (Main.buscarAdmin().equalsIgnoreCase("S")) {
-           lTipoUsuario.setText("Administrador");
-       } else {
-           lTipoUsuario.setText("Usuario");
-       }
+        public void inicializar(){
+            if (Main.buscarAdmin().equalsIgnoreCase("S")) {
+                lTipoUsuario.setText("Administrador");
+            } else {
+                lTipoUsuario.setText("Usuario");
+            }
 
-       miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-       miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
-   }
+            miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miBaseDatos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            mIconoPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
 
-    public void ocultarCosasAdmin(){
-        miPanel.setVisible(false);
-        miBaseDatos.setVisible(false);
-        miUsuarios.setVisible(false);
+        public void ocultarCosasAdmin () {
+            miPanel.setVisible(false);
+            miBaseDatos.setVisible(false);
+            miUsuarios.setVisible(false);
+        }
+
+
+
+
+        public void setpPrincipal (JPanel pPrincipal){
+            this.pPrincipal = pPrincipal;
+        }
+
+        private void createUIComponents () {
+            // TODO: place custom component creation code here
+        }
     }
 
-
-    public JPanel getpPrincipal() {
-        return pPrincipal;
-    }
-
-    public void setpPrincipal(JPanel pPrincipal) {
-        this.pPrincipal = pPrincipal;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
-}

@@ -5,13 +5,10 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-<<<<<<< HEAD:Programacion/KL_APP/src/Vista/CRUDJugadores/dBorrarJugadores.java
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-=======
 import Controlador.*;
->>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46:Programacion/KL_APP/src/Vista/dBorrarJugadores.java
 public class dBorrarJugadores extends JDialog {
     private JPanel contentPane;
     private JButton bBorrar;
@@ -52,7 +49,6 @@ public class dBorrarJugadores extends JDialog {
         bBorrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD:Programacion/KL_APP/src/Vista/CRUDJugadores/dBorrarJugadores.java
                 Pattern pat = Pattern.compile("[0-9]{8}[A-Za-z]");
                 Matcher mat = pat.matcher(tfDNI.getText());
                 if (!mat.matches()) {
@@ -67,13 +63,11 @@ public class dBorrarJugadores extends JDialog {
                         throw new RuntimeException(ex);
                     }
                 }
-=======
 
                 //Main.borrarJugador(tfDNI.getText());
 
                 // Main.borrarJugador(tfDNI.getText());
 
->>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46:Programacion/KL_APP/src/Vista/dBorrarJugadores.java
             }
         });
     }
