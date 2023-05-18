@@ -48,7 +48,6 @@ public class vAdminPanel {
     private JButton bDeleteU;
     private JButton bUpdateU;
     private JButton bBuscarTodosu;
-    private JButton bBuscarPorUsuario;
     private JButton bUpdateJ;
     private JButton updateButton;
     private JButton bBuscarTodosJ;

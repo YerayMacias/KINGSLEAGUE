@@ -113,6 +113,7 @@ public class Main {
     public static ArrayList<Integer> listaPosicion;
 
     private static ArrayList<Jugador> listaJugadores;
+    private static ArrayList<Usuario> listaUsuarios;
     private static int numJugador;
 
     private static int posicion;
@@ -745,6 +746,13 @@ public class Main {
         return listaJornadasID;
     }
 
+    public static ArrayList<String> crearUsuarios() throws Exception {
+        listaUsuarios = TUsuarios.buscarTodo();
+        ArrayList<String> listaUsuariosUser = new ArrayList<>();
+        listaUsuarios.forEach(user -> listaUsuariosUser.add(user.getUsername()));
+        return listaUsuariosUser;
+    }
+
     public static int obtenerGanador(Partido partido) {
         if (partido.getGolesLocal() > partido.getGolesVisitante()) {
             return 1;
@@ -769,6 +777,53 @@ public class Main {
         String datos = "";
         jornada = TJornadas.buscarPorID(jornada);
         datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
+        return datos;
+    }
+
+    public static void insertarUsuario(String id_usuario, String email, String username, String password,String tipo_usuario) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setID(Integer.parseInt(id_usuario));
+        usuario.setEmail(email);
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
+        TUsuarios.insert(usuario);
+
+    }
+
+    public static void actualizarUsuario(String id_usuario, String email, String username, String password,String tipo_usuario) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setID(Integer.parseInt(id_usuario));
+        usuario.setEmail(email);
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
+        TUsuarios.update(usuario);
+    }
+
+    public static int borrarUsuario(String username) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+        return TUsuarios.delete(usuario);
+    }
+
+    public static String buscarTodosUsuarios() throws Exception {
+        ArrayList<Usuario> listaUsuarios = TUsuarios.buscarTodo();
+        String datos = "";
+        for (int x = 0 ; x < listaUsuarios.size();x++) {
+            datos += "\n ID_USUARIO" + listaUsuarios.get(x).getID() + "\n\nUsername: " + listaUsuarios.get(x).getUsername()+ "\nEmail: " + listaUsuarios.get(x).getEmail() + "\nPassword: " + listaUsuarios.get(x).getPassword()
+                    + "\n ADMIN" + listaUsuarios.get(x).getAdmin();
+        }
+        return datos;
+    }
+
+    public static String buscarTodosUsuariosPorUser(String user) throws Exception {
+        Usuario username = new Usuario();
+        username.setUsername(user);
+        String datos = "";
+        username = TUsuarios.buscarPorUsername(username);
+        datos += "ID_USUARIO" + username.getID() + "\n EMAIL: " + usuario.getEmail() + "\n Usuario" + username.getUsername() + "\n Password: " + usuario.getPassword()
+        + "\n USERNAME" + username.getUsername() + "\n ADMIN" + username.getAdmin();
         return datos;
     }
 
