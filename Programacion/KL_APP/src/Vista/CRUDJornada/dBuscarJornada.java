@@ -54,19 +54,52 @@ public class dBuscarJornada extends JDialog {
         cbFecha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    String fecha = cbFecha.getSelectedItem().toString();
 
+                    String datos = Main.buscarTodasLasJornadasFecha(fecha);
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion de la Jornada");
+                    } else {
+                        taFecha.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    String id_jornada = cbID.getSelectedItem().toString();
 
+                    String datos = Main.buscarTodasLasJornadasID(id_jornada);
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion de la Jornada");
+                    } else {
+                        taID.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         cbTemporada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    String temporada = cbID.getSelectedItem().toString();
 
+                    String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion de la Jornada");
+                    } else {
+                        taTemporada.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         consultarTodosButton.addActionListener(new ActionListener() {
@@ -104,6 +137,7 @@ public class dBuscarJornada extends JDialog {
         taCJT.setRows(20);
         taCJT.setColumns(40);
         taCJT.setLineWrap(true);
+
     }
 
     public static void main(String[] args) {
@@ -112,4 +146,6 @@ public class dBuscarJornada extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
+
 }
