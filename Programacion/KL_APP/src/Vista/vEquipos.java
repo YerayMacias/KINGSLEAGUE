@@ -24,14 +24,14 @@ public class vEquipos {
     private JMenuItem miClasificacion;
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
-    private JPanel pTitulo;
-    private JPanel pCombo;
     private JButton b1KFC;
     private JPanel pPrincipal;
     private JMenu mIconoPerfil;
     private JPanel pSecundario;
     private JMenuItem miPlayOffs;
     private JMenuItem miPrincipal;
+    private JPanel pTitulo;
+    private JPanel pCombo;
     private JButton bAniquiladoresFC;
     private JButton bElBarrio;
     private JButton bJijantesFC;
