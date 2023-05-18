@@ -127,4 +127,26 @@ public class TPartido {
         return partido;
     }
 
+    public static Partido buscarSemis(Partido partido) throws Exception {
+        BaseDato.abrirConexion();
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOS WHERE ID_JORNADA = 12 AND ID_EQUIPO_LOCAL = ? AND ID_EQUIPO_VISITANTE = ?");
+        ps.setInt(1, partido.getLocal().getID());
+        ps.setInt(2, partido.getVisitante().getID());
+        ResultSet result = ps.executeQuery();
+        Partido.tPartido tPartido;
+        if (result.next()){
+            if (result.getString("tipo_partido").equalsIgnoreCase("PO")) tPartido = Partido.tPartido.FR;
+            else tPartido = Partido.tPartido.PO;
+            partido = new Partido(result.getInt("id_partido"),
+                    tPartido,result.getString("hora"),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_local"))),
+                    TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo_visitante"))),
+                    result.getInt("goles_local"),
+                    result.getInt("goles_visitante"),
+                    TJornadas.buscarPorID(new Jornada(result.getInt("id_jornada")))
+            );
+        }
+        BaseDato.cerrarConexion();
+        return partido;
+    }
 }
