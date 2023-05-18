@@ -424,6 +424,7 @@ public class Main {
         jugador.setTipoJugador(Jugador.tTipoJugador.valueOf(tipoJugador));
         tJugadores.insert(jugador);
     }
+<<<<<<< Updated upstream
     public static void crearVentanaInsertJugador(String admin) {
         dInsertarJugadores  = new dInsertJugadores();
         dInsertarJugadores.pack();
@@ -692,4 +693,6 @@ public class Main {
         }
         return datos;
     }
+=======
+>>>>>>> Stashed changes
 }
