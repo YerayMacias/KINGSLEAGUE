@@ -5,26 +5,16 @@ import Modelo.ClasesBasesDatos.*;
 import Modelo.ClasesObjetos.*;
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Modelo.ClasesObjetos.TPartido;
-import Modelo.ClasesBaseDato.Equipo;
-import Modelo.ClasesBaseDato.Jornada;
-import Modelo.ClasesBaseDato.Partido;
-import Modelo.ClasesBaseDato.Usuario;
-=======
-import Modelo.ClaseObjetos.TJornadas;
-import Modelo.ClaseObjetos.TPartido;
-import Modelo.ClaseObjetos.TTemporadas;
-import Modelo.ClaseObjetos.TUsuarios;
-import Modelo.ClasesBaseDato.*;
-<<<<<<< Updated upstream
->>>>>>> main
-=======
->>>>>>> 5920cd717d97038b2ac5422708e55a3363e132f7
->>>>>>> Stashed changes
-=======
->>>>>>> 0a24ff05a5b0b008950a6ec80b9af14e366a6352
+import Modelo.ClasesBasesDatos.TPartido;
+import Modelo.ClasesObjetos.Equipo;
+import Modelo.ClasesObjetos.Jornada;
+import Modelo.ClasesObjetos.Partido;
+import Modelo.ClasesObjetos.Usuario;
+import Modelo.ClasesBasesDatos.TJornadas;
+import Modelo.ClasesBasesDatos.TPartido;
+import Modelo.ClasesBasesDatos.TTemporadas;
+import Modelo.ClasesBasesDatos.TUsuarios;
+import Modelo.ClasesObjetos.*;
 import Vista.*;
 import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
@@ -58,13 +48,10 @@ import Vista.CRUDUsuario.dInsertarUsuario;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-<<<<<<< HEAD
 import java.sql.SQLException;
 import java.time.LocalDate;
-=======
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
->>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46
 import java.util.ArrayList;
 
 /**
@@ -79,7 +66,6 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
-<<<<<<< HEAD
     public static JFrame vEquiposJugadores;
     public static JDialog dInsertarJugadores;
     public static JDialog dBorrarJugadores;
@@ -109,9 +95,7 @@ public class Main {
     public static JDialog dInsertarUsuario;
     public static JDialog dBorrarUsuario;
     public static JDialog dBuscarUsuarios;
-=======
     public static JDialog dEquiposJugadores;
->>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -641,11 +625,9 @@ public class Main {
         jugador = new Jugador();
         jugador.setID(Integer.parseInt(id_jugador));
         String datos = "";
-        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorID(jugador);
-        for (int x = 0 ; x < listaJugadores.size();x++) {
-            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
-                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
-        }
+        jugador = tJugadores.buscarPorID(jugador);
+        datos += "ID_JUGADOR" + jugador.getID() + "\n Nombre: " + jugador.getNombre() + "\n" + jugador.getApellido() + "\n Apellido: " + jugador.getApellido()
+                + "\n DNI: " + jugador.getDNI() + "\n Posicion: " + jugador.getPosicion() + "\n TipoDeJugador: " + jugador.getTipoJugador();
         return datos;
     }
 
@@ -653,11 +635,9 @@ public class Main {
         jugador = new Jugador();
         jugador.setDNI(dni);
         String datos = "";
-        ArrayList<Jugador> listaJugadores = tJugadores.buscarPorDNI(jugador);
-        for (int x = 0 ; x < listaJugadores.size();x++) {
-            datos += "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n" + listaJugadores.get(x).getApellido() + "\n Apellido: " + listaJugadores.get(x).getApellido()
-                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador();
-        }
+        jugador = tJugadores.buscarPorDNI(jugador);
+        datos += "ID_JUGADOR" + jugador.getID() + "\n Nombre: " + jugador.getNombre() + "\n" + jugador.getApellido() + "\n Apellido: " + jugador.getApellido()
+                + "\n DNI: " + jugador.getDNI() + "\n Posicion: " + jugador.getPosicion() + "\n TipoDeJugador: " + jugador.getTipoJugador();
         return datos;
     }
 

@@ -160,13 +160,13 @@ public class TTemporadas {
             listaDerrotas.add(derrotas);
 
             int golesFavor = resultado.getInt("goles_a_favor");
-            listaGolesFavor.add(derrotas);
+            listaGolesFavor.add(golesFavor);
 
             int golesContra = resultado.getInt("goles_en_contra");
-            listaGolesContra.add(derrotas);
+            listaGolesContra.add(golesContra);
 
             int diferenciaGoles = resultado.getInt("diferencia_goles");
-            listaDiferenciaGoles.add(derrotas);
+            listaDiferenciaGoles.add(diferenciaGoles);
 
             int posicion = resultado.getInt("rownum");
             listaPosicion.add(posicion);
