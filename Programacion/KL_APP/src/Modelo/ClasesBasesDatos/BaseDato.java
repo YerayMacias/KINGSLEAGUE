@@ -4,6 +4,7 @@ import oracle.jdbc.internal.OracleCallableStatement;
 import oracle.jdbc.internal.OracleTypes;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * @author
@@ -20,9 +21,9 @@ public class BaseDato {
      */
     public static void abrirConexion(){
         try {
-            String url = "jdbc:oracle:thin:@172.20.225.114:1521:ORCL";
-            String pass = "eqdaw04";
-            String user = "eqdaw04";
+            String url = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
+            String pass = "oracle";
+            String user = "system";
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e){
             System.out.println("Problemas con la base de datos " + e.getMessage());
@@ -47,81 +48,121 @@ public class BaseDato {
         cerrarConexion();
     }
 
-    public static String verEnfrentamientos() throws Exception {
+    public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call KL_CALENDARIO.VER_ENFRENTAMIENTOS(?)}");
         statement.registerOutParameter(1, OracleTypes.CURSOR);
         statement.execute();
         ResultSet result = ((OracleCallableStatement)statement).getCursor(1);
-        String mensaje = "";
+        ArrayList<ArrayList<Object>> datosTabla = new ArrayList<>();
         while (result.next()){
+            ArrayList<Object> datosObtenidos = new ArrayList<>();
             int idPartido = result.getInt("id_partido");
             String nombreLocal = result.getString("local");
             String nombreVisitante = result.getString("visitante");
             int idJornada = result.getInt("id_jornada");
             String hora = result.getString("hora");
-            mensaje += "Partido: " + idPartido + " Local: " + nombreLocal + " Visitante: "
-                    + nombreVisitante + " Jornada: " + idJornada + " Hora: " + hora + "\n";
+
+            // Añadir al array datosObtenidos
+            datosObtenidos.add(idPartido);
+            datosObtenidos.add(nombreLocal);
+            datosObtenidos.add(nombreVisitante);
+            datosObtenidos.add(idJornada);
+            datosObtenidos.add(hora);
+
+            //Añadir al array datosTabla
+            datosTabla.add(datosObtenidos);
         }
         result.close();
         statement.close();
         cerrarConexion();
-        return mensaje;
+        return datosTabla;
     }
 
-    public static String mostrarClasificacion() throws Exception {
+    public static ArrayList<ArrayList<Object>> mostrarClasificacion() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call mostrar_clasificacion(?)}");
         statement.registerOutParameter(1, OracleTypes.CURSOR);
         statement.execute();
         ResultSet result = ((OracleCallableStatement)statement).getCursor(1);
-        String mensaje = "";
+        ArrayList<ArrayList<Object>> datosTabla = new ArrayList<>();
         while (result.next()){
+            ArrayList<Object> datosObtenidos = new ArrayList<>();
             String nombreEquipo = result.getString("nombre");
             String victorias = String.valueOf(result.getInt("victorias"));
             String derrotas = String.valueOf(result.getInt("derrotas"));
             String golesFavor = String.valueOf(result.getInt("goles_a_favor"));
             String golesContra = String.valueOf(result.getInt("goles_en_contra"));
             String diferenciaGoles = String.valueOf(result.getInt("diferencia_goles"));
-            mensaje += "Nombre: " + nombreEquipo + " Victorias: " + victorias + " Derrotas: " + derrotas + " " +
-                    "Goles a favor: " + golesFavor + " Goles en contra: " + golesContra + " Diferencia de goles "
-                    + diferenciaGoles + "\n";
+
+            // Añadir al array datosObtenidos
+            datosObtenidos.add(nombreEquipo);
+            datosObtenidos.add(victorias);
+            datosObtenidos.add(derrotas);
+            datosObtenidos.add(golesFavor);
+            datosObtenidos.add(golesContra);
+            datosObtenidos.add(diferenciaGoles);
+
+            // Añadir al array datosTabla
+            datosTabla.add(datosObtenidos);
         }
         result.close();
         statement.close();
         cerrarConexion();
-        return mensaje;
+        return datosTabla;
     }
 
-    public static String obtener_datos_jugadores() throws SQLException {
+    public static ArrayList<ArrayList<Object>> obtener_datos_jugadores() throws SQLException {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call obtener_datos_jugadores(?)}");
         statement.registerOutParameter(1, OracleTypes.CURSOR);
         statement.execute();
         ResultSet result = ((OracleCallableStatement)statement).getCursor(1);
-        String mensaje = "";
+        ArrayList<ArrayList<Object>> datosTabla = new ArrayList<>();
         while (result.next()){
-            String nombre = result.getString("j.nombre");
-            String apellido = result.getString("j.apellido");
-            String dni = result.getString("j.dni");
-            String posicion = result.getString("j.posicion");
-            String equipoNombre = result.getString("e.nombre");
-            String sueldo = result.getString("ej.sueldo");
-            String clausula = result.getString("ej.clausula");
+            ArrayList<Object> datosObtenidos = new ArrayList<>();
+            String nombre = result.getString(1);
+            String apellido = result.getString(2);
+            String dni = result.getString(3);
+            String posicion = result.getString(4);
+            String equipoNombre = result.getString(5);
+            String sueldo = result.getString(6);
+            String clausula = result.getString(7);
 
-            mensaje += "Nombre: " + nombre + " Apellido: " + apellido + " DNI: " + dni +
-                    " Posicion: " + posicion + " Equipo" + equipoNombre + " Sueldo: " + sueldo +
-                    " Clausula: " + clausula + "\n";
+            // Añadir al array datosObtenidos
+            datosObtenidos.add(nombre);
+            datosObtenidos.add(apellido);
+            datosObtenidos.add(dni);
+            datosObtenidos.add(posicion);
+            datosObtenidos.add(equipoNombre);
+            datosObtenidos.add(sueldo);
+            datosObtenidos.add(clausula);
+
+            // Añadir al array datosTabla
+            datosTabla.add(datosObtenidos);
         }
         cerrarConexion();
-        return mensaje;
+        return datosTabla;
     }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(obtener_datos_jugadores());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public static void generarXMLJornadas() throws SQLException {
+        abrirConexion();
+        CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_jornadas()}");
+        statement.execute();
+        cerrarConexion();
+    }
+
+    public static void generarXMLUltimaJornada() throws SQLException {
+        abrirConexion();
+        CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_ultimajornada()}");
+        statement.execute();
+        cerrarConexion();
+    }
+
+    public static void generarXMLClasificacion() throws SQLException {
+        abrirConexion();
+        CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_clasificacion()}");
+        statement.execute();
+        cerrarConexion();
     }
 }
