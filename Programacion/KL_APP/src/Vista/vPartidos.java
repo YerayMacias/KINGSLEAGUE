@@ -134,6 +134,7 @@ public class vPartidos {
         miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         Main.buscarJornadasTemporada();
         pPartidos.add(Main.crearPanelesJornadas());
         inicializarCombo();

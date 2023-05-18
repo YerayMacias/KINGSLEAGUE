@@ -58,8 +58,13 @@ import Vista.CRUDUsuario.dInsertarUsuario;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.time.LocalDate;
+=======
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+>>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46
 import java.util.ArrayList;
 
 /**
@@ -74,6 +79,7 @@ public class Main {
     public static JFrame vEquipos;
     public static JFrame vClasificacion;
     public static JFrame vPartidos;
+<<<<<<< HEAD
     public static JFrame vEquiposJugadores;
     public static JDialog dInsertarJugadores;
     public static JDialog dBorrarJugadores;
@@ -103,6 +109,9 @@ public class Main {
     public static JDialog dInsertarUsuario;
     public static JDialog dBorrarUsuario;
     public static JDialog dBuscarUsuarios;
+=======
+    public static JDialog dEquiposJugadores;
+>>>>>>> d6716d19a3365eb875ccb31e969cd1038aa8fa46
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -112,6 +121,10 @@ public class Main {
     private static ArrayList<Equipo> listaEquipos;
     private static ArrayList<Integer> listaVictorias;
     private static ArrayList<Integer> listaDerrotas;
+    private static ArrayList<Integer> listaGolesFavor;
+    private static ArrayList<Integer> listaGolesContra;
+    private static ArrayList<Integer> listaDiferenciaGoles;
+
     private static ArrayList<Integer> listaPosicion;
 
     private static int posicion;
@@ -119,17 +132,17 @@ public class Main {
 
         // Test para probar conexion con la base de datos
 
-       /* try {
+        /*try {
             BaseDato.abrirConexion();
-            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from Jugadores");
+            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from equipos");
             ResultSet resultado = ps.executeQuery();
             while (resultado.next())
                 System.out.println(resultado.getString("nombre"));
             BaseDato.cerrarConexion();
         } catch (Exception e){
             BaseDato.cerrarConexion();
-            System.out.println("Error");
-        } */
+            System.out.println("Error " + e.getMessage());
+        }*/
 
         crearVentanaLogin();
         /*try {
@@ -222,6 +235,11 @@ public class Main {
         vPlayOffs.setVisible(true);
     }
 
+    public static void crearDialogoEquiposJugadores(){
+        dEquiposJugadores = new dEquiposJugadores();
+        dEquiposJugadores.pack();
+        dEquiposJugadores.setVisible(true);
+    }
    /* public static void crearVentanaEquiposJugadores(){
         vEquiposJugadores = new JFrame("vRegistro");
         vEquiposJugadores.setContentPane(new vEquiposJugadores);
@@ -242,9 +260,8 @@ public class Main {
 
     public static void buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
-        jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(1)));
+        jornada.setTemporada(TTemporadas.buscarUltimaTemporada());
         listaJornadas = TJornadas.buscarPorTemporada(jornada);
-
         posicion = listaJornadas.size() -1;
     }
 
@@ -261,13 +278,12 @@ public class Main {
         for (int y = 0; y < listaJornadas.get(posicion).getListaPartidos().size(); y++) {
             panelPartido = new JPanel(new GridLayout(1, 3));
 
-            PartidoLocal partidoLocal = TPartidosLocales.buscarPorPartido(new PartidoLocal(listaJornadas.get(posicion).getListaPartidos().get(y)));
 
-            PartidoVisitante partidoVisitante = TPartidosVisitantes.buscarPorPartido(new PartidoVisitante(listaJornadas.get(posicion).getListaPartidos().get(y)));
+            Partido partido = TPartido.buscarPorIDPartido(new Partido(listaJornadas.get(posicion).getListaPartidos().get(y).getID()));
 
-            panelPartido.add(new JLabel(partidoLocal.getEquipo().getNombre(), SwingConstants.CENTER));
-            panelPartido.add(new JLabel(partidoLocal.getGoles() + " - " + partidoVisitante.getGoles(), SwingConstants.CENTER));
-            panelPartido.add(new JLabel(partidoVisitante.getEquipo().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getLocal().getNombre(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getGolesLocal() + " - " + partido.getGolesVisitante(), SwingConstants.CENTER));
+            panelPartido.add(new JLabel(partido.getVisitante().getNombre(), SwingConstants.CENTER));
 
             panelContenedor.add(panelPartido);
         }
@@ -336,23 +352,42 @@ public class Main {
         listaEquipos = (ArrayList<Equipo>) listaArrays.get(0);
         listaVictorias = (ArrayList<Integer>) listaArrays.get(1);
         listaDerrotas = (ArrayList<Integer>) listaArrays.get(2);
-        listaPosicion = (ArrayList<Integer>) listaArrays.get(3);
+        listaGolesFavor = (ArrayList<Integer>) listaArrays.get(3);
+        listaGolesContra = (ArrayList<Integer>) listaArrays.get(4);
+        listaDiferenciaGoles = (ArrayList<Integer>) listaArrays.get(5);
+        listaPosicion = (ArrayList<Integer>) listaArrays.get(6);
     }
 
     public static JPanel crearPanelesClasificacion(){
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(1);
-        gridLayout.setRows(listaDerrotas.size() +1 );
+        gridLayout.setRows(listaDerrotas.size() +2 );
         JPanel panelContenedor = new JPanel(gridLayout);
         JLabel label = new JLabel("CLASIFICACION KING'S LEAGUE", SwingConstants.CENTER);
         label.setFont(new Font("Arial", 1, 24));
         panelContenedor.add(label);
+
+        // Leyenda
+
+        JPanel panelLeyenda = new JPanel(new GridLayout(1, 7));
+        panelLeyenda.add(new JLabel("POS", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("EQ", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("PG", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("PP", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("GF", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("GC", SwingConstants.CENTER));
+        panelLeyenda.add(new JLabel("DG", SwingConstants.CENTER));
+        panelContenedor.add(panelLeyenda);
+
         for (int x = 0; x < listaEquipos.size(); x++) {
-            JPanel panelPosicion = new JPanel(new GridLayout(1,4));
-            panelPosicion.add(new JLabel(listaPosicion.get(x).toString()));
+            JPanel panelPosicion = new JPanel(new GridLayout(1,7));
+            panelPosicion.add(new JLabel(listaPosicion.get(x).toString(), SwingConstants.CENTER));
             panelPosicion.add(new JLabel(listaEquipos.get(x).getNombre()));
             panelPosicion.add(new JLabel(listaVictorias.get(x).toString(), SwingConstants.CENTER));
             panelPosicion.add(new JLabel(listaDerrotas.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaGolesFavor.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaGolesContra.get(x).toString(), SwingConstants.CENTER));
+            panelPosicion.add(new JLabel(listaDiferenciaGoles.get(x).toString(), SwingConstants.CENTER));
             panelContenedor.add(panelPosicion);
         }
         return panelContenedor;

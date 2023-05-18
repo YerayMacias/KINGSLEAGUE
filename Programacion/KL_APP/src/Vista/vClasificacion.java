@@ -101,6 +101,7 @@ public class vClasificacion {
         pClasificacion.add(Main.crearPanelesClasificacion());
     }
 
+
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
@@ -113,6 +114,7 @@ public class vClasificacion {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        pClasificacion = new JPanel(new GridLayout(1,1));
+        pClasificacion = new JPanel(new GridLayout(2,1));
+        pClasificacion.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 }
