@@ -20,9 +20,9 @@ public class BaseDato {
      */
     public static void abrirConexion(){
         try {
-            String url = "jdbc:oracle:thin:@172.20.225.114:1521:ORCL";
-            String pass = "eqdaw04";
-            String user = "eqdaw04";
+            String url = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
+            String pass = "oracle";
+            String user = "system";
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e){
             System.out.println("Problemas con la base de datos " + e.getMessage());

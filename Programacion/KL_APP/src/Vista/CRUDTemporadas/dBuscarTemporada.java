@@ -55,7 +55,7 @@ public class dBuscarTemporada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        cbFechaInicio.addActionListener(new ActionListener() {
+  /*      cbFechaInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -154,7 +154,7 @@ public class dBuscarTemporada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        }); */
     }
 
     private void onOK() {

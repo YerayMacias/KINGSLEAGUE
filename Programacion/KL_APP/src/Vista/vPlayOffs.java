@@ -123,7 +123,7 @@ public class vPlayOffs {
         });
     }
 
-    public void ocultarCosasAdmin(){
+    public void ocultarCosasAdmin() {
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
@@ -195,7 +195,7 @@ public class vPlayOffs {
         partido.setVisitante(equipoVisitante);
         Partido partido2 = TPartido.buscarSemis(partido);
         int n = Main.obtenerGanador(partido2);
-        if (n == 1 ) {
+        if (n == 1) {
             lEquipoSemiIzqTop.setText(equipoLocal.getNombre());
         } else {
             lEquipoSemiIzqTop.setText(equipoVisitante.getNombre());
@@ -211,19 +211,54 @@ public class vPlayOffs {
         partido3.setLocal(equipoLocal);
         partido3.setVisitante(equipoVisitante);
         Partido partido4 = TPartido.buscarSemis(partido3);
-         n = Main.obtenerGanador(partido4);
-        if (n == 1 ) {
+        n = Main.obtenerGanador(partido4);
+        if (n == 1) {
             lEquipoSemiIzqBot.setText(equipoLocal2.getNombre());
         } else {
             lEquipoSemiIzqBot.setText(equipoVisitante2.getNombre());
         }
 
+        Equipo preset3 = new Equipo();
+        preset3.setNombre(lEquipo2.getText());
+        Equipo equipoLocal3 = TEquipo.buscarPorNombre(preset3);
+        preset3 = new Equipo();
+        preset3.setNombre(lEquipo7.getText());
+        Equipo equipoVisitante3 = TEquipo.buscarPorNombre(preset3);
+        Partido partido5 = new Partido();
+        partido5.setLocal(equipoLocal);
+        partido5.setVisitante(equipoVisitante);
+        Partido partido6 = TPartido.buscarSemis(partido5);
+        n = Main.obtenerGanador(partido6);
+        if (n == 1) {
+            lEquipoSemiDerTop.setText(equipoLocal3.getNombre());
+        } else {
+            lEquipoSemiDerTop.setText(equipoVisitante3.getNombre());
+        }
+
+        Equipo preset4 = new Equipo();
+        preset4.setNombre(lEquipo3.getText());
+        Equipo equipoLocal4 = TEquipo.buscarPorNombre(preset4);
+        preset4 = new Equipo();
+        preset4.setNombre(lEquipo6.getText());
+        Equipo equipoVisitante4 = TEquipo.buscarPorNombre(preset4);
+        Partido partido7 = new Partido();
+        partido7.setLocal(equipoLocal);
+        partido7.setVisitante(equipoVisitante);
+        Partido partido8 = TPartido.buscarSemis(partido7);
+        n = Main.obtenerGanador(partido8);
+        if (n == 1) {
+            lEquipoSemiDerBot.setText(equipoLocal4.getNombre());
+        } else {
+            lEquipoSemiDerBot.setText(equipoVisitante4.getNombre());
+        }
     }
+
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
 
 }
+
 
 

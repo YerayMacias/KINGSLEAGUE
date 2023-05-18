@@ -51,7 +51,7 @@ public class dBuscarJornada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        cbFecha.addActionListener(new ActionListener() {
+      /*  cbFecha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -67,8 +67,8 @@ public class dBuscarJornada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
-        cbID.addActionListener(new ActionListener() {
+        }); */
+     /*   cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -84,8 +84,8 @@ public class dBuscarJornada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
-        cbTemporada.addActionListener(new ActionListener() {
+        }); */
+       /* cbTemporada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -101,7 +101,7 @@ public class dBuscarJornada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        }); */
         consultarTodosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
