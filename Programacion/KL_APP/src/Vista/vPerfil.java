@@ -42,6 +42,8 @@ public class vPerfil {
     private JButton bVisibleNew2;
     private JButton bGuardarDatos;
     private JMenuItem miPlayOffs;
+    private JMenuItem miPrincipal;
+    private JMenu mPrincipal;
     private int contador;
     private String passUser;
     private String usuario;
@@ -139,11 +141,23 @@ public class vPerfil {
             }
         });
 
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPerfil.dispose();
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
+
         miPlayOffs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vPerfil.dispose();
-                Main.crearVentanaPlayOffs(admin);
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -236,6 +250,7 @@ public class vPerfil {
             lTipoUsuarioTitulo.setText("USUARIO");
         }
 
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleNew.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleNew2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bVisibleViejo.setCursor(new Cursor(Cursor.HAND_CURSOR));

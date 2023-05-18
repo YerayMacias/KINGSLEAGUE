@@ -10,6 +10,12 @@ public class Jugador extends Persona {
     public enum tTipoJugador{HABITUAL,WILDCARD}
     private tTipoJugador tipoJugador;
 
+    public Jugador(String nombre, String apellido, tPosicion posicion, tTipoJugador tipoJugador) {
+        super(nombre, apellido);
+        this.posicion = posicion;
+        this.tipoJugador = tipoJugador;
+    }
+
     public Jugador() {
     }
 
