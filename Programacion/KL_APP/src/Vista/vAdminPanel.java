@@ -25,16 +25,12 @@ public class vAdminPanel {
     private JButton bDelete;
     private JButton bInsertE;
     private JButton bDeleteE;
-    private JButton bBuscarPorIDE;
-    private JButton bBuscarNombreE;
     private JButton bInsertJ;
     private JButton bDeleteJ;
     private JButton bInserT;
     private JButton bDeteleT;
     private JButton bUpdateT;
     private JButton bBuscarTodosT;
-    private JButton bBuscarPorTemporadaT;
-    private JButton bBuscarPorIDT;
     private JButton bInsertarP;
     private JButton bDeleteP;
     private JButton bUpdateP;

@@ -1,14 +1,27 @@
 package Vista.CRUDEquipos;
 
+import Controlador.Main;
+import Vista.CRUDJugadores.dBuscarJugadores;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dBuscarEquipo extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JPanel pTitulo;
+    private JButton bConsultar;
+    private JPanel pTodos;
+    private JTextArea taTodos;
+    private JTextArea taCJNombre;
+    private JComboBox cbNombre;
+    private JTextArea taCJID;
+    private JComboBox cbID;
 
     public dBuscarEquipo() {
+        inicializar();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -39,22 +52,96 @@ public class dBuscarEquipo extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        bConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String datos = null;
+                try {
+                    datos = Main.buscarTodosEquipos();
+                    taTodos.setText(datos);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        cbNombre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String nombre = cbNombre.getSelectedItem().toString();
+
+                    String datos = Main.buscarTodosLosEquiposPorNombre(nombre);
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion del Equipo");
+                    } else {
+                        taCJNombre.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        cbID.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String id = cbID.getSelectedItem().toString();
+
+                    String datos = Main.buscarTodosLosJugadorPorID(id);
+
+                    if (datos == null) {
+                        throw new Exception("No se encuentra la informacion del Equipo");
+                    } else {
+                        taCJID.setText(datos);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,ex.getMessage());
+                }
+            }
+        });
     }
 
     private void onOK() {
-        // add your code here
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 
     public static void main(String[] args) {
-        dBuscarEquipo dialog = new dBuscarEquipo();
+        dBuscarJugadores dialog = new dBuscarJugadores();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void crearArrays() {
+        try {
+            ArrayList<String> idCBox = Main.crearIdJugadores();
+            idCBox.forEach(id -> cbNombre.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+            ArrayList<String> dniCBox = Main.crearDniJugadores();
+            dniCBox.forEach(dni -> cbID.addItem(dni));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+    }
+
+    private void inicializar() {
+
+        crearArrays();
+
+        taTodos.setEditable(false);
+        taCJID.setEditable(false);
+        taCJNombre.setEditable(false);
+
+        pTodos.add(new JScrollPane(taTodos));
+        taTodos.setRows(20);
+        taTodos.setColumns(40);
+        taTodos.setLineWrap(true);
     }
 }
