@@ -16,6 +16,7 @@ import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
 import Vista.CRUDEquipos.dBuscarEquipo;
 import Vista.CRUDEquipos.dInsertarEquipo;
+import Vista.CRUDEquiposJugadores.dEquiposJugadores;
 import Vista.CRUDEquiposStaff.dActualizarEquiposStaff;
 import Vista.CRUDEquiposStaff.dBuscarEquiposStaff;
 import Vista.CRUDEquiposStaff.dInsertarEquiposStaff;
