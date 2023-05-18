@@ -57,12 +57,12 @@ public class dBuscarJornada extends JDialog {
                 try {
                     String fecha = cbFecha.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasJornadasFecha(fecha);
+                    /*String datos = Main.buscarTodasLasJornadasFecha(fecha);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taFecha.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -74,12 +74,12 @@ public class dBuscarJornada extends JDialog {
                 try {
                     String id_jornada = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasJornadasID(id_jornada);
+                    /*String datos = Main.buscarTodasLasJornadasID(id_jornada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taID.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -91,12 +91,12 @@ public class dBuscarJornada extends JDialog {
                 try {
                     String temporada = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
+                    /*String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taTemporada.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

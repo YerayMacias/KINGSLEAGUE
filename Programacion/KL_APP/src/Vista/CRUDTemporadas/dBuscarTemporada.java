@@ -61,12 +61,13 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String fecha = cbFechaInicio.getSelectedItem().toString();
 
+                    /*
                     String datos = Main.buscarTodasLasTemporadasFechaInicio(fecha);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taFechaInicio.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -79,12 +80,12 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String fecha = cbFechaFin.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasTemporadasFechaFin(fecha);
+                    /*String datos = Main.buscarTodasLasTemporadasFechaFin(fecha);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taFechaFin.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -96,12 +97,12 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String id_temporada = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasTemporadasID(id_temporada);
+                    /*String datos = Main.buscarTodasLasTemporadasID(id_temporada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taID.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -113,12 +114,12 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String estado = cbEstado.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasTemporadasPorEstado(estado);
+                    /*String datos = Main.buscarTodasLasTemporadasPorEstado(estado);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taEstado.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -131,12 +132,12 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String periodo = cbPeriodo.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodasLasTemporadasPorPeriodo(periodo);
+                    /*String datos = Main.buscarTodasLasTemporadasPorPeriodo(periodo);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taPeriodo.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
