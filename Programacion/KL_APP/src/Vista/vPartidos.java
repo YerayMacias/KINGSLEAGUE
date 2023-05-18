@@ -28,6 +28,7 @@ public class vPartidos {
     private JPanel pTitulo;
     private JPanel pCombo;
     private JMenuItem miPlayOffs;
+    private JMenuItem miPrincipal;
 
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
@@ -79,11 +80,23 @@ public class vPartidos {
             }
         });
 
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPartidos.dispose();
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
+
         miPlayOffs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vPartidos.dispose();
-                Main.crearVentanaPlayOffs(admin);
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -124,6 +137,7 @@ public class vPartidos {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));

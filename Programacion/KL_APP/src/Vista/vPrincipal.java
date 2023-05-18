@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 
 public class vPrincipal {
     private JPanel pPrincipal;
-    private JPanel pMenu;
-    private JPanel pDatos;
-    private JPanel pPartidos;
     private JLabel lNombre;
     private JMenu mPartidos;
     private JMenu mClasificacion;
@@ -27,6 +24,10 @@ public class vPrincipal {
     private JMenuItem miUsuarios;
     private JMenu mIconoPerfil;
     private JMenuItem miPlayOffs;
+    private JPanel pTitulo;
+    private JPanel pCombo;
+    private JMenuItem miPrincipal;
+    private JMenu mPrincipal;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -76,7 +77,11 @@ public class vPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vPrincipal.dispose();
-                Main.crearVentanaPlayOffs(admin);
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -94,9 +99,19 @@ public class vPrincipal {
                 Main.crearVentanaPanelAdmin(admin);
             }
         });
+
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
     }
 
     public void inicializar() {
+
+
+
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
         if (Main.buscarAdmin().equalsIgnoreCase("S")) {
@@ -105,6 +120,7 @@ public class vPrincipal {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -122,4 +138,5 @@ public class vPrincipal {
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
+
 }

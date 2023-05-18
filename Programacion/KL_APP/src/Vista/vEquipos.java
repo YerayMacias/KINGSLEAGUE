@@ -48,6 +48,7 @@ public class vEquipos {
     private JMenu mIconoPerfil;
     private JPanel pSecundario;
     private JMenuItem miPlayOffs;
+    private JMenuItem miPrincipal;
     // private J
 
     public vEquipos(String admin) {
@@ -82,11 +83,23 @@ public class vEquipos {
              }
          });
 
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
+
         miPlayOffs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vEquipos.dispose();
-                Main.crearVentanaPlayOffs(admin);
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -128,6 +141,7 @@ public class vEquipos {
 
         spScroll.getVerticalScrollBar().setUnitIncrement(20);
 
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
