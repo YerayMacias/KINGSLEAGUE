@@ -99,6 +99,7 @@ public class Main {
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
+    public static JFrame vEquipoJugadores;
     private static Usuario usuario;
     private static Jugador jugador;
     private static ArrayList<Jornada> listaJornadas;
@@ -110,6 +111,9 @@ public class Main {
     private static ArrayList<Integer> listaDiferenciaGoles;
 
     public static ArrayList<Integer> listaPosicion;
+
+    private static ArrayList<Jugador> listaJugadores;
+    private static int numJugador;
 
     private static int posicion;
     public static void main(String[] args){
@@ -671,5 +675,54 @@ public class Main {
             datos += "ID_JORNADA" + listaJornadas.get(x).getID() + "\n Temporada: " + listaJornadas.get(x).getTemporada().getID() + "\n nºJornada" + listaJornadas.get(x).getNumJornada() + "\n Fecha: " + listaJornadas.get(x).getFecha();
         }
         return datos;
+    }
+
+    public static void crearVentanaEquipoJugadores(String equipo, int numEquipo) throws Exception {
+        datosSeleccionarJugadorEquipo(numEquipo);
+        vEquipoJugadores = new JFrame("vEquipoJugadores");
+        vEquipoJugadores.setContentPane(new vEquipoJugadores(equipo).getpPrincipal());
+        vEquipoJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vEquipoJugadores.pack();
+        vEquipoJugadores.setVisible(true);
+    }
+
+    public static void datosSeleccionarJugadorEquipo(int numEquipo) throws Exception {
+        listaJugadores = tJugadores.buscarPorEquipo(numEquipo);
+    }
+
+    public static String getNombreSelect() {
+        return listaJugadores.get(contadorJugador()).getNombre();
+    }
+
+    public static String getApellidoSelect() {
+        return listaJugadores.get(contadorJugador()).getApellido();
+    }
+
+    public static String getPosicionSelect() {
+        return String.valueOf(listaJugadores.get(contadorJugador()).getPosicion());
+    }
+
+    public static String getTipoJugadorSelect() {
+        return String.valueOf(listaJugadores.get(contadorJugador()).getTipoJugador());
+    }
+
+    public static int contadorJugador() {
+        return numJugador;
+    }
+
+    public static int siguienteJugador() {
+        return numJugador = numJugador + 1;
+    }
+
+    public static int posteriorJugador() {
+        return numJugador = numJugador - 1;
+    }
+
+    public static int primerJugador() {
+        return numJugador = 0;
+    }
+
+    public static int ultimoJugador() {
+        return numJugador = 9;
     }
 }
