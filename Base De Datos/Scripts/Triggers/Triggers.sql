@@ -3,20 +3,33 @@ BEFORE INSERT OR UPDATE ON JORNADAS
 FOR EACH ROW
 DECLARE
     V_NUM_JUGADORES NUMBER;
+    V_NUM_EQUIPOS NUMBER;
+    verificar_equipos BOOLEAN;
+    no_suficientes_equipos EXCEPTION;
+    menos_de_8_jugadores EXCEPTION;
 BEGIN
-    FOR i IN 1..12
-    LOOP
+    verificar_equipos := validar_minimo_equipos();
+    IF verificar_equipos = FALSE THEN
+        RAISE no_suficientes_equipos;
+    END IF;
+    FOR i IN 1..12 LOOP
         SELECT COUNT(*) INTO V_NUM_JUGADORES 
         FROM EQUIPOS_JUGADORES 
+        WHERE ID_JUGADOR IN (SELECT ID_JUGADOR FROM JUGADORES WHERE UPPER(TIPO_JUGADOR) = 'HABITUAL')
         GROUP BY ID_EQUIPO HAVING ID_EQUIPO = i;
         IF V_NUM_JUGADORES < 8 THEN
-            RAISE_APPLICATION_ERROR(-20003, 'EL EQUIPO CON EL ID: ' || i || 'TIENE MENOS DE 8 JUGADORES, NO SE PUEDE GENERAR LA JORNADA');
+            RAISE menos_de_8_jugadores;
         END IF;
     END LOOP;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        RAISE_APPLICATION_ERROR(-20004,'NO ESTAN TODOS LOS EQUIPOS');
+        DBMS_OUTPUT.PUT_LINE('NO ESTAN TODOS LOS EQUIPOS');
+    WHEN no_suficientes_equipos THEN
+        DBMS_OUTPUT.PUT_LINE('No hay suficientes equipos para generar el calendario');
+    WHEN menos_de_8_jugadores THEN
+        DBMS_OUTPUT.PUT_LINE('No todos los equipos tienen 8 jugadores habituales');
 END;
+
 
 /* 
 
@@ -41,7 +54,7 @@ ORA-04088: error durante la ejecución del disparador 'EQDAW04.TRG_GENERAR_CALEN
 */
 
 
-CREATE OR REPLACE TRIGGER TRG_VERIFICAR_EQUIPOS_JUGADORES
+CREATE OR REPLACE TRIGGER VERIFICIAR_JUGADORES
 FOR INSERT OR UPDATE ON EQUIPOS_JUGADORES
 COMPOUND TRIGGER
 
@@ -75,7 +88,7 @@ BEGIN
         END IF;
     END IF;
 END AFTER EACH ROW;  
-END TRG_VERIFICAR_EQUIPOS_JUGADORES;
+END VERIFICIAR_JUGADORES;
 
 
 /* INSERT PARA LAS PRUEBAS
@@ -190,8 +203,7 @@ ORA-04088: error during execution of trigger 'SYSTEM.INSCRIPCIONES_KINGS_LEAGUE'
 -- PARA EQUIPOS ----------------------------------------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER INSCR_KINGS_LEAGUE_EQU
-BEFORE INSERT OR UPDATE ON EQUIPOS
-FOR EACH ROW
+BEFORE INSERT OR UPDATE OR DELETE ON EQUIPOS
 DECLARE
     V_ESTADO VARCHAR(20);
 BEGIN
@@ -218,8 +230,7 @@ ORA-04088: error during execution of trigger 'SYSTEM.INSCRIPCIONES_KINGS_LEAGUE_
 -- PARA JUGADORES ----------------------------------------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER INSCR_KINGS_LEAGUE_JUG
-BEFORE INSERT OR UPDATE ON JUGADORES
-FOR EACH ROW
+BEFORE INSERT OR UPDATE OR DELETE ON JUGADORES
 DECLARE
     V_ESTADO VARCHAR(20);
 BEGIN
@@ -245,27 +256,18 @@ ORA-04088: error during execution of trigger 'SYSTEM.INSCRIPCIONES_KINGS_LEAGUE_
 */
 
 
-CREATE OR REPLACE FUNCTION VALIDAR_MINIMO_EQUIPOS(id_equipo IN NUMBER)
-  RETURN VARCHAR2
+CREATE OR REPLACE FUNCTION VALIDAR_MINIMO_EQUIPOS
+  RETURN BOOLEAN
 IS
-  v_minimo CONSTANT NUMBER := 12;
+  v_minimo NUMBER := 12;
+  v_num_equipos NUMBER;
 BEGIN
-  IF id_equipo < v_minimo THEN
-    RETURN 'La cantidad de equipos es insuficiente, se necesitan' || v_minimo || ' equipos.';
+  Select count(*) into v_num_equipos from equipos;
+  IF v_num_equipos < v_minimo THEN
+    RETURN FALSE;
   ELSE
-    RETURN 'La cantidad de equipos es correcta.';
+    RETURN TRUE;
   END IF;
 END;
 
 
-CREATE OR REPLACE TRIGGER CONTROLAR_MINIMO_EQUIPOS
-BEFORE INSERT OR UPDATE ON equipos
-FOR EACH ROW
-DECLARE
-  v_valido BOOLEAN;
-BEGIN
-  v_valido := VALIDAR_MINIMO_EQUIPOS(:NEW.cantidad);
-  IF NOT v_valido THEN
-    RAISE_APPLICATION_ERROR(-20001, 'No se cumple con el requisito de minimo de equipos.');
-  END IF;
-END;
