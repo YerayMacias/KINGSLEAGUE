@@ -715,4 +715,20 @@ public class Main {
     public static int ultimoJugador() {
         return numJugador = 9;
     }
+
+    // COMBOBOX BUSCAR JUGADORES **************************************
+    public static ArrayList<String> crearIdJugadores() throws Exception {
+        listaJugadores = tJugadores.buscarTodos();
+        ArrayList<String> listaIdJugadores = new ArrayList<>();
+        listaJugadores.forEach(jugador1 -> listaIdJugadores.add(String.valueOf(jugador1.getID())));
+        return listaIdJugadores;
+    }
+
+    public static ArrayList<String> crearDniJugadores() throws Exception {
+        listaJugadores = tJugadores.buscarTodos();
+        ArrayList<String> listaDNIJugadores = new ArrayList<>();
+        listaJugadores.forEach(jugador1 -> listaDNIJugadores.add(jugador1.getDNI()));
+        return listaDNIJugadores;
+    }
+
 }
