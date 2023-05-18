@@ -731,4 +731,14 @@ public class Main {
         return listaDNIJugadores;
     }
 
+    public static int obtenerGanador(Partido partido) {
+        if (partido.getGolesLocal() > partido.getGolesVisitante()) {
+            return 1;
+        } else if (partido.getGolesLocal() < partido.getGolesVisitante()) {
+            return 2;
+        }
+        return 0;
+    }
+
+
 }

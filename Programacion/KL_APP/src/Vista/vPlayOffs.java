@@ -1,8 +1,11 @@
 package Vista;
 
 import Controlador.Main;
+import Modelo.ClasesBasesDatos.TEquipo;
+import Modelo.ClasesBasesDatos.TPartido;
 import Modelo.ClasesBasesDatos.TTemporadas;
 import Modelo.ClasesObjetos.Equipo;
+import Modelo.ClasesObjetos.Partido;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,6 +66,7 @@ public class vPlayOffs {
 
     public vPlayOffs(String admin) throws Exception {
         inicializar();
+        semis();
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
 
@@ -179,6 +183,42 @@ public class vPlayOffs {
 
     }
 
+    public void semis() throws Exception {
+        Equipo preset = new Equipo();
+        preset.setNombre(lEquipo1.getText());
+        Equipo equipoLocal = TEquipo.buscarPorNombre(preset);
+        preset = new Equipo();
+        preset.setNombre(lEquipo8.getText());
+        Equipo equipoVisitante = TEquipo.buscarPorNombre(preset);
+        Partido partido = new Partido();
+        partido.setLocal(equipoLocal);
+        partido.setVisitante(equipoVisitante);
+        Partido partido2 = TPartido.buscarSemis(partido);
+        int n = Main.obtenerGanador(partido2);
+        if (n == 1 ) {
+            lEquipoSemiIzqTop.setText(equipoLocal.getNombre());
+        } else {
+            lEquipoSemiIzqTop.setText(equipoVisitante.getNombre());
+        }
+
+        Equipo preset2 = new Equipo();
+        preset2.setNombre(lEquipo4.getText());
+        Equipo equipoLocal2 = TEquipo.buscarPorNombre(preset2);
+        preset2 = new Equipo();
+        preset2.setNombre(lEquipo5.getText());
+        Equipo equipoVisitante2 = TEquipo.buscarPorNombre(preset2);
+        Partido partido3 = new Partido();
+        partido3.setLocal(equipoLocal);
+        partido3.setVisitante(equipoVisitante);
+        Partido partido4 = TPartido.buscarSemis(partido3);
+         n = Main.obtenerGanador(partido4);
+        if (n == 1 ) {
+            lEquipoSemiIzqBot.setText(equipoLocal2.getNombre());
+        } else {
+            lEquipoSemiIzqBot.setText(equipoVisitante2.getNombre());
+        }
+
+    }
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
