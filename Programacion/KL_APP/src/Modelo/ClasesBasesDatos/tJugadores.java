@@ -32,12 +32,13 @@ public class tJugadores {
         BaseDato.cerrarConexion();
     }
 
-    public static Jugador buscarPorDNI(Jugador jugador) throws Exception{
+    public static ArrayList<Jugador> buscarPorDNI(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
+        ArrayList<Jugador> lista= new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where dni=?");
         ps.setString(1, jugador.getDNI());
         ResultSet result = ps.executeQuery();
-        if (result.next()){
+        while (result.next()){
             Jugador.tPosicion tPosicion = null;
             switch (result.getString("posicion")){
                 case "DC" -> tPosicion = Jugador.tPosicion.DC;
@@ -51,9 +52,10 @@ public class tJugadores {
                 case "WILDCARD" -> tTipoJugador = Jugador.tTipoJugador.WILDCARD;
             }
             jugador = new Jugador(result.getInt("id_jugador"), result.getString("nombre"), result.getString("apellido"), result.getString("dni"), tPosicion, tTipoJugador);
-        } else
-            throw new Exception("Jugador no encontrado");
-        return jugador;
+            lista.add(jugador);
+        }
+            BaseDato.cerrarConexion();
+        return lista;
     }
 
     public static ArrayList<Jugador> buscarTodos() throws Exception{
@@ -80,30 +82,40 @@ public class tJugadores {
         return listaJugadores;
     }
 
-    public static void delete(Jugador jugador) throws Exception {
+    public static int delete(Jugador jugador) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from jugadores where dni = ?");
         ps.setString(1, jugador.getDNI());
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
+        return n;
     }
 
-    public static Jugador buscarPorID(Jugador jugador) throws Exception{
+    public static ArrayList<Jugador> buscarPorID(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
+        ArrayList<Jugador> lista = new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where id= ?");
         ps.setInt(1,jugador.getID());
         ResultSet result = ps.executeQuery();
         Jugador jugador2;
-        if (result.next())
+        while (result.next())
         {
-            jugador2 = new Jugador();
-            jugador2.setID(result.getInt("id_equipo"));
-            jugador2.setNombre(result.getString("nombre"));
-            jugador2.setApellido(result.getString("apellido"));
-            jugador2.setDNI(result.getString("dni"));
+            Jugador.tPosicion tPosicion = null;
+            switch (result.getString("posicion")){
+                case "DC" -> tPosicion = Jugador.tPosicion.DC;
+                case "DF" -> tPosicion = Jugador.tPosicion.DF;
+                case "P" -> tPosicion = Jugador.tPosicion.P;
+                case "MC" -> tPosicion = Jugador.tPosicion.MC;
+            }
+            Jugador.tTipoJugador tTipoJugador = null;
+            switch (result.getString("tipo_jugador")){
+                case "HABITUAL" -> tTipoJugador = Jugador.tTipoJugador.HABITUAL;
+                case "WILDCARD" -> tTipoJugador = Jugador.tTipoJugador.WILDCARD;
+            }
+            jugador2 = new Jugador(result.getInt("id_jugador"),result.getString("nombre"),result.getString("apellido"),result.getString("DNI"),tPosicion,tTipoJugador);
+            lista.add(jugador2);
         }
-        else
-            jugador2 = null;
-        return jugador2;
+        BaseDato.cerrarConexion();
+        return lista;
     }
 }
