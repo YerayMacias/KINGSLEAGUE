@@ -1284,6 +1284,17 @@ public class Main {
         listaPresidente.forEach(dni -> listaDniPresidentes.add(dni.getDNI()));
         return listaDniPresidentes;
     }
+
+    public static String buscarDniPresidente (String dni) throws Exception {
+        presidente = new Presidente();
+        presidente.setID(Integer.parseInt(dni));
+        String datos = "";
+        presidente = TPresidente.buscarPorDNI(presidente);
+        datos += "\n ID_PRESIDENTE" + presidente.getID() + "\n\nNombre: " + presidente.getNombre() + "\nApellido: " + presidente.getApellido()
+                + "\nDNI: " + presidente.getDNI() + "\nEquipo :" + presidente.getEquipo().getID();
+        return datos;
+    }
+
     /*public static String buscarTodasLasTemporadasID(String idTemporada) {
     }*/
 }

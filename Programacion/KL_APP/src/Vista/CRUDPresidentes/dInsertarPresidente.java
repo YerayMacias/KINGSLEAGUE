@@ -64,7 +64,7 @@ public class dInsertarPresidente extends JDialog {
 
                 if (mat.matches()) {
                     try {
-                        Main.insertPresidente(tfNombre.getText(), tfApellido.getText(), tfDNI.getText(), (int) cbEquipo.getSelectedItem());
+                        Main.insertPresidente(tfNombre.getText(), tfApellido.getText(), tfDNI.getText(), Integer.parseInt(String.valueOf(cbEquipo.getSelectedItem())));
                         JOptionPane.showMessageDialog(null,"El Presidente " + tfNombre.getText() + " ha sido insertado");
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);

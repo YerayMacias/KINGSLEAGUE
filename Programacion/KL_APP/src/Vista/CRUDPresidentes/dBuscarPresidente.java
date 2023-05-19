@@ -14,7 +14,6 @@ public class dBuscarPresidente extends JDialog {
     private JButton bConsultar;
     private JPanel pTodos;
     private JTextArea taTodos;
-    private JTextArea taCJID;
     private JComboBox cbID;
     private JTextArea taCJDNI;
     private JComboBox cbDNI;
@@ -54,30 +53,16 @@ public class dBuscarPresidente extends JDialog {
         bConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String datos = null;
                 try {
-                    String datos = "";
-                    datos = Main.buscarTodosStaff();
+                    datos = Main.buscarTodosPresidentes();
                     taTodos.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
-        cbID.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                String id = cbID.getSelectedItem().toString();
-
-                String datos = null;
-                try {
-                    datos = Main.buscarStaffId(id);
-                    taCJID.setText(datos);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
         cbDNI.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +71,7 @@ public class dBuscarPresidente extends JDialog {
 
                 String datos = null;
                 try {
-                    datos = Main.buscarStaffDNI(dni);
+                    datos = Main.buscarDniPresidente(dni);
                     taCJDNI.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -127,8 +112,8 @@ public class dBuscarPresidente extends JDialog {
             System.out.println("problemas");
         }
         try {
-            ArrayList<String> idCBox = Main.crearDNIPresidente();
-            idCBox.forEach(dni ->cbDNI.addItem(dni));
+            ArrayList<String> dniCBox = Main.crearDniPresidente();
+            dniCBox.forEach(dni ->cbDNI.addItem(dni));
         } catch (Exception exc) {
             System.out.println("problemas");
         }
