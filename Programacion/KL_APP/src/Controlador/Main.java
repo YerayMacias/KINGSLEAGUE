@@ -945,28 +945,59 @@ public class Main {
         dInsertarEquiposStaff  = new dInsertarEquiposStaff();
         dInsertarEquiposStaff.pack();
         dInsertarEquiposStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarStaffEquipo(String admin) {
         dBuscarEquiposStaff  = new dBuscarEquiposStaff();
         dBuscarEquiposStaff.pack();
         dBuscarEquiposStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarStaffEquipo(String admin) {
         dActualizarEquiposStaff  = new dActualizarEquiposStaff();
         dActualizarEquiposStaff.pack();
         dActualizarEquiposStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarStaffEquipo(String admin) {
         dBuscarEquiposStaff  = new dBuscarEquiposStaff();
         dBuscarEquiposStaff.pack();
         dBuscarEquiposStaff.setVisible(true);
-        System.exit(0);
+    }
+
+    public static void insertarStaffEquipos(String idEquipo,String idStaff,String sueldo,String fechaInicio,String fechaFin) throws SQLException {
+        StaffEquipo staffEquipo = new StaffEquipo();
+        staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
+        staffEquipo.setStaff();
+        staffEquipo.setSueldo(Double.parseDouble(sueldo));
+        staffEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
+        staffEquipo.setFechaFin(LocalDate.parse(fechaFin));
+        TStaffEquipo.insert(staffEquipo);
+    }
+
+    public static void actualizarEquiposStaff(String idStaff,String sueldo,String fechaInicio,String fechaFin) throws Exception {
+        StaffEquipo staffEquipos = new StaffEquipo();
+        staffEquipos.setStaff();
+        staffEquipos.setSueldo(Double.parseDouble(sueldo));
+        staffEquipos.setFechaInicio(LocalDate.parse(fechaInicio));
+        staffEquipos.setFechaFin(LocalDate.parse(fechaFin));
+        TStaffEquipo.update(staffEquipos);
+    }
+
+    public static int borrarStaffEquipo() throws SQLException {
+        StaffEquipo staffEquipo = new StaffEquipo();
+        staffEquipo.setStaff();
+        return TStaffEquipo.delete(staffEquipo);
+    }
+
+    public static String buscarTodosStaffEquipos() throws Exception {
+        ArrayList<StaffEquipo> listaStaffEquipo = TStaffEquipo.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaStaffEquipo.size();x++) {
+            datos += "\n ID_STAFF" + listaStaffEquipo.get(x).getStaff().getID() + "\n\nID_EQUIPO: " + listaStaffEquipo.get(x).getEquipo().getID() +
+                    "\nSueldo: " + listaStaffEquipo.get(x).getSueldo() + "\nFechaInicio: " + listaStaffEquipo.get(x).getFechaInicio() + "\nFechaFin" + listaStaffEquipo.get(x).getFechaFin();
+        }
+        return datos;
     }
    /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
         Jornada jornada = new Jornada();

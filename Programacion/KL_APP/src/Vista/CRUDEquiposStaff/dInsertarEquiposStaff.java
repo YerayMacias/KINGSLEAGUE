@@ -1,12 +1,20 @@
 package Vista.CRUDEquiposStaff;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class dInsertarEquiposStaff extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField tfSueldo;
+    private JTextField tfFechaInicio;
+    private JComboBox cbEquipo;
+    private JComboBox cbStaff;
+    private JTextField tfFechaFin;
 
     public dInsertarEquiposStaff() {
         setContentPane(contentPane);
@@ -39,6 +47,16 @@ public class dInsertarEquiposStaff extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.insertarStaffEquipos(cbEquipo.getSelectedItem().toString(),cbStaff.getSelectedItem().toString(),tfSueldo.getText(),tfFechaInicio.getText(),tfSueldo.getText());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {

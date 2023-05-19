@@ -21,12 +21,13 @@ public class TStaffEquipo {
         BaseDato.cerrarConexion();
     }
 
-    public static void delete(StaffEquipo staffEquipo) throws SQLException {
+    public static int delete(StaffEquipo staffEquipo) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM equipos_staffs where id_staff = ?");
         ps.setInt(1,staffEquipo.getStaff().getID());
         ps.executeUpdate();
         BaseDato.cerrarConexion();
+        return 0;
     }
 
     public static void update(StaffEquipo staffEquipo) throws Exception
