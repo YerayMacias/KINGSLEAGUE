@@ -65,6 +65,7 @@ import java.io.StringReader;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -519,49 +520,42 @@ public class Main {
         dBorrarPresidentes = new dBorrarPresidente();
         dBorrarPresidentes.pack();
         dBorrarPresidentes.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarPresidente(String admin) {
         dActualizarPresidentes = new dActualizarPresidente();
         dActualizarPresidentes.pack();
         dActualizarPresidentes.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarPresidente(String admin) {
         dBuscarPresidentes = new dBuscarPresidente();
         dBuscarPresidentes.pack();
         dBuscarPresidentes.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaInsertStaff(String admin) {
         dInsertarStaff = new dInsertarStaff();
         dInsertarStaff.pack();
         dInsertarStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarStaff(String admin) {
         dBorrarStaff = new dBorrarStaff();
         dBorrarStaff.pack();
         dBorrarStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarStaff(String admin) {
         dActualizarStaff = new dActualizarStaff();
         dActualizarStaff.pack();
         dActualizarStaff.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarStaff(String admin) {
         dBuscarStaff = new dBuscarStaff();
         dBuscarStaff.pack();
         dBuscarStaff.setVisible(true);
-        System.exit(0);
     }
 
 
@@ -569,56 +563,48 @@ public class Main {
         dInsertarTemporada = new dInsertarTemporada();
         dInsertarTemporada.pack();
         dInsertarTemporada.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarTemporada(String admin) {
         dBorrarTemporada = new dBorrarTemporada();
         dBorrarTemporada.pack();
         dBorrarTemporada.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarTemporada(String admin) {
         dActualizarTemporada = new dActualizarTemporada();
         dActualizarTemporada.pack();
         dActualizarTemporada.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarTemporada(String admin) {
         dBuscarTemporada = new dBuscarTemporada();
         dBuscarTemporada.pack();
         dBuscarTemporada.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaInsertUsuario(String admin) {
         dInsertarUsuario = new dInsertarUsuario();
         dInsertarUsuario.pack();
         dInsertarUsuario.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBorrarUsuario(String admin) {
         dBorrarUsuario = new dBorrarUsuario();
         dBorrarUsuario.pack();
         dBorrarUsuario.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaActualizarUsuario(String admin) {
         dActualizarUsuario = new dActualizarUsuario();
         dActualizarUsuario.pack();
         dActualizarUsuario.setVisible(true);
-        System.exit(0);
     }
 
     public static void crearVentanaBuscarUsuarios(String admin) {
         dBuscarUsuarios = new dBuscarUsuarios();
         dBuscarUsuarios.pack();
         dBuscarUsuarios.setVisible(true);
-        System.exit(0);
     }
 
     public static int borrarJugador(String DNI) throws Exception {
@@ -669,8 +655,8 @@ public class Main {
 
 
     public static void insertarJornada(int id_temporada, int num_jornada, String fecha) throws Exception {
-        Jornada jornada = new Jornada(num_jornada, LocalDate.parse(fecha));
-        jornada.setFecha(LocalDate.parse(fecha));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        Jornada jornada = new Jornada(num_jornada, LocalDate.parse(fecha, formatter));
         Temporada temporada = TTemporadas.buscarPorID(new Temporada(id_temporada));
         jornada.setTemporada(temporada);
         TJornadas.insert(jornada);
@@ -696,6 +682,14 @@ public class Main {
         for (int x = 0; x < listaJornadas.size(); x++) {
             datos += "\n ID_JORNADA" + listaJornadas.get(x).getID() + "\n\nTemporada: " + listaJornadas.get(x).getTemporada().getID() + "\nNºJornada: " + listaJornadas.get(x).getNumJornada() + "\nFecha: " + listaJornadas.get(x).getFecha() + "\n";
         }
+        return datos;
+    }
+    public static String buscarTemporadaID (String ID) throws Exception {
+        Temporada temporada = new Temporada();
+        temporada.setID(Integer.parseInt(ID));
+        String datos = "";
+        temporada = TTemporadas.buscarPorID(temporada);
+        datos += "ID_TEMPORADA" + temporada.getID() + "\n FECHA INICIO: " + temporada.getFechaInicio() + "\n FECHA FIN: " + temporada.getFechaFin();
         return datos;
     }
 
@@ -1284,6 +1278,12 @@ public class Main {
             transformer.transform(source, result);
         }
 
+    public static ArrayList<String> crearDniPresidente() throws Exception {
+        listaPresidente = TPresidente.buscarTodos();
+        ArrayList<String> listaDniPresidentes = new ArrayList<>();
+        listaPresidente.forEach(dni -> listaDniPresidentes.add(dni.getDNI()));
+        return listaDniPresidentes;
+    }
     /*public static String buscarTodasLasTemporadasID(String idTemporada) {
     }*/
 }

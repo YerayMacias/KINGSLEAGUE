@@ -15,7 +15,7 @@ public class TTemporadas {
     public static void insertar(Temporada temp) throws Exception
     {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into temporadas values (?,?,?,?)");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into temporadas(fecha_inicio, fecha_fin, estado, periodo) values (?,?,?,?)");
         ps.setDate(1, Date.valueOf(temp.getFechaInicio()));
         ps.setDate(2, Date.valueOf(temp.getFechaFin()));
         ps.setString(3, temp.getEstado().toString());

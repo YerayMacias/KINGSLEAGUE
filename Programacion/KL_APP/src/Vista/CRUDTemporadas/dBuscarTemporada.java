@@ -95,12 +95,12 @@ public class dBuscarTemporada extends JDialog {
                 try {
                     String id_temporada = cbID.getSelectedItem().toString();
 
-                    /*String datos = Main.buscarTodasLasTemporadasID(id_temporada);
+                    String datos = Main.buscarTemporadaID(id_temporada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Temporada");
                     } else {
                         taID.setText(datos);
-                    }*/
+                    }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

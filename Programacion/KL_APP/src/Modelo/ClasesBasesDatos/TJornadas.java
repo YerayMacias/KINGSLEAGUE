@@ -15,7 +15,7 @@ public class TJornadas {
     public static void insert(Jornada jorn) throws Exception
     {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into jornadas values (?,?,?)");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into jornadas(id_temporada, num_jornada, fecha) values (?,?,?)");
         ps.setInt(1, jorn.getTemporada().getID());
         ps.setInt(2, jorn.getNumJornada());
         ps.setDate(3, Date.valueOf(jorn.getFecha()));

@@ -5,6 +5,7 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class dActualizarTemporada extends JDialog {
     private JPanel contentPane;
@@ -24,6 +25,11 @@ public class dActualizarTemporada extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        try {
+            inicializar();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -105,6 +111,10 @@ public class dActualizarTemporada extends JDialog {
         dispose();
     }
 
+    private void inicializar() throws Exception {
+        ArrayList<String> idCBox = Main.crearIDTemporada();
+        idCBox.forEach(id -> cbID.addItem(id));
+    }
     public static void main(String[] args) {
         dActualizarTemporada dialog = new dActualizarTemporada();
         dialog.pack();
