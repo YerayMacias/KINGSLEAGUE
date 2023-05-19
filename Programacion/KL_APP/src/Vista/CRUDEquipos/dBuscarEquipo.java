@@ -57,7 +57,7 @@ public class dBuscarEquipo extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 String datos = null;
                 try {
-                    //datos = Main.buscarTodosEquipos();
+                    datos = Main.buscarTodosEquipos();
                     taTodos.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -69,13 +69,13 @@ public class dBuscarEquipo extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String nombre = cbNombre.getSelectedItem().toString();
-                    /*
+
                     String datos = Main.buscarTodosLosEquiposPorNombre(nombre);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion del Equipo");
                     } else {
                         taCJNombre.setText(datos);
-                    }*/
+                    }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -87,7 +87,7 @@ public class dBuscarEquipo extends JDialog {
                 try {
                     String id = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodosLosJugadorPorID(id);
+                    String datos = Main.buscarTodosLosEquiposPorID(id);
 
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion del Equipo");
@@ -117,15 +117,17 @@ public class dBuscarEquipo extends JDialog {
     }
 
     private void crearArrays() {
+
         try {
-            ArrayList<String> idCBox = Main.crearIdJugadores();
-            idCBox.forEach(id -> cbNombre.addItem(id));
+            ArrayList<String> nombreCBox = Main.crearNombreEquipos();
+            nombreCBox.forEach(nombre -> cbNombre.addItem(nombre));
         } catch (Exception exc) {
             System.out.println("problemas");
         }
+
         try {
-            ArrayList<String> dniCBox = Main.crearDniJugadores();
-            dniCBox.forEach(dni -> cbID.addItem(dni));
+            ArrayList<String> idCBox = Main.crearIdEquipos();
+            idCBox.forEach(id -> cbID.addItem(id));
         } catch (Exception exc) {
             System.out.println("problemas");
         }

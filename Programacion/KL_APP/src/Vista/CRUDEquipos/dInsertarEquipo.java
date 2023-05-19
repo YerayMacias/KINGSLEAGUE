@@ -1,5 +1,7 @@
 package Vista.CRUDEquipos;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,6 +9,8 @@ public class dInsertarEquipo extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField tfNombre;
+    private JTextField tfPresupuesto;
 
     public dInsertarEquipo() {
         setContentPane(contentPane);
@@ -39,11 +43,22 @@ public class dInsertarEquipo extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Validaciones
+                    Main.insertEquipo(tfNombre.getText(), Double.parseDouble(tfPresupuesto.getText()));
+                    JOptionPane.showMessageDialog(null, "El Equipo " + tfNombre.getText() + " ha sido insertado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,ex.getClass() + ex.getMessage());
+                }
+            }
+        });
     }
 
     private void onOK() {
         // add your code here
-        dispose();
     }
 
     private void onCancel() {
