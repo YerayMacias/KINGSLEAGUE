@@ -112,8 +112,13 @@ public class dBuscarPresidente extends JDialog {
             System.out.println("problemas");
         }
         try {
+<<<<<<< HEAD
             ArrayList<String> dniCBox = Main.crearDniPresidente();
             dniCBox.forEach(dni ->cbDNI.addItem(dni));
+=======
+            ArrayList<String> idCBox = Main.crearDniPresidente();
+            idCBox.forEach(dni ->cbDNI.addItem(dni));
+>>>>>>> main
         } catch (Exception exc) {
             System.out.println("problemas");
         }

@@ -52,7 +52,7 @@ public class dInsertarUsuario extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.insertarUsuario(tfID.getText(),tfEmail.getText(),tfContraseña.getText(),tfUsuario.getText(),tipo);
+                    Main.insertarUsuario(tfEmail.getText(),tfContraseña.getText(),tfUsuario.getText(),tipo);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

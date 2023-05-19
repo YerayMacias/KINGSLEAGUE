@@ -908,16 +908,14 @@ public class Main {
             return datos;
         }
 
-        public static void insertarUsuario (String id_usuario, String email, String username, String password, String
+        public static void insertarUsuario (String email, String username, String password, String
         tipo_usuario) throws Exception {
             Usuario usuario = new Usuario();
-            usuario.setID(Integer.parseInt(id_usuario));
             usuario.setEmail(email);
             usuario.setUsername(username);
             usuario.setPassword(password);
             usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
             TUsuarios.insert(usuario);
-
         }
 
         public static void actualizarUsuario (String id_usuario, String email, String username, String password, String
