@@ -52,7 +52,7 @@ public class dBuscarEquipo extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        bConsultar.addActionListener(new ActionListener() {
+       /* bConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String datos = null;
@@ -63,8 +63,8 @@ public class dBuscarEquipo extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
-        cbNombre.addActionListener(new ActionListener() {
+        }); */
+    /*    cbNombre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -80,8 +80,8 @@ public class dBuscarEquipo extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-        });
-        cbID.addActionListener(new ActionListener() {
+        }); */
+      /*  cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -98,7 +98,7 @@ public class dBuscarEquipo extends JDialog {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
             }
-        });
+        }); */
     }
 
     private void onOK() {

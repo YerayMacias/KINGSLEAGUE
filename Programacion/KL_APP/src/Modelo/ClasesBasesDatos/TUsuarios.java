@@ -32,12 +32,13 @@ public class TUsuarios {
         BaseDato.cerrarConexion();
     }
 
-    public static void delete(Usuario usuario) throws Exception {
+    public static int delete(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from usuarios where username = ?");
         ps.setString(1,usuario.getUsername());
         ps.execute();
         BaseDato.cerrarConexion();
+        return 0;
     }
 
     public static ArrayList<Usuario> buscarTodo() throws Exception {

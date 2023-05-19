@@ -1,5 +1,7 @@
 package Vista.CRUDStaffs;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,6 +9,10 @@ public class dInsertarStaff extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField tfApellido;
+    private JTextField tfDNI;
+    private JTextField tfRol;
+    private JTextField tfNombre;
 
     public dInsertarStaff() {
         setContentPane(contentPane);
@@ -39,6 +45,16 @@ public class dInsertarStaff extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.insertarStaff(tfNombre.getText(),tfApellido.getText(),tfDNI.getText(),tfRol.getText());
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {
@@ -57,4 +73,5 @@ public class dInsertarStaff extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
 }

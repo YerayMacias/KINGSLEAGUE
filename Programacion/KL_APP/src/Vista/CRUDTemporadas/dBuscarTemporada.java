@@ -4,6 +4,7 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dBuscarTemporada extends JDialog {
     private JPanel contentPane;
@@ -14,14 +15,12 @@ public class dBuscarTemporada extends JDialog {
     private JTextArea taCJT;
     private JComboBox cbFechaInicio;
     private JTextArea taFechaInicio;
-    private JComboBox cbEstado;
     private JTextArea taEstado;
     private JComboBox cbID;
     private JTextArea taID;
     private JTextArea taPeriodo;
     private JTextArea taFechaFin;
     private JComboBox cbFechaFin;
-    private JComboBox cbPeriodo;
 
     public dBuscarTemporada() {
         inicializar();
@@ -55,7 +54,7 @@ public class dBuscarTemporada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        cbFechaInicio.addActionListener(new ActionListener() {
+  /*      cbFechaInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -107,6 +106,9 @@ public class dBuscarTemporada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
+<<<<<<< HEAD
+        }); */
+=======
         });
         cbEstado.addActionListener(new ActionListener() {
             @Override
@@ -143,13 +145,14 @@ public class dBuscarTemporada extends JDialog {
                 }
             }
         });
+>>>>>>> main
         consultarTodosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String datos = null;
 
                 try {
-                    datos = Main.buscarTodasLasJornadas();
+                    datos = Main.buscarTodasLasTemporadas();
                     taCJT.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -173,13 +176,18 @@ public class dBuscarTemporada extends JDialog {
         taFechaInicio.setEditable(false);
         taFechaFin.setEditable(false);
         taID.setEditable(false);
-        taEstado.setEditable(false);
-        taPeriodo.setEditable(false);
 
         pTodos.add(new JScrollPane(taCJT));
         taCJT.setRows(20);
         taCJT.setColumns(40);
         taCJT.setLineWrap(true);
+
+        try {
+            ArrayList<String> idCBox = Main.crearIDTemporada();
+            idCBox.forEach(id ->cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
 
     }
 
