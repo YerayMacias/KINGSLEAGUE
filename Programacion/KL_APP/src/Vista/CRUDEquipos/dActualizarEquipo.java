@@ -1,14 +1,28 @@
 package Vista.CRUDEquipos;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dActualizarEquipo extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
+    private JTextField tfNombre;
+    private JTextField tfPresupuesto;
 
     public dActualizarEquipo() {
+
+        try {
+            ArrayList<String> idCBox = Main.crearIdEquipos();
+            idCBox.forEach(id -> cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -39,11 +53,23 @@ public class dActualizarEquipo extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.updateEquipo(tfNombre.getText(), Double.parseDouble(tfPresupuesto.getText()));
+                    JOptionPane.showMessageDialog(null, "El Equipo con ID " + cbID.getSelectedItem().toString() + " ha sido actualizado");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+
     }
 
     private void onOK() {
         // add your code here
-        dispose();
     }
 
     private void onCancel() {

@@ -1,25 +1,33 @@
 package Vista.CRUDPresidentes;
 
+import Controlador.Main;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class dBorrarPresidente extends JDialog {
     private JPanel contentPane;
+    private JButton bBorrar;
+    private JButton bCancelar;
+    private JTextField tfDNI;
     private JButton buttonOK;
     private JButton buttonCancel;
 
     public dBorrarPresidente() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        getRootPane().setDefaultButton(bBorrar);
 
-        buttonOK.addActionListener(new ActionListener() {
+        bBorrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
+        bCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -39,6 +47,26 @@ public class dBorrarPresidente extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        bBorrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pattern pat = Pattern.compile("[0-9]{8}[A-Za-z]");
+                Matcher mat = pat.matcher(tfDNI.getText());
+                if (!mat.matches()) {
+                    JOptionPane.showMessageDialog(null, "DNI no válido");
+                    tfDNI.setText("");
+                    tfDNI.setBackground(Color.red);
+                } else {
+                    try {
+                        Main.borrarJugador(tfDNI.getText());
+                        JOptionPane.showMessageDialog(null," El Presidnete con DNI " + tfDNI.getText() + " ha sido borrado");
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+            }
+        });
     }
 
     private void onOK() {

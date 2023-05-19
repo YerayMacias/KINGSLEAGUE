@@ -1,14 +1,30 @@
 package Vista.CRUDPresidentes;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dActualizarPresidente extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
+    private JTextField tfNombre;
+    private JTextField tfApellido;
+    private JTextField tfDNI;
+    private JComboBox cbEquipo;
 
     public dActualizarPresidente() {
+
+        try {
+            ArrayList<String> idCBox = Main.crearIdPartidos();
+            idCBox.forEach(id -> cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -39,6 +55,17 @@ public class dActualizarPresidente extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.updateStaff(tfNombre.getText(),tfApellido.getText(),tfDNI.getText(), String.valueOf(cbEquipo.getSelectedItem()));
+                    JOptionPane.showMessageDialog(null, "El Presidente con ID " + cbID.getSelectedItem().toString() + "ha sido actualizado");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {
