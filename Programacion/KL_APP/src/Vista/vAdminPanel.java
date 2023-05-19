@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class vAdminPanel {
     private JLabel lNombre;
@@ -70,6 +68,10 @@ public class vAdminPanel {
     private JButton bUltJor;
     private JButton bAllJor;
     private JButton bClasi;
+    private JButton JEinsert;
+    private JButton JEUpdate;
+    private JButton JEDelete;
+    private JButton JEBuscar;
     private boolean expirado;
 
     public JPanel getpPrincipal() {
@@ -440,6 +442,30 @@ public class vAdminPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.crearDialogoBuscarPartidos();
+            }
+        });
+        JEinsert.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.dialogoJugadoresEquipo();
+            }
+        });
+        JEDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.dialogoBorrarJugadoresEquipo();
+            }
+        });
+        JEUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.dialogoActualizarJugadoresEquipo();
+            }
+        });
+        JEBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.dialogoBuscarJugadoresEquipo();
             }
         });
     }

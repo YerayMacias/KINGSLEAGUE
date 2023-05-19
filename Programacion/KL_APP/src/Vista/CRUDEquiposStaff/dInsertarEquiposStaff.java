@@ -5,6 +5,7 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class dInsertarEquiposStaff extends JDialog {
     private JPanel contentPane;
@@ -20,6 +21,7 @@ public class dInsertarEquiposStaff extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        inicializar();
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -52,6 +54,7 @@ public class dInsertarEquiposStaff extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Main.insertarStaffEquipos(cbEquipo.getSelectedItem().toString(),cbStaff.getSelectedItem().toString(),tfSueldo.getText(),tfFechaInicio.getText(),tfSueldo.getText());
+                    JOptionPane.showMessageDialog(null,"Se ha insertado correctamente");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -74,5 +77,20 @@ public class dInsertarEquiposStaff extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void inicializar() {
+        try {
+            ArrayList<String> idCBox = Main.crearStaffEquipoID();
+            idCBox.forEach(id ->cbEquipo.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+            ArrayList<String> idCBox = Main.crearStaffEquipoID2();
+            idCBox.forEach(id ->cbStaff.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
     }
 }
