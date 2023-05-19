@@ -57,7 +57,7 @@ public class dBuscarEquipo extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 String datos = null;
                 try {
-                    datos = Main.buscarTodosEquipos();
+                    //datos = Main.buscarTodosEquipos();
                     taTodos.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -69,13 +69,13 @@ public class dBuscarEquipo extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String nombre = cbNombre.getSelectedItem().toString();
-
+                    /*
                     String datos = Main.buscarTodosLosEquiposPorNombre(nombre);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion del Equipo");
                     } else {
                         taCJNombre.setText(datos);
-                    }
+                    }*/
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

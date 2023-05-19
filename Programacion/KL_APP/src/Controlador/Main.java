@@ -44,13 +44,36 @@ import Vista.CRUDUsuario.dActualizarUsuario;
 import Vista.CRUDUsuario.dBorrarUsuario;
 import Vista.CRUDUsuario.dBuscarUsuarios;
 import Vista.CRUDUsuario.dInsertarUsuario;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
 
 import javax.swing.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.awt.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import org.w3c.dom.Document;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import Vista.*;
 
 /**
  * @author
@@ -96,7 +119,11 @@ public class Main {
     public static JDialog dActualizarEquiposStaff;
     public static JDialog dBuscarUsuarios;
     public static JDialog dEquiposJugadores;
+<<<<<<< HEAD
     public static JDialog dInsertarEquiposStaff;
+=======
+    public static JDialog dInformes;
+>>>>>>> main
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
@@ -121,7 +148,8 @@ public class Main {
     private static int numJugador;
 
     private static int posicion;
-    public static void main(String[] args){
+    private static XML xml;
+    public static void main(String[] args) throws IOException {
 
         // Test para probar conexion con la base de datos
 
@@ -138,6 +166,7 @@ public class Main {
         }*/
 
         crearVentanaLogin();
+        //convertirAXML();
         /*try {
             buscarClasificacion();
             crearVentanaPrueba();
@@ -870,6 +899,7 @@ public class Main {
         TTemporadas.update(temporada);
     }
 
+<<<<<<< HEAD
     public static int borrarTemporada(String id_temporada) throws Exception {
         Temporada temporada = new Temporada();
         temporada.setID(Integer.parseInt(id_temporada));
@@ -1010,4 +1040,73 @@ public class Main {
         }
         return datos;
     } */
+=======
+    public static void crearDialogoInformes(String tipo){
+        dInformes = new dInformes(tipo);
+        dInformes.pack();
+        dInformes.setVisible(true);
+        dInformes.setLocationRelativeTo(vAdminPanel);
+    }
+
+    public static void generarCalendario() throws Exception {
+        BaseDato.generarCalendario();
+    }
+
+    public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
+        return BaseDato.verEnfrentamientos();
+    }
+
+    public static ArrayList<ArrayList<Object>> informeJugadores() throws SQLException {
+        return BaseDato.obtener_datos_jugadores();
+    }
+
+    public static ArrayList<ArrayList<Object>> informeClasificacion() throws Exception {
+        return BaseDato.mostrarClasificacion();
+    }
+
+    public static boolean comprobarFechaExpiracion(String tipo) throws Exception {
+        return TXMLs.buscarFechaExpiracion(tipo);
+    }
+
+    public static void crearObjetoXML(String tipo) throws Exception {
+        switch (tipo){
+            case "ultima" -> xml = TXMLs.buscarUltimaJornada();
+            case "todas" -> xml = TXMLs.buscarTodasJornada();
+            case "clasificacion" -> xml = TXMLs.buscarClasificacion();
+        }
+
+    }
+
+    public static void convertirAXML() throws IOException {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showSaveDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+
+            try {
+                Document document = convertStringToDocument(xml.getXml());
+                saveDocumentToFile(document, filePath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private static Document convertStringToDocument(String xmlString) throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        return (Document) builder.parse(new InputSource(new StringReader(xmlString)));
+    }
+
+    private static void saveDocumentToFile(Document document, String filePath) throws IOException, TransformerException, TransformerException {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        DOMSource source = new DOMSource((Node) document);
+        StreamResult result = new StreamResult(new FileWriter(filePath));
+        transformer.transform(source, result);
+    }
+>>>>>>> main
 }
