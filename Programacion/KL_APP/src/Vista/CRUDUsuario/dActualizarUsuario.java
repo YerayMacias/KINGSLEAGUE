@@ -1,5 +1,7 @@
 package Vista.CRUDUsuario;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,6 +9,13 @@ public class dActualizarUsuario extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
+    private JTextField tfUser;
+    private JTextField tfEmail;
+    private JTextField tfPassword;
+    private JRadioButton rdSI;
+    private JRadioButton rdNO;
+    private String tipo;
 
     public dActualizarUsuario() {
         setContentPane(contentPane);
@@ -39,6 +48,32 @@ public class dActualizarUsuario extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.actualizarUsuario(tfEmail.getText(),tfPassword.getText(),tfUser.getText(),cbID.getSelectedItem().toString(),tipo);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        rdSI.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdSI.isSelected()) {
+                    tipo = "S";
+                }
+            }
+        });
+        rdNO.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdNO.isSelected()){
+                    tipo = "N";
+                }
+            }
+        });
     }
 
     private void onOK() {

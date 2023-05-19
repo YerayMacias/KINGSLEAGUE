@@ -1,12 +1,24 @@
 package Vista.CRUDTemporadas;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class dActualizarTemporada extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
+    private JTextField tfFechaIncio;
+    private JTextField tfFechaFin;
+    private JRadioButton rdCERRADO;
+    private JRadioButton rdABIERTO;
+    private JRadioButton rdINV;
+    private JRadioButton rdVER;
+    private String estado;
+    private String periodo;
 
     public dActualizarTemporada() {
         setContentPane(contentPane);
@@ -39,6 +51,48 @@ public class dActualizarTemporada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.ActualizarTemporada(tfFechaFin.getText(),cbID.getSelectedItem().toString(),tfFechaFin.getText(),estado,periodo);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        rdABIERTO.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdABIERTO.isSelected()){
+                    estado = "ABIERTO";
+                }
+            }
+        });
+        rdCERRADO.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdCERRADO.isSelected()){
+                    estado = "CERRADO";
+                }
+            }
+        });
+        rdINV.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdINV.isSelected()){
+                    periodo = "INV";
+                }
+            }
+        });
+        rdVER.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (rdVER.isSelected()){
+                    periodo = "VER";
+                }
+            }
+        });
     }
 
     private void onOK() {

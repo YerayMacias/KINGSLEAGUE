@@ -53,7 +53,7 @@ public class dInsertJugadores extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 Pattern pat = Pattern.compile("[0-9]{8}[A-Za-z]");
                 Matcher mat = pat.matcher(tfDNI.getText());
-                /*
+
                 if (mat.matches()) {
                     try {
                         Main.insertJugador(tfNombre.getText(), tfApellido.getText(), tfDNI.getText(),cbPosicion.getSelectedItem().toString(), cbTipojugador.getSelectedItem().toString());
@@ -63,7 +63,7 @@ public class dInsertJugadores extends JDialog {
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El formato del dni no es correcto introduzcalo de la siguiente manera 12345678X");
-                }*/
+                }
             }
         });
     }

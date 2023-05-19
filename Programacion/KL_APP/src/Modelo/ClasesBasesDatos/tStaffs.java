@@ -1,8 +1,6 @@
 package Modelo.ClasesBasesDatos;
 
-import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Staff;
-import Modelo.ClasesObjetos.Temporada;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +14,7 @@ public class tStaffs {
      */
     public static void insert(Staff staff) throws Exception{
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into staff(nombre, apellido, dni, rol) values (?,?,?,?)");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into staffs(nombre, apellido, dni, rol) values (?,?,?,?)");
         ps.setString(1, staff.getNombre());
         ps.setString(2, staff.getApellido());
         ps.setString(3, staff.getDNI());
@@ -73,17 +71,18 @@ public class tStaffs {
         return listaStaffs;
     }
 
-    public static void delete(Staff staff) throws Exception {
+    public static int delete(Staff staff) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from staff where dni = ?");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from staffs where dni = ?");
         ps.setString(1, staff.getDNI());
         int n = ps.executeUpdate();
         BaseDato.cerrarConexion();
+        return n;
     }
 
     public static Staff buscarPorId(Staff staff) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staff where id_equipo = ?");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staffs where id_staff = ?");
         ps.setInt(1, staff.getID());
         ResultSet result = ps.executeQuery();
         Staff staff2;

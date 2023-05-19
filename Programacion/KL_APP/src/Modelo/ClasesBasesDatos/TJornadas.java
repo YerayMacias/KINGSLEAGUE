@@ -69,6 +69,9 @@ public class TJornadas {
         {
             jornada = new Jornada();
             jornada.setID(resultado.getInt("id_jornada"));
+            jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(resultado.getInt("id_temporada"))));
+            jornada.setNumJornada(resultado.getInt("num_jornada"));
+            jornada.setFecha(resultado.getDate("fecha").toLocalDate());
         }
         else
             jornada = null;
@@ -86,6 +89,9 @@ public class TJornadas {
         {
             jornada = new Jornada();
             jornada.setID(resultado.getInt("id_jornada"));
+            jornada.setTemporada(TTemporadas.buscarPorID(new Temporada(resultado.getInt("id_temporada"))));
+            jornada.setNumJornada(resultado.getInt("num_jornada"));
+            jornada.setFecha(resultado.getDate("fecha").toLocalDate());
         }
         else
             jornada = null;
