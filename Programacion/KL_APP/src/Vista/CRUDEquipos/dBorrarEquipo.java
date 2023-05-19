@@ -28,11 +28,6 @@ public class dBorrarEquipo extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
 
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -84,9 +79,6 @@ public class dBorrarEquipo extends JDialog {
         });
     }
 
-    private void onOK() {
-        // add your code here
-    }
 
     private void onCancel() {
         // add your code here if necessary

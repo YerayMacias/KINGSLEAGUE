@@ -54,12 +54,11 @@ public class dBuscarTemporada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-  /*      cbFechaInicio.addActionListener(new ActionListener() {
+        cbFechaInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String fecha = cbFechaInicio.getSelectedItem().toString();
-
                     /*
                     String datos = Main.buscarTodasLasTemporadasFechaInicio(fecha);
                     if (datos == null) {
@@ -106,46 +105,7 @@ public class dBuscarTemporada extends JDialog {
                     throw new RuntimeException(ex);
                 }
             }
-<<<<<<< HEAD
-        }); */
-=======
         });
-        cbEstado.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String estado = cbEstado.getSelectedItem().toString();
-
-                    /*String datos = Main.buscarTodasLasTemporadasPorEstado(estado);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion de la Temporada");
-                    } else {
-                        taEstado.setText(datos);
-                    }*/
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-
-        cbPeriodo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String periodo = cbPeriodo.getSelectedItem().toString();
-
-                    /*String datos = Main.buscarTodasLasTemporadasPorPeriodo(periodo);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion de la Temporada");
-                    } else {
-                        taPeriodo.setText(datos);
-                    }*/
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
->>>>>>> main
         consultarTodosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
