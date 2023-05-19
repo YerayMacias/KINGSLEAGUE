@@ -4,6 +4,7 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dActualizarStaff extends JDialog {
     private JPanel contentPane;
@@ -19,6 +20,11 @@ public class dActualizarStaff extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        try {
+            inicializar();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -66,6 +72,10 @@ public class dActualizarStaff extends JDialog {
     private void onCancel() {
         // add your code here if necessary
         dispose();
+    }
+    private void inicializar() throws Exception {
+        ArrayList<String> idCBox = Main.crearIdStaff();
+        idCBox.forEach(id -> cbID.addItem(id));
     }
 
     public static void main(String[] args) {
