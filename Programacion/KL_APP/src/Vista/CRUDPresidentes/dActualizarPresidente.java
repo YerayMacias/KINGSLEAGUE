@@ -19,8 +19,15 @@ public class dActualizarPresidente extends JDialog {
     public dActualizarPresidente() {
 
         try {
-            ArrayList<String> idCBox = Main.crearIdPartidos();
+            ArrayList<String> idCBox = Main.crearIdPresidente();
             idCBox.forEach(id -> cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+
+        try {
+            ArrayList<String> equipoCBox = Main.crearIdEquipos();
+            equipoCBox.forEach(id -> cbEquipo.addItem(id));
         } catch (Exception exc) {
             System.out.println("problemas");
         }

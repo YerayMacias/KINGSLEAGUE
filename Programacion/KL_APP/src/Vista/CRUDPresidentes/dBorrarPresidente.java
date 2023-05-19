@@ -71,7 +71,6 @@ public class dBorrarPresidente extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
     }
 
     private void onCancel() {
