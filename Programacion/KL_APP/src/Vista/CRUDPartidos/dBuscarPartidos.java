@@ -4,6 +4,7 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dBuscarPartidos extends JDialog {
     private JPanel contentPane;
@@ -13,12 +14,11 @@ public class dBuscarPartidos extends JDialog {
     private JButton bConsultar;
     private JPanel pTodos;
     private JTextArea taTodos;
-    private JTextArea taTipo;
-    private JComboBox cbTipo;
     private JTextArea taCJID;
     private JComboBox cbID;
 
     public dBuscarPartidos() {
+        inicializar();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -50,7 +50,7 @@ public class dBuscarPartidos extends JDialog {
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-       /* bConsultar.addActionListener(new ActionListener() {
+        bConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String datos = null;
@@ -62,30 +62,15 @@ public class dBuscarPartidos extends JDialog {
                 }
             }
         });
-        cbTipo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String tipo = cbTipo.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodosLosPartidosPorTipo(tipo);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion del Partido");
-                    } else {
-                        taTipo.setText(datos);
-                    }
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
+
         cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String id = cbID.getSelectedItem().toString();
 
-                    String datos = Main.buscarTodosLosPartidosPorID(id);
+                    String datos = Main.buscarPartidosPorID(id);
 
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion del Partido");
@@ -96,7 +81,7 @@ public class dBuscarPartidos extends JDialog {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
             }
-        });*/
+        });
 
     }
 
@@ -116,4 +101,28 @@ public class dBuscarPartidos extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
+    private void crearArrays() {
+
+        try {
+            ArrayList<String> idCBox = Main.crearIdPartidos();
+            idCBox.forEach(id -> cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+    }
+
+    private void inicializar() {
+
+        crearArrays();
+
+        taTodos.setEditable(false);
+        taCJID.setEditable(false);
+
+        pTodos.add(new JScrollPane(taTodos));
+        taTodos.setRows(20);
+        taTodos.setColumns(40);
+        taTodos.setLineWrap(true);
+    }
+
 }

@@ -7,22 +7,20 @@ import java.awt.event.*;
 
 public class dBuscarEquiposStaff extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
+    private JButton consultar;
     private JButton buttonCancel;
     private JButton consultarTodosButton;
     private JPanel pTodos;
+    private JTextArea taTodos;
+    private JPanel pTitulo;
+    private JButton bConsultar;
     private JTextArea taCJT;
 
     public dBuscarEquiposStaff() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        getRootPane().setDefaultButton(consultar);
+        inicializar();
 
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -48,7 +46,8 @@ public class dBuscarEquiposStaff extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.buscarTodosStaffEquipos();
+                    String datos = Main.buscarTodosStaffEquipos();
+                    taTodos.setText(datos);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -71,5 +70,15 @@ public class dBuscarEquiposStaff extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void inicializar() {
+
+        taTodos.setEditable(false);
+
+        pTodos.add(new JScrollPane(taTodos));
+        taTodos.setRows(20);
+        taTodos.setColumns(40);
+        taTodos.setLineWrap(true);
     }
 }

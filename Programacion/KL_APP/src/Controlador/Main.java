@@ -16,8 +16,12 @@ import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
 import Vista.CRUDEquipos.dBuscarEquipo;
 import Vista.CRUDEquipos.dInsertarEquipo;
-import Vista.CRUDEquiposJugadores.dEquiposJugadores;
+import Vista.CRUDEquiposJugadores.dActualizarEquiposJugadores;
+import Vista.CRUDEquiposJugadores.dBorrarEquiposJugadores;
+import Vista.CRUDEquiposJugadores.dBuscarEquiposJugadores;
+import Vista.CRUDEquiposJugadores.dInsertarEquiposJugadores;
 import Vista.CRUDEquiposStaff.dActualizarEquiposStaff;
+import Vista.CRUDEquiposStaff.dBorrarEquiposStaff;
 import Vista.CRUDEquiposStaff.dBuscarEquiposStaff;
 import Vista.CRUDEquiposStaff.dInsertarEquiposStaff;
 import Vista.CRUDJornada.dActualizarJornada;
@@ -116,6 +120,7 @@ public class Main {
     public static JDialog dActualizarEquiposStaff;
     public static JDialog dBuscarUsuarios;
     public static JDialog dEquiposJugadores;
+    public static JDialog dBorrarEquiposStaff;
     public static JDialog dInsertarEquiposStaff;
     public static JDialog dActualizarPartido;
     public static JDialog dBuscarPartidos;
@@ -147,7 +152,7 @@ public class Main {
     private static ArrayList<Presidente> listaPresidente;
     private static ArrayList<Staff> listaStaffs;
     private static ArrayList<Usuario> listaUsuarios;
-
+    private static ArrayList<StaffEquipo> listaStaffEquipo;
     private static ArrayList<Temporada> listaTemporada;
     private static ArrayList<Staff> listaStaff;
     private static int numJugador;
@@ -262,11 +267,6 @@ public class Main {
         vPlayOffs.setVisible(true);
     }
 
-    public static void crearDialogoEquiposJugadores() {
-        dEquiposJugadores = new dEquiposJugadores();
-        dEquiposJugadores.pack();
-        dEquiposJugadores.setVisible(true);
-    }
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
@@ -879,6 +879,20 @@ public class Main {
         return listaStaffID;
     }
 
+    public static ArrayList<String> crearStaffEquipoID() throws Exception {
+        listaStaffEquipo = TStaffEquipo.buscarTodos();
+        ArrayList<String> listaStaffEquipoIDEquipo = new ArrayList<>();
+        listaStaffEquipo.forEach(staffEquipo -> listaStaffEquipoIDEquipo.add(String.valueOf(staffEquipo.getEquipo().getID())));
+        return listaStaffEquipoIDEquipo;
+    }
+
+    public static ArrayList<String> crearStaffEquipoID2() throws Exception {
+        listaStaffEquipo = TStaffEquipo.buscarTodos();
+        ArrayList<String> listaStaffEquipoIDEquipo = new ArrayList<>();
+        listaStaffEquipo.forEach(staffEquipo -> listaStaffEquipoIDEquipo.add(String.valueOf(staffEquipo.getStaff().getID())));
+        return listaStaffEquipoIDEquipo;
+    }
+
     public static ArrayList<String> crearStaffDNI() throws Exception {
         listaStaff = tStaffs.buscarTodos();
         ArrayList<String> listaStaffDNI = new ArrayList<>();
@@ -928,226 +942,226 @@ public class Main {
         datos += "\n ID_EQUIPO" + equipo.getID() + "\n\nNombre: " + equipo.getNombre() + "\nPresupuesto: " + equipo.getPresupuesto() + "€\n";
         return datos;
     }
-        public static String buscarJornadaFecha (String fecha) throws Exception {
-            Jornada jornada = new Jornada();
-            jornada.setFecha(LocalDate.parse(fecha));
-            String datos = "";
-            jornada = TJornadas.buscarPorFecha(jornada);
-            datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
-            return datos;
-        }
+    public static String buscarJornadaFecha (String fecha) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setFecha(LocalDate.parse(fecha));
+        String datos = "";
+        jornada = TJornadas.buscarPorFecha(jornada);
+        datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
+        return datos;
+    }
 
-        public static String buscarJornadaID (String ID) throws Exception {
-            Jornada jornada = new Jornada();
-            jornada.setID(Integer.parseInt(ID));
-            String datos = "";
-            jornada = TJornadas.buscarPorID(jornada);
-            datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
-            return datos;
-        }
+    public static String buscarJornadaID (String ID) throws Exception {
+        Jornada jornada = new Jornada();
+        jornada.setID(Integer.parseInt(ID));
+        String datos = "";
+        jornada = TJornadas.buscarPorID(jornada);
+        datos += "ID_JORNADA" + jornada.getID() + "\n ID_TEMPORADA: " + jornada.getTemporada().getID() + "\n" + jornada.getNumJornada() + "\n Fecha: " + jornada.getFecha();
+        return datos;
+    }
 
-        public static void insertarUsuario (String email, String username, String password, String
-        tipo_usuario) throws Exception {
-            Usuario usuario = new Usuario();
-            usuario.setEmail(email);
-            usuario.setUsername(username);
-            usuario.setPassword(password);
-            usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
-            TUsuarios.insert(usuario);
-        }
+    public static void insertarUsuario (String email, String username, String password, String
+            tipo_usuario) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setEmail(email);
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
+        TUsuarios.insert(usuario);
+    }
 
-        public static void actualizarUsuario (String id_usuario, String email, String username, String password, String
-        tipo_usuario) throws Exception {
-            Usuario usuario = new Usuario();
-            usuario.setID(Integer.parseInt(id_usuario));
-            usuario.setEmail(email);
-            usuario.setUsername(username);
-            usuario.setPassword(password);
-            usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
-            TUsuarios.update(usuario);
-        }
+    public static void actualizarUsuario (String id_usuario, String email, String username, String password, String
+            tipo_usuario) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setID(Integer.parseInt(id_usuario));
+        usuario.setEmail(email);
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        usuario.setAdmin(Usuario.tUsuario.valueOf(tipo_usuario));
+        TUsuarios.update(usuario);
+    }
 
-        public static int borrarUsuario (String username) throws Exception {
-            Usuario usuario = new Usuario();
-            usuario.setUsername(username);
-            return TUsuarios.delete(usuario);
-        }
+    public static int borrarUsuario (String username) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+        return TUsuarios.delete(usuario);
+    }
 
-        public static String buscarTodosUsuarios () throws Exception {
-            ArrayList<Usuario> listaUsuarios = TUsuarios.buscarTodo();
-            String datos = "";
-            for (int x = 0; x < listaUsuarios.size(); x++) {
-                datos += "\n ID_USUARIO" + listaUsuarios.get(x).getID() + "\n\nUsername: " + listaUsuarios.get(x).getUsername() + "\nEmail: " + listaUsuarios.get(x).getEmail() + "\nPassword: " + listaUsuarios.get(x).getPassword()
-                        + "\n ADMIN" + listaUsuarios.get(x).getAdmin();
-            }
-            return datos;
+    public static String buscarTodosUsuarios () throws Exception {
+        ArrayList<Usuario> listaUsuarios = TUsuarios.buscarTodo();
+        String datos = "";
+        for (int x = 0; x < listaUsuarios.size(); x++) {
+            datos += "\n ID_USUARIO" + listaUsuarios.get(x).getID() + "\n\nUsername: " + listaUsuarios.get(x).getUsername() + "\nEmail: " + listaUsuarios.get(x).getEmail() + "\nPassword: " + listaUsuarios.get(x).getPassword()
+                    + "\n ADMIN" + listaUsuarios.get(x).getAdmin();
         }
+        return datos;
+    }
 
-        public static String buscarTodosUsuariosPorUser (String user) throws Exception {
-            Usuario username = new Usuario();
-            username.setUsername(user);
-            String datos = "";
-            username = TUsuarios.buscarPorUsername(username);
-            datos += "ID_USUARIO" + username.getID() + "\n EMAIL: " + usuario.getEmail() + "\n Usuario" + username.getUsername() + "\n Password: " + usuario.getPassword()
-                    + "\n USERNAME" + username.getUsername() + "\n ADMIN" + username.getAdmin();
-            return datos;
+    public static String buscarTodosUsuariosPorUser (String user) throws Exception {
+        Usuario username = new Usuario();
+        username.setUsername(user);
+        String datos = "";
+        username = TUsuarios.buscarPorUsername(username);
+        datos += "ID_USUARIO" + username.getID() + "\n EMAIL: " + usuario.getEmail() + "\n Usuario" + username.getUsername() + "\n Password: " + usuario.getPassword()
+                + "\n USERNAME" + username.getUsername() + "\n ADMIN" + username.getAdmin();
+        return datos;
+    }
+
+    public static void insertarTemporada (String fecha_inicio, String fecha_fin, String estado, String periodo) throws
+            Exception {
+        Temporada temporada = new Temporada();
+        temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
+        temporada.setFechaFin(LocalDate.parse(fecha_fin));
+        temporada.setEstado(Temporada.tEstado.valueOf(estado));
+        temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
+        TTemporadas.insertar(temporada);
+    }
+
+    public static void ActualizarTemporada (String id_temporada, String fecha_inicio, String fecha_fin, String
+            estado, String periodo) throws SQLException {
+        Temporada temporada = new Temporada();
+        temporada.setID(Integer.parseInt(id_temporada));
+        temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
+        temporada.setFechaFin(LocalDate.parse(fecha_fin));
+        temporada.setEstado(Temporada.tEstado.valueOf(estado));
+        temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
+        TTemporadas.update(temporada);
+    }
+
+    public static int borrarTemporada (String id_temporada) throws Exception {
+        Temporada temporada = new Temporada();
+        temporada.setID(Integer.parseInt(id_temporada));
+        return TTemporadas.delete(temporada);
+    }
+
+    public static String buscarTodasLasTemporadas () throws Exception {
+        ArrayList<Temporada> listaTemporadas = TTemporadas.buscarTodo();
+        String datos = "";
+        for (int x = 0; x < listaTemporadas.size(); x++) {
+            datos += "\n ID_TEMPORAD" + listaTemporadas.get(x).getID() + "\n\nFechaInicio: " + listaTemporadas.get(x).getFechaInicio() + "\nFechaFin: " + listaTemporadas.get(x).getFechaFin()
+                    + "\nEstado: " + listaTemporadas.get(x).getEstado() + "\nPeriodo" + listaTemporadas.get(x).getPeriodo();
         }
+        return datos;
+    }
 
-        public static void insertarTemporada (String fecha_inicio, String fecha_fin, String estado, String periodo) throws
-        Exception {
-            Temporada temporada = new Temporada();
-            temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
-            temporada.setFechaFin(LocalDate.parse(fecha_fin));
-            temporada.setEstado(Temporada.tEstado.valueOf(estado));
-            temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
-            TTemporadas.insertar(temporada);
+    public static void insertarStaff (String nombre, String apellido, String dni, String rol) throws Exception {
+        Staff staff = new Staff();
+        staff.setNombre(nombre);
+        staff.setApellido(apellido);
+        staff.setDNI(dni);
+        staff.setRol(Staff.tROl.valueOf(rol));
+        tStaffs.insert(staff);
+
+    }
+
+    public static int borrarStaff (String dni) throws Exception {
+        Staff staff = new Staff();
+        staff.setDNI(dni);
+        return tStaffs.delete(staff);
+    }
+
+    public static void actualizarStaff (String idStaff, String nombre, String apellido, String dni, String rol) throws
+            Exception {
+        Staff staff = new Staff();
+        staff.setID(Integer.parseInt(idStaff));
+        staff.setNombre(nombre);
+        staff.setApellido(apellido);
+        staff.setDNI(dni);
+        staff.setRol(Staff.tROl.valueOf(rol));
+        tStaffs.update(staff);
+    }
+
+    public static String buscarTodosStaff () throws Exception {
+        ArrayList<Staff> listaStaff = tStaffs.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaStaff.size(); x++) {
+            datos += "\n ID_STAFF" + listaStaff.get(x).getID() + "\n\nNombre: " + listaStaff.get(x).getNombre() + "\nApellido: " + listaStaff.get(x).getApellido()
+                    + "\nDNI: " + listaStaff.get(x).getDNI() + "\nRol" + listaStaff.get(x).getRol();
         }
+        return datos;
+    }
 
-        public static void ActualizarTemporada (String id_temporada, String fecha_inicio, String fecha_fin, String
-        estado, String periodo) throws SQLException {
-            Temporada temporada = new Temporada();
-            temporada.setID(Integer.parseInt(id_temporada));
-            temporada.setFechaInicio(LocalDate.parse(fecha_inicio));
-            temporada.setFechaFin(LocalDate.parse(fecha_fin));
-            temporada.setEstado(Temporada.tEstado.valueOf(estado));
-            temporada.setPeriodo(Temporada.tPeriodo.valueOf(periodo));
-            TTemporadas.update(temporada);
+    public static String buscarStaffId (String id) throws Exception {
+        Staff staff = new Staff();
+        staff.setID(Integer.parseInt(id));
+        String datos = "";
+        staff = tStaffs.buscarPorId(staff);
+        datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
+                + "\n Rol" + staff.getRol();
+        return datos;
+    }
+
+    public static String buscarStaffDNI (String dni) throws Exception {
+        Staff staff = new Staff();
+        staff.setDNI(dni);
+        String datos = "";
+        staff = tStaffs.buscarPorDNI(staff);
+        datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
+                + "\n Rol" + staff.getRol();
+        return datos;
+    }
+
+    public static void crearVentanaInsertarStaffEquipo (String admin){
+        dInsertarEquiposStaff = new dInsertarEquiposStaff();
+        dInsertarEquiposStaff.pack();
+        dInsertarEquiposStaff.setVisible(true);
+    }
+
+    public static void crearVentanaBorrarStaffEquipo (String admin){
+        dBorrarEquiposStaff  = new dBorrarEquiposStaff();
+        dBorrarEquiposStaff.pack();
+        dBorrarEquiposStaff.setVisible(true);
+    }
+
+    public static void crearVentanaActualizarStaffEquipo (String admin){
+        dActualizarEquiposStaff = new dActualizarEquiposStaff();
+        dActualizarEquiposStaff.pack();
+        dActualizarEquiposStaff.setVisible(true);
+    }
+
+    public static void crearVentanaBuscarStaffEquipo (String admin){
+        dBuscarEquiposStaff = new dBuscarEquiposStaff();
+        dBuscarEquiposStaff.pack();
+        dBuscarEquiposStaff.setVisible(true);
+    }
+
+    public static void insertarStaffEquipos (String idEquipo, String idStaff, String sueldo, String
+            fechaInicio, String fechaFin) throws SQLException {
+        StaffEquipo staffEquipo = new StaffEquipo();
+        // staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
+        //    staffEquipo.setStaff();
+        staffEquipo.setSueldo(Double.parseDouble(sueldo));
+        staffEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
+        staffEquipo.setFechaFin(LocalDate.parse(fechaFin));
+        TStaffEquipo.insert(staffEquipo);
+    }
+
+    public static void actualizarEquiposStaff (String idStaff, String sueldo, String fechaInicio, String fechaFin) throws
+            Exception {
+        StaffEquipo staffEquipos = new StaffEquipo();
+        // staffEquipos.setStaff();
+        staffEquipos.setSueldo(Double.parseDouble(sueldo));
+        staffEquipos.setFechaInicio(LocalDate.parse(fechaInicio));
+        staffEquipos.setFechaFin(LocalDate.parse(fechaFin));
+        TStaffEquipo.update(staffEquipos);
+    }
+
+    public static int borrarStaffEquipo () throws SQLException {
+        StaffEquipo staffEquipo = new StaffEquipo();
+        //staffEquipo.setStaff();
+        return TStaffEquipo.delete(staffEquipo);
+    }
+
+    public static String buscarTodosStaffEquipos () throws Exception {
+        ArrayList<StaffEquipo> listaStaffEquipo = TStaffEquipo.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaStaffEquipo.size(); x++) {
+            datos += "\n ID_STAFF" + listaStaffEquipo.get(x).getStaff().getID() + "\n\nID_EQUIPO: " + listaStaffEquipo.get(x).getEquipo().getID() +
+                    "\nSueldo: " + listaStaffEquipo.get(x).getSueldo() + "\nFechaInicio: " + listaStaffEquipo.get(x).getFechaInicio() + "\nFechaFin" + listaStaffEquipo.get(x).getFechaFin();
         }
-
-        public static int borrarTemporada (String id_temporada) throws Exception {
-            Temporada temporada = new Temporada();
-            temporada.setID(Integer.parseInt(id_temporada));
-            return TTemporadas.delete(temporada);
-        }
-
-        public static String buscarTodasLasTemporadas () throws Exception {
-            ArrayList<Temporada> listaTemporadas = TTemporadas.buscarTodo();
-            String datos = "";
-            for (int x = 0; x < listaTemporadas.size(); x++) {
-                datos += "\n ID_TEMPORAD" + listaTemporadas.get(x).getID() + "\n\nFechaInicio: " + listaTemporadas.get(x).getFechaInicio() + "\nFechaFin: " + listaTemporadas.get(x).getFechaFin()
-                        + "\nEstado: " + listaTemporadas.get(x).getEstado() + "\nPeriodo" + listaTemporadas.get(x).getPeriodo();
-            }
-            return datos;
-        }
-
-        public static void insertarStaff (String nombre, String apellido, String dni, String rol) throws Exception {
-            Staff staff = new Staff();
-            staff.setNombre(nombre);
-            staff.setApellido(apellido);
-            staff.setDNI(dni);
-            staff.setRol(Staff.tROl.valueOf(rol));
-            tStaffs.insert(staff);
-
-        }
-
-        public static int borrarStaff (String dni) throws Exception {
-            Staff staff = new Staff();
-            staff.setDNI(dni);
-            return tStaffs.delete(staff);
-        }
-
-        public static void actualizarStaff (String idStaff, String nombre, String apellido, String dni, String rol) throws
-        Exception {
-            Staff staff = new Staff();
-            staff.setID(Integer.parseInt(idStaff));
-            staff.setNombre(nombre);
-            staff.setApellido(apellido);
-            staff.setDNI(dni);
-            staff.setRol(Staff.tROl.valueOf(rol));
-            tStaffs.update(staff);
-        }
-
-        public static String buscarTodosStaff () throws Exception {
-            ArrayList<Staff> listaStaff = tStaffs.buscarTodos();
-            String datos = "";
-            for (int x = 0; x < listaStaff.size(); x++) {
-                datos += "\n ID_STAFF" + listaStaff.get(x).getID() + "\n\nNombre: " + listaStaff.get(x).getNombre() + "\nApellido: " + listaStaff.get(x).getApellido()
-                        + "\nDNI: " + listaStaff.get(x).getDNI() + "\nRol" + listaStaff.get(x).getRol();
-            }
-            return datos;
-        }
-
-        public static String buscarStaffId (String id) throws Exception {
-            Staff staff = new Staff();
-            staff.setID(Integer.parseInt(id));
-            String datos = "";
-            staff = tStaffs.buscarPorId(staff);
-            datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
-                    + "\n Rol" + staff.getRol();
-            return datos;
-        }
-
-        public static String buscarStaffDNI (String dni) throws Exception {
-            Staff staff = new Staff();
-            staff.setDNI(dni);
-            String datos = "";
-            staff = tStaffs.buscarPorDNI(staff);
-            datos += "ID_STAFF" + staff.getID() + "\n Nombre: " + staff.getNombre() + "\n Apellido" + staff.getApellido() + "\n DNI: " + staff.getDNI()
-                    + "\n Rol" + staff.getRol();
-            return datos;
-        }
-
-        public static void crearVentanaInsertarStaffEquipo (String admin){
-            dInsertarEquiposStaff = new dInsertarEquiposStaff();
-            dInsertarEquiposStaff.pack();
-            dInsertarEquiposStaff.setVisible(true);
-        }
-
-        public static void crearVentanaBorrarStaffEquipo (String admin){
-            dBuscarEquiposStaff = new dBuscarEquiposStaff();
-            dBuscarEquiposStaff.pack();
-            dBuscarEquiposStaff.setVisible(true);
-        }
-
-        public static void crearVentanaActualizarStaffEquipo (String admin){
-            dActualizarEquiposStaff = new dActualizarEquiposStaff();
-            dActualizarEquiposStaff.pack();
-            dActualizarEquiposStaff.setVisible(true);
-        }
-
-        public static void crearVentanaBuscarStaffEquipo (String admin){
-            dBuscarEquiposStaff = new dBuscarEquiposStaff();
-            dBuscarEquiposStaff.pack();
-            dBuscarEquiposStaff.setVisible(true);
-        }
-
-        public static void insertarStaffEquipos (String idEquipo, String idStaff, String sueldo, String
-        fechaInicio, String fechaFin) throws SQLException {
-            StaffEquipo staffEquipo = new StaffEquipo();
-            // staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
-            //    staffEquipo.setStaff();
-            staffEquipo.setSueldo(Double.parseDouble(sueldo));
-            staffEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
-            staffEquipo.setFechaFin(LocalDate.parse(fechaFin));
-            TStaffEquipo.insert(staffEquipo);
-        }
-
-        public static void actualizarEquiposStaff (String idStaff, String sueldo, String fechaInicio, String fechaFin) throws
-        Exception {
-            StaffEquipo staffEquipos = new StaffEquipo();
-            // staffEquipos.setStaff();
-            staffEquipos.setSueldo(Double.parseDouble(sueldo));
-            staffEquipos.setFechaInicio(LocalDate.parse(fechaInicio));
-            staffEquipos.setFechaFin(LocalDate.parse(fechaFin));
-            TStaffEquipo.update(staffEquipos);
-        }
-
-        public static int borrarStaffEquipo () throws SQLException {
-            StaffEquipo staffEquipo = new StaffEquipo();
-            //staffEquipo.setStaff();
-            return TStaffEquipo.delete(staffEquipo);
-        }
-
-        public static String buscarTodosStaffEquipos () throws Exception {
-            ArrayList<StaffEquipo> listaStaffEquipo = TStaffEquipo.buscarTodos();
-            String datos = "";
-            for (int x = 0; x < listaStaffEquipo.size(); x++) {
-                datos += "\n ID_STAFF" + listaStaffEquipo.get(x).getStaff().getID() + "\n\nID_EQUIPO: " + listaStaffEquipo.get(x).getEquipo().getID() +
-                        "\nSueldo: " + listaStaffEquipo.get(x).getSueldo() + "\nFechaInicio: " + listaStaffEquipo.get(x).getFechaInicio() + "\nFechaFin" + listaStaffEquipo.get(x).getFechaFin();
-            }
-            return datos;
-        }
-   public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
+        return datos;
+    }
+    public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
         Jornada jornada = new Jornada();
         // ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
         String datos = "";
@@ -1158,162 +1172,179 @@ public class Main {
         return datos;
     }
 
-        public static String getNombreEquipoID (String nombre) throws Exception {
-            equipo = new Equipo();
-            equipo.setNombre(nombre);
-            String datos = "";
-            equipo = TEquipo.buscarPorNombre(equipo);
-            datos += equipo.getNombre();
-            return datos;
-        }
+    public static String getNombreEquipoID (String nombre) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        String datos = "";
+        equipo = TEquipo.buscarPorNombre(equipo);
+        datos += equipo.getNombre();
+        return datos;
+    }
 
-        public static void insertEquipo (String nombre,double presupuesto) throws Exception {
-            equipo = new Equipo();
-            equipo.setNombre(nombre);
-            equipo.setPresupuesto(presupuesto);
-            TEquipo.insert(equipo);
-        }
+    public static void insertEquipo (String nombre,double presupuesto) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setPresupuesto(presupuesto);
+        TEquipo.insert(equipo);
+    }
 
-        public static void updateEquipo (String nombre,double presupuesto) throws Exception {
-            equipo = new Equipo();
-            equipo.setNombre(nombre);
-            equipo.setPresupuesto(presupuesto);
-            TEquipo.update(equipo);
-        }
+    public static void updateEquipo (String nombre,double presupuesto) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setPresupuesto(presupuesto);
+        TEquipo.update(equipo);
+    }
 
-        public static void deleteEquipo (Integer id) throws Exception {
-            equipo = new Equipo();
-            equipo.setID(id);
-            TEquipo.update(equipo);
-            TEquipo.delete(equipo);
-        }
+    public static void deleteEquipo (Integer id) throws Exception {
+        equipo = new Equipo();
+        equipo.setID(id);
+        TEquipo.update(equipo);
+        TEquipo.delete(equipo);
+    }
 
-   public static void updatePartido(String tipoPartido, String hora, String local, String visitante, int golesLocal, int golesVisitante, String jornada) throws Exception {
+    public static void insertPartido(String tipoPartido, String hora, int local, int visitante, int golesLocal, int golesVisitante, int jornada) throws Exception {
         partido = new Partido();
         partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
         partido.setHora(hora);
+        partido.setLocal(TEquipo.buscarPorId(new Equipo(local)));
+        partido.setLocal(TEquipo.buscarPorId(new Equipo(visitante)));
+        partido.setGolesLocal(golesLocal);
+        partido.setGolesVisitante(golesVisitante);
+        partido.setJornada(TJornadas.buscarPorID(new Jornada(jornada)));
+        TPartido.insert(partido);
+    }
+
+    public static void updatePartido(String tipoPartido, String hora, int local, int visitante, int golesLocal, int golesVisitante, int jornada) throws Exception {
+        partido = new Partido();
+        partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
+        partido.setHora(hora);
+        partido.setLocal(TEquipo.buscarPorId(new Equipo(local)));
+        partido.setLocal(TEquipo.buscarPorId(new Equipo(visitante)));
+        partido.setGolesLocal(golesLocal);
+        partido.setGolesVisitante(golesVisitante);
+        partido.setJornada(TJornadas.buscarPorID(new Jornada(jornada)));
         TPartido.update(partido);
     }
 
-        public static void deletePartido (Integer id) throws Exception {
-            partido = new Partido();
-            partido.setID(id);
-            TPartido.delete(partido);
+    public static void deletePartido (Integer id) throws Exception {
+        partido = new Partido();
+        partido.setID(id);
+        TPartido.delete(partido);
+    }
+
+
+    public static String buscarTodosPartidos () throws Exception {
+        ArrayList<Partido> listaPartidos = TPartido.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaPartidos.size(); x++) {
+            datos += "\n ID_PARTIDO" + listaPartidos.get(x).getID() + "\n\nTipo Partido: " + listaPartidos.get(x).getTipoPartido() + "\nHora: " + listaPartidos.get(x).getHora()
+                    + "\nEquipo Local: " + listaPartidos.get(x).getLocal() + "\nEquipo Visitante: " + listaPartidos.get(x).getVisitante() + "\nJornada: "
+                    + listaPartidos.get(x).getJornada().getID() + "\n";
+        }
+        return datos;
+    }
+
+    public static void insertPresidente (String nombre, String apellido, String DNI,int equipo) throws Exception {
+        presidente = new Presidente();
+        presidente.setNombre(nombre);
+        presidente.setApellido(apellido);
+        presidente.setDNI(DNI);
+        presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
+        TPresidente.insert(presidente);
+    }
+
+    public static void updatePresidente (int ID,String nombre, String apellido, String DNI,int equipo) throws Exception {
+        presidente = new Presidente();
+        presidente.setID(ID);
+        presidente.setNombre(nombre);
+        presidente.setApellido(apellido);
+        presidente.setDNI(DNI);
+        presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
+        TPresidente.update(presidente);
+    }
+
+    public static void deletePresidente (String DNI) throws Exception {
+        presidente = new Presidente();
+        presidente.setDNI(DNI);
+        TPresidente.delete(presidente);
+    }
+
+    public static String buscarTodosPresidentes () throws Exception {
+        ArrayList<Presidente> listaPresidentes = TPresidente.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaPresidentes.size(); x++) {
+            datos += "\n ID_PRESIDENTE" + listaPresidentes.get(x).getID() + "\n\nNombre: " + listaPresidentes.get(x).getNombre() + "\nApellido: " + listaPresidentes.get(x).getApellido()
+                    + "\nDNI: " + listaPresidentes.get(x).getDNI() + "\nEquipo :" + listaPresidentes.get(x).getEquipo().getID();
+        }
+        return datos;
+    }
+    public static void crearDialogoInformes(String tipo){
+        dInformes = new dInformes(tipo);
+        dInformes.pack();
+        dInformes.setVisible(true);
+        dInformes.setLocationRelativeTo(vAdminPanel);
+    }
+
+    public static void generarCalendario() throws Exception {
+        BaseDato.generarCalendario();
+    }
+
+    public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
+        return BaseDato.verEnfrentamientos();
+    }
+
+    public static ArrayList<ArrayList<Object>> informeJugadores() throws SQLException {
+        return BaseDato.obtener_datos_jugadores();
+    }
+
+    public static ArrayList<ArrayList<Object>> informeClasificacion() throws Exception {
+        return BaseDato.mostrarClasificacion();
+    }
+
+    public static boolean comprobarFechaExpiracion(String tipo) throws Exception {
+        return TXMLs.buscarFechaExpiracion(tipo);
+    }
+
+    public static void crearObjetoXML(String tipo) throws Exception {
+        switch (tipo){
+            case "ultima" -> xml = TXMLs.buscarUltimaJornada();
+            case "todas" -> xml = TXMLs.buscarTodasJornada();
+            case "clasificacion" -> xml = TXMLs.buscarClasificacion();
         }
 
+    }
 
-        public static String buscarTodosPartidos () throws Exception {
-            ArrayList<Partido> listaPartidos = TPartido.buscarTodos();
-            String datos = "";
-            for (int x = 0; x < listaPartidos.size(); x++) {
-                datos += "\n ID_PARTIDO" + listaPartidos.get(x).getID() + "\n\nTipo Partido: " + listaPartidos.get(x).getTipoPartido() + "\nHora: " + listaPartidos.get(x).getHora()
-                        + "\nEquipo Local: " + listaPartidos.get(x).getLocal() + "\nEquipo Visitante: " + listaPartidos.get(x).getVisitante() + "\nJornada: "
-                        + listaPartidos.get(x).getJornada().getID() + "\n";
+    public static void convertirAXML() throws IOException {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showSaveDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+
+            try {
+                Document document = convertStringToDocument(xml.getXml());
+                saveDocumentToFile(document, filePath);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            return datos;
         }
+    }
+    private static Document convertStringToDocument(String xmlString) throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        return (Document) builder.parse(new InputSource(new StringReader(xmlString)));
+    }
 
-        public static void insertPresidente (String nombre, String apellido, String DNI,int equipo) throws Exception {
-            presidente = new Presidente();
-            presidente.setNombre(nombre);
-            presidente.setApellido(apellido);
-            presidente.setDNI(DNI);
-            presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
-            TPresidente.insert(presidente);
-        }
+    private static void saveDocumentToFile(Document document, String filePath) throws IOException, TransformerException, TransformerException {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-        public static void updatePresidente (int ID,String nombre, String apellido, String DNI,int equipo) throws Exception {
-            presidente = new Presidente();
-            presidente.setID(ID);
-            presidente.setNombre(nombre);
-            presidente.setApellido(apellido);
-            presidente.setDNI(DNI);
-            presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
-            TPresidente.update(presidente);
-        }
-
-        public static void deletePresidente (String DNI) throws Exception {
-            presidente = new Presidente();
-            presidente.setDNI(DNI);
-            TPresidente.delete(presidente);
-        }
-
-        public static String buscarTodosPresidentes () throws Exception {
-            ArrayList<Presidente> listaPresidentes = TPresidente.buscarTodos();
-            String datos = "";
-            for (int x = 0; x < listaPresidentes.size(); x++) {
-                datos += "\n ID_PRESIDENTE" + listaPresidentes.get(x).getID() + "\n\nNombre: " + listaPresidentes.get(x).getNombre() + "\nApellido: " + listaPresidentes.get(x).getApellido()
-                        + "\nDNI: " + listaPresidentes.get(x).getDNI() + "\nEquipo :" + listaPresidentes.get(x).getEquipo().getID();
-            }
-            return datos;
-        }
-        public static void crearDialogoInformes(String tipo){
-            dInformes = new dInformes(tipo);
-            dInformes.pack();
-            dInformes.setVisible(true);
-            dInformes.setLocationRelativeTo(vAdminPanel);
-        }
-
-        public static void generarCalendario() throws Exception {
-            BaseDato.generarCalendario();
-        }
-
-        public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
-            return BaseDato.verEnfrentamientos();
-        }
-
-        public static ArrayList<ArrayList<Object>> informeJugadores() throws SQLException {
-            return BaseDato.obtener_datos_jugadores();
-        }
-
-        public static ArrayList<ArrayList<Object>> informeClasificacion() throws Exception {
-            return BaseDato.mostrarClasificacion();
-        }
-
-        public static boolean comprobarFechaExpiracion(String tipo) throws Exception {
-            return TXMLs.buscarFechaExpiracion(tipo);
-        }
-
-        public static void crearObjetoXML(String tipo) throws Exception {
-            switch (tipo){
-                case "ultima" -> xml = TXMLs.buscarUltimaJornada();
-                case "todas" -> xml = TXMLs.buscarTodasJornada();
-                case "clasificacion" -> xml = TXMLs.buscarClasificacion();
-            }
-
-        }
-
-        public static void convertirAXML() throws IOException {
-            JFileChooser fileChooser = new JFileChooser();
-            int result = fileChooser.showSaveDialog(null);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File selectedFile = fileChooser.getSelectedFile();
-                String filePath = selectedFile.getAbsolutePath();
-
-                try {
-                    Document document = convertStringToDocument(xml.getXml());
-                    saveDocumentToFile(document, filePath);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        private static Document convertStringToDocument(String xmlString) throws Exception {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            return (Document) builder.parse(new InputSource(new StringReader(xmlString)));
-        }
-
-        private static void saveDocumentToFile(Document document, String filePath) throws IOException, TransformerException, TransformerException {
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-            DOMSource source = new DOMSource((Node) document);
-            StreamResult result = new StreamResult(new FileWriter(filePath));
-            transformer.transform(source, result);
-        }
+        DOMSource source = new DOMSource((Node) document);
+        StreamResult result = new StreamResult(new FileWriter(filePath));
+        transformer.transform(source, result);
+    }
 
     public static ArrayList<String> crearDniPresidente() throws Exception {
         listaPresidente = TPresidente.buscarTodos();
@@ -1332,6 +1363,81 @@ public class Main {
         return datos;
     }
 
+    public static String buscarPartidosPorID(String id_partido) throws Exception {
+        partido = new Partido();
+        partido.setID(Integer.parseInt(id_partido));
+        String datos = "";
+        partido = TPartido.buscarPorIDPartido(partido);
+        datos += "\n ID_PARTIDO" + partido.getID() + "\n\nTipo Partido: " + partido.getTipoPartido() + "\nHora: " + partido.getHora()
+                + "\nEquipo Local: " + partido.getLocal().getNombre() + "\nEquipo Visitante: " + partido.getVisitante().getNombre() + "\nJornada: "
+                + partido.getJornada().getID() + "\n";
+        return datos;
+    }
+
+    public static void dialogoJugadoresEquipo() {
+        dInsertarEquiposJugadores dialog = new dInsertarEquiposJugadores();
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    public static void dialogoBorrarJugadoresEquipo() {
+        dBorrarEquiposJugadores dialog = new dBorrarEquiposJugadores();
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    public static void dialogoActualizarJugadoresEquipo() {
+        dActualizarEquiposJugadores dialog = new dActualizarEquiposJugadores();
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    public static void dialogoBuscarJugadoresEquipo() {
+        dBuscarEquiposJugadores dialog = new dBuscarEquiposJugadores();
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    public static void insertarEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws SQLException {
+        JugadorEquipo jugadorEquipo = new JugadorEquipo();
+        // jugadorEquipo.setEquipo(id_equipo);
+        //   jugadorEquipo.setJugador(id_jugador);
+        jugadorEquipo.setSueldo(Double.parseDouble(sueldo));
+        jugadorEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
+        jugadorEquipo.setFechaFin(LocalDate.parse(fechaFin));
+        jugadorEquipo.setClausula(Double.parseDouble(clausula));
+        TJugadorEquipo.insert(jugadorEquipo);
+    }
+
+    public static void borrarEquiposJugadores() throws SQLException {
+        JugadorEquipo jugadorEquipo = new JugadorEquipo();
+        //   jugadorEquipo.setJugador(TJugadorEquipo.buscarTodos());
+        TJugadorEquipo.delete(jugadorEquipo);
+    }
+
+    public static void updateEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
+        JugadorEquipo jugadorEquipo = new JugadorEquipo();
+        // jugadorEquipo.setEquipo(id_equipo);
+        // jugadorEquipo.setJugador(id_jugador);
+        jugadorEquipo.setSueldo(Double.parseDouble(sueldo));
+        jugadorEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
+        jugadorEquipo.setFechaFin(LocalDate.parse(fechaFin));
+        jugadorEquipo.setClausula(Double.parseDouble(clausula));
+        TJugadorEquipo.update(jugadorEquipo);
+    }
+
+    public static String buscarEquiposJugadores() throws Exception {
+        ArrayList<JugadorEquipo> listaJugadorEquipo = TJugadorEquipo.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaJugadorEquipo.size(); x++) {
+            datos += "\n ID_EQUIPO" + listaJugadorEquipo.get(x).getEquipo().getID() + "\n\nID_JUGADOR" +":" + listaJugadorEquipo.get(x).getJugador().getID()
+                    + "\nSueldo: " + listaJugadorEquipo.get(x).getSueldo() + "\nFECHA INICIO: " + listaJugadorEquipo.get(x).getFechaInicio() + "\nFECHA FIN :" + listaJugadorEquipo.get(x).getFechaFin()
+                    + "\nClausula" + listaJugadorEquipo.get(x).getClausula();
+        }
+        return datos;
+    }
+
     /*public static String buscarTodasLasTemporadasID(String idTemporada) {
+
     }*/
 }

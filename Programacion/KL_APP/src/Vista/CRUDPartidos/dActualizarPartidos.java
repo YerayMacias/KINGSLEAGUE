@@ -17,6 +17,7 @@ public class dActualizarPartidos extends JDialog {
     private JComboBox cbEquipoVisitante;
     private JTextField tfGolesLocal;
     private JTextField tfGolesVisitante;
+    private JComboBox cbJornada;
 
     public dActualizarPartidos() {
 
@@ -47,17 +48,19 @@ public class dActualizarPartidos extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-       /*buttonOK.addActionListener(new ActionListener() {
+       buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.updatePartido());
+                    Main.updatePartido(cbTipo.getSelectedItem().toString(), tfHora.getText(), Integer.parseInt(cbEquipoLocal.getSelectedItem().toString()),
+                          Integer.parseInt(cbEquipoLocal.getSelectedItem().toString()), Integer.parseInt(tfGolesLocal.getText()) , Integer.parseInt(tfGolesVisitante.getText()),
+                            Integer.parseInt(tfGolesVisitante.getText()));
                     JOptionPane.showMessageDialog(null, "El Partido con ID " + cbID.getSelectedItem().toString() + " ha sido actualizado");
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
-        });*/
+        });
     }
 
     private void onOK() {
@@ -72,15 +75,15 @@ public class dActualizarPartidos extends JDialog {
 
     private void crearArrays() {
         try {
-            ArrayList<String> nombreEquiposLocal = Main.crearNombreEquipos();
-            nombreEquiposLocal.forEach(nombre -> cbEquipoLocal.addItem(nombre));
+            ArrayList<String> idEquiposLocal = Main.crearIdEquipos();
+            idEquiposLocal.forEach(id -> cbEquipoLocal.addItem(id));
         } catch (Exception exc) {
             System.out.println("problemas");
         }
 
         try {
-            ArrayList<String> nombreEquiposVisitante = Main.crearNombreEquipos();
-            nombreEquiposVisitante.forEach(nombre -> cbEquipoVisitante.addItem(nombre));
+            ArrayList<String> idEquiposVisitante = Main.crearIdEquipos();
+            idEquiposVisitante.forEach(id -> cbEquipoVisitante.addItem(id));
         } catch (Exception exc) {
             System.out.println("problemas");
         }
@@ -93,11 +96,13 @@ public class dActualizarPartidos extends JDialog {
         }
 
         try {
-            ArrayList<String> tipoCBox = Main.crearTipoPartidos();
-            tipoCBox.forEach(tipo -> cbTipo.addItem(tipo));
+            ArrayList<String> idCBox = Main.crearIdJornada();
+            idCBox.forEach(id -> cbJornada.addItem(id));
         } catch (Exception exc) {
             System.out.println("problemas");
         }
+
+
     }
 
     public static void main(String[] args) {
