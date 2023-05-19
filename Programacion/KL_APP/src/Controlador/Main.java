@@ -967,8 +967,8 @@ public class Main {
 
     public static void insertarStaffEquipos(String idEquipo,String idStaff,String sueldo,String fechaInicio,String fechaFin) throws SQLException {
         StaffEquipo staffEquipo = new StaffEquipo();
-        staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
-        staffEquipo.setStaff();
+       // staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
+    //    staffEquipo.setStaff();
         staffEquipo.setSueldo(Double.parseDouble(sueldo));
         staffEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
         staffEquipo.setFechaFin(LocalDate.parse(fechaFin));
@@ -977,7 +977,7 @@ public class Main {
 
     public static void actualizarEquiposStaff(String idStaff,String sueldo,String fechaInicio,String fechaFin) throws Exception {
         StaffEquipo staffEquipos = new StaffEquipo();
-        staffEquipos.setStaff();
+       // staffEquipos.setStaff();
         staffEquipos.setSueldo(Double.parseDouble(sueldo));
         staffEquipos.setFechaInicio(LocalDate.parse(fechaInicio));
         staffEquipos.setFechaFin(LocalDate.parse(fechaFin));
@@ -986,7 +986,7 @@ public class Main {
 
     public static int borrarStaffEquipo() throws SQLException {
         StaffEquipo staffEquipo = new StaffEquipo();
-        staffEquipo.setStaff();
+        //staffEquipo.setStaff();
         return TStaffEquipo.delete(staffEquipo);
     }
 
