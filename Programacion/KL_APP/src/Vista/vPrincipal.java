@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 
 public class vPrincipal {
     private JPanel pPrincipal;
-    private JPanel pMenu;
-    private JPanel pDatos;
-    private JPanel pPartidos;
     private JLabel lNombre;
     private JMenu mPartidos;
     private JMenu mClasificacion;
@@ -26,6 +23,11 @@ public class vPrincipal {
     private JMenuItem miBaseDatos;
     private JMenuItem miUsuarios;
     private JMenu mIconoPerfil;
+    private JMenuItem miPlayOffs;
+    private JPanel pTitulo;
+    private JPanel pCombo;
+    private JMenuItem miPrincipal;
+    private JMenu mPrincipal;
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -46,7 +48,11 @@ public class vPrincipal {
         miClasificacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaClasificacion(admin);
+                try {
+                    Main.crearVentanaClasificacion(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -66,9 +72,46 @@ public class vPrincipal {
                 Main.crearVentanaEquipos(admin);
             }
         });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vPrincipal.dispose();
+                Main.crearVentanaPerfil(admin);
+            }
+        });
+
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
+
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
     }
 
     public void inicializar() {
+
+
+
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
         if (Main.buscarAdmin().equalsIgnoreCase("S")) {
@@ -77,6 +120,8 @@ public class vPrincipal {
             lTipoUsuario.setText("Usuario");
         }
 
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -93,4 +138,5 @@ public class vPrincipal {
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
+
 }

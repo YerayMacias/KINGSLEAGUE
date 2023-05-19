@@ -2,10 +2,15 @@ package Vista;
 
 import Controlador.Main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class vEquipos {
     private JLabel lNombre;
@@ -19,28 +24,28 @@ public class vEquipos {
     private JMenuItem miClasificacion;
     private JMenuItem miPartidos;
     private JMenuItem miEquipo;
+    private JButton b1KFC;
+    private JPanel pPrincipal;
+    private JMenu mIconoPerfil;
+    private JPanel pSecundario;
+    private JMenuItem miPlayOffs;
+    private JMenuItem miPrincipal;
     private JPanel pTitulo;
     private JPanel pCombo;
-    private JPanel pEquiposGeneral;
-    private JPanel pColumnaIzq;
-    private JPanel pJijantes;
-    private JPanel pPIO;
-    private JPanel p1KFC;
-    private JButton b1KFC;
-    private JPanel pSaiyans;
-    private JPanel pKuni;
-    private JPanel pPorcinos;
-    private JPanel pAniquiladores;
-    private JPanel pMostoles;
-    private JPanel pColumnaCentral;
-    private JPanel pColumnaDer;
-    private JPanel pTroncos;
-    private JPanel pRayo;
-    private JPanel pBarrio;
-    private JPanel pBuyer;
-    private JPanel pPrincipal;
-    private JScrollPane spScroll;
-    private JMenu mIconoPerfil;
+    private JButton bAniquiladoresFC;
+    private JButton bElBarrio;
+    private JButton bJijantesFC;
+    private JButton bKunisports;
+    private JButton bLosTroncos;
+    private JButton bPioFC;
+    private JButton bPorcinosFC;
+    private JButton bRayoDeBarcelona;
+    private JButton bSaiyansFC;
+    private JButton bUltimateMostoles;
+    private JButton bXbuyerTeam;
+
+    private String nombreEquipo;
+    // private J
 
     public vEquipos(String admin) {
         inicializar();
@@ -49,7 +54,7 @@ public class vEquipos {
          miCerrarSesion.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
+                 Main.vEquipos.dispose();
                  Main.crearVentanaLogin();
              }
          });
@@ -57,18 +62,60 @@ public class vEquipos {
          miClasificacion.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
-                 Main.crearVentanaClasificacion(admin);
+                 Main.vEquipos.dispose();
+                 try {
+                     Main.crearVentanaClasificacion(admin);
+                 } catch (Exception ex) {
+                     throw new RuntimeException(ex);
+                 }
              }
          });
 
          miPartidos.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Main.vEquipos.dispose();;
+                 Main.vEquipos.dispose();
                  Main.crearVentanaPartidos(admin);
              }
          });
+
+        miPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                Main.crearVentanaPrincipal(admin);
+            }
+        });
+
+        miPlayOffs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                try {
+                    Main.crearVentanaPlayOffs(admin);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        miPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();;
+                Main.crearVentanaPanelAdmin(admin);
+            }
+        });
+
+        miPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.vEquipos.dispose();
+                Main.crearVentanaPerfil(admin);
+            }
+        });
+
+
      }
 
     public JPanel getpPrincipal() {
@@ -89,8 +136,10 @@ public class vEquipos {
         } else {
             lTipoUsuario.setText("Usuario");
         }
-        spScroll.getVerticalScrollBar().setUnitIncrement(20);
 
+
+        miPrincipal.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        miPlayOffs.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPartidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miClasificacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -100,6 +149,59 @@ public class vEquipos {
         miCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        try {
+            crearBotonesEquipos();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    public void crearBotonesEquipos() throws Exception {
+        Main.buscarEquipos();
+        // Coincidentes
+        ArrayList<String> listaNombres = Main.getNombreEquipos();
+        ArrayList<URL> listaURL = Main.getURLImagen();
+        ArrayList<String> listaColores = Main.getColores();
+
+        JButton bEquipo;
+        for (int x = 0; x < listaNombres.size(); x++) {
+            Image img;
+            try {
+                BufferedImage bufferedImage = ImageIO.read(listaURL.get(x));
+                img = bufferedImage.getScaledInstance(80, 80, Image.SCALE_DEFAULT);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ImageIcon imageIcon = new ImageIcon(img);
+            bEquipo = new JButton(listaNombres.get(x), new ImageIcon(img));
+            int posicion = x;
+            bEquipo.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    nombreEquipo = listaNombres.get(posicion);
+                    try {
+                        Main.crearVentanaEquipoJugadores(nombreEquipo);
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+            bEquipo.setBackground(new Color(hex(listaColores.get(x))));
+            bEquipo.setForeground(Color.WHITE);
+            bEquipo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            pSecundario.add(bEquipo);
+        }
+    }
+
+    private int hex( String color_hex ) {
+        String color = color_hex.substring(1, color_hex.length());
+        return Integer.parseInt(color,  16 );
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        pSecundario = new JPanel(new GridLayout(4,4,4,4));
+        pSecundario.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+    }
 }
