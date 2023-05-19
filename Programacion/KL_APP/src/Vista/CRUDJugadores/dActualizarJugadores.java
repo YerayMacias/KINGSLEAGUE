@@ -4,6 +4,7 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dActualizarJugadores extends JDialog {
     private JPanel contentPane;
@@ -20,6 +21,11 @@ public class dActualizarJugadores extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        try {
+            inicializarCombo();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -62,6 +68,10 @@ public class dActualizarJugadores extends JDialog {
     private void onOK() {
         // add your code here
         dispose();
+    }
+    private void inicializarCombo() throws Exception {
+        ArrayList<String> listaID = Main.crearIdJugadores();
+        listaID.forEach(id -> cbID.addItem(id));
     }
 
     private void onCancel() {

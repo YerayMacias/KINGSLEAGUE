@@ -11,7 +11,7 @@ public class TEquipo {
 
     public static void insert(Equipo equipo) throws SQLException {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO EQUIPOS (NOMBRE, PRESUPUESTO) VALUES (?, ?);");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO EQUIPOS (NOMBRE, PRESUPUESTO) VALUES (?, ?)");
         ps.setString(1, equipo.getNombre());
         ps.setDouble(2, equipo.getPresupuesto());
         ps.executeUpdate();

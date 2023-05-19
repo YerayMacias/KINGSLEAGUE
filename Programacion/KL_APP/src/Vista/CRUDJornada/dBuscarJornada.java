@@ -59,16 +59,12 @@ public class dBuscarJornada extends JDialog {
                 try {
                     String fecha = cbFecha.getSelectedItem().toString();
 
-<<<<<<< HEAD
                     String datos = Main.buscarJornadaFecha(fecha);
-=======
-                    /*String datos = Main.buscarTodasLasJornadasFecha(fecha);
->>>>>>> main
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taFecha.setText(datos);
-                    }*/
+                    }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -80,38 +76,35 @@ public class dBuscarJornada extends JDialog {
                 try {
                     String id_jornada = cbID.getSelectedItem().toString();
 
-<<<<<<< HEAD
                     String datos = Main.buscarJornadaID(id_jornada);
-=======
-                    /*String datos = Main.buscarTodasLasJornadasID(id_jornada);
->>>>>>> main
+
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taID.setText(datos);
-                    }*/
+                    }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
-        /*cbTemporada.addActionListener(new ActionListener() {
+        cbTemporada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String temporada = cbID.getSelectedItem().toString();
 
-                    /*String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
+                    String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
                     if (datos == null) {
                         throw new Exception("No se encuentra la informacion de la Jornada");
                     } else {
                         taTemporada.setText(datos);
-                    }*/
+                    }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
-        }); */
+        });
         consultarTodosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

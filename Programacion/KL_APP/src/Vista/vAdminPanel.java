@@ -59,12 +59,10 @@ public class vAdminPanel {
     private JButton bBuscarTodosEquipos;
     private JButton bBuscarJornadas;
     private JMenuItem miPrincipal;
-<<<<<<< HEAD
     private JButton SEinsert;
     private JButton SEDelete;
     private JButton SEUpdate;
     private JButton SEBuscar;
-=======
     private JButton bGenCal;
     private JButton bVerEnf;
     private JButton bInfJug;
@@ -73,21 +71,19 @@ public class vAdminPanel {
     private JButton bAllJor;
     private JButton bClasi;
     private boolean expirado;
->>>>>>> main
 
     public JPanel getpPrincipal() {
         return pPrincipal;
     }
 
     public vAdminPanel (String admin) {
-        inicializar();
+        inicialiar();
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
         miCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.vAdminPanel.dispose();
-                ;
                 Main.crearVentanaLogin();
             }
         });
@@ -320,7 +316,6 @@ public class vAdminPanel {
             }
         });
 
-<<<<<<< HEAD
         SEinsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -343,86 +338,90 @@ public class vAdminPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.crearVentanaBuscarStaffEquipo(admin);
-=======
-        bGenCal.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Main.generarCalendario();
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
+            }
+        });
+            bGenCal.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Main.generarCalendario();
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
-            }
-        });
+            });
 
-        bVerEnf.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.crearDialogoInformes("enfrentamientos");
-            }
-        });
-
-        bInfJug.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.crearDialogoInformes("jugadores");
-            }
-        });
-
-        bInfCla.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.crearDialogoInformes("clasificacion");
-            }
-        });
-        bUltJor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    expirado = Main.comprobarFechaExpiracion("ultima");
-                    if (!expirado) {
-                        Main.crearObjetoXML("ultima");
-                        Main.convertirAXML();
-                    } else JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
+            bVerEnf.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Main.crearDialogoInformes("enfrentamientos");
                 }
-            }
-        });
-        bAllJor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    expirado = Main.comprobarFechaExpiracion("todas");
-                    if (!expirado){
-                        Main.crearObjetoXML("todas");
-                        Main.convertirAXML();
-                    } else JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
+            });
 
-            }
-        });
-        bClasi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    expirado = Main.comprobarFechaExpiracion("clasificacion");
-                    if (!expirado) {
-                        Main.crearObjetoXML("clasificacion");
-                        Main.convertirAXML();
-                    } else JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
+            bInfJug.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Main.crearDialogoInformes("jugadores");
                 }
->>>>>>> main
-            }
-        });
+            });
+
+            bInfCla.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Main.crearDialogoInformes("clasificacion");
+                }
+            });
+            bUltJor.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        expirado = Main.comprobarFechaExpiracion("ultima");
+                        if (!expirado) {
+                            Main.crearObjetoXML("ultima");
+                            Main.convertirAXML();
+                        } else
+                            JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+            bAllJor.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        expirado = Main.comprobarFechaExpiracion("todas");
+                        if (!expirado) {
+                            Main.crearObjetoXML("todas");
+                            Main.convertirAXML();
+                        } else
+                            JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                }
+            });
+            bClasi.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        expirado = Main.comprobarFechaExpiracion("clasificacion");
+                        if (!expirado) {
+                            Main.crearObjetoXML("clasificacion");
+                            Main.convertirAXML();
+                        } else
+                            JOptionPane.showMessageDialog(null, "No se puede generar el xml por que todavia no ha expirado");
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+
     }
 
 
-        public void inicializar(){
+        public void inicialiar(){
             if (Main.buscarAdmin().equalsIgnoreCase("S")) {
                 lTipoUsuario.setText("Administrador");
             } else {
@@ -447,16 +446,7 @@ public class vAdminPanel {
             miBaseDatos.setVisible(false);
             miUsuarios.setVisible(false);
         }
-
-
-
-
-        public void setpPrincipal (JPanel pPrincipal){
-            this.pPrincipal = pPrincipal;
-        }
-
         private void createUIComponents () {
             // TODO: place custom component creation code here
         }
     }
-

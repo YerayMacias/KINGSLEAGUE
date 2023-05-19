@@ -257,15 +257,6 @@ public class Main {
         dEquiposJugadores.pack();
         dEquiposJugadores.setVisible(true);
     }
-   /* public static void crearVentanaEquiposJugadores(){
-        vEquiposJugadores = new JFrame("vRegistro");
-        vEquiposJugadores.setContentPane(new vEquiposJugadores);
-        vEquiposJugadores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vEquiposJugadores.pack();
-        vEquiposJugadores.setLocationRelativeTo(null);
-        vEquiposJugadores.setVisible(true);
-    } */
-
 
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
@@ -1126,16 +1117,16 @@ public class Main {
             }
             return datos;
         }
-   /* public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
+   public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
         Jornada jornada = new Jornada();
-        ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
+        // ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
         String datos = "";
         for (int x = 0 ; x < listaJornadas.size();x++) {
             datos += "ID_JUGADOR"  + listaJugadores.get(x).getID() + ":" + "\n"+ "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n Apellido: " + listaJugadores.get(x).getApellido()
                     + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador() + "\n" +"\n";
         }
         return datos;
-    } */
+    }
 
         public static String getNombreEquipoID (String nombre) throws Exception {
             equipo = new Equipo();
@@ -1167,12 +1158,12 @@ public class Main {
             TEquipo.delete(equipo);
         }
 
-   /* public static void updatePartido(String tipoPartido, String hora, String local, String visitante, int golesLocal, int golesVisitante, String jornada) throws Exception {
+   public static void updatePartido(String tipoPartido, String hora, String local, String visitante, int golesLocal, int golesVisitante, String jornada) throws Exception {
         partido = new Partido();
         partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
         partido.setHora(hora);
         TPartido.update(partido);
-    } */
+    }
 
         public static void deletePartido (Integer id) throws Exception {
             partido = new Partido();
@@ -1292,4 +1283,7 @@ public class Main {
             StreamResult result = new StreamResult(new FileWriter(filePath));
             transformer.transform(source, result);
         }
-    }
+
+    /*public static String buscarTodasLasTemporadasID(String idTemporada) {
+    }*/
+}
