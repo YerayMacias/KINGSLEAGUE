@@ -66,7 +66,7 @@ public class dActualizarPresidente extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.actualizarStaff(cbID.getSelectedItem().toString(),tfNombre.getText(),tfApellido.getText(),tfDNI.getText(), String.valueOf(cbEquipo.getSelectedItem()));
+                    Main.updatePresidente(Integer.parseInt(cbID.getSelectedItem().toString()),tfNombre.getText(),tfApellido.getText(),tfDNI.getText(), Integer.parseInt(cbEquipo.getSelectedItem().toString()));
                     JOptionPane.showMessageDialog(null, "El Presidente con ID " + cbID.getSelectedItem().toString() + "ha sido actualizado");
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
