@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class vPrincipal {
     private JPanel pPrincipal;
@@ -28,6 +29,7 @@ public class vPrincipal {
     private JPanel pCombo;
     private JMenuItem miPrincipal;
     private JMenu mPrincipal;
+
 
     public JPanel getpPrincipal() {
         return pPrincipal;
@@ -106,6 +108,7 @@ public class vPrincipal {
                 Main.crearVentanaPrincipal(admin);
             }
         });
+
     }
 
     public void inicializar() {
