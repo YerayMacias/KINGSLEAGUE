@@ -10,7 +10,11 @@ import Modelo.ClasesObjetos.Equipo;
 import Modelo.ClasesObjetos.Jornada;
 import Modelo.ClasesObjetos.Partido;
 import Modelo.ClasesObjetos.Usuario;
+import Modelo.ClasesBasesDatos.TJornadas;
+import Modelo.ClasesBasesDatos.TPartido;
+import Modelo.ClasesBasesDatos.TTemporadas;
 import Modelo.ClasesBasesDatos.TUsuarios;
+import Modelo.ClasesObjetos.*;
 import Vista.*;
 import Vista.CRUDEquipos.dActualizarEquipo;
 import Vista.CRUDEquipos.dBorrarEquipo;
@@ -44,36 +48,16 @@ import Vista.CRUDUsuario.dActualizarUsuario;
 import Vista.CRUDUsuario.dBorrarUsuario;
 import Vista.CRUDUsuario.dBuscarUsuarios;
 import Vista.CRUDUsuario.dInsertarUsuario;
-import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import javax.swing.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringReader;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
-import org.w3c.dom.Document;
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import Vista.*;
 
 /**
  * @author
@@ -119,18 +103,20 @@ public class Main {
     public static JDialog dActualizarEquiposStaff;
     public static JDialog dBuscarUsuarios;
     public static JDialog dEquiposJugadores;
-<<<<<<< HEAD
     public static JDialog dInsertarEquiposStaff;
-=======
     public static JDialog dInformes;
->>>>>>> main
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
     public static JFrame vAdminPanel;
     public static JFrame vEquipoJugadores;
     private static Usuario usuario;
     private static Jugador jugador;
+    private static Equipo equipo;
+    private static Partido partido;
+    private static Presidente presidente;
+    private static Staff staff;
     private static ArrayList<Jornada> listaJornadas;
+    private static ArrayList<Partido> listaPartidos;
     public static ArrayList<Equipo> listaEquipos;
     private static ArrayList<Integer> listaVictorias;
     private static ArrayList<Integer> listaDerrotas;
@@ -141,6 +127,8 @@ public class Main {
     public static ArrayList<Integer> listaPosicion;
 
     private static ArrayList<Jugador> listaJugadores;
+    private static ArrayList<Presidente> listaPresidente;
+    private static ArrayList<Staff> listaStaffs;
     private static ArrayList<Usuario> listaUsuarios;
 
     private static ArrayList<Temporada> listaTemporada;
@@ -148,8 +136,7 @@ public class Main {
     private static int numJugador;
 
     private static int posicion;
-    private static XML xml;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
         // Test para probar conexion con la base de datos
 
@@ -166,7 +153,6 @@ public class Main {
         }*/
 
         crearVentanaLogin();
-        //convertirAXML();
         /*try {
             buscarClasificacion();
             crearVentanaPrueba();
@@ -765,6 +751,59 @@ public class Main {
         return listaDNIJugadores;
     }
 
+    // COMBOBOX BUSCAR EQUIPOS **************************************
+
+    public static ArrayList<String> crearIdEquipos() throws Exception {
+        listaEquipos = TEquipo.buscarTodos();
+        ArrayList<String> listaIdEquipos = new ArrayList<>();
+        listaEquipos.forEach(id -> listaIdEquipos.add(String.valueOf(id.getID())));
+        return listaIdEquipos;
+    }
+
+    public static ArrayList<String> crearNombreEquipos() throws Exception {
+        listaEquipos = TEquipo.buscarTodos();
+        ArrayList<String> listaNombreEquipos = new ArrayList<>();
+        listaEquipos.forEach(nombre -> listaNombreEquipos.add(nombre.getNombre()));
+        return listaNombreEquipos;
+    }
+
+
+    // COMBOBOX BUSCAR PARTIDOS **************************************
+
+    public static ArrayList<String> crearIdPartidos() throws Exception {
+        listaPartidos = TPartido.buscarTodos();
+        ArrayList<String> listaIdPartidos = new ArrayList<>();
+        listaPartidos.forEach(id -> listaIdPartidos.add(String.valueOf(id.getID())));
+        return listaIdPartidos;
+    }
+
+    public static ArrayList<String> crearTipoPartidos() throws Exception {
+        listaPartidos = TPartido.buscarTodos();
+        ArrayList<String> listaTipoPartidos = new ArrayList<>();
+        listaPartidos.forEach(tipo -> listaTipoPartidos.add(String.valueOf(tipo.getTipoPartido())));
+        return listaTipoPartidos;
+    }
+
+    // COMBOBOX BUSCAR PRESIDENTE **************************************
+
+    public static ArrayList<String> crearIdPresidente() throws Exception {
+        listaPresidente = TPresidente.buscarTodos();
+        ArrayList<String> listaIdPresidentes = new ArrayList<>();
+        listaPresidente.forEach(id -> listaIdPresidentes.add(String.valueOf(id.getID())));
+        return listaIdPresidentes;
+    }
+
+    // COMBOBOX BUSCAR STAFF **************************************
+
+    public static ArrayList<String> crearIdStaff() throws Exception {
+        listaStaffs = tStaffs.buscarTodos();
+        ArrayList<String> listaIdStaffs = new ArrayList<>();
+        listaStaffs.forEach(id -> listaIdStaffs.add(String.valueOf(id.getID())));
+        return listaIdStaffs;
+    }
+
+    // **************************************************************
+
     public static ArrayList<String> crearFechaJornadas() throws Exception {
         listaJornadas = TJornadas.buscarTodo();
         ArrayList<String> listaFechaJornadas = new ArrayList<>();
@@ -815,6 +854,30 @@ public class Main {
         return 0;
     }
 
+    public static String buscarTodosEquipos() throws Exception {
+        ArrayList<Equipo> listaEquipos = TEquipo.buscarTodos();
+        String datos = "";
+        for (int x = 0; x < listaEquipos.size(); x++) {
+            datos += "\n ID_EQUIPO" + listaEquipos.get(x).getID() + "\n\nNombre: " + listaEquipos.get(x).getNombre() + "\nPresupuesto: " + listaEquipos.get(x).getPresupuesto() + "€\n";
+        }
+        return datos;
+    }
+    public static String buscarTodosLosEquiposPorID(String id_equipo) throws Exception {
+        equipo = new Equipo();
+        equipo.setID(Integer.parseInt(id_equipo));
+        String datos = "";
+        equipo = TEquipo.buscarPorId(equipo);
+        datos += "\n ID_EQUIPO" + equipo.getID() + "\n\nNombre: " + equipo.getNombre() + "\nPresupuesto: " + equipo.getPresupuesto() + "€\n";
+        return datos;
+    }
+
+    public static String buscarTodosLosEquiposPorNombre(String nombre) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        String datos = "";
+        equipo = TEquipo.buscarPorNombre(equipo);
+        datos += "\n ID_EQUIPO" + equipo.getID() + "\n\nNombre: " + equipo.getNombre() + "\nPresupuesto: " + equipo.getPresupuesto() + "€\n";
+        return datos;
     public static String buscarJornadaFecha(String fecha) throws Exception {
         Jornada jornada = new Jornada();
         jornada.setFecha(LocalDate.parse(fecha));
@@ -899,7 +962,6 @@ public class Main {
         TTemporadas.update(temporada);
     }
 
-<<<<<<< HEAD
     public static int borrarTemporada(String id_temporada) throws Exception {
         Temporada temporada = new Temporada();
         temporada.setID(Integer.parseInt(id_temporada));
@@ -1040,7 +1102,6 @@ public class Main {
         }
         return datos;
     } */
-=======
     public static void crearDialogoInformes(String tipo){
         dInformes = new dInformes(tipo);
         dInformes.pack();
@@ -1048,65 +1109,92 @@ public class Main {
         dInformes.setLocationRelativeTo(vAdminPanel);
     }
 
-    public static void generarCalendario() throws Exception {
-        BaseDato.generarCalendario();
+    public static String getNombreEquipoID(String nombre) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        String datos = "";
+        equipo = TEquipo.buscarPorNombre(equipo);
+        datos += equipo.getNombre();
+        return datos;
     }
 
-    public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
-        return BaseDato.verEnfrentamientos();
+    public static void insertEquipo(String nombre, double presupuesto) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setPresupuesto(presupuesto);
+        TEquipo.insert(equipo);
     }
 
-    public static ArrayList<ArrayList<Object>> informeJugadores() throws SQLException {
-        return BaseDato.obtener_datos_jugadores();
+    public static void updateEquipo(String nombre, double presupuesto) throws Exception {
+        equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setPresupuesto(presupuesto);
+        TEquipo.update(equipo);
     }
 
-    public static ArrayList<ArrayList<Object>> informeClasificacion() throws Exception {
-        return BaseDato.mostrarClasificacion();
+    public static void deleteEquipo(Integer id) throws Exception {
+        equipo = new Equipo();
+        equipo.setID(id);
+        TEquipo.update(equipo);
+        TEquipo.delete(equipo);
     }
 
-    public static boolean comprobarFechaExpiracion(String tipo) throws Exception {
-        return TXMLs.buscarFechaExpiracion(tipo);
+   /* public static void updatePartido(String tipoPartido, String hora, String local, String visitante, int golesLocal, int golesVisitante, String jornada) throws Exception {
+        partido = new Partido();
+        partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
+        partido.setHora(hora);
+        TPartido.update(partido);
+    } */
+
+    public static void deletePartido(Integer id) throws Exception {
+        partido = new Partido();
+        partido.setID(id);
+        TPartido.delete(partido);
     }
 
-    public static void crearObjetoXML(String tipo) throws Exception {
-        switch (tipo){
-            case "ultima" -> xml = TXMLs.buscarUltimaJornada();
-            case "todas" -> xml = TXMLs.buscarTodasJornada();
-            case "clasificacion" -> xml = TXMLs.buscarClasificacion();
+
+    public static String buscarTodosPartidos() throws Exception {
+        ArrayList<Partido> listaPartidos = TPartido.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaPartidos.size();x++) {
+            datos += "\n ID_PARTIDO" + listaPartidos.get(x).getID() + "\n\nTipo Partido: " + listaPartidos.get(x).getTipoPartido() + "\nHora: " + listaPartidos.get(x).getHora()
+                    + "\nEquipo Local: " + listaPartidos.get(x).getLocal() + "\nEquipo Visitante: " + listaPartidos.get(x).getVisitante() + "\nJornada: "
+                    + listaPartidos.get(x).getJornada().getID() + "\n";
         }
-
+        return datos;
     }
 
-    public static void convertirAXML() throws IOException {
-        JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showSaveDialog(null);
+    public static void insertPresidente(String nombre, String apellido, String DNI, int equipo) throws Exception {
+        presidente = new Presidente();
+        presidente.setNombre(nombre);
+        presidente.setApellido(apellido);
+        presidente.setDNI(DNI);
+        presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
+        TPresidente.insert(presidente);
+    }
 
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            String filePath = selectedFile.getAbsolutePath();
+    public static void updatePresidente(String nombre, String apellido, String DNI, int equipo) throws Exception {
+        presidente = new Presidente();
+        presidente.setNombre(nombre);
+        presidente.setApellido(apellido);
+        presidente.setDNI(DNI);
+        presidente.setEquipo(TEquipo.buscarPorId(new Equipo(equipo)));
+        TPresidente.update(presidente);
+    }
 
-            try {
-                Document document = convertStringToDocument(xml.getXml());
-                saveDocumentToFile(document, filePath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public static void deletePresidente(String DNI) throws Exception {
+        presidente = new Presidente();
+        presidente.setDNI(DNI);
+        TPresidente.delete(presidente);
+    }
+
+    public static String buscarTodosPresidentes() throws Exception {
+        ArrayList<Presidente> listaPresidentes = TPresidente.buscarTodos();
+        String datos = "";
+        for (int x = 0 ; x < listaPresidentes.size();x++) {
+            datos += "\n ID_PRESIDENTE" + listaPresidentes.get(x).getID() + "\n\nNombre: " + listaPresidentes.get(x).getNombre() + "\nApellido: " + listaPresidentes.get(x).getApellido()
+                    + "\nDNI: " + listaPresidentes.get(x).getDNI() + "\nEquipo :" + listaPresidentes.get(x).getEquipo().getID();
         }
+        return datos;
     }
-    private static Document convertStringToDocument(String xmlString) throws Exception {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        return (Document) builder.parse(new InputSource(new StringReader(xmlString)));
-    }
-
-    private static void saveDocumentToFile(Document document, String filePath) throws IOException, TransformerException, TransformerException {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-        DOMSource source = new DOMSource((Node) document);
-        StreamResult result = new StreamResult(new FileWriter(filePath));
-        transformer.transform(source, result);
-    }
->>>>>>> main
 }
