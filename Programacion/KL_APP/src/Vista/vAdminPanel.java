@@ -418,6 +418,30 @@ public class vAdminPanel {
                 }
             });
 
+        bInsertarP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearDialogoInsertarPartido();
+            }
+        });
+        bUpdateP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearDialogoActualizarPartido();
+            }
+        });
+        bDeleteP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearDialogoBorrarPartidos();
+            }
+        });
+        bBuscarTodosP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.crearDialogoBuscarPartidos();
+            }
+        });
     }
 
 

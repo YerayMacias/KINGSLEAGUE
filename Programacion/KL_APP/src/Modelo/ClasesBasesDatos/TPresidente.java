@@ -32,7 +32,7 @@ public class TPresidente {
 
     public static void update(Presidente presidente) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("update PRESIDENTE set id_equipo = ? where ID_PRESIDENTE = ?");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("update PRESIDENTES set id_equipo = ? where ID_PRESIDENTE = ?");
         ps.setInt(1, presidente.getEquipo().getID());
         ps.setInt(2, presidente.getID());
         ps.executeUpdate();
@@ -54,7 +54,7 @@ public class TPresidente {
 
     public static Presidente buscarPorDNI(Presidente presidente) throws Exception {
         BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidente where dni=?");
+        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidentes where dni=?");
         ps.setString(1, presidente.getDNI());
         ResultSet result = ps.executeQuery();
         if (result.next()) {

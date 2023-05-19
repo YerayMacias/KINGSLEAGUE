@@ -58,7 +58,7 @@ public class dBorrarPresidente extends JDialog {
                     tfDNI.setBackground(Color.red);
                 } else {
                     try {
-                        Main.borrarJugador(tfDNI.getText());
+                        Main.deletePresidente(tfDNI.getText());
                         JOptionPane.showMessageDialog(null," El Presidnete con DNI " + tfDNI.getText() + " ha sido borrado");
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);

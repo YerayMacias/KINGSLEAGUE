@@ -28,6 +28,10 @@ import Vista.CRUDJugadores.dBorrarJugadores;
 import Vista.CRUDJugadores.dBuscarJugadores;
 import Vista.CRUDJugadores.dInsertJugadores;
 import Vista.CRUDJugadores.dActualizarJugadores;
+import Vista.CRUDPartidos.dActualizarPartidos;
+import Vista.CRUDPartidos.dBorrarPartidos;
+import Vista.CRUDPartidos.dBuscarPartidos;
+import Vista.CRUDPartidos.dInsertPartidos;
 import Vista.CRUDPresidentes.dActualizarPresidente;
 import Vista.CRUDPresidentes.dBorrarPresidente;
 import Vista.CRUDPresidentes.dBuscarPresidente;
@@ -113,6 +117,10 @@ public class Main {
     public static JDialog dBuscarUsuarios;
     public static JDialog dEquiposJugadores;
     public static JDialog dInsertarEquiposStaff;
+    public static JDialog dActualizarPartido;
+    public static JDialog dBuscarPartidos;
+    public static JDialog dInsertarPartido;
+    public static JDialog dBorrarPartidos;
     public static JDialog dInformes;
     public static JFrame vPerfil;
     public static JFrame vPlayOffs;
@@ -241,6 +249,7 @@ public class Main {
         vAdminPanel.setContentPane(new vAdminPanel(admin).getpPrincipal());
         vAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vAdminPanel.pack();
+        vAdminPanel.setLocationRelativeTo(null);
         vAdminPanel.setVisible(true);
     }
 
@@ -605,6 +614,35 @@ public class Main {
         dBuscarUsuarios = new dBuscarUsuarios();
         dBuscarUsuarios.pack();
         dBuscarUsuarios.setVisible(true);
+    }
+
+    public static void crearDialogoActualizarPartido(){
+        dActualizarPartido = new dActualizarPartidos();
+        dActualizarPartido.pack();
+        dActualizarPartido.setVisible(true);
+        dActualizarPartido.setLocationRelativeTo(vAdminPanel);
+    }
+
+    public static void crearDialogoInsertarPartido(){
+        dInsertarPartido = new dInsertPartidos();
+        dInsertarPartido.pack();
+        dInsertarPartido.setVisible(true);
+        dInsertarPartido.setLocationRelativeTo(vAdminPanel);
+
+    }
+
+    public static void crearDialogoBorrarPartidos(){
+        dBorrarPartidos = new dBorrarPartidos();
+        dBorrarPartidos.pack();
+        dBorrarPartidos.setVisible(true);
+        dBorrarPartidos.setLocationRelativeTo(vAdminPanel);
+    }
+
+    public static void crearDialogoBuscarPartidos(){
+        dBuscarPartidos = new dBuscarPartidos();
+        dBuscarPartidos.pack();
+        dBuscarPartidos.setVisible(true);
+        dBuscarPartidos.setLocationRelativeTo(vAdminPanel);
     }
 
     public static int borrarJugador(String DNI) throws Exception {
@@ -1184,8 +1222,9 @@ public class Main {
             TPresidente.insert(presidente);
         }
 
-        public static void updatePresidente (String nombre, String apellido, String DNI,int equipo) throws Exception {
+        public static void updatePresidente (int ID,String nombre, String apellido, String DNI,int equipo) throws Exception {
             presidente = new Presidente();
+            presidente.setID(ID);
             presidente.setNombre(nombre);
             presidente.setApellido(apellido);
             presidente.setDNI(DNI);
@@ -1285,7 +1324,7 @@ public class Main {
 
     public static String buscarDniPresidente (String dni) throws Exception {
         presidente = new Presidente();
-        presidente.setID(Integer.parseInt(dni));
+        presidente.setDNI(dni);
         String datos = "";
         presidente = TPresidente.buscarPorDNI(presidente);
         datos += "\n ID_PRESIDENTE" + presidente.getID() + "\n\nNombre: " + presidente.getNombre() + "\nApellido: " + presidente.getApellido()
