@@ -633,3 +633,18 @@ INSERT INTO usuarios(username, email, password, admin) values('USUARIO3','usuari
 INSERT INTO usuarios(username, email, password, admin) values('USUARIO4','usuario4@kingsleague.pro','12345Abcde','N');
 INSERT INTO usuarios(username, email, password, admin) values('USUARIO5','usuario5@kingsleague.pro','12345Abcde','N');
 INSERT INTO usuarios(username, email, password, admin) values('USUARIO6','usuario6@kingsleague.pro','12345Abcde','N');
+
+/* INSERTS PRESIDENTES */
+
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('IKER','CASILLAS','01111111C','1');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('JUAN','GUARNIZO','02111111C','2');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('ADRI','CONTRERAS','03111111C','3');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('GERARD','ROMERO','04111111C','4');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('KUN','AGUERO','05111111C','5');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('PERCHITA','PERCHA','06111111C','6');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('DJMARIO','ALONSO','07111111C','7');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('RIVERS','SAMY','08111111C','8');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('THEGREF','CANOVAS','09111111C','9');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('IBAI','LLANOS','10111111C','10');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('SPURSITO','MIRAS','11111111C','11');
+INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values ('BUYER','HERMANOS','12111111C','12');
