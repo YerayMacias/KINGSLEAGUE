@@ -101,11 +101,13 @@ public class Main {
     public static JDialog dInsertarJornada;
     public static JDialog dBorrarJornada;
     public static JDialog dBuscarJornada;
+    public static JDialog dBorrarEquiposJugadores;
     public static JDialog dActualizarJornada;
     public static JDialog dInsertarPresidentes;
     public static JDialog dBorrarPresidentes;
     public static JDialog dBuscarPresidentes;
     public static JDialog dActualizarPresidentes;
+    public static JDialog dInsertarEquiposJugadores;
     public static JDialog dActualizarStaff;
     public static JDialog dBorrarStaff;
     public static JDialog dBuscarStaff;
@@ -119,7 +121,8 @@ public class Main {
     public static JDialog dBorrarUsuario;
     public static JDialog dActualizarEquiposStaff;
     public static JDialog dBuscarUsuarios;
-    public static JDialog dEquiposJugadores;
+    public static JDialog dActualizarEquiposJugadores;
+    public static JDialog dBuscarEquiposJugadores;
     public static JDialog dBorrarEquiposStaff;
     public static JDialog dInsertarEquiposStaff;
     public static JDialog dActualizarPartido;
@@ -161,27 +164,8 @@ public class Main {
     private static XML xml;
     public static void main(String[] args) {
 
-        // Test para probar conexion con la base de datos
-
-        /*try {
-            BaseDato.abrirConexion();
-            PreparedStatement ps = BaseDato.getCon().prepareStatement("Select * from equipos");
-            ResultSet resultado = ps.executeQuery();
-            while (resultado.next())
-                System.out.println(resultado.getString("nombre"));
-            BaseDato.cerrarConexion();
-        } catch (Exception e){
-            BaseDato.cerrarConexion();
-            System.out.println("Error " + e.getMessage());
-        }*/
-
+        //
         crearVentanaLogin();
-        /*try {
-            buscarClasificacion();
-            crearVentanaPrueba();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }*/
     }
 
     public static void crearVentanaLogin() {
@@ -308,13 +292,6 @@ public class Main {
         return panelContenedor;
     }
 
-    public static void crearVentanaPrueba() throws Exception {
-        JFrame frame = new JFrame("vLogin");
-        frame.setContentPane(crearPanelesClasificacion());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public static ArrayList<String> rellenarComboJornadas() {
         ArrayList<String> itemsCombo = new ArrayList<>();
@@ -451,12 +428,14 @@ public class Main {
         dInsertarJugadores = new dInsertJugadores();
         dInsertarJugadores.pack();
         dInsertarJugadores.setVisible(true);
+        dInsertarJugadores.setLocationRelativeTo(vAdminPanel);
     }
 
     public static void crearVentanaBorrarJugadores(String admin) {
         dBorrarJugadores = new dBorrarJugadores();
         dBorrarJugadores.pack();
         dBorrarJugadores.setVisible(true);
+        dBorrarJugadores.setLocationRelativeTo(vAdminPanel);
     }
 
     public static void crearVentanaActualizarJugadores(String admin) {
@@ -872,6 +851,20 @@ public class Main {
         return listaTemporadaID;
     }
 
+    public static ArrayList<String> crearFechaInicioTemporada() throws Exception {
+        listaTemporada = TTemporadas.buscarTodo();
+        ArrayList<String> listaTemporadaID = new ArrayList<>();
+        listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getFechaInicio())));
+        return listaTemporadaID;
+    }
+
+    public static ArrayList<String> crearFechaFinTemporada() throws Exception {
+        listaTemporada = TTemporadas.buscarTodo();
+        ArrayList<String> listaTemporadaID = new ArrayList<>();
+        listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getFechaFin())));
+        return listaTemporadaID;
+    }
+
     public static ArrayList<String> crearStaff() throws Exception {
         listaStaff = tStaffs.buscarTodos();
         ArrayList<String> listaStaffID = new ArrayList<>();
@@ -1144,7 +1137,7 @@ public class Main {
         return TStaffEquipo.delete(staffEquipo);
     }
 
-    public static String buscarTodosStaffEquipos () throws Exception {
+    public static String buscarTodosStaffEquipos() throws Exception {
         ArrayList<StaffEquipo> listaStaffEquipo = TStaffEquipo.buscarTodos();
         String datos = "";
         for (int x = 0; x < listaStaffEquipo.size(); x++) {
@@ -1367,37 +1360,33 @@ public class Main {
     }
 
     public static void dialogoJugadoresEquipo() {
-        dInsertarEquiposJugadores dialog = new dInsertarEquiposJugadores();
-        dialog.pack();
-        dialog.setVisible(true);
+        dInsertarEquiposJugadores  = new dInsertarEquiposJugadores();
+        dInsertarEquiposJugadores.pack();
+        dInsertarEquiposJugadores.setVisible(true);
     }
 
     public static void dialogoBorrarJugadoresEquipo() {
-        dBorrarEquiposJugadores dialog = new dBorrarEquiposJugadores();
-        dialog.pack();
-        dialog.setVisible(true);
+        dBorrarEquiposJugadores  = new dBorrarEquiposJugadores();
+        dBorrarEquiposJugadores.pack();
+        dBorrarEquiposJugadores.setVisible(true);
     }
 
     public static void dialogoActualizarJugadoresEquipo() {
-        dActualizarEquiposJugadores dialog = new dActualizarEquiposJugadores();
-        dialog.pack();
-        dialog.setVisible(true);
+        dActualizarEquiposJugadores  = new dActualizarEquiposJugadores();
+        dActualizarEquiposJugadores.pack();
+        dActualizarEquiposJugadores.setVisible(true);
     }
 
     public static void dialogoBuscarJugadoresEquipo() {
-        dBuscarEquiposJugadores dialog = new dBuscarEquiposJugadores();
-        dialog.pack();
-        dialog.setVisible(true);
+        dBuscarEquiposJugadores  = new dBuscarEquiposJugadores();
+        dBuscarEquiposJugadores.pack();
+        dBuscarEquiposJugadores.setVisible(true);
     }
 
-    public static void insertarEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws SQLException {
-        JugadorEquipo jugadorEquipo = new JugadorEquipo();
-        // jugadorEquipo.setEquipo(id_equipo);
-        //   jugadorEquipo.setJugador(id_jugador);
-        jugadorEquipo.setSueldo(Double.parseDouble(sueldo));
-        jugadorEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
-        jugadorEquipo.setFechaFin(LocalDate.parse(fechaFin));
-        jugadorEquipo.setClausula(Double.parseDouble(clausula));
+    public static void insertarEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
+        jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
+        equipo = TEquipo.buscarPorId(new Equipo(Integer.parseInt(id_equipo)));
+        JugadorEquipo jugadorEquipo = new JugadorEquipo(jugador,equipo,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo),Double.parseDouble(clausula));
         TJugadorEquipo.insert(jugadorEquipo);
     }
 
@@ -1429,7 +1418,4 @@ public class Main {
         return datos;
     }
 
-    /*public static String buscarTodasLasTemporadasID(String idTemporada) {
-
-    }*/
 }
