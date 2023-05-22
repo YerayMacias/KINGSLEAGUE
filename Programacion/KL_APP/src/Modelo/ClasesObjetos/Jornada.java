@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Partido
+ * @see Temporada
  */
 public class Jornada {
     private int ID;
@@ -14,17 +16,24 @@ public class Jornada {
     private Temporada temporada;
     private ArrayList<Partido> listaPartidos;
 
+    /**
+     * Constructor de jornada vacio
+     */
     public Jornada() {
     }
 
+    /**
+     * Constructor de Jornada solo con ID
+     * Para busquedas
+     * @param ID
+     */
     public Jornada(int ID) {
         this.ID = ID;
     }
 
     /**
-     *
-     * Constructor completo de Jornada
-     * Para instanciar una jornada con todos los atributos
+     * Constructor completo de Jornada menos los partidos
+     * Para instanciar una jornada con todos los atributos menos la lista de partidos
      * @param ID
      * @param numJornada
      * @param fecha
@@ -37,6 +46,15 @@ public class Jornada {
         this.temporada = temporada;
     }
 
+    /**
+     * Constructor completo de Jornada
+     * Para instanciar una jornada con todos los atributos
+     * @param ID
+     * @param numJornada
+     * @param fecha
+     * @param temporada
+     * @param listaPartidos
+     */
     public Jornada(int ID, int numJornada, LocalDate fecha, Temporada temporada, ArrayList<Partido> listaPartidos) {
         this.ID = ID;
         this.numJornada = numJornada;
@@ -45,6 +63,11 @@ public class Jornada {
         this.listaPartidos = listaPartidos;
     }
 
+    /**
+     * Constructor de jornada con numero de jornada y fecha
+     * @param numJornada
+     * @param fecha
+     */
     public Jornada(int numJornada, LocalDate fecha) {
         this.numJornada = numJornada;
         this.fecha = fecha;

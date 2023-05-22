@@ -7,7 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vPartidos {
     private JPanel pMenu;
     private JLabel lNombre;
@@ -30,6 +33,10 @@ public class vPartidos {
     private JMenuItem miPlayOffs;
     private JMenuItem miPrincipal;
 
+    /**
+     * Constructor de la ventana
+     * @param admin Para ocultar las cosas de administrador
+     */
     public vPartidos(String admin) {
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
@@ -128,6 +135,10 @@ public class vPartidos {
         return pPrincipal;
     }
 
+    /**
+     * Para inicializar los estilos y datos de la ventana
+     * @throws Exception
+     */
     public void inicializar() throws Exception {
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
@@ -153,19 +164,28 @@ public class vPartidos {
         pPartidos.add(Main.crearPanelesJornadas());
         inicializarCombo();
     }
+
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
 
+    /**
+     * Para rellenar la comboBox de las jornadas
+     */
     public void inicializarCombo(){
         ArrayList<String> itemsCombo = Main.rellenarComboJornadas();
         itemsCombo.forEach(item -> cbJornadas.addItem(item));
         cbJornadas.setSelectedIndex(-1);
     }
 
-
+    /**
+     * Para crear componentes
+     */
     private void createUIComponents() {
         // TODO: place custom component creation code here
         pPartidos = new JPanel(new GridLayout(1,1));

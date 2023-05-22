@@ -6,7 +6,10 @@ import Vista.CRUDJugadores.dBuscarJugadores;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class dBuscarEquipo extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;

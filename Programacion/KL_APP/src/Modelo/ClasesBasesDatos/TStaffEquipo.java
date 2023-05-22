@@ -7,8 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TStaffEquipo {
+    /**
+     * Para insertar un nuevo Staff en un equipo
+     * @param staffEquipo Instancia de StaffEquipo
+     * @throws SQLException
+     */
     public static void insert(StaffEquipo staffEquipo) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO equipos_staffs (id_equipo,id_staff,sueldo,fecha_inicio,fecha_fin) values (?,?,?,?,?,?)");
@@ -21,6 +29,12 @@ public class TStaffEquipo {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para borrar un staff de un equipo
+     * @param staffEquipo Instancia de StaffEquipo
+     * @return
+     * @throws SQLException
+     */
     public static int delete(StaffEquipo staffEquipo) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM equipos_staffs where id_staff = ?");
@@ -30,6 +44,11 @@ public class TStaffEquipo {
         return 0;
     }
 
+    /**
+     * Para updatear un staff de un equipo
+     * @param staffEquipo Instancia de StaffEquipo
+     * @throws Exception
+     */
     public static void update(StaffEquipo staffEquipo) throws Exception
     {
         BaseDato.abrirConexion();
@@ -41,6 +60,12 @@ public class TStaffEquipo {
         ps.executeUpdate();
         BaseDato.cerrarConexion();
     }
+
+    /**
+     * Para buscar todos los staff de los equipos
+     * @return ArrayList de StaffEquipo
+     * @throws Exception
+     */
     public static ArrayList<StaffEquipo> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<StaffEquipo> listaStaffsEquipos = new ArrayList<>();

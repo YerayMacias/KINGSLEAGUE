@@ -3,11 +3,18 @@ package Modelo.ClasesObjetos;
 /**
  * @author
  * @version 1.0
+ * @see Persona
  */
 public class Staff extends Persona{
     public enum tROl{ENTRENADOR1, ENTRENADOR2, ANALISTA}
+    /**
+     * Rol del staff(entrenador principal, entrenador secundario o analista)
+     */
     private tROl rol;
 
+    /**
+     * Constructor vacio de Staff
+     */
     public Staff() {
     }
     /**
@@ -24,6 +31,11 @@ public class Staff extends Persona{
         this.rol = rol;
     }
 
+    /**
+     * Constructor de Staff solo con ID
+     * Para busquedas
+     * @param ID
+     */
     public Staff(int ID) {
         super(ID);
     }

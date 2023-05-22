@@ -11,7 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vEquipos {
     private JLabel lNombre;
     private JMenuItem miBaseDatos;
@@ -45,8 +48,11 @@ public class vEquipos {
     private JButton bXbuyerTeam;
 
     private String nombreEquipo;
-    // private J
 
+    /**
+     * Constructor de la ventana
+     * @param admin Para ocultar las cosas de administrador
+     */
     public vEquipos(String admin) {
         inicializar();
          if (!admin.equalsIgnoreCase("S"))
@@ -122,12 +128,18 @@ public class vEquipos {
         return pPrincipal;
     }
 
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
 
+    /**
+     * Para inicializar los datos de la ventana
+     */
     public void inicializar() {
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
@@ -155,6 +167,11 @@ public class vEquipos {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Para crear los botones de los equipos
+     * @throws Exception
+     */
 
     public void crearBotonesEquipos() throws Exception {
         Main.buscarEquipos();
@@ -193,11 +210,19 @@ public class vEquipos {
         }
     }
 
+    /**
+     * Para convertir hexadecimal a rgb
+     * @param color_hex
+     * @return
+     */
     private int hex( String color_hex ) {
         String color = color_hex.substring(1, color_hex.length());
         return Integer.parseInt(color,  16 );
     }
 
+    /**
+     * Para crear componentes
+     */
     private void createUIComponents() {
         // TODO: place custom component creation code here
         pSecundario = new JPanel(new GridLayout(4,4,4,4));

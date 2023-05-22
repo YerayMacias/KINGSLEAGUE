@@ -77,97 +77,334 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
  */
 public class Main {
-
+    /**
+     * Variable global para la ventana Principal
+     */
     public static JFrame vPrincipal;
+    /**
+     * Variable global para la ventana de Login
+     */
     public static JFrame vLogin;
+    /**
+     * Variable global para la ventana de Registro
+     */
     public static JFrame vRegistro;
+    /**
+     * Variable global para la ventana de Equipos
+     */
     public static JFrame vEquipos;
+    /**
+     * Variable global para la ventana de Clasificacion
+     */
     public static JFrame vClasificacion;
+    /**
+     * Variable global para la ventana de Partidos
+     */
     public static JFrame vPartidos;
+    /**
+     * Variable global para la ventana de Equipos y Jugadores
+     */
     public static JFrame vEquiposJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Jugadores
+     */
     public static JDialog dInsertarJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Jugadores
+     */
     public static JDialog dBorrarJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Jugadores
+     */
     public static JDialog dUpdatearJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Jugadores
+     */
     public static JDialog dBuscarJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Equipo
+     */
     public static JDialog dInsertarEquipo;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Equipo
+     */
     public static JDialog dBuscarEquipo;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Equipo
+     */
     public static JDialog dBorrarEquipo;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Staff
+     */
     public static JDialog dBuscarEquiposStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Equipo
+     */
     public static JDialog dActualizarEquipo;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Jornada
+     */
     public static JDialog dInsertarJornada;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Jornada
+     */
     public static JDialog dBorrarJornada;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Jornada
+     */
     public static JDialog dBuscarJornada;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Equipos Jugadores
+     */
     public static JDialog dBorrarEquiposJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Jornada
+     */
     public static JDialog dActualizarJornada;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Presindetes
+     */
     public static JDialog dInsertarPresidentes;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Presidentes
+     */
     public static JDialog dBorrarPresidentes;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Presidentes
+     */
     public static JDialog dBuscarPresidentes;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Presidentes
+     */
     public static JDialog dActualizarPresidentes;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar EquiposJugadores
+     */
     public static JDialog dInsertarEquiposJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Staffs
+     */
     public static JDialog dActualizarStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Staffs
+     */
     public static JDialog dBorrarStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Staff
+     */
     public static JDialog dBuscarStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Staff
+     */
     public static JDialog dInsertarStaff;
+    /**
+     * Variable global para la ventana Principal
+     */
     public static JDialog dInsertarTemporada;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Temporada
+     */
     public static JDialog dBuscarTemporada;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Temporada
+     */
     public static JDialog dActualizarTemporada;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Temporada
+     */
     public static JDialog dBorrarTemporada;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Usuario
+     */
     public static JDialog dActualizarUsuario;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Usuario
+     */
     public static JDialog dInsertarUsuario;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Usuario
+     */
     public static JDialog dBorrarUsuario;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar StaffEquipo
+     */
     public static JDialog dActualizarEquiposStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Usuario
+     */
     public static JDialog dBuscarUsuarios;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar EquiposJugadores
+     */
     public static JDialog dActualizarEquiposJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar EquiposJugadores
+     */
     public static JDialog dBuscarEquiposJugadores;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar EquiposStaff
+     */
     public static JDialog dBorrarEquiposStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar EquipoStaff
+     */
     public static JDialog dInsertarEquiposStaff;
+    /**
+     * Variable global para el cuadro de diálogo de Modificar Partido
+     */
     public static JDialog dActualizarPartido;
+    /**
+     * Variable global para el cuadro de diálogo de Buscar Partidos
+     */
     public static JDialog dBuscarPartidos;
+    /**
+     * Variable global para el cuadro de diálogo de Insertar Partidos
+     */
     public static JDialog dInsertarPartido;
+    /**
+     * Variable global para el cuadro de diálogo de Borrar Partidos
+     */
     public static JDialog dBorrarPartidos;
+    /**
+     * Variable global para el cuadro de diálogo de los informes
+     */
     public static JDialog dInformes;
+    /**
+     * Variable global para la ventana del Prefil
+     */
     public static JFrame vPerfil;
+    /**
+     * Variable global para la ventana de PlayOffs
+     */
     public static JFrame vPlayOffs;
+    /**
+     * Variable global para la ventana del Panel de Administrador
+     */
     public static JFrame vAdminPanel;
+    /**
+     * Variable global para la ventana de Equpos Jugadores
+     */
     public static JFrame vEquipoJugadores;
+    /**
+     * Variable global de usuario
+     */
     private static Usuario usuario;
+    /**
+     * Variable global de jugador
+     */
     private static Jugador jugador;
+    /**
+     * Variable global de equipo
+     */
     private static Equipo equipo;
+    /**
+     * Variable global de partido
+     */
     private static Partido partido;
+    /**
+     * Variable global de presidente
+     */
     private static Presidente presidente;
+    /**
+     * Variable global de staff
+     */
     private static Staff staff;
+    /**
+     * Array global de jornadas
+     */
     private static ArrayList<Jornada> listaJornadas;
+    /**
+     * Array global de partidos
+     */
     private static ArrayList<Partido> listaPartidos;
+    /**
+     * Array global de jornadas equipos
+     */
     public static ArrayList<Equipo> listaEquipos;
+    /**
+     * Array global de victorias
+     */
     private static ArrayList<Integer> listaVictorias;
+    /**
+     * Array global de derrotas
+     */
     private static ArrayList<Integer> listaDerrotas;
+    /**
+     * Array global de goles a favor
+     */
     private static ArrayList<Integer> listaGolesFavor;
+    /**
+     * Array global de goles en contra
+     */
     private static ArrayList<Integer> listaGolesContra;
+    /**
+     * Array global de diferencia de goles
+     */
     private static ArrayList<Integer> listaDiferenciaGoles;
+    /**
+     * Array global de la posicion en la clasificacion
+     */
 
     public static ArrayList<Integer> listaPosicion;
+    /**
+     * Array global de jugadores
+     */
 
     private static ArrayList<Jugador> listaJugadores;
+    /**
+     * Array global de presidentes
+     */
     private static ArrayList<Presidente> listaPresidente;
+    /**
+     * Array global de staffs
+     */
     private static ArrayList<Staff> listaStaffs;
+    /**
+     * Variable global para la ventana Principal
+     */
     private static ArrayList<Usuario> listaUsuarios;
+    /**
+     * Array global de usuarios
+     */
     private static ArrayList<StaffEquipo> listaStaffEquipo;
+    /**
+     * Array global de temporadas
+     */
     private static ArrayList<Temporada> listaTemporada;
+    /**
+     * Array global de staff
+     */
     private static ArrayList<Staff> listaStaff;
+    /**
+     * Variable global el número de jugadores
+     */
     private static int numJugador;
+    /**
+     * Variable global para la posicion de los arrys
+     */
 
     private static int posicion;
+    /**
+     * Variable global de XML
+     */
     private static XML xml;
-    public static void main(String[] args) {
 
-        //
+    /**
+     * Inicio del programa
+     * Llamado a metodo de crearVentanaLogin
+     * @param args
+     */
+    public static void main(String[] args) {
         crearVentanaLogin();
     }
 
+    /**
+     * Para crear la ventana de login
+     */
     public static void crearVentanaLogin() {
         vLogin = new JFrame("vLogin");
         vLogin.setContentPane(new vLogin().getpPrincipal());
@@ -177,7 +414,9 @@ public class Main {
         vLogin.setLocationRelativeTo(null);
         vLogin.setVisible(true);
     }
-
+    /**
+     * Para crear la ventana de registro
+     */
     public static void crearVentanaRegistro() {
         vRegistro = new JFrame("vRegistro");
         vRegistro.setContentPane(new vRegistro().getpPrincipal());
@@ -187,7 +426,10 @@ public class Main {
         vRegistro.setLocationRelativeTo(null);
         vRegistro.setVisible(true);
     }
-
+    /**
+     * Para crear la ventana que sale despues de iniciar sesion
+     * @param admin Para saber si el usuario logueado es admin
+     */
     public static void crearVentanaPrincipal(String admin) {
         vLogin.dispose();
         vPrincipal = new JFrame("vPrincipal");
@@ -197,7 +439,10 @@ public class Main {
         vPrincipal.setLocationRelativeTo(null);
         vPrincipal.setVisible(true);
     }
-
+    /**
+     * Para crear la ventana que de los partidos
+     * @param admin Para saber si el usuario logueado es admin
+     */
     public static void crearVentanaPartidos(String admin) {
         vPartidos = new JFrame("vPartidos");
         vPartidos.setContentPane(new vPartidos(admin).getpPrincipal());
@@ -207,6 +452,11 @@ public class Main {
         vPartidos.setVisible(true);
     }
 
+    /**
+     * Para crear la ventana de la clasificación
+     * @param admin Para saber si el usuario logueado es admin
+     * @throws Exception
+     */
     public static void crearVentanaClasificacion(String admin) throws Exception {
         vClasificacion = new JFrame("vClasificacion");
         vClasificacion.setContentPane(new vClasificacion(admin).getpPrincipal());
@@ -216,6 +466,10 @@ public class Main {
         vClasificacion.setVisible(true);
     }
 
+    /**
+     * Para crear la ventana de todos los equipos
+     * @param admin Para saber si el usuario logueado es admin
+     */
     public static void crearVentanaEquipos(String admin) {
         vEquipos = new JFrame("vEquipos");
         vEquipos.setContentPane(new vEquipos(admin).getpPrincipal());
@@ -225,6 +479,10 @@ public class Main {
         vEquipos.setVisible(true);
     }
 
+    /**
+     * Para crear la ventana del perfil del usuario
+     * @param admin Para saber si el usuario logueado es admin
+     */
     public static void crearVentanaPerfil(String admin) {
         vPerfil = new JFrame("vPerfil");
         vPerfil.setContentPane(new vPerfil(admin).getpPrincipal());
@@ -233,6 +491,10 @@ public class Main {
         vPerfil.setVisible(true);
     }
 
+    /**
+     * Para crear la ventana del panel de administracion
+     * @param admin
+     */
     public static void crearVentanaPanelAdmin(String admin) {
         vAdminPanel = new JFrame("vAdminPanel");
         vAdminPanel.setContentPane(new vAdminPanel(admin).getpPrincipal());
@@ -242,7 +504,11 @@ public class Main {
         vAdminPanel.setVisible(true);
     }
 
-
+    /**
+     * Para crear la ventana de los playoffs
+     * @param admin Para saber si el usuario logueado es admin
+     * @throws Exception
+     */
     public static void crearVentanaPlayOffs(String admin) throws Exception {
         vPlayOffs = new JFrame("vPlayOffs");
         vPlayOffs.setContentPane(new vPlayOffs(admin).getpPrincipal());
@@ -251,7 +517,12 @@ public class Main {
         vPlayOffs.setVisible(true);
     }
 
-
+    /**
+     * Para validar un usuario al loguearse
+     * @param nombre
+     * @param password
+     * @throws Exception
+     */
     public static void validarUsuario(String nombre, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsernamePassword(new Usuario(nombre, password));
         if (usuario != null) {
@@ -260,6 +531,11 @@ public class Main {
         } else throw new Exception("El usuario o la contraseña son incorrectos");
     }
 
+    /**
+     * Para buscar todas las jornadas de la temporada
+     * Llamado a la base de datos
+     * @throws Exception
+     */
     public static void buscarJornadasTemporada() throws Exception {
         Jornada jornada = new Jornada();
         jornada.setTemporada(TTemporadas.buscarUltimaTemporada());
@@ -267,6 +543,11 @@ public class Main {
         posicion = listaJornadas.size() - 1;
     }
 
+    /**
+     * Para la creacion de los paneles para la ventana de los partidos
+     * @return Panel que tiene todos los paneles generados
+     * @throws Exception
+     */
     public static JPanel crearPanelesJornadas() throws Exception {
         JLabel labelTitulo = new JLabel();
         JPanel panelPartido;
@@ -292,60 +573,117 @@ public class Main {
         return panelContenedor;
     }
 
-
+    /**
+     * Para rellenar una comboBox de la ventana de partidos
+     * @return ArrayList con el string de Jornada más el numero de jornada
+     */
     public static ArrayList<String> rellenarComboJornadas() {
         ArrayList<String> itemsCombo = new ArrayList<>();
         listaJornadas.forEach(item -> itemsCombo.add("Jornada " + item.getNumJornada()));
         return itemsCombo;
     }
 
+    /**
+     * Para actualizar la posicion a la hora de crear los paneles de para la ventana de partidos
+     * @param cBoxPosicion Posicion selecciona en la comboBox
+     */
     public static void actualizarPosicion(int cBoxPosicion) {
         posicion = cBoxPosicion;
     }
 
+    /**
+     * Para recargar o refrescar la ventana de los partidos
+     */
     public static void actualizarVPartidos() {
         SwingUtilities.updateComponentTreeUI(vPartidos);
     }
 
+    /**
+     * Para devolver el nombre del usuario
+     * @return
+     */
     public static String buscarNombre() {
         return usuario.getUsername();
     }
 
+    /**
+     * Para devolver el tipo de usuario
+     * @return
+     */
     public static String buscarAdmin() {
         return usuario.getAdmin().toString();
     }
 
+    /**
+     * Para devolver el correo de usuario
+     * @return
+     */
     public static String buscarCorreo() {
         return usuario.getEmail();
     }
 
+    /**
+     * Para registrar un usuario nuevo
+     * @param username
+     * @param email
+     * @param password
+     * @param admin
+     * @throws Exception
+     */
     public static void registrarUsuario(String username, String email, String password, Usuario.tUsuario admin) throws Exception {
         usuario = new Usuario(username, email, password, admin);
         TUsuarios.insert(usuario);
     }
 
+    /**
+     * Para modificar el nombre y el email de un usuario
+     * @param username
+     * @param email
+     * @throws Exception
+     */
     public static void updateUsuario(String username, String email) throws Exception {
         usuario = TUsuarios.buscarPorUsername(new Usuario(username));
         usuario.setEmail(email);
         TUsuarios.update(usuario);
     }
 
+    /**
+     * Para modificar la contraseña de un usuario
+     * @param username
+     * @param password
+     * @throws Exception
+     */
     public static void updateUsuarioPass(String username, String password) throws Exception {
         usuario = TUsuarios.buscarPorUsername(new Usuario(username));
         usuario.setPassword(password);
         TUsuarios.update(usuario);
     }
 
+    /**
+     * Para devolver la contraseña del administrador con el nombre de usuario ADMIN
+     * @return
+     * @throws Exception
+     */
     public static String getPassAdm() throws Exception {
         Usuario usuarioAdm = TUsuarios.buscarPorUsername(new Usuario("ADMIN"));
         return usuarioAdm.getPassword();
     }
 
+    /**
+     * Para devolver la contraseña del usuario
+     * @param usuario nombre de usuario
+     * @return
+     * @throws Exception
+     */
     public static String getPassUser(String usuario) throws Exception {
         Usuario user = TUsuarios.buscarPorUsername(new Usuario(usuario));
         return user.getPassword();
     }
 
+    /**
+     * Para buscar la clasificacion de la temporada
+     * @throws Exception
+     */
     public static void buscarClasificacion() throws Exception {
         ArrayList<Object> listaArrays = TTemporadas.buscarClasificacion();
         listaEquipos = (ArrayList<Equipo>) listaArrays.get(0);
@@ -357,6 +695,10 @@ public class Main {
         listaPosicion = (ArrayList<Integer>) listaArrays.get(6);
     }
 
+    /**
+     * Para la creaccion de los paneles de la ventana de clasificacion
+     * @return
+     */
     public static JPanel crearPanelesClasificacion() {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(1);
@@ -392,28 +734,53 @@ public class Main {
         return panelContenedor;
     }
 
+    /**
+     * Para buscar todos los equipos
+     * @throws Exception
+     */
     public static void buscarEquipos() throws Exception {
         listaEquipos = TEquipo.buscarTodos();
     }
 
+    /**
+     * Para devolver los nombres de los equipos
+     * @return
+     */
     public static ArrayList<String> getNombreEquipos() {
         ArrayList<String> listaNombres = new ArrayList<>();
         listaEquipos.forEach(equipo -> listaNombres.add(equipo.getNombre()));
         return listaNombres;
     }
 
+    /**
+     * Para devolver la URL del logo de los equipos
+     * @return
+     */
     public static ArrayList<URL> getURLImagen() {
         ArrayList<URL> listaURL = new ArrayList<>();
         listaEquipos.forEach(equipo -> listaURL.add(equipo.getUrl()));
         return listaURL;
     }
 
+    /**
+     * Para devolver el color de los equipos
+     * @return
+     */
     public static ArrayList<String> getColores() {
         ArrayList<String> listaColores = new ArrayList<>();
         listaEquipos.forEach(equipo -> listaColores.add(equipo.getColor()));
         return listaColores;
     }
 
+    /**
+     * Para insertar un nuevo jugador
+     * @param nombre
+     * @param apellido
+     * @param DNI
+     * @param posicion
+     * @param tipoJugador
+     * @throws Exception
+     */
     public static void insertJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
         jugador = new Jugador();
         jugador.setNombre(nombre);
@@ -424,184 +791,271 @@ public class Main {
         tJugadores.insert(jugador);
     }
 
-    public static void crearVentanaInsertJugador(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar jugadores
+     */
+    public static void crearVentanaInsertJugador() {
         dInsertarJugadores = new dInsertJugadores();
         dInsertarJugadores.pack();
         dInsertarJugadores.setVisible(true);
         dInsertarJugadores.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarJugadores(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar jugadores
+     */
+    public static void crearVentanaBorrarJugadores() {
         dBorrarJugadores = new dBorrarJugadores();
         dBorrarJugadores.pack();
         dBorrarJugadores.setVisible(true);
         dBorrarJugadores.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarJugadores(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar jugadores
+     */
+    public static void crearVentanaActualizarJugadores() {
         dUpdatearJugadores = new dActualizarJugadores();
         dUpdatearJugadores.pack();
         dUpdatearJugadores.setVisible(true);
+        dUpdatearJugadores.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarjugadores(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar jugadores
+     */
+    public static void crearVentanaBuscarjugadores() {
         dBuscarJugadores = new dBuscarJugadores();
         dBuscarJugadores.pack();
         dBuscarJugadores.setVisible(true);
+        dBuscarJugadores.setLocationRelativeTo(vAdminPanel);
     }
 
-    public static void crearVentanaInsertEquipo(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar equipo
+     */
+    public static void crearVentanaInsertEquipo() {
         dInsertarEquipo = new dInsertarEquipo();
         dInsertarEquipo.pack();
         dInsertarEquipo.setVisible(true);
+        dInsertarEquipo.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarEquipo(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar equipo
+     */
+    public static void crearVentanaBorrarEquipo() {
         dBorrarEquipo = new dBorrarEquipo();
         dBorrarEquipo.pack();
         dBorrarEquipo.setVisible(true);
+        dBorrarEquipo.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaUpdateEquipo(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar equipo
+     */
+    public static void crearVentanaUpdateEquipo() {
         dActualizarEquipo = new dActualizarEquipo();
         dActualizarEquipo.pack();
         dActualizarEquipo.setVisible(true);
+        dActualizarEquipo.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarEquipo(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar equipo
+     */
+    public static void crearVentanaBuscarEquipo() {
         dBuscarEquipo = new dBuscarEquipo();
         dBuscarEquipo.pack();
         dBuscarEquipo.setVisible(true);
+        dBuscarEquipo.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaInsertJornada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar jornada
+     */
+    public static void crearVentanaInsertJornada() {
         dInsertarJornada = new dInsertarJornada();
         dInsertarJornada.pack();
         dInsertarJornada.setVisible(true);
+        dInsertarJornada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarJornada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar jornada
+     */
+    public static void crearVentanaBorrarJornada() {
         dBorrarJornada = new dBorrarJornada();
         dBorrarJornada.pack();
         dBorrarJornada.setVisible(true);
-    }
-
-    public static void crearVentanaUpdateJornada(String admin) {
+        dBorrarJornada.setLocationRelativeTo(vAdminPanel);
+    }/**
+     * Para crear el cuadro de dialogo de modificar jornada
+     */
+    public static void crearVentanaUpdateJornada() {
         dActualizarJornada = new dActualizarJornada();
         dActualizarJornada.pack();
         dActualizarJornada.setVisible(true);
+        dActualizarJornada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarJornada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar jornada
+     */
+    public static void crearVentanaBuscarJornada() {
         dBuscarJornada = new dBuscarJornada();
         dBuscarJornada.pack();
         dBuscarJornada.setVisible(true);
+        dBuscarJornada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaInsertarPresidente(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar presidente
+     */
+    public static void crearVentanaInsertarPresidente() {
         dInsertarPresidentes = new dInsertarPresidente();
         dInsertarPresidentes.pack();
         dInsertarPresidentes.setVisible(true);
+        dInsertarPresidentes.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarPresidente(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar presidente
+     */
+    public static void crearVentanaBorrarPresidente() {
         dBorrarPresidentes = new dBorrarPresidente();
         dBorrarPresidentes.pack();
         dBorrarPresidentes.setVisible(true);
+        dBorrarPresidentes.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarPresidente(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar presidente
+     */
+    public static void crearVentanaActualizarPresidente() {
         dActualizarPresidentes = new dActualizarPresidente();
         dActualizarPresidentes.pack();
         dActualizarPresidentes.setVisible(true);
+        dActualizarPresidentes.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarPresidente(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar presidente
+     */
+    public static void crearVentanaBuscarPresidente() {
         dBuscarPresidentes = new dBuscarPresidente();
         dBuscarPresidentes.pack();
         dBuscarPresidentes.setVisible(true);
+        dBuscarPresidentes.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaInsertStaff(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar staff
+     */
+    public static void crearVentanaInsertStaff() {
         dInsertarStaff = new dInsertarStaff();
         dInsertarStaff.pack();
         dInsertarStaff.setVisible(true);
+        dInsertarStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarStaff(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar staff
+     */
+    public static void crearVentanaBorrarStaff() {
         dBorrarStaff = new dBorrarStaff();
         dBorrarStaff.pack();
         dBorrarStaff.setVisible(true);
+        dBorrarStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarStaff(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar staff
+     */
+    public static void crearVentanaActualizarStaff() {
         dActualizarStaff = new dActualizarStaff();
         dActualizarStaff.pack();
         dActualizarStaff.setVisible(true);
+        dActualizarStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarStaff(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar staff
+     */
+    public static void crearVentanaBuscarStaff() {
         dBuscarStaff = new dBuscarStaff();
         dBuscarStaff.pack();
         dBuscarStaff.setVisible(true);
+        dBuscarStaff.setLocationRelativeTo(vAdminPanel);
     }
 
-
-    public static void crearVentanaInsertTemporada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar temporada
+     */
+    public static void crearVentanaInsertTemporada() {
         dInsertarTemporada = new dInsertarTemporada();
         dInsertarTemporada.pack();
         dInsertarTemporada.setVisible(true);
+        dInsertarTemporada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarTemporada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar temporada
+     */
+    public static void crearVentanaBorrarTemporada() {
         dBorrarTemporada = new dBorrarTemporada();
         dBorrarTemporada.pack();
         dBorrarTemporada.setVisible(true);
+        dBorrarTemporada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarTemporada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar temporada
+     */
+    public static void crearVentanaActualizarTemporada() {
         dActualizarTemporada = new dActualizarTemporada();
         dActualizarTemporada.pack();
         dActualizarTemporada.setVisible(true);
+        dActualizarTemporada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarTemporada(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar temporada
+     */
+    public static void crearVentanaBuscarTemporada() {
         dBuscarTemporada = new dBuscarTemporada();
         dBuscarTemporada.pack();
         dBuscarTemporada.setVisible(true);
+        dBuscarTemporada.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaInsertUsuario(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de insertar usuario
+     */
+    public static void crearVentanaInsertUsuario() {
         dInsertarUsuario = new dInsertarUsuario();
         dInsertarUsuario.pack();
         dInsertarUsuario.setVisible(true);
+        dInsertarUsuario.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarUsuario(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de borrar usuario
+     */
+    public static void crearVentanaBorrarUsuario() {
         dBorrarUsuario = new dBorrarUsuario();
         dBorrarUsuario.pack();
         dBorrarUsuario.setVisible(true);
+        dBorrarUsuario.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarUsuario(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de modificar usuario
+     */
+    public static void crearVentanaActualizarUsuario() {
         dActualizarUsuario = new dActualizarUsuario();
         dActualizarUsuario.pack();
         dActualizarUsuario.setVisible(true);
+        dActualizarUsuario.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarUsuarios(String admin) {
+    /**
+     * Para crear el cuadro de dialogo de buscar usuario
+     */
+    public static void crearVentanaBuscarUsuarios() {
         dBuscarUsuarios = new dBuscarUsuarios();
         dBuscarUsuarios.pack();
         dBuscarUsuarios.setVisible(true);
+        dBuscarUsuarios.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para crear el cuadro de dialogo de modificar partido
+     */
     public static void crearDialogoActualizarPartido(){
         dActualizarPartido = new dActualizarPartidos();
         dActualizarPartido.pack();
         dActualizarPartido.setVisible(true);
         dActualizarPartido.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para crear el cuadro de dialogo de insertar partido
+     */
     public static void crearDialogoInsertarPartido(){
         dInsertarPartido = new dInsertPartidos();
         dInsertarPartido.pack();
@@ -609,27 +1063,43 @@ public class Main {
         dInsertarPartido.setLocationRelativeTo(vAdminPanel);
 
     }
-
+    /**
+     * Para crear el cuadro de dialogo de borrar partido
+     */
     public static void crearDialogoBorrarPartidos(){
         dBorrarPartidos = new dBorrarPartidos();
         dBorrarPartidos.pack();
         dBorrarPartidos.setVisible(true);
         dBorrarPartidos.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para crear el cuadro de dialogo de buscar partido
+     */
     public static void crearDialogoBuscarPartidos(){
         dBuscarPartidos = new dBuscarPartidos();
         dBuscarPartidos.pack();
         dBuscarPartidos.setVisible(true);
         dBuscarPartidos.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para borrar un jugador por dni
+     * @param DNI
+     */
     public static int borrarJugador(String DNI) throws Exception {
         jugador = new Jugador();
         jugador.setDNI(DNI);
         return tJugadores.delete(jugador);
     }
 
+    /**
+     * Para modificar un jugador
+     * @param nombre
+     * @param apellido
+     * @param DNI
+     * @param posicion
+     * @param tipoJugador
+     * @throws Exception
+     */
     public static void actualizarJugador(String nombre, String apellido, String DNI, String posicion, String tipoJugador) throws Exception {
         jugador = new Jugador();
         jugador.setNombre(nombre);
@@ -640,6 +1110,11 @@ public class Main {
         tJugadores.update(jugador);
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los jugadores
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosJugadores() throws Exception {
         ArrayList<Jugador> listaJugadores = tJugadores.buscarTodos();
         String datos = "";
@@ -650,6 +1125,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de un jugador por ID
+     * @param id_jugador
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosLosJugadorPorID(String id_jugador) throws Exception {
         jugador = new Jugador();
         jugador.setID(Integer.parseInt(id_jugador));
@@ -660,6 +1141,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de un jugador por DNI
+     * @param dni
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosLosJugadorPorDNI(String dni) throws Exception {
         jugador = new Jugador();
         jugador.setDNI(dni);
@@ -670,7 +1157,13 @@ public class Main {
         return datos;
     }
 
-
+    /**
+     * Para insertar una nueva jornada
+     * @param id_temporada
+     * @param num_jornada
+     * @param fecha
+     * @throws Exception
+     */
     public static void insertarJornada(int id_temporada, int num_jornada, String fecha) throws Exception {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         Jornada jornada = new Jornada(num_jornada, LocalDate.parse(fecha, formatter));
@@ -679,12 +1172,25 @@ public class Main {
         TJornadas.insert(jornada);
     }
 
+    /**
+     * Para borrar una jornada
+     * @param id_jornada
+     * @return
+     * @throws Exception
+     */
     public static int borrarJornada(int id_jornada) throws Exception {
         Jornada jornada = new Jornada();
         jornada.setID(id_jornada);
         return TJornadas.delete(jornada);
     }
 
+    /**
+     * Para modificar una jornada
+     * @param id_temporada
+     * @param num_jornada
+     * @param fecha
+     * @throws SQLException
+     */
     public static void actualizarJornada(int id_temporada, int num_jornada, String fecha) throws SQLException {
         Jornada jornada = new Jornada();
         jornada.setTemporada(new Temporada(id_temporada));
@@ -693,6 +1199,11 @@ public class Main {
         TJornadas.update(jornada);
     }
 
+    /**
+     * Para buscar y devolver los datos de todas las jornadas
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodasLasJornadas() throws Exception {
         ArrayList<Jornada> listaJornadas = TJornadas.buscarTodo();
         String datos = "";
@@ -701,6 +1212,13 @@ public class Main {
         }
         return datos;
     }
+
+    /**
+     * Para buscar una temporada por id
+     * @param ID
+     * @return
+     * @throws Exception
+     */
     public static String buscarTemporadaID (String ID) throws Exception {
         Temporada temporada = new Temporada();
         temporada.setID(Integer.parseInt(ID));
@@ -710,6 +1228,11 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para crear la ventana de los jugadores de un equipo
+     * @param equipo
+     * @throws Exception
+     */
     public static void crearVentanaEquipoJugadores(String equipo) throws Exception {
         datosSeleccionarJugadorEquipo(equipo);
         vEquipoJugadores = new JFrame("vEquipoJugadores");
@@ -719,6 +1242,11 @@ public class Main {
         vEquipoJugadores.setVisible(true);
     }
 
+    /**
+     * Para buscar y devolver los datos de un jugador en un equipo para la ventana de los jugadores de un equipo
+     * @param equipo
+     * @throws Exception
+     */
     public static void datosSeleccionarJugadorEquipo(String equipo) throws Exception {
         Equipo equipo2 = new Equipo();
         equipo2.setNombre(equipo);
@@ -726,50 +1254,91 @@ public class Main {
         listaJugadores = tJugadores.buscarPorEquipo(equipo1);
     }
 
+    /**
+     * Para devolver o modificar el nombre de un jugador en un equipo para la ventana de los jugadores de un equipo
+     * @return
+     */
     public static String getNombreSelect() {
         return listaJugadores.get(contadorJugador()).getNombre();
     }
 
+    /**
+     * Para devolver o modificar el apellido de un jugador en un equipo para la ventana de los jugadores de un equipo
+     * @return
+     */
     public static String getApellidoSelect() {
         return listaJugadores.get(contadorJugador()).getApellido();
     }
-
+    /**
+     * Para devolver o modificar la posicion de un jugador en un equipo para la ventana de los jugadores de un equipo
+     * @return
+     */
     public static String getPosicionSelect() {
         return String.valueOf(listaJugadores.get(contadorJugador()).getPosicion());
     }
-
+    /**
+     * Para devolver o modificar el tipo de un jugador en un equipo para la ventana de los jugadores de un equipo
+     * @return
+     */
     public static String getTipoJugadorSelect() {
         return String.valueOf(listaJugadores.get(contadorJugador()).getTipoJugador());
     }
 
+    /**
+     * Para devolver la posicion de los jugadores en la ventana de los jugadores de un equipo
+     * @return
+     */
     public static int contadorJugador() {
         return numJugador;
     }
 
+    /**
+     * Para pasar al siguiente jugador en la ventana de los jugadores de un equipo
+     * @return
+     */
     public static int siguienteJugador() {
         return numJugador = numJugador + 1;
     }
-
+    /**
+     * Para pasar al anterior jugador en la ventana de los jugadores de un equipo
+     * @return
+     */
     public static int posteriorJugador() {
         return numJugador = numJugador - 1;
     }
-
+    /**
+     * Para pasar al primer jugador en la ventana de los jugadores de un equipo
+     * @return
+     */
     public static int primerJugador() {
         return numJugador = 0;
     }
-
+    /**
+     * Para pasar al ultimo jugador en la ventana de los jugadores de un equipo
+     * @return
+     */
     public static int ultimoJugador() {
         return numJugador = 9;
     }
 
     // COMBOBOX BUSCAR JUGADORES **************************************
+
+    /**
+     * Para rellenar una comboBox con los ids de los jugadores
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdJugadores() throws Exception {
         listaJugadores = tJugadores.buscarTodos();
         ArrayList<String> listaIdJugadores = new ArrayList<>();
         listaJugadores.forEach(jugador1 -> listaIdJugadores.add(String.valueOf(jugador1.getID())));
         return listaIdJugadores;
     }
-
+    /**
+     * Para rellenar una comboBox con los dnis de los jugadores
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearDniJugadores() throws Exception {
         listaJugadores = tJugadores.buscarTodos();
         ArrayList<String> listaDNIJugadores = new ArrayList<>();
@@ -778,14 +1347,22 @@ public class Main {
     }
 
     // COMBOBOX BUSCAR EQUIPOS **************************************
-
+    /**
+     * Para rellenar una comboBox con los ids de los equipos
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdEquipos() throws Exception {
         listaEquipos = TEquipo.buscarTodos();
         ArrayList<String> listaIdEquipos = new ArrayList<>();
         listaEquipos.forEach(id -> listaIdEquipos.add(String.valueOf(id.getID())));
         return listaIdEquipos;
     }
-
+    /**
+     * Para rellenar una comboBox con los nombres de los equipos
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearNombreEquipos() throws Exception {
         listaEquipos = TEquipo.buscarTodos();
         ArrayList<String> listaNombreEquipos = new ArrayList<>();
@@ -795,14 +1372,22 @@ public class Main {
 
 
     // COMBOBOX BUSCAR PARTIDOS **************************************
-
+    /**
+     * Para rellenar una comboBox con los ids de los partidos
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdPartidos() throws Exception {
         listaPartidos = TPartido.buscarTodos();
         ArrayList<String> listaIdPartidos = new ArrayList<>();
         listaPartidos.forEach(id -> listaIdPartidos.add(String.valueOf(id.getID())));
         return listaIdPartidos;
     }
-
+    /**
+     * Para rellenar una comboBox con el tipo de los partidos
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearTipoPartidos() throws Exception {
         listaPartidos = TPartido.buscarTodos();
         ArrayList<String> listaTipoPartidos = new ArrayList<>();
@@ -811,7 +1396,11 @@ public class Main {
     }
 
     // COMBOBOX BUSCAR PRESIDENTE **************************************
-
+    /**
+     * Para rellenar una comboBox con los ids de los presidentes
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdPresidente() throws Exception {
         listaPresidente = TPresidente.buscarTodos();
         ArrayList<String> listaIdPresidentes = new ArrayList<>();
@@ -820,7 +1409,11 @@ public class Main {
     }
 
     // COMBOBOX BUSCAR STAFF **************************************
-
+    /**
+     * Para rellenar una comboBox con los ids de los staffs
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdStaff() throws Exception {
         listaStaffs = tStaffs.buscarTodos();
         ArrayList<String> listaIdStaffs = new ArrayList<>();
@@ -829,70 +1422,109 @@ public class Main {
     }
 
     // **************************************************************
-
+    /**
+     * Para rellenar una comboBox con las fechas de las jornadas
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearFechaJornadas() throws Exception {
         listaJornadas = TJornadas.buscarTodo();
         ArrayList<String> listaFechaJornadas = new ArrayList<>();
         listaJornadas.forEach(jornada -> listaFechaJornadas.add(String.valueOf(jornada.getFecha())));
         return listaFechaJornadas;
     }
-
+    /**
+     * Para rellenar una comboBox con los ids de las jornadas
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIdJornada() throws Exception {
         listaJornadas = TJornadas.buscarTodo();
         ArrayList<String> listaJornadasID = new ArrayList<>();
         listaJornadas.forEach(jornada -> listaJornadasID.add(String.valueOf(jornada.getID())));
         return listaJornadasID;
     }
-
+    /**
+     * Para rellenar una comboBox con los ids de las temporadas
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearIDTemporada() throws Exception {
         listaTemporada = TTemporadas.buscarTodo();
         ArrayList<String> listaTemporadaID = new ArrayList<>();
         listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getID())));
         return listaTemporadaID;
     }
-
+    /**
+     * Para rellenar una comboBox con las fechas de inicio de las temporadas
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearFechaInicioTemporada() throws Exception {
         listaTemporada = TTemporadas.buscarTodo();
         ArrayList<String> listaTemporadaID = new ArrayList<>();
         listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getFechaInicio())));
         return listaTemporadaID;
-    }
-
+    }/**
+     * Para rellenar una comboBox con las fechas de fin de las temporadas
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearFechaFinTemporada() throws Exception {
         listaTemporada = TTemporadas.buscarTodo();
         ArrayList<String> listaTemporadaID = new ArrayList<>();
         listaTemporada.forEach(temporada -> listaTemporadaID.add(String.valueOf(temporada.getFechaFin())));
         return listaTemporadaID;
     }
-
+    /**
+     * Para rellenar una comboBox con los ids de los staff
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearStaff() throws Exception {
         listaStaff = tStaffs.buscarTodos();
         ArrayList<String> listaStaffID = new ArrayList<>();
         listaStaff.forEach(staff -> listaStaffID.add(String.valueOf(staff.getID())));
         return listaStaffID;
     }
-
+    /**
+     * Para rellenar una comboBox con los ids de los equipos de los staff
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearStaffEquipoID() throws Exception {
         listaStaffEquipo = TStaffEquipo.buscarTodos();
         ArrayList<String> listaStaffEquipoIDEquipo = new ArrayList<>();
         listaStaffEquipo.forEach(staffEquipo -> listaStaffEquipoIDEquipo.add(String.valueOf(staffEquipo.getEquipo().getID())));
         return listaStaffEquipoIDEquipo;
     }
-
+    /**
+     * Para rellenar una comboBox con los ids de los staffEquipo
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearStaffEquipoID2() throws Exception {
         listaStaffEquipo = TStaffEquipo.buscarTodos();
         ArrayList<String> listaStaffEquipoIDEquipo = new ArrayList<>();
         listaStaffEquipo.forEach(staffEquipo -> listaStaffEquipoIDEquipo.add(String.valueOf(staffEquipo.getStaff().getID())));
         return listaStaffEquipoIDEquipo;
     }
-
+    /**
+     * Para rellenar una comboBox con los dnis de los staffs
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearStaffDNI() throws Exception {
         listaStaff = tStaffs.buscarTodos();
         ArrayList<String> listaStaffDNI = new ArrayList<>();
         listaStaff.forEach(staff -> listaStaffDNI.add(String.valueOf(staff.getDNI())));
         return listaStaffDNI;
     }
-
+    /**
+     * Para rellenar una comboBox con los usernames de los usuarios
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearUsuarios() throws Exception {
         listaUsuarios = TUsuarios.buscarTodo();
         ArrayList<String> listaUsuariosUser = new ArrayList<>();
@@ -900,6 +1532,11 @@ public class Main {
         return listaUsuariosUser;
     }
 
+    /**
+     * Para obtener el ganador de un partido
+     * @param partido
+     * @return
+     */
     public static int obtenerGanador(Partido partido) {
         if (partido.getGolesLocal() > partido.getGolesVisitante()) {
             return 1;
@@ -909,6 +1546,11 @@ public class Main {
         return 0;
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los equipos
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosEquipos() throws Exception {
         ArrayList<Equipo> listaEquipos = TEquipo.buscarTodos();
         String datos = "";
@@ -918,6 +1560,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos del equipo por ID
+     * @param id_equipo
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosLosEquiposPorID(String id_equipo) throws Exception {
         equipo = new Equipo();
         equipo.setID(Integer.parseInt(id_equipo));
@@ -927,6 +1575,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos del equipo por nombre
+     * @param nombre
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosLosEquiposPorNombre(String nombre) throws Exception {
         equipo = new Equipo();
         equipo.setNombre(nombre);
@@ -935,6 +1589,13 @@ public class Main {
         datos += "\n ID_EQUIPO" + equipo.getID() + "\n\nNombre: " + equipo.getNombre() + "\nPresupuesto: " + equipo.getPresupuesto() + "€\n";
         return datos;
     }
+
+    /**
+     * Para buscar y devolver los datos de una jornada por fecha
+     * @param fecha
+     * @return
+     * @throws Exception
+     */
     public static String buscarJornadaFecha (String fecha) throws Exception {
         Jornada jornada = new Jornada();
         jornada.setFecha(LocalDate.parse(fecha));
@@ -944,6 +1605,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de una jornada por ID
+     * @param ID
+     * @return
+     * @throws Exception
+     */
     public static String buscarJornadaID (String ID) throws Exception {
         Jornada jornada = new Jornada();
         jornada.setID(Integer.parseInt(ID));
@@ -953,6 +1620,14 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para insertar o registrar un usuario
+     * @param email
+     * @param username
+     * @param password
+     * @param tipo_usuario
+     * @throws Exception
+     */
     public static void insertarUsuario (String email, String username, String password, String
             tipo_usuario) throws Exception {
         Usuario usuario = new Usuario();
@@ -963,6 +1638,15 @@ public class Main {
         TUsuarios.insert(usuario);
     }
 
+    /**
+     * Para modificar un usuario
+     * @param id_usuario
+     * @param email
+     * @param username
+     * @param password
+     * @param tipo_usuario
+     * @throws Exception
+     */
     public static void actualizarUsuario (String id_usuario, String email, String username, String password, String
             tipo_usuario) throws Exception {
         Usuario usuario = new Usuario();
@@ -974,12 +1658,23 @@ public class Main {
         TUsuarios.update(usuario);
     }
 
+    /**
+     * Para borrar un usuario
+     * @param username
+     * @return
+     * @throws Exception
+     */
     public static int borrarUsuario (String username) throws Exception {
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
         return TUsuarios.delete(usuario);
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los usuarios
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosUsuarios () throws Exception {
         ArrayList<Usuario> listaUsuarios = TUsuarios.buscarTodo();
         String datos = "";
@@ -990,6 +1685,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de un usuario por el username
+     * @param user
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosUsuariosPorUser (String user) throws Exception {
         Usuario username = new Usuario();
         username.setUsername(user);
@@ -1000,6 +1701,14 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para insertar una nueva temporada
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param estado
+     * @param periodo
+     * @throws Exception
+     */
     public static void insertarTemporada (String fecha_inicio, String fecha_fin, String estado, String periodo) throws
             Exception {
         Temporada temporada = new Temporada();
@@ -1010,6 +1719,15 @@ public class Main {
         TTemporadas.insertar(temporada);
     }
 
+    /**
+     * Para modificar una temporada
+     * @param id_temporada
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param estado
+     * @param periodo
+     * @throws SQLException
+     */
     public static void ActualizarTemporada (String id_temporada, String fecha_inicio, String fecha_fin, String
             estado, String periodo) throws SQLException {
         Temporada temporada = new Temporada();
@@ -1021,12 +1739,23 @@ public class Main {
         TTemporadas.update(temporada);
     }
 
+    /**
+     * Para borrar una temporada
+     * @param id_temporada
+     * @return
+     * @throws Exception
+     */
     public static int borrarTemporada (String id_temporada) throws Exception {
         Temporada temporada = new Temporada();
         temporada.setID(Integer.parseInt(id_temporada));
         return TTemporadas.delete(temporada);
     }
 
+    /**
+     * Para buscar y devolver los datos de todas las temporadas
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodasLasTemporadas () throws Exception {
         ArrayList<Temporada> listaTemporadas = TTemporadas.buscarTodo();
         String datos = "";
@@ -1037,6 +1766,14 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para insertar un nuevo staff
+     * @param nombre
+     * @param apellido
+     * @param dni
+     * @param rol
+     * @throws Exception
+     */
     public static void insertarStaff (String nombre, String apellido, String dni, String rol) throws Exception {
         Staff staff = new Staff();
         staff.setNombre(nombre);
@@ -1047,12 +1784,27 @@ public class Main {
 
     }
 
+    /**
+     * Para borrar un staff
+     * @param dni
+     * @return
+     * @throws Exception
+     */
     public static int borrarStaff (String dni) throws Exception {
         Staff staff = new Staff();
         staff.setDNI(dni);
         return tStaffs.delete(staff);
     }
 
+    /**
+     * Para modificasr un staff
+     * @param idStaff
+     * @param nombre
+     * @param apellido
+     * @param dni
+     * @param rol
+     * @throws Exception
+     */
     public static void actualizarStaff (String idStaff, String nombre, String apellido, String dni, String rol) throws
             Exception {
         Staff staff = new Staff();
@@ -1064,6 +1816,11 @@ public class Main {
         tStaffs.update(staff);
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los staffs
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosStaff () throws Exception {
         ArrayList<Staff> listaStaff = tStaffs.buscarTodos();
         String datos = "";
@@ -1074,6 +1831,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos del staff por ID
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public static String buscarStaffId (String id) throws Exception {
         Staff staff = new Staff();
         staff.setID(Integer.parseInt(id));
@@ -1084,6 +1847,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de un staff por DNI
+     * @param dni
+     * @return
+     * @throws Exception
+     */
     public static String buscarStaffDNI (String dni) throws Exception {
         Staff staff = new Staff();
         staff.setDNI(dni);
@@ -1094,30 +1863,52 @@ public class Main {
         return datos;
     }
 
-    public static void crearVentanaInsertarStaffEquipo (String admin){
+    /**
+     * Para crear el cuadro de diálogo para insertar staffs en un equipo
+     */
+    public static void crearVentanaInsertarStaffEquipo (){
         dInsertarEquiposStaff = new dInsertarEquiposStaff();
         dInsertarEquiposStaff.pack();
         dInsertarEquiposStaff.setVisible(true);
+        dInsertarEquiposStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBorrarStaffEquipo (String admin){
+    /**
+     * Para crear el cuadro de diálogo para borrar staffs de un equipo
+     */
+    public static void crearVentanaBorrarStaffEquipo (){
         dBorrarEquiposStaff  = new dBorrarEquiposStaff();
         dBorrarEquiposStaff.pack();
         dBorrarEquiposStaff.setVisible(true);
+        dBorrarEquiposStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaActualizarStaffEquipo (String admin){
+    /**
+     * Para crear el cuadro de diálogo para modificar staffs de un equipo
+     */
+    public static void crearVentanaActualizarStaffEquipo (){
         dActualizarEquiposStaff = new dActualizarEquiposStaff();
         dActualizarEquiposStaff.pack();
         dActualizarEquiposStaff.setVisible(true);
+        dActualizarEquiposStaff.setLocationRelativeTo(vAdminPanel);
     }
-
-    public static void crearVentanaBuscarStaffEquipo (String admin){
+    /**
+     * Para crear el cuadro de diálogo para buscar staffs en un equipo
+     */
+    public static void crearVentanaBuscarStaffEquipo (){
         dBuscarEquiposStaff = new dBuscarEquiposStaff();
         dBuscarEquiposStaff.pack();
         dBuscarEquiposStaff.setVisible(true);
+        dBuscarEquiposStaff.setLocationRelativeTo(vAdminPanel);
     }
 
+    /**
+     * Para insertar un nuevo staff en un equipo
+     * @param idEquipo
+     * @param idStaff
+     * @param sueldo
+     * @param fechaInicio
+     * @param fechaFin
+     * @throws Exception
+     */
     public static void insertarStaffEquipos (String idEquipo, String idStaff, String sueldo, String fechaInicio, String fechaFin) throws Exception {
         staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
         equipo = TEquipo.buscarPorId(new Equipo(Integer.parseInt(idEquipo)));
@@ -1125,18 +1916,37 @@ public class Main {
         TStaffEquipo.insert(staffEquipo);
     }
 
+    /**
+     * Para modificar un staff en un equipo
+     * @param idStaff
+     * @param sueldo
+     * @param fechaInicio
+     * @param fechaFin
+     * @throws Exception
+     */
     public static void actualizarEquiposStaff (String idStaff, String sueldo, String fechaInicio, String fechaFin) throws Exception {
         staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
         StaffEquipo staffEquipo = new StaffEquipo(staff,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo));
         TStaffEquipo.update(staffEquipo);
     }
 
+    /**
+     * Para borrar un staff de un equipo
+     * @param idStaff
+     * @return
+     * @throws Exception
+     */
     public static int borrarStaffEquipo (String idStaff) throws Exception {
         staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
         StaffEquipo staffEquipo = new StaffEquipo(staff);
         return TStaffEquipo.delete(staffEquipo);
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los staffs en equipos
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosStaffEquipos() throws Exception {
         ArrayList<StaffEquipo> listaStaffEquipo = TStaffEquipo.buscarTodos();
         String datos = "";
@@ -1146,17 +1956,13 @@ public class Main {
         }
         return datos;
     }
-    public static String buscarTodasLasJornadasPorTemporada(String temporada) throws Exception {
-        Jornada jornada = new Jornada();
-        // ArrayList<Jugador> listaJornadas = TJornadas.buscarPorTemporada();
-        String datos = "";
-        for (int x = 0 ; x < listaJornadas.size();x++) {
-            datos += "ID_JUGADOR"  + listaJugadores.get(x).getID() + ":" + "\n"+ "\n Nombre: " + listaJugadores.get(x).getNombre() + "\n Apellido: " + listaJugadores.get(x).getApellido()
-                    + "\n DNI: " + listaJugadores.get(x).getDNI() + "\n Posicion: " + listaJugadores.get(x).getPosicion() + "\n TipoDeJugador: " + listaJugadores.get(x).getTipoJugador() + "\n" +"\n";
-        }
-        return datos;
-    }
 
+    /**
+     * Para buscar y devolver los nombres de los equipos
+     * @param nombre
+     * @return
+     * @throws Exception
+     */
     public static String getNombreEquipoID (String nombre) throws Exception {
         equipo = new Equipo();
         equipo.setNombre(nombre);
@@ -1166,6 +1972,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para insertar un nuevo equipo
+     * @param nombre
+     * @param presupuesto
+     * @throws Exception
+     */
     public static void insertEquipo (String nombre,double presupuesto) throws Exception {
         equipo = new Equipo();
         equipo.setNombre(nombre);
@@ -1173,6 +1985,12 @@ public class Main {
         TEquipo.insert(equipo);
     }
 
+    /**
+     * Para modificar un equipo
+     * @param nombre
+     * @param presupuesto
+     * @throws Exception
+     */
     public static void updateEquipo (String nombre,double presupuesto) throws Exception {
         equipo = new Equipo();
         equipo.setNombre(nombre);
@@ -1180,6 +1998,11 @@ public class Main {
         TEquipo.update(equipo);
     }
 
+    /**
+     * Para borrar un equipo por ID
+     * @param id
+     * @throws Exception
+     */
     public static void deleteEquipo (Integer id) throws Exception {
         equipo = new Equipo();
         equipo.setID(id);
@@ -1187,6 +2010,17 @@ public class Main {
         TEquipo.delete(equipo);
     }
 
+    /**
+     * Para insertar un nuevo partido
+     * @param tipoPartido
+     * @param hora
+     * @param local
+     * @param visitante
+     * @param golesLocal
+     * @param golesVisitante
+     * @param jornada
+     * @throws Exception
+     */
     public static void insertPartido(String tipoPartido, String hora, int local, int visitante, int golesLocal, int golesVisitante, int jornada) throws Exception {
         partido = new Partido();
         partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
@@ -1199,6 +2033,17 @@ public class Main {
         TPartido.insert(partido);
     }
 
+    /**
+     * Para modificar un partido
+     * @param tipoPartido
+     * @param hora
+     * @param local
+     * @param visitante
+     * @param golesLocal
+     * @param golesVisitante
+     * @param jornada
+     * @throws Exception
+     */
     public static void updatePartido(String tipoPartido, String hora, int local, int visitante, int golesLocal, int golesVisitante, int jornada) throws Exception {
         partido = new Partido();
         partido.setTipoPartido(Partido.tPartido.valueOf(tipoPartido));
@@ -1211,13 +2056,22 @@ public class Main {
         TPartido.update(partido);
     }
 
+    /**
+     * Para borrar un partido
+     * @param id
+     * @throws Exception
+     */
     public static void deletePartido (Integer id) throws Exception {
         partido = new Partido();
         partido.setID(id);
         TPartido.delete(partido);
     }
 
-
+    /**
+     * Para buscar y devolver los datos de todos los partidos
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosPartidos () throws Exception {
         ArrayList<Partido> listaPartidos = TPartido.buscarTodos();
         String datos = "";
@@ -1229,6 +2083,14 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para insertar un nuevo presidente
+     * @param nombre
+     * @param apellido
+     * @param DNI
+     * @param equipo
+     * @throws Exception
+     */
     public static void insertPresidente (String nombre, String apellido, String DNI,int equipo) throws Exception {
         presidente = new Presidente();
         presidente.setNombre(nombre);
@@ -1238,6 +2100,15 @@ public class Main {
         TPresidente.insert(presidente);
     }
 
+    /**
+     * Para modificar un presidente
+     * @param ID
+     * @param nombre
+     * @param apellido
+     * @param DNI
+     * @param equipo
+     * @throws Exception
+     */
     public static void updatePresidente (int ID,String nombre, String apellido, String DNI,int equipo) throws Exception {
         presidente = new Presidente();
         presidente.setID(ID);
@@ -1248,12 +2119,22 @@ public class Main {
         TPresidente.update(presidente);
     }
 
+    /**
+     * Para borrar un presidente
+     * @param DNI
+     * @throws Exception
+     */
     public static void deletePresidente (String DNI) throws Exception {
         presidente = new Presidente();
         presidente.setDNI(DNI);
         TPresidente.delete(presidente);
     }
 
+    /**
+     * Para buscar y devolver los datos de todos los presidentes
+     * @return
+     * @throws Exception
+     */
     public static String buscarTodosPresidentes () throws Exception {
         ArrayList<Presidente> listaPresidentes = TPresidente.buscarTodos();
         String datos = "";
@@ -1263,6 +2144,11 @@ public class Main {
         }
         return datos;
     }
+
+    /**
+     * Para crear el cuadro de diálogo de los informes
+     * @param tipo Para saber el tipo de informe
+     */
     public static void crearDialogoInformes(String tipo){
         dInformes = new dInformes(tipo);
         dInformes.pack();
@@ -1270,26 +2156,54 @@ public class Main {
         dInformes.setLocationRelativeTo(vAdminPanel);
     }
 
+    /**
+     * Para ejecutar el PL/SQL de generar el calendario
+     * @throws Exception
+     */
     public static void generarCalendario() throws Exception {
         BaseDato.generarCalendario();
     }
 
+    /**
+     * Para ejecutar y devolver los datos del PL/SQL de verEnfrentamientos
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
         return BaseDato.verEnfrentamientos();
     }
-
+    /**
+     * Para ejecutar y devolver los datos del PL/SQL del informe de los jugadores
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<ArrayList<Object>> informeJugadores() throws SQLException {
         return BaseDato.obtener_datos_jugadores();
     }
-
+    /**
+     * Para ejecutar y devolver los datos del PL/SQL del informe de la clasificacion
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<ArrayList<Object>> informeClasificacion() throws Exception {
         return BaseDato.mostrarClasificacion();
     }
 
+    /**
+     * Para comprobar la fecha de expiracion
+     * @param tipo Para saber de qué tipo de XML
+     * @return
+     * @throws Exception
+     */
     public static boolean comprobarFechaExpiracion(String tipo) throws Exception {
         return TXMLs.buscarFechaExpiracion(tipo);
     }
 
+    /**
+     * Para crear el objeto de XML
+     * @param tipo Para saber qué tipo de XML
+     * @throws Exception
+     */
     public static void crearObjetoXML(String tipo) throws Exception {
         switch (tipo){
             case "ultima" -> xml = TXMLs.buscarUltimaJornada();
@@ -1299,6 +2213,10 @@ public class Main {
 
     }
 
+    /**
+     * Para convertir y guardar el archivo XML
+     * @throws IOException
+     */
     public static void convertirAXML() throws IOException {
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showSaveDialog(null);
@@ -1315,12 +2233,27 @@ public class Main {
             }
         }
     }
+
+    /**
+     * Para convertir un Strig en un documento
+     * @param xmlString
+     * @return
+     * @throws Exception
+     */
     private static Document convertStringToDocument(String xmlString) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         return (Document) builder.parse(new InputSource(new StringReader(xmlString)));
     }
 
+    /**
+     * Para guardar un documento
+     * @param document
+     * @param filePath
+     * @throws IOException
+     * @throws TransformerException
+     * @throws TransformerException
+     */
     private static void saveDocumentToFile(Document document, String filePath) throws IOException, TransformerException, TransformerException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
@@ -1331,6 +2264,11 @@ public class Main {
         transformer.transform(source, result);
     }
 
+    /**
+     * Para rellenar una combo con los DNIs de los presidentes
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> crearDniPresidente() throws Exception {
         listaPresidente = TPresidente.buscarTodos();
         ArrayList<String> listaDniPresidentes = new ArrayList<>();
@@ -1338,6 +2276,12 @@ public class Main {
         return listaDniPresidentes;
     }
 
+    /**
+     * Para buscar y devolver los datos de los presidentes por DNI
+     * @param dni
+     * @return
+     * @throws Exception
+     */
     public static String buscarDniPresidente (String dni) throws Exception {
         presidente = new Presidente();
         presidente.setDNI(dni);
@@ -1348,6 +2292,12 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para buscar y devolver los datos de los partidos por ID
+     * @param id_partido
+     * @return
+     * @throws Exception
+     */
     public static String buscarPartidosPorID(String id_partido) throws Exception {
         partido = new Partido();
         partido.setID(Integer.parseInt(id_partido));
@@ -1359,30 +2309,54 @@ public class Main {
         return datos;
     }
 
+    /**
+     * Para crear el cuadro de diálogo de insertar jugadores en un equipo
+     */
     public static void dialogoJugadoresEquipo() {
         dInsertarEquiposJugadores  = new dInsertarEquiposJugadores();
         dInsertarEquiposJugadores.pack();
         dInsertarEquiposJugadores.setVisible(true);
+        dInsertarEquiposJugadores.setLocationRelativeTo(vAdminPanel);
     }
 
+    /**
+     * Para crear el cuadro de diálogo de borrar jugadores en un equipo
+     */
     public static void dialogoBorrarJugadoresEquipo() {
         dBorrarEquiposJugadores  = new dBorrarEquiposJugadores();
         dBorrarEquiposJugadores.pack();
         dBorrarEquiposJugadores.setVisible(true);
+        dBorrarEquiposJugadores.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para crear el cuadro de diálogo de modificar jugadores en un equipo
+     */
     public static void dialogoActualizarJugadoresEquipo() {
         dActualizarEquiposJugadores  = new dActualizarEquiposJugadores();
         dActualizarEquiposJugadores.pack();
         dActualizarEquiposJugadores.setVisible(true);
+        dActualizarEquiposJugadores.setLocationRelativeTo(vAdminPanel);
     }
-
+    /**
+     * Para crear el cuadro de diálogo de buscar jugadores en un equipo
+     */
     public static void dialogoBuscarJugadoresEquipo() {
         dBuscarEquiposJugadores  = new dBuscarEquiposJugadores();
         dBuscarEquiposJugadores.pack();
         dBuscarEquiposJugadores.setVisible(true);
+        dBuscarEquiposJugadores.setLocationRelativeTo(vAdminPanel);
     }
 
+    /**
+     * Para insertar un nuevo jugador en un equipo
+     * @param id_equipo
+     * @param id_jugador
+     * @param sueldo
+     * @param fechaInicio
+     * @param fechaFin
+     * @param clausula
+     * @throws Exception
+     */
     public static void insertarEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
         jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
         equipo = TEquipo.buscarPorId(new Equipo(Integer.parseInt(id_equipo)));
@@ -1390,18 +2364,37 @@ public class Main {
         TJugadorEquipo.insert(jugadorEquipo);
     }
 
+    /**
+     * Para borrar un jugador de un equipo
+     * @param id_jugador
+     * @throws Exception
+     */
     public static void borrarEquiposJugadores(String id_jugador) throws Exception {
         jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
         JugadorEquipo jugadorEquipo = new JugadorEquipo(jugador);
         TJugadorEquipo.delete(jugadorEquipo);
     }
 
+    /**
+     * Para modificar un jugador de un equipo
+     * @param id_jugador
+     * @param sueldo
+     * @param fechaInicio
+     * @param fechaFin
+     * @param clausula
+     * @throws Exception
+     */
     public static void updateEquiposJugadores(String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
         jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
         JugadorEquipo jugadorEquipo = new JugadorEquipo(jugador,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo),Double.parseDouble(clausula));
         TJugadorEquipo.update(jugadorEquipo);
     }
 
+    /**
+     * Para busccar y devolver los datos de todos los jugadores de los equipos
+     * @return
+     * @throws Exception
+     */
     public static String buscarEquiposJugadores() throws Exception {
         ArrayList<JugadorEquipo> listaJugadorEquipo = TJugadorEquipo.buscarTodos();
         String datos = "";

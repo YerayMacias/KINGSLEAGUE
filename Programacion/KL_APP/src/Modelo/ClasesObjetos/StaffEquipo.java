@@ -3,16 +3,36 @@ package Modelo.ClasesObjetos;
 import java.time.LocalDate;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Staff
+ * @see Equipo
  */
 public class StaffEquipo {
+    /**
+     * Objeto Staff
+     */
     private Staff staff;
+    /**
+     * Objeto Equipo
+     */
     private Equipo equipo;
+    /**
+     * Fecha de inicio del contrato
+     */
     private LocalDate fechaInicio;
+    /**
+     * Fecha de finalizacion del contrato
+     */
     private LocalDate fechaFin;
+    /**
+     * Salario
+     */
     private double sueldo;
 
+    /**
+     * Constructor vacio de StaffEquipo
+     */
     public StaffEquipo() {
     }
 
@@ -33,6 +53,13 @@ public class StaffEquipo {
         this.sueldo = sueldo;
     }
 
+    /**
+     * Constructor sin equipo de StaffEquipo
+     * @param staff
+     * @param fechaInicio
+     * @param fechaFin
+     * @param sueldo
+     */
     public StaffEquipo(Staff staff, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
         this.staff = staff;
         this.fechaInicio = fechaInicio;
@@ -40,6 +67,10 @@ public class StaffEquipo {
         this.sueldo = sueldo;
     }
 
+    /**
+     * Constructor de StaffEquipo solo con Staff
+     * @param staff
+     */
     public StaffEquipo(Staff staff) {
         this.staff = staff;
     }
