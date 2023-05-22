@@ -97,14 +97,13 @@ public class vRegistro {
                 Pattern pat = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
                 Matcher mat = pat.matcher(tfEmail.getText());
 
-
-                if (tfNombre.getText().isEmpty()) {
+                if (tfNombre.getText().isEmpty() || tfNombre.getText().equals("NOMBRE DE USUARIO")) {
                     JOptionPane.showMessageDialog(null, "El campo 'Nombre de Usuario' es obligatorio");
                     tfNombre.setForeground(Color.red);
                 } else if (!mat.matches()) {
                     JOptionPane.showMessageDialog(null, "El email no tiene un formato válido (ejemplo@gmail.com)");
                     tfEmail.setForeground(Color.red);
-                } else if (pfPassword.getText().isEmpty()) {
+                } else if (pfPassword.getText().isEmpty() || pfPassword.getText().equals("CONTRASEÑA") || pfPassword2.getText().equals("CONFIRMAR CONTRASEÑA")) {
                     JOptionPane.showMessageDialog(null, "El campo 'Contraseña' es obligatorio");
                     pfPassword.setForeground(Color.red);
                 } else if (!pfPassword.getText().equals(pfPassword2.getText())) {
