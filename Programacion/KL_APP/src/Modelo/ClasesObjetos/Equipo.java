@@ -6,7 +6,7 @@ import java.net.URL;
  * @author
  * @version 1.0
  */
-public class    Equipo {
+public class Equipo {
     private int ID;
     private String nombre;
     private double presupuesto;
@@ -17,8 +17,8 @@ public class    Equipo {
     }
 
     /**
-     * Constructor completo de Equipo
-     * Para instanciar un equipo con todos los atributos
+     * Constructor parcial de Equipo
+     * Para instanciar un equipo con ID, nombre y presupuesto
      * @param ID
      * @param nombre
      * @param presupuesto
@@ -29,6 +29,15 @@ public class    Equipo {
         this.presupuesto = presupuesto;
     }
 
+    /**
+     * Constructor completo de Equipo
+     * Para instanciar un equipo con todos los atributos
+     * @param ID
+     * @param nombre
+     * @param presupuesto
+     * @param color
+     * @param url
+     */
     public Equipo(int ID, String nombre, double presupuesto, String color, URL url) {
         this.ID = ID;
         this.nombre = nombre;
@@ -37,6 +46,11 @@ public class    Equipo {
         this.url = url;
     }
 
+    /**
+     * Contructor solo de id
+     * Para selects
+     * @param ID
+     */
     public Equipo(int ID) {
         this.ID = ID;
     }
