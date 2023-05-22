@@ -97,9 +97,10 @@ public class TPartido {
     }
 
     /**
+     * Para buscar los partidos por id_jornada
      *
      * @param partido
-     * @return
+     * @return ArrayList de Partido
      * @throws Exception
      */
     public static ArrayList<Partido> buscarPorIDJornada(Partido partido) throws Exception {
@@ -131,6 +132,12 @@ public class TPartido {
         return listaPartidos;
     }
 
+    /**
+     * Para buscar por id_partido
+     * @param partido
+     * @return Objeto Partido
+     * @throws Exception
+     */
     public static Partido buscarPorIDPartido(Partido partido) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOS WHERE ID_PARTIDO = ?");
@@ -153,6 +160,12 @@ public class TPartido {
         return partido;
     }
 
+    /**
+     * Para buscar un partido de las semifinales
+     * @param partido
+     * @return Objeto Partido
+     * @throws Exception
+     */
     public static Partido buscarSemis(Partido partido) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOS WHERE ID_JORNADA = 12 AND ID_EQUIPO_LOCAL = ? AND ID_EQUIPO_VISITANTE = ?");
@@ -176,6 +189,12 @@ public class TPartido {
         return partido;
     }
 
+    /**
+     * Para buscar ganador de la final
+     * @param partido
+     * @return Partido
+     * @throws Exception
+     */
     public static Partido buscarSemis2(Partido partido) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("SELECT * FROM PARTIDOS WHERE ID_JORNADA = 13 AND ID_EQUIPO_LOCAL = ? AND ID_EQUIPO_VISITANTE = ?");

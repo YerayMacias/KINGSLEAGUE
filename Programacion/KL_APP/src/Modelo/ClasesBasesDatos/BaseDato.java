@@ -41,6 +41,10 @@ public class BaseDato {
         }
     }
 
+    /**
+     * Para ejecutar el PL/SQL de generar el calendario
+     * @throws Exception
+     */
     public static void generarCalendario() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call KL_CALENDARIO.GENERAR_CALENDARIO()}");
@@ -48,6 +52,11 @@ public class BaseDato {
         cerrarConexion();
     }
 
+    /**
+     * Para ejecutar el PL/SQL de ver los enfrentamientos
+     * @return ArrayList de ArrayList de Object - Para un JTable
+     * @throws Exception
+     */
     public static ArrayList<ArrayList<Object>> verEnfrentamientos() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call KL_CALENDARIO.VER_ENFRENTAMIENTOS(?)}");
@@ -79,6 +88,11 @@ public class BaseDato {
         return datosTabla;
     }
 
+    /**
+     * Para ejecutar el PL/SQL de mostrar la clasificacion
+     * @return ArrayList de ArrayList de Object - Para un JTable
+     * @throws Exception
+     */
     public static ArrayList<ArrayList<Object>> mostrarClasificacion() throws Exception {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call mostrar_clasificacion(?)}");
@@ -112,6 +126,11 @@ public class BaseDato {
         return datosTabla;
     }
 
+    /**
+     * Para ejecutar el PLSQL de obtener los datos de los jugadores
+     * @return ArrayList de ArrayList de Object - Para un JTable
+     * @throws SQLException
+     */
     public static ArrayList<ArrayList<Object>> obtener_datos_jugadores() throws SQLException {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call obtener_datos_jugadores(?)}");
@@ -145,6 +164,10 @@ public class BaseDato {
         return datosTabla;
     }
 
+    /**
+     * Para generar el XML de todas las jornadas
+     * @throws SQLException
+     */
     public static void generarXMLJornadas() throws SQLException {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_jornadas()}");
@@ -152,6 +175,10 @@ public class BaseDato {
         cerrarConexion();
     }
 
+    /**
+     * Para generar el XML de la ultima jornada
+     * @throws SQLException
+     */
     public static void generarXMLUltimaJornada() throws SQLException {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_ultimajornada()}");
@@ -159,6 +186,10 @@ public class BaseDato {
         cerrarConexion();
     }
 
+    /**
+     * Para generar el XMl de clasificacion
+     * @throws SQLException
+     */
     public static void generarXMLClasificacion() throws SQLException {
         abrirConexion();
         CallableStatement statement = con.prepareCall("{call kings_league_xml.obtener_xml_clasificacion()}");
