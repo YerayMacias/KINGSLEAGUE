@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vLogin {
     private JPanel pPrincipal;
     private JTextField tfNombre;
@@ -21,6 +24,9 @@ public class vLogin {
     private JLabel icono;
     private int contador;
 
+    /**
+     * Constructor de la ventana
+     */
     public vLogin() {
         inicializar();
 
@@ -87,6 +93,9 @@ public class vLogin {
         return pPrincipal;
     }
 
+    /**
+     * Para inicializar los estilos de la ventana
+     */
     public void inicializar() {
         bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bIniciarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -98,6 +107,11 @@ public class vLogin {
 
     }
 
+    /**
+     * Para las validaciones de los campos
+     * @param nombre
+     * @param password
+     */
     public void validar(String nombre, String password){
         // validar datos
         try {

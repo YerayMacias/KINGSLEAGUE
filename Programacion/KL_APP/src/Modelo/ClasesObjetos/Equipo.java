@@ -3,16 +3,34 @@ package Modelo.ClasesObjetos;
 import java.net.URL;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
  */
 public class Equipo {
+    /**
+     * ID autoincremental
+     */
     private int ID;
+    /**
+     * Nombre del equipo
+     */
     private String nombre;
+    /**
+     * Presupuesto del equipo
+     */
     private double presupuesto;
+    /**
+     * Color del equipo Hexadecimal
+     */
     private String color;
+    /**
+     * URL del logo del equipo
+     */
     private URL url;
 
+    /**
+     * Constructor vacio de Equipo
+     */
     public Equipo() {
     }
 

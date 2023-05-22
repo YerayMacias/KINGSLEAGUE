@@ -12,7 +12,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vPlayOffs {
     private JLabel lNombre;
     private JMenuItem miBaseDatos;
@@ -65,6 +68,11 @@ public class vPlayOffs {
     private JMenuItem miPrincipal;
     private JPanel pGanador;
 
+    /**
+     * Constructor de la ventana
+     * @param admin Para ocultar las cosas de administrador
+     * @throws Exception
+     */
     public vPlayOffs(String admin) throws Exception {
         inicializar();
         semis();
@@ -125,12 +133,19 @@ public class vPlayOffs {
         });
     }
 
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin() {
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
 
+    /**
+     * Para inicializar los estilos y datos de la ventana
+     * @throws Exception
+     */
     public void inicializar() throws Exception {
 
         lNombreMenu.setText(Main.buscarNombre());

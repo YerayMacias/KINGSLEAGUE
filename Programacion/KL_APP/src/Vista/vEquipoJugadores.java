@@ -5,7 +5,10 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vEquipoJugadores {
     private JPanel pPrincipal;
     private JLabel jlNombreEquipo;
@@ -36,6 +39,11 @@ public class vEquipoJugadores {
     private JButton bSiguiente;
     private JButton bSalir;
 
+    /**
+     * Constructor de la ventana
+     * @param equipo Para saber de que equipo son los datos
+     * @throws Exception
+     */
     public vEquipoJugadores(String equipo) throws Exception {
 
         jlNombreEquipo.setText(equipo);

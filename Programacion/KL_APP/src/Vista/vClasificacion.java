@@ -6,7 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vClasificacion {
     private JPanel pMenu;
     private JLabel lNombre;
@@ -28,6 +31,10 @@ public class vClasificacion {
     private JMenuItem miPlayOffs;
     private JMenuItem miPrincipal;
 
+    /**
+     * Constructor de la ventana
+     * @param admin Para ocultar las cosas de administrador
+     */
     public vClasificacion(String admin) {
         if (!admin.equalsIgnoreCase("S"))
             ocultarCosasAdmin();
@@ -88,6 +95,10 @@ public class vClasificacion {
         });
     }
 
+    /**
+     * Para inicializar los estilos de la ventana
+     * @throws Exception
+     */
     public void inicializar() throws Exception {
         lNombreMenu.setText(Main.buscarNombre());
         lNombre.setText(Main.buscarNombre());
@@ -110,12 +121,19 @@ public class vClasificacion {
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
         generarPanelClasificacion();
     }
+
+    /**
+     * Para añadir el panel de la clasificacion a la ventana
+     * @throws Exception
+     */
     public void generarPanelClasificacion() throws Exception {
         Main.buscarClasificacion();
         pClasificacion.add(Main.crearPanelesClasificacion());
     }
 
-
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
@@ -125,7 +143,9 @@ public class vClasificacion {
         return pPrincipal;
     }
 
-
+    /**
+     * Para crear componentes
+     */
     private void createUIComponents() {
         // TODO: place custom component creation code here
         pClasificacion = new JPanel(new GridLayout(2,1));

@@ -11,7 +11,15 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class BaseDato {
+    /**
+     * Variable global de la conexion
+     */
     private static Connection con;
+
+    /**
+     * Para devolver la conexion de base de datos
+     * @return
+     */
     public static Connection getCon(){
         return con;
     }

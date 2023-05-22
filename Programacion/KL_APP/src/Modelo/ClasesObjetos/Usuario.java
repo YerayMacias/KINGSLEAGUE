@@ -1,25 +1,54 @@
 package Modelo.ClasesObjetos;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
  */
 public class Usuario {
+    /**
+     * ID autoincremental
+     */
     private int ID;
+    /**
+     * Nombre de usuario
+     */
     private String username;
+    /**
+     * Correo electronico
+     */
     private String email;
+    /**
+     * Contraseña
+     */
     private String password;
+    /**
+     * Tipo de usuario(admin o no)
+     */
     private tUsuario admin;
 
     public enum tUsuario {S, N};
 
+    /**
+     * Constructor vacio de usuario
+     */
     public Usuario() {
     }
 
+    /**
+     * Constructor solo con el username de Usuario
+     * @param username
+     */
     public Usuario(String username) {
         this.username = username;
     }
 
+    /**
+     * Constrctor completo, menos el id, de usuario
+     * @param username
+     * @param email
+     * @param password
+     * @param admin
+     */
     public Usuario(String username, String email, String password, tUsuario admin) {
         this.username = username;
         this.email = email;
@@ -27,6 +56,12 @@ public class Usuario {
         this.admin = admin;
     }
 
+    /**
+     * Constructor con username y password de Usuario
+     * Para el Login
+     * @param username
+     * @param password
+     */
     public Usuario(String username, String password) {
         this.username = username;
         this.password = password;

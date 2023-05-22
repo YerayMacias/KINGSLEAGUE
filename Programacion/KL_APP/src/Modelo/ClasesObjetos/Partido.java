@@ -1,27 +1,73 @@
 package Modelo.ClasesObjetos;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Equipo
+ * @see Jornada
  */
 public class Partido {
+    /**
+     * ID autoincremental
+     */
     private int ID;
     public enum tPartido {FR,PO};
+    /**
+     * Tipo de partido(Fase regular, playoff)
+     */
     private tPartido tipoPartido;
+    /**
+     * Hora del partido
+     */
     private String hora;
+    /**
+     * Equipo local(objeto)
+     */
     private Equipo local;
+    /**
+     * Equipo Visitante(objeto)
+     */
     private Equipo visitante;
+    /**
+     * Goles del local
+     */
     private int golesLocal;
+    /**
+     * Goles del visitante
+     */
     private int golesVisitante;
+    /**
+     * Objeto Jornada
+     */
     private Jornada jornada;
 
+    /**
+     * Constructor vacio de Partido
+     */
     public Partido() {
     }
 
+    /**
+     * Constructor solo con ID de partido
+     * Para busquedas
+     * @param ID
+     */
     public Partido(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Constructor completo de Partido
+     * Para instanciar un partidoi con todos sus atributos
+     * @param ID
+     * @param tipoPartido
+     * @param hora
+     * @param local
+     * @param visitante
+     * @param golesLocal
+     * @param golesVisitante
+     * @param jornada
+     */
     public Partido(int ID, tPartido tipoPartido, String hora, Equipo local, Equipo visitante, int golesLocal, int golesVisitante, Jornada jornada) {
         this.ID = ID;
         this.tipoPartido = tipoPartido;

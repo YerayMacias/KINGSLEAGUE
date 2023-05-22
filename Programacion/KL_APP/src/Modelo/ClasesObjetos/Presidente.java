@@ -1,12 +1,20 @@
 package Modelo.ClasesObjetos;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Equipo
+ * @see Persona
  */
 public class Presidente extends Persona {
+    /**
+     * Objeto Equipo
+     */
     private Equipo equipo;
 
+    /**
+     * Constructor vacio de Presidente
+     */
     public Presidente() {
     }
 

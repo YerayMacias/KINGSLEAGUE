@@ -11,7 +11,10 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vRegistro {
     private JPanel pInfo;
     private JButton bRegistro;
@@ -30,6 +33,9 @@ public class vRegistro {
     private int contador;
     private String passAdm;
 
+    /**
+     * Constructor de la ventana, también tienes las validaciones
+     */
     public vRegistro() {
         inicializar();
          ckAdmin.addActionListener(new ActionListener() {
@@ -148,6 +154,9 @@ public class vRegistro {
         return pPrincipal;
     }
 
+    /**
+     * Para inicializar los datos y estilos de la ventana
+     */
     public void inicializar() {
 
         bVisible.setCursor(new Cursor(Cursor.HAND_CURSOR));

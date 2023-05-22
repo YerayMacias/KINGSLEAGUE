@@ -1,23 +1,51 @@
 package Modelo.ClasesObjetos;
 
 /**
- * @author
+ * Clase padre de Jugador, Presidente y Equipo
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Jugador
+ * @see Presidente
+ * @see Staff
  */
 public class Persona {
+    /**
+     * ID autoincremental
+     */
     private int ID;
+    /**
+     * Nombre de la persona
+     */
     private String nombre;
+    /**
+     * Apellido de la persona
+     */
     private String apellido;
+    /**
+     * DNI de la persona
+     */
     private String DNI;
 
+    /**
+     * Constructor vacio
+     */
     public Persona() {
     }
 
+    /**
+     * Constructor con nombre y apellido
+     * @param nombre
+     * @param apellido
+     */
     public Persona(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
+    /**
+     * Constructor solo con ID
+     * @param ID
+     */
     public Persona(int ID) {
         this.ID = ID;
     }

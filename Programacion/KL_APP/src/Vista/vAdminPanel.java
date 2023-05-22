@@ -6,7 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vAdminPanel {
     private JLabel lNombre;
     private JMenuItem miBaseDatos;
@@ -152,194 +155,194 @@ public class vAdminPanel {
         bInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertJugador(admin);
+                Main.crearVentanaInsertJugador();
             }
         });
         bDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarJugadores(admin);
+                Main.crearVentanaBorrarJugadores();
             }
         });
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarJugadores(admin);
+                Main.crearVentanaActualizarJugadores();
             }
         });
         bBuscarTodosJ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarjugadores(admin);
+                Main.crearVentanaBuscarjugadores();
             }
         });
         bInsertE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertEquipo(admin);
+                Main.crearVentanaInsertEquipo();
             }
         });
         bDeleteE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarEquipo(admin);
+                Main.crearVentanaBorrarEquipo();
             }
         });
         bUpdateEquipos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaUpdateEquipo(admin);
+                Main.crearVentanaUpdateEquipo();
             }
         });
         bBuscarTodosEquipos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarEquipo(admin);
+                Main.crearVentanaBuscarEquipo();
             }
         });
         bInsertJ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertJornada(admin);
+                Main.crearVentanaInsertJornada();
             }
         });
         bDeleteJ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarJornada(admin);
+                Main.crearVentanaBorrarJornada();
             }
         });
         bUpdateJ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaUpdateJornada(admin);
+                Main.crearVentanaUpdateJornada();
             }
         });
         bBuscarJornadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarJornada(admin);
+                Main.crearVentanaBuscarJornada();
             }
         });
         bInsertarPres.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertarPresidente(admin);
+                Main.crearVentanaInsertarPresidente();
             }
         });
         bDeletePres.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarPresidente(admin);
+                Main.crearVentanaBorrarPresidente();
             }
         });
         bUpdatePres.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarPresidente(admin);
+                Main.crearVentanaActualizarPresidente();
             }
         });
         bBuscarPres.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarPresidente(admin);
+                Main.crearVentanaBuscarPresidente();
             }
         });
         bInsertS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertStaff(admin);
+                Main.crearVentanaInsertStaff();
             }
         });
         bDeleteS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarStaff(admin);
+                Main.crearVentanaBorrarStaff();
             }
         });
         bUpdateS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarStaff(admin);
+                Main.crearVentanaActualizarStaff();
             }
         });
         bBuscarTodosS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarStaff(admin);
+                Main.crearVentanaBuscarStaff();
             }
         });
         bInserT.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertTemporada(admin);
+                Main.crearVentanaInsertTemporada();
             }
         });
         bDeteleT.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarTemporada(admin);
+                Main.crearVentanaBorrarTemporada();
             }
         });
         bUpdateT.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarTemporada(admin);
+                Main.crearVentanaActualizarTemporada();
             }
         });
         bBuscarTodosT.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarTemporada(admin);
+                Main.crearVentanaBuscarTemporada();
             }
         });
         bInsertarU.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertUsuario(admin);
+                Main.crearVentanaInsertUsuario();
             }
         });
         bDeleteU.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarUsuario(admin);
+                Main.crearVentanaBorrarUsuario();
             }
         });
         bUpdateU.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarUsuario(admin);
+                Main.crearVentanaActualizarUsuario();
             }
         });
         bBuscarTodosu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarUsuarios(admin);
+                Main.crearVentanaBuscarUsuarios();
             }
         });
 
         SEinsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaInsertarStaffEquipo(admin);
+                Main.crearVentanaInsertarStaffEquipo();
             }
         });
         SEDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBorrarStaffEquipo(admin);
+                Main.crearVentanaBorrarStaffEquipo();
             }
         });
         SEUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaActualizarStaffEquipo(admin);
+                Main.crearVentanaActualizarStaffEquipo();
             }
         });
         SEBuscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.crearVentanaBuscarStaffEquipo(admin);
+                Main.crearVentanaBuscarStaffEquipo();
             }
         });
             bGenCal.addActionListener(new ActionListener() {

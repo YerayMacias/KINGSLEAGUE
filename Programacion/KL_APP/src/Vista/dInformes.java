@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import Controlador.*;
 
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class dInformes extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
@@ -16,6 +20,10 @@ public class dInformes extends JDialog {
     private JTable tTabla;
     private String tipoGen;
 
+    /**
+     * Construcor del cuadro de diálogo
+     * @param tipo para saber el tipo de informe
+     */
     public dInformes(String tipo) {
         tipoGen = tipo;
         setContentPane(contentPane);
@@ -60,7 +68,10 @@ public class dInformes extends JDialog {
         dispose();
     }
 
-
+    /**
+     * Para la creacion de componentes y de la tabla que contendra los datos de los informes
+     * @throws Exception
+     */
     private void createUIComponents() throws Exception {
         // TODO: place custom component creation code here
         lInforme = new JLabel(inicializarTitulo());
@@ -77,6 +88,12 @@ public class dInformes extends JDialog {
         }
 
     }
+
+    /**
+     * Para devolver los datos de los informes
+     * @return
+     * @throws Exception
+     */
     private ArrayList<ArrayList<Object>> inicializarArrays() throws Exception{
         switch (tipoGen){
             case "enfrentamientos" -> {
@@ -91,6 +108,11 @@ public class dInformes extends JDialog {
         }
         return null;
     }
+
+    /**
+     * Para generar las cabeceras de las tablas de informes
+     * @return
+     */
     private String[] inicializarCabecera() {
         String[] cabecera;
         switch (tipoGen) {
@@ -106,6 +128,11 @@ public class dInformes extends JDialog {
         }
         return null;
     }
+
+    /**
+     * Para cambiar el texto del JLabel de título dependiendo del informe
+     * @return
+     */
     private String inicializarTitulo() {
         switch (tipoGen) {
             case "enfrentamientos" -> {

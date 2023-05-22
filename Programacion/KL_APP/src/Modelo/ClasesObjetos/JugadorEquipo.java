@@ -3,17 +3,40 @@ package Modelo.ClasesObjetos;
 import java.time.LocalDate;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
+ * @see Jugador
+ * @see Equipo
  */
 public class JugadorEquipo {
+    /**
+     * Objeto Jugador
+     */
     private Jugador jugador;
+    /**
+     * Objeto Equipo
+     */
     private Equipo equipo;
+    /**
+     * Fecha de inicio de contrato
+     */
     private LocalDate fechaInicio;
+    /**
+     * Fecha de finalizacion de contrato
+     */
     private LocalDate fechaFin;
+    /**
+     * Salario
+     */
     private double sueldo;
+    /**
+     * Clausula de compra
+     */
     private double clausula;
 
+    /**
+     * Constructor vacio de JugadorEquipo
+     */
     public JugadorEquipo() {
     }
 
@@ -26,8 +49,6 @@ public class JugadorEquipo {
      * @param fechaFin Fin del contrato
      * @param sueldo
      * @param clausula
-     * @see Jugador
-     * @see Equipo
      */
     public JugadorEquipo(Jugador jugador, Equipo equipo, LocalDate fechaInicio, LocalDate fechaFin, double sueldo, double clausula) {
         this.jugador = jugador;
@@ -38,6 +59,14 @@ public class JugadorEquipo {
         this.clausula = clausula;
     }
 
+    /**
+     * Constructor de JugadorEquipo sin equipo
+     * @param jugador
+     * @param fechaInicio
+     * @param fechaFin
+     * @param sueldo
+     * @param clausula
+     */
     public JugadorEquipo(Jugador jugador, LocalDate fechaInicio, LocalDate fechaFin, double sueldo, double clausula) {
         this.jugador = jugador;
         this.fechaInicio = fechaInicio;
@@ -46,6 +75,10 @@ public class JugadorEquipo {
         this.clausula = clausula;
     }
 
+    /**
+     * Constructor de JugadorEquipo solo con el jugador
+     * @param jugador
+     */
     public JugadorEquipo(Jugador jugador) {
         this.jugador = jugador;
     }

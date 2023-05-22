@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vPerfil {
     private JLabel lNombre;
     private JMenuItem miBaseDatos;
@@ -48,7 +51,10 @@ public class vPerfil {
     private String passUser;
     private String usuario;
 
-
+    /**
+     * Constructor de la ventana, también hay validaciones de datos
+     * @param admin Para ocultar las cosas de administrador
+     */
     public vPerfil(String admin) {
 
         inicializar();
@@ -222,12 +228,18 @@ public class vPerfil {
         });
     }
 
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
         miUsuarios.setVisible(false);
     }
 
+    /**
+     * Para inicializar los estilos y datos de la ventana
+     */
     public void inicializar() {
 
         tfNombre.setBorder(BorderFactory.createCompoundBorder(tfNombre.getBorder(),BorderFactory.createEmptyBorder(2,15,2,6)));

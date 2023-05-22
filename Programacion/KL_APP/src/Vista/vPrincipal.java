@@ -7,7 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class vPrincipal {
     private JPanel pPrincipal;
     private JLabel lNombre;
@@ -35,6 +38,10 @@ public class vPrincipal {
         return pPrincipal;
     }
 
+    /**
+     * Constructor de la ventana
+     * @param admin Para ocultar cosas de administrador
+     */
     public vPrincipal(String admin) {
 
         if (!admin.equalsIgnoreCase("S"))
@@ -111,6 +118,9 @@ public class vPrincipal {
 
     }
 
+    /**
+     * Para inicializar los estilos y datos de la ventana
+     */
     public void inicializar() {
 
 
@@ -136,6 +146,10 @@ public class vPrincipal {
         miUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
     }
+
+    /**
+     * Para ocultar las cosas de administrador
+     */
     public void ocultarCosasAdmin(){
         miPanel.setVisible(false);
         miBaseDatos.setVisible(false);
