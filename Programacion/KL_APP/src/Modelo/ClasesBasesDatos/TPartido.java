@@ -8,9 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TPartido {
-
+    /**
+     * Para insertar un nuevo Partido
+     * @param partido Instancia de Partido
+     * @throws SQLException
+     */
     public static void insert(Partido partido) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO PARTIDOS (TIPO_PARTIDO, HORA, ID_JORNADA, ID_EQUIPO_LOCAL, " +
@@ -26,6 +33,11 @@ public class TPartido {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para borrar un partido
+     * @param partido Instancia de Partido
+     * @throws SQLException
+     */
     public static void delete(Partido partido) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM PARTIDOS where id_partido = ?");
@@ -34,7 +46,11 @@ public class TPartido {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para updatear un partido
+     * @param partido Instancia de Partido
+     * @throws Exception
+     */
     public static void update(Partido partido) throws Exception
     {
         BaseDato.abrirConexion();
@@ -51,7 +67,11 @@ public class TPartido {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para buscar todos los Partidos
+     * @return ArrayList de Partido
+     * @throws Exception
+     */
     public static ArrayList<Partido> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<Partido> listaPartidos = new ArrayList<>();
@@ -76,6 +96,12 @@ public class TPartido {
         return listaPartidos;
     }
 
+    /**
+     * 
+     * @param partido
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Partido> buscarPorIDJornada(Partido partido) throws Exception {
         BaseDato.abrirConexion();
         ArrayList<Partido> listaPartidos = new ArrayList<>();

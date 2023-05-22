@@ -9,9 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TJornadas {
-
+    /**
+     * Para insertar una nueva Jornada
+     * @param jorn Instancia de Jornada
+     * @throws Exception
+     */
     public static void insert(Jornada jorn) throws Exception
     {
         BaseDato.abrirConexion();
@@ -23,6 +30,12 @@ public class TJornadas {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para updatear una jornada
+     * @param jorn Instancia de Jornada
+     * @return
+     * @throws SQLException
+     */
     public static int update(Jornada jorn) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update jornadas set id_temporada = ?, num_jornada = ?, fecha = ? where id_jornada = ?`");
@@ -35,6 +48,12 @@ public class TJornadas {
         return n;
     }
 
+    /**
+     * Para borrar una jornada
+     * @param jorn Instancia de Jornada
+     * @return
+     * @throws Exception
+     */
     public static int delete(Jornada jorn) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from jornadas where id_jornada = ?");
@@ -44,6 +63,11 @@ public class TJornadas {
         return n;
     }
 
+    /**
+     * Para buscar todas las Jornadas
+     * @return ArrayList de Jornada
+     * @throws Exception
+     */
     public static ArrayList<Jornada> buscarTodo() throws Exception {
         ArrayList<Jornada> listaJornadas = new ArrayList<>();
         BaseDato.abrirConexion();
@@ -59,6 +83,12 @@ public class TJornadas {
         return listaJornadas;
     }
 
+    /**
+     * Para buscar una Jornada por fecha
+     * @param jorn
+     * @return
+     * @throws Exception
+     */
     public static Jornada buscarPorFecha(Jornada jorn) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jornadas where fecha = ?");
@@ -79,6 +109,12 @@ public class TJornadas {
         return jornada;
     }
 
+    /**
+     * Para buscar por id_jornada
+     * @param jorn
+     * @return
+     * @throws Exception
+     */
     public static Jornada buscarPorID(Jornada jorn) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jornadas where id_jornada = ?");
@@ -99,6 +135,12 @@ public class TJornadas {
         return jornada;
     }
 
+    /**
+     * Para buscar por Temporada
+     * @param jornada
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Jornada> buscarPorTemporada(Jornada jornada) throws Exception {
         BaseDato.abrirConexion();
         ArrayList<Jornada> listaJornadas = new ArrayList<>();
