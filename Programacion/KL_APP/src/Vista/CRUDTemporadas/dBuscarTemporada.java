@@ -54,41 +54,7 @@ public class dBuscarTemporada extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        cbFechaInicio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String fecha = cbFechaInicio.getSelectedItem().toString();
-                    /*
-                    String datos = Main.buscarTodasLasTemporadasFechaInicio(fecha);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion de la Temporada");
-                    } else {
-                        taFechaInicio.setText(datos);
-                    }*/
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
 
-        cbFechaFin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String fecha = cbFechaFin.getSelectedItem().toString();
-
-                    /*String datos = Main.buscarTodasLasTemporadasFechaFin(fecha);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion de la Temporada");
-                    } else {
-                        taFechaFin.setText(datos);
-                    }*/
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
         cbID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,8 +99,6 @@ public class dBuscarTemporada extends JDialog {
     private void inicializar() {
 
         taCJT.setEditable(false);
-        taFechaInicio.setEditable(false);
-        taFechaFin.setEditable(false);
         taID.setEditable(false);
 
         pTodos.add(new JScrollPane(taCJT));
@@ -145,6 +109,18 @@ public class dBuscarTemporada extends JDialog {
         try {
             ArrayList<String> idCBox = Main.crearIDTemporada();
             idCBox.forEach(id ->cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+            ArrayList<String> idCBox = Main.crearFechaFinTemporada();
+            idCBox.forEach(fechaFin ->cbFechaFin.addItem(fechaFin));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+            ArrayList<String> idCBox = Main.crearFechaInicioTemporada();
+            idCBox.forEach(fechaInicio ->cbFechaInicio.addItem(fechaInicio));
         } catch (Exception exc) {
             System.out.println("problemas");
         }

@@ -88,23 +88,6 @@ public class dBuscarJornada extends JDialog {
                 }
             }
         });
-        cbTemporada.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String temporada = cbID.getSelectedItem().toString();
-
-                    String datos = Main.buscarTodasLasJornadasPorTemporada(temporada);
-                    if (datos == null) {
-                        throw new Exception("No se encuentra la informacion de la Jornada");
-                    } else {
-                        taTemporada.setText(datos);
-                    }
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
         consultarTodosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,7 +116,6 @@ public class dBuscarJornada extends JDialog {
 
         taCJT.setEditable(false);
         taFecha.setEditable(false);
-        taTemporada.setEditable(false);
         taID.setEditable(false);
 
         pTodos.add(new JScrollPane(taCJT));

@@ -5,6 +5,7 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class dInsertarEquiposJugadores extends JDialog {
     private JPanel contentPane;
@@ -21,6 +22,7 @@ public class dInsertarEquiposJugadores extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        inicializar();
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -52,8 +54,9 @@ public class dInsertarEquiposJugadores extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.insertarEquiposJugadores(cbEquipo.getSelectedItem().toString(),cbJugador.getSelectedItem().toString(),tfSueldo.getText(),tfClausula.getText(),tfFechaFin.getText(),tfFechaInicio.getText());
-                } catch (SQLException ex) {
+                    Main.insertarEquiposJugadores(cbEquipo.getSelectedItem().toString(),cbJugador.getSelectedItem().toString(),tfSueldo.getText(),tfFechaInicio.getText(),tfFechaFin.getText(),tfClausula.getText());
+                    JOptionPane.showInputDialog(null,"Jugador insertado correctamente");
+                } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
@@ -75,5 +78,20 @@ public class dInsertarEquiposJugadores extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void inicializar() {
+        try {
+            ArrayList<String> idCBox = Main.crearIdJugadores();
+            idCBox.forEach(idJugador -> cbJugador.addItem(idJugador));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
+        try {
+            ArrayList<String> idCBox = Main.crearIdEquipos();
+            idCBox.forEach(idEquipo-> cbEquipo.addItem(idEquipo));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
     }
 }

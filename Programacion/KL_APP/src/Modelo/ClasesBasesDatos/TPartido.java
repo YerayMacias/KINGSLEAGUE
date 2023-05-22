@@ -97,7 +97,7 @@ public class TPartido {
     }
 
     /**
-     * 
+     *
      * @param partido
      * @return
      * @throws Exception
