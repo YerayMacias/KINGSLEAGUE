@@ -11,6 +11,8 @@ public class dInsertarEquipo extends JDialog {
     private JButton buttonCancel;
     private JTextField tfNombre;
     private JTextField tfPresupuesto;
+    private JTextField tfColor;
+    private JTextField tfImagen;
 
     public dInsertarEquipo() {
         setContentPane(contentPane);

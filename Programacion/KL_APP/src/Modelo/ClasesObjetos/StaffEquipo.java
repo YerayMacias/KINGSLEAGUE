@@ -33,6 +33,17 @@ public class StaffEquipo {
         this.sueldo = sueldo;
     }
 
+    public StaffEquipo(Staff staff, LocalDate fechaInicio, LocalDate fechaFin, double sueldo) {
+        this.staff = staff;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.sueldo = sueldo;
+    }
+
+    public StaffEquipo(Staff staff) {
+        this.staff = staff;
+    }
+
     public Staff getStaff() {
         return staff;
     }

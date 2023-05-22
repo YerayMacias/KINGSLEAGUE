@@ -1125,30 +1125,22 @@ public class Main {
         dBuscarEquiposStaff.setVisible(true);
     }
 
-    public static void insertarStaffEquipos (String idEquipo, String idStaff, String sueldo, String
-            fechaInicio, String fechaFin) throws SQLException {
-        StaffEquipo staffEquipo = new StaffEquipo();
-        // staffEquipo.setEquipo(TEquipo.buscarPorId(new Equipo(idEquipo)));
-        //    staffEquipo.setStaff();
-        staffEquipo.setSueldo(Double.parseDouble(sueldo));
-        staffEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
-        staffEquipo.setFechaFin(LocalDate.parse(fechaFin));
+    public static void insertarStaffEquipos (String idEquipo, String idStaff, String sueldo, String fechaInicio, String fechaFin) throws Exception {
+        staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
+        equipo = TEquipo.buscarPorId(new Equipo(Integer.parseInt(idEquipo)));
+        StaffEquipo staffEquipo = new StaffEquipo(staff,equipo,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo));
         TStaffEquipo.insert(staffEquipo);
     }
 
-    public static void actualizarEquiposStaff (String idStaff, String sueldo, String fechaInicio, String fechaFin) throws
-            Exception {
-        StaffEquipo staffEquipos = new StaffEquipo();
-        // staffEquipos.setStaff();
-        staffEquipos.setSueldo(Double.parseDouble(sueldo));
-        staffEquipos.setFechaInicio(LocalDate.parse(fechaInicio));
-        staffEquipos.setFechaFin(LocalDate.parse(fechaFin));
-        TStaffEquipo.update(staffEquipos);
+    public static void actualizarEquiposStaff (String idStaff, String sueldo, String fechaInicio, String fechaFin) throws Exception {
+        staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
+        StaffEquipo staffEquipo = new StaffEquipo(staff,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo));
+        TStaffEquipo.update(staffEquipo);
     }
 
-    public static int borrarStaffEquipo () throws SQLException {
-        StaffEquipo staffEquipo = new StaffEquipo();
-        //staffEquipo.setStaff();
+    public static int borrarStaffEquipo (String idStaff) throws Exception {
+        staff = tStaffs.buscarPorId(new Staff(Integer.parseInt(idStaff)));
+        StaffEquipo staffEquipo = new StaffEquipo(staff);
         return TStaffEquipo.delete(staffEquipo);
     }
 
