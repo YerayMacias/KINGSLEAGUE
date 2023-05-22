@@ -7,8 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.NavigableSet;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TUsuarios {
+    /**
+     * Para insertar o registrar un nuevo usuario
+     * @param usuario Instancia de usuario
+     * @throws Exception
+     */
     public static void insert(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO usuarios(username, email, password, admin) values(?,?,?,?)");
@@ -20,6 +28,11 @@ public class TUsuarios {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para updatear un usuario
+     * @param usuario Instancia de usuario
+     * @throws Exception
+     */
     public static void update(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update usuarios set EMAIL = ?,USERNAME = ?, PASSWORD = ?,ADMIN = ? where id_usuario = ?");
@@ -32,6 +45,12 @@ public class TUsuarios {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para borrar un usuario
+     * @param usuario Instancia de usuario
+     * @return
+     * @throws Exception
+     */
     public static int delete(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from usuarios where username = ?");
@@ -41,6 +60,11 @@ public class TUsuarios {
         return 0;
     }
 
+    /**
+     * Para buscar todos los usuario
+     * @return ArrayList de Usuario
+     * @throws Exception
+     */
     public static ArrayList<Usuario> buscarTodo() throws Exception {
         ArrayList<Usuario> listarUsuarios = new ArrayList<>();
         BaseDato.abrirConexion();
@@ -60,6 +84,13 @@ public class TUsuarios {
         BaseDato.cerrarConexion();
         return listarUsuarios;
     }
+
+    /**
+     * Para buscar un usuario por username y contraseña (login)
+     * @param usuario Instancia de usuario
+     * @return
+     * @throws Exception
+     */
     public static Usuario buscarPorUsernamePassword(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from usuarios where username = ? and password = ?");
@@ -81,6 +112,12 @@ public class TUsuarios {
         return usuario;
     }
 
+    /**
+     * Para buscar por un usuario por username
+     * @param usuario
+     * @return Objeto Usuario
+     * @throws Exception
+     */
     public static Usuario buscarPorUsername(Usuario usuario) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from usuarios where username = ?");

@@ -7,9 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TPresidente {
-
+    /**
+     * Para insertar un nuevo presidente
+     * @param presidente Instancia de Presidente
+     * @throws SQLException
+     */
     public static void insert(Presidente presidente) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO PRESIDENTES (nombre,apellido,dni,ID_EQUIPO) values (?,?,?,?)");
@@ -21,6 +28,11 @@ public class TPresidente {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para borrar un presidente
+     * @param presidente Instancia de Presidente
+     * @throws SQLException
+     */
     public static void delete(Presidente presidente) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM PRESIDENTES where dni = ?");
@@ -29,7 +41,11 @@ public class TPresidente {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para updatear un presidente
+     * @param presidente Instancia de Presidente
+     * @throws Exception
+     */
     public static void update(Presidente presidente) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update PRESIDENTES set id_equipo = ? where ID_PRESIDENTE = ?");
@@ -39,7 +55,11 @@ public class TPresidente {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para buscar todos los Presidentes
+     * @return ArrayList de Presidente
+     * @throws Exception
+     */
     public static ArrayList<Presidente> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<Presidente> listaPresidentes = new ArrayList<>();
@@ -52,6 +72,12 @@ public class TPresidente {
         return listaPresidentes;
     }
 
+    /**
+     * Para buscar un presidente por DNI
+     * @param presidente
+     * @return Objeto Presidente
+     * @throws Exception
+     */
     public static Presidente buscarPorDNI(Presidente presidente) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from presidentes where dni=?");

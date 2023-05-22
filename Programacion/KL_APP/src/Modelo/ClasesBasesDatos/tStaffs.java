@@ -5,11 +5,14 @@ import Modelo.ClasesObjetos.Staff;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class tStaffs {
     /**
-     * Insertar en la tabla staffs
-     * @param staff Objeto Staff
+     * Para insertar en la tabla staffs
+     * @param staff Instancia de Staff
      * @throws Exception
      */
     public static void insert(Staff staff) throws Exception{
@@ -23,6 +26,11 @@ public class tStaffs {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para updatear un Staff
+     * @param staff Instancia de Staff
+     * @throws Exception
+     */
     public static void update(Staff staff) throws Exception{
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update staffs set nombre=?, apellido=?, dni=?, rol=? where id_staff=?");
@@ -35,6 +43,12 @@ public class tStaffs {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para buscar un Staff por DNI
+     * @param staff
+     * @return Objeto Staff
+     * @throws Exception
+     */
     public static Staff buscarPorDNI(Staff staff) throws Exception{
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staffs where dni=?");
@@ -53,6 +67,11 @@ public class tStaffs {
         return staff;
     }
 
+    /**
+     * Para buscar todos los Staffs
+     * @return ArrayList de Staff
+     * @throws Exception
+     */
     public static ArrayList<Staff> buscarTodos() throws Exception{
         BaseDato.abrirConexion();
         ArrayList<Staff> listaStaffs = new ArrayList<>();
@@ -71,6 +90,12 @@ public class tStaffs {
         return listaStaffs;
     }
 
+    /**
+     * Para borrar un Staff
+     * @param staff
+     * @return
+     * @throws Exception
+     */
     public static int delete(Staff staff) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from staffs where dni = ?");
@@ -80,6 +105,12 @@ public class tStaffs {
         return n;
     }
 
+    /**
+     * Para buscar un Staff por id_staff
+     * @param staff
+     * @return
+     * @throws Exception
+     */
     public static Staff buscarPorId(Staff staff) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from staffs where id_staff = ?");
@@ -103,7 +134,7 @@ public class tStaffs {
             }
         else
             staff2 = null;
-            BaseDato.cerrarConexion();
-            return staff2;
+        BaseDato.cerrarConexion();
+        return staff2;
         }
     }

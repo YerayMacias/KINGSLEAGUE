@@ -9,9 +9,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TTemporadas {
-
+    /**
+     * Para insertar una nueva Temporada
+     * @param temp Instancia de Temporada
+     * @throws Exception
+     */
     public static void insertar(Temporada temp) throws Exception
     {
         BaseDato.abrirConexion();
@@ -24,6 +31,12 @@ public class TTemporadas {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para updatear una Temporada
+     * @param temp Instancia de Temporada
+     * @return
+     * @throws SQLException
+     */
     public static int update(Temporada temp) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update temporadas set fecha_inicio = ?, fecha_fin = ?, estado = ?, periodo = ? where id_temporada = ?`");
@@ -37,6 +50,12 @@ public class TTemporadas {
         return n;
     }
 
+    /**
+     * Para borrar una temporada
+     * @param temp Instancia de Temporada
+     * @return
+     * @throws Exception
+     */
     public static int delete(Temporada temp) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from temporadas where id_temporada = ?");
@@ -46,6 +65,11 @@ public class TTemporadas {
         return n;
     }
 
+    /**
+     * Para buscar todas las temporada
+     * @return ArrayList de Temporada
+     * @throws Exception
+     */
     public static ArrayList<Temporada> buscarTodo() throws Exception {
         ArrayList<Temporada> listaTemporadas = new ArrayList<>();
         BaseDato.abrirConexion();
@@ -71,23 +95,12 @@ public class TTemporadas {
         return listaTemporadas;
     }
 
-    public static Temporada buscarTemporada(Temporada temp) throws Exception {
-        BaseDato.abrirConexion();
-        PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas where fecha_inicio = ? and fecha_fin = ?");
-        ps.setDate(1, Date.valueOf(temp.getFechaInicio()));
-        ps.setDate(2, Date.valueOf(temp.getFechaFin()));
-        ResultSet resultado = ps.executeQuery();
-        Temporada temporada;
-        if (resultado.next())
-        {
-            temporada = new Temporada();
-            temporada.setID(resultado.getInt("id_temporada"));
-        }
-        else
-            temporada = null;
-        BaseDato.cerrarConexion();
-        return temporada;
-    }
+    /**
+     * Para buscar una Temporada por ID
+     * @param temp
+     * @return
+     * @throws Exception
+     */
     public static Temporada buscarPorID(Temporada temp) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas where id_temporada=?");
@@ -109,6 +122,11 @@ public class TTemporadas {
         return temporada;
     }
 
+    /**
+     * Par buscar la ultima Temporada
+     * @return Objeto Temporada
+     * @throws Exception
+     */
     public static Temporada buscarUltimaTemporada() throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from temporadas where id_temporada=(select max(id_temporada) from temporadas)");
@@ -132,6 +150,11 @@ public class TTemporadas {
     // Aunque no sea un crud de la tabla de Temporadas
     // Es la tabla de clasificacion de la temporada
 
+    /**
+     * Para buscar la clasificacion de la Temporada
+     * @return ArrayList de Object (equipos, victorias, derrotas, golesFavor, golesContra, diferenciaGoles)
+     * @throws Exception
+     */
     public static ArrayList<Object> buscarClasificacion() throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select rownum, nombre, victorias, derrotas, goles_a_favor, goles_en_contra, diferencia_goles from clasificacion");
