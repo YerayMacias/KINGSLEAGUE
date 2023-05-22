@@ -4,13 +4,12 @@ import Controlador.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.SQLException;
 
 public class dBorrarEquiposStaff extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField tfUsername;
+    private JTextField tfID;
     private JButton consultarTodosButton;
 
     public dBorrarEquiposStaff() {
@@ -48,8 +47,9 @@ public class dBorrarEquiposStaff extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.borrarStaffEquipo();
-                } catch (SQLException ex) {
+                    Main.borrarStaffEquipo(tfID.getText());
+                    JOptionPane.showMessageDialog(null,"Se ha borrado correctamente el staff");
+                } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }

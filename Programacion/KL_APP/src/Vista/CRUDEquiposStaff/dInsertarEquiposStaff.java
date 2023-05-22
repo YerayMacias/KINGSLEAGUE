@@ -5,6 +5,7 @@ import Controlador.Main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class dInsertarEquiposStaff extends JDialog {
@@ -52,10 +53,11 @@ public class dInsertarEquiposStaff extends JDialog {
         buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try {
-                    Main.insertarStaffEquipos(cbEquipo.getSelectedItem().toString(),cbStaff.getSelectedItem().toString(),tfSueldo.getText(),tfFechaInicio.getText(),tfSueldo.getText());
+                    Main.insertarStaffEquipos(cbEquipo.getSelectedItem().toString(),cbStaff.getSelectedItem().toString(),tfFechaInicio.getText(),tfFechaFin.getText(),tfSueldo.getText());
                     JOptionPane.showMessageDialog(null,"Se ha insertado correctamente");
-                } catch (SQLException ex) {
+                } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
