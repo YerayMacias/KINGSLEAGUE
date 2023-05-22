@@ -1,17 +1,22 @@
 package Vista.CRUDEquiposJugadores;
 
+import Controlador.Main;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class dBorrarEquiposJugadores extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox cbID;
 
     public dBorrarEquiposJugadores() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        inicializar();
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -39,6 +44,16 @@ public class dBorrarEquiposJugadores extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.borrarEquiposJugadores(cbID.getSelectedItem().toString());
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void onOK() {
@@ -56,5 +71,14 @@ public class dBorrarEquiposJugadores extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void inicializar() {
+        try {
+            ArrayList<String> idCBox = Main.crearIdJugadores();
+            idCBox.forEach(id ->cbID.addItem(id));
+        } catch (Exception exc) {
+            System.out.println("problemas");
+        }
     }
 }

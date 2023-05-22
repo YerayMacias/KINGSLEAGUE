@@ -38,6 +38,19 @@ public class JugadorEquipo {
         this.clausula = clausula;
     }
 
+    public JugadorEquipo(Jugador jugador, LocalDate fechaInicio, LocalDate fechaFin, double sueldo, double clausula) {
+        this.jugador = jugador;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.sueldo = sueldo;
+        this.clausula = clausula;
+    }
+
+    public JugadorEquipo(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+
     public Jugador getJugador() {
         return jugador;
     }

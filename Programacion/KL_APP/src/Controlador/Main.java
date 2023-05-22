@@ -1390,20 +1390,15 @@ public class Main {
         TJugadorEquipo.insert(jugadorEquipo);
     }
 
-    public static void borrarEquiposJugadores() throws SQLException {
-        JugadorEquipo jugadorEquipo = new JugadorEquipo();
-        //   jugadorEquipo.setJugador(TJugadorEquipo.buscarTodos());
+    public static void borrarEquiposJugadores(String id_jugador) throws Exception {
+        jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
+        JugadorEquipo jugadorEquipo = new JugadorEquipo(jugador);
         TJugadorEquipo.delete(jugadorEquipo);
     }
 
-    public static void updateEquiposJugadores(String id_equipo, String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
-        JugadorEquipo jugadorEquipo = new JugadorEquipo();
-        // jugadorEquipo.setEquipo(id_equipo);
-        // jugadorEquipo.setJugador(id_jugador);
-        jugadorEquipo.setSueldo(Double.parseDouble(sueldo));
-        jugadorEquipo.setFechaInicio(LocalDate.parse(fechaInicio));
-        jugadorEquipo.setFechaFin(LocalDate.parse(fechaFin));
-        jugadorEquipo.setClausula(Double.parseDouble(clausula));
+    public static void updateEquiposJugadores(String id_jugador , String sueldo,String fechaInicio,String fechaFin,String clausula) throws Exception {
+        jugador = tJugadores.buscarPorID(new Jugador(Integer.parseInt(id_jugador)));
+        JugadorEquipo jugadorEquipo = new JugadorEquipo(jugador,LocalDate.parse(fechaInicio),LocalDate.parse(fechaFin),Double.parseDouble(sueldo),Double.parseDouble(clausula));
         TJugadorEquipo.update(jugadorEquipo);
     }
 
