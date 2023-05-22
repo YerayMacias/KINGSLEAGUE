@@ -9,9 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class TJugadorEquipo {
-
+    /**
+     * Para insertar un jugador en un equipo
+     * @param jugadorEquipo Instancia de JugadorEquipo
+     * @throws SQLException
+     */
     public static void insert(JugadorEquipo jugadorEquipo) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("INSERT INTO PLANTILLA  values (?,?,?,?,?,?)");
@@ -25,6 +32,11 @@ public class TJugadorEquipo {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para borrar un jugador de un equipo
+     * @param jugadorEquipo Instancia de JugadorEquipo
+     * @throws SQLException
+     */
     public static void delete(JugadorEquipo jugadorEquipo) throws SQLException {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("DELETE FROM PLATILLA where ID_JUGADOR = ?");
@@ -33,7 +45,11 @@ public class TJugadorEquipo {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para updatear un jugador de un equipo
+     * @param jugadorEquipo Instancia de JugadorEquipo
+     * @throws Exception
+     */
     public static void update(JugadorEquipo jugadorEquipo) throws Exception
     {
         BaseDato.abrirConexion();
@@ -47,7 +63,11 @@ public class TJugadorEquipo {
         BaseDato.cerrarConexion();
     }
 
-
+    /**
+     * Para buscar todos los jugadores de Equipo
+     * @return ArrayList de JugadorEquipo
+     * @throws Exception
+     */
     public static ArrayList<JugadorEquipo> buscarTodos() throws Exception {
         BaseDato.abrirConexion();
         ArrayList<JugadorEquipo> listaJugadoresEquipo = new ArrayList<>();
@@ -60,10 +80,16 @@ public class TJugadorEquipo {
         return listaJugadoresEquipo;
     }
 
-    public static JugadorEquipo buscarPorId(JugadorEquipo jugadorEquipo) throws Exception {
+    /**
+     * Para buscar por id_jugador
+     * @param jugadorEquipo
+     * @return Objeto JugadorEquipo
+     * @throws Exception
+     */
+    public static JugadorEquipo buscarPorIdJugador(JugadorEquipo jugadorEquipo) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos_jugadores where id_jugador = ?");
-        ps.setInt(1,jugadorEquipo.getEquipo().getID());
+        ps.setInt(1,jugadorEquipo.getJugador().getID());
         ResultSet result = ps.executeQuery();
         JugadorEquipo jugadorEquipo2;
         if (result.next())

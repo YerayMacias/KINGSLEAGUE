@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * @author
+ * @author Explotacion de Iker
  * @version 1.0
  */
 public class BaseDato {

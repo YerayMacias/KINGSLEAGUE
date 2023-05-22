@@ -7,8 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * @author Explotacion de Iker
+ * @version 1.0
+ */
 public class tJugadores {
+    /**
+     * Para insertar un nuevo Jugador
+     * @param jugador Instancia de Jugador
+     * @throws Exception
+     */
     public static void insert(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("insert into jugadores(nombre, apellido, dni, posicion, tipo_jugador) values (?,?,?,?,?)");
@@ -21,6 +29,11 @@ public class tJugadores {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para updatear un jugador
+     * @param jugador Instancia de Jugador
+     * @throws Exception
+     */
     public static void update(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("update jugadores set nombre=?, apellido=?, dni=?, posicion=?, tipo_jugador=? where id_jugador=?");
@@ -34,9 +47,14 @@ public class tJugadores {
         BaseDato.cerrarConexion();
     }
 
+    /**
+     * Para buscar un jugador por DNI
+     * @param jugador
+     * @return
+     * @throws Exception
+     */
     public static Jugador buscarPorDNI(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
-        ArrayList<Jugador> lista= new ArrayList<>();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from jugadores where dni=?");
         ps.setString(1, jugador.getDNI());
         ResultSet result = ps.executeQuery();
@@ -59,6 +77,11 @@ public class tJugadores {
         return jugador;
     }
 
+    /**
+     * Para buscar todos los jugadores
+     * @return ArrayList de Jugador
+     * @throws Exception
+     */
     public static ArrayList<Jugador> buscarTodos() throws Exception{
         BaseDato.abrirConexion();
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
@@ -83,6 +106,12 @@ public class tJugadores {
         return listaJugadores;
     }
 
+    /**
+     * Para borrar un jugador
+     * @param jugador Instancia de Jugador
+     * @return
+     * @throws Exception
+     */
     public static int delete(Jugador jugador) throws Exception {
         BaseDato.abrirConexion();
         PreparedStatement ps = BaseDato.getCon().prepareStatement("delete from jugadores where dni = ?");
@@ -92,6 +121,12 @@ public class tJugadores {
         return n;
     }
 
+    /**
+     * Para buscar jugador por id_jugador
+     * @param jugador
+     * @return Objeto Jugador
+     * @throws Exception
+     */
     public static Jugador buscarPorID(Jugador jugador) throws Exception{
         BaseDato.abrirConexion();
         ArrayList<Jugador> lista = new ArrayList<>();
@@ -119,6 +154,12 @@ public class tJugadores {
         return jugador2;
     }
 
+    /**
+     * Para buscar la informacion de un jugador en el equipo
+     * @param equipo Instancia de equipo
+     * @return ArrayList de Jugador
+     * @throws SQLException
+     */
     public static ArrayList<Jugador> buscarPorEquipo(Equipo equipo) throws SQLException {
         BaseDato.abrirConexion();
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
