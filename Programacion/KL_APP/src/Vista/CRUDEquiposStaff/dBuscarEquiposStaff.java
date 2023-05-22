@@ -42,7 +42,7 @@ public class dBuscarEquiposStaff extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        consultarTodosButton.addActionListener(new ActionListener() {
+        bConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -51,6 +51,12 @@ public class dBuscarEquiposStaff extends JDialog {
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+        consultarTodosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onOK();
             }
         });
     }

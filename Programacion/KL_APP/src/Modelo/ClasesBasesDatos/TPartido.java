@@ -97,7 +97,8 @@ public class TPartido {
     }
 
     /**
-     * Para buscar los poartidos por id_jornada
+     * Para buscar los partidos por id_jornada
+     *
      * @param partido
      * @return ArrayList de Partido
      * @throws Exception

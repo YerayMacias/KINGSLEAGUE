@@ -47,7 +47,7 @@ public class TStaffEquipo {
         PreparedStatement ps = BaseDato.getCon().prepareStatement("select * from equipos_staffs");
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            StaffEquipo staffEquipo = new StaffEquipo(tStaffs.buscarPorId(new Staff(result.getInt("id_staffs"))),TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getDate("fecha_inicio").toLocalDate(), result.getDate("fecha_fin").toLocalDate(),result.getDouble("sueldo"));
+            StaffEquipo staffEquipo = new StaffEquipo(tStaffs.buscarPorId(new Staff(result.getInt("id_staff"))),TEquipo.buscarPorId(new Equipo(result.getInt("id_equipo"))), result.getDate("fecha_inicio").toLocalDate(), result.getDate("fecha_fin").toLocalDate(),result.getDouble("sueldo"));
             listaStaffsEquipos.add(staffEquipo);
         }
         BaseDato.cerrarConexion();
