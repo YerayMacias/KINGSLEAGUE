@@ -8,30 +8,74 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 /**
+ * Ventana Principal de la Aplicación
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vPrincipal {
+    /**
+     * Panel contenedor de todos los datos
+     */
     private JPanel pPrincipal;
+    /**
+     * Label Nombre de Usuario
+     */
     private JLabel lNombre;
-    private JMenu mPartidos;
-    private JMenu mClasificacion;
+    /**
+     * Menu de Equipo
+     */
     private JMenuItem miEquipo;
+    /**
+     * Menu de Partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu de Clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     *
+     * Menu de Panel de Usuario
+     */
     private JMenuItem miPanel;
+    /**
+     * Label nombre de usuario panel
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label tipo de usuario panel
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu de Perfil
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu de Cerrar Sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de Base de Datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu de Usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Menu de Icono de Perfil
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Menu de PlayOffs
+     */
     private JMenuItem miPlayOffs;
     private JPanel pTitulo;
     private JPanel pCombo;
+    /**
+     * Menu Principal
+     */
     private JMenuItem miPrincipal;
-    private JMenu mPrincipal;
 
 
     public JPanel getpPrincipal() {
