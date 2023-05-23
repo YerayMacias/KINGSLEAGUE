@@ -72,7 +72,7 @@ public class vRegistro {
      */
     private int contador;
     /**
-     * Variable global de la contraseña de admin
+     * Variable global de la contraseña del admin
      */
     private String passAdm;
 

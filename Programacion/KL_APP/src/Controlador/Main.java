@@ -2078,8 +2078,8 @@ public class Main {
         ArrayList<Partido> listaPartidos = TPartido.buscarTodos();
         String datos = "";
         for (int x = 0; x < listaPartidos.size(); x++) {
-            datos += "\n ID_PARTIDO" + listaPartidos.get(x).getID() + "\n\nTipo Partido: " + listaPartidos.get(x).getTipoPartido() + "\nHora: " + listaPartidos.get(x).getHora()
-                    + "\nEquipo Local: " + listaPartidos.get(x).getLocal() + "\nEquipo Visitante: " + listaPartidos.get(x).getVisitante() + "\nJornada: "
+            datos += "\n ID_PARTIDO " + listaPartidos.get(x).getID() + "\n\nTipo Partido: " + listaPartidos.get(x).getTipoPartido() + "\nHora: " + listaPartidos.get(x).getHora()
+                    + "\nEquipo Local: " + listaPartidos.get(x).getLocal().getNombre() + "\nEquipo Visitante: " + listaPartidos.get(x).getVisitante().getNombre() + "\nJornada: "
                     + listaPartidos.get(x).getJornada().getID() + "\n";
         }
         return datos;
