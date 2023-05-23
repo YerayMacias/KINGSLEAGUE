@@ -1,0 +1,14 @@
+Controlador
+Modelo.ClasesBasesDatos
+Modelo.ClasesObjetos
+Vista
+Vista.CRUDEquipos
+Vista.CRUDEquiposJugadores
+Vista.CRUDEquiposStaff
+Vista.CRUDJornada
+Vista.CRUDJugadores
+Vista.CRUDPartidos
+Vista.CRUDPresidentes
+Vista.CRUDStaffs
+Vista.CRUDTemporadas
+Vista.CRUDUsuario
