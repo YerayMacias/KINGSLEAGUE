@@ -17,18 +17,57 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class vPlayOffs {
+    /**
+     * Label del nombre
+     */
     private JLabel lNombre;
+    /**
+     * Menu de base de datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu de usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Menu del icono del perfil
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Label del nombre del menu
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label del tipo de usuario
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu del perfil
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu del panel de admin
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu de cerrar sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu de partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu del equipo
+     */
     private JMenuItem miEquipo;
+    /**
+     * Panel que tiene todos los componentes
+     */
     private JPanel pPrincipal;
     private JPanel pTitulo;
     private JPanel pCombo;
@@ -42,30 +81,105 @@ public class vPlayOffs {
     private JPanel pFinalIzq;
     private JPanel pSemiIzqTop;
     private JPanel pSemiIzq;
+    /**
+     * Menu de PlayOffs
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Label de la tabla clasificacion en la posicion 1
+     */
     private JLabel lPosicion1;
+    /**
+     * Label de la tabla clasificacion en la posicion 8
+     */
     private JLabel lPosicion8;
+    /**
+     * Label de la tabla clasificacion en la posicion 4
+     */
     private JLabel lPosicion4;
+    /**
+     * Label de la tabla clasificacion en la posicion 5
+     */
     private JLabel lPosicion5;
+    /**
+     * Label de la tabla clasificacion en la posicion 2
+     */
     private JLabel lPosicion2;
+    /**
+     * Label de la tabla clasificacion en la posicion 7
+     */
     private JLabel lPosicion7;
+    /**
+     * Label de la tabla clasificacion en la posicion 3
+     */
     private JLabel lPosicion3;
+    /**
+     * Label de la tabla clasificacion en la posicion 6
+     */
     private JLabel lPosicion6;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 1
+     */
     private JLabel lEquipo1;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 8
+     */
     private JLabel lEquipo8;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 4
+     */
     private JLabel lEquipo4;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 5
+     */
     private JLabel lEquipo5;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 2
+     */
     private JLabel lEquipo2;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 7
+     */
     private JLabel lEquipo7;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 3
+     */
     private JLabel lEquipo3;
+    /**
+     * Label del nombre de la tabla clasificacion en la posicion 6
+     */
     private JLabel lEquipo6;
+    /**
+     * Label del nombre de equipo de la semifinal arriba a la izquierda
+     */
     private JLabel lEquipoSemiIzqTop;
+    /**
+     * Label del nombre de equipo de la semifinal arriba a la izquierda
+     */
     private JLabel lEquipoSemiIzqBot;
+    /**
+     * Label del nombre de equipo de la semifinal abajo a la izquierda
+     */
     private JLabel lEquipoSemiDerTop;
+    /**
+     * Label del nombre de equipo de la semifinal arriba a la derecha
+     */
     private JLabel lEquipoSemiDerBot;
+    /**
+     * Label del nombre de equipo de la final derecha
+     */
     private JLabel lEquipoFinalDer;
+    /**
+     * Label del nombre de equipo de la final izquierda
+     */
     private JLabel lEquipoFinalIzq;
+    /**
+     * Menu del panel principal
+     */
     private JMenuItem miPrincipal;
+    /**
+     * Label del equipo ganador
+     */
     private JPanel pGanador;
 
     /**
