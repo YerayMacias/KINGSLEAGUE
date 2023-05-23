@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ojdbc10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/KL_APP/src/jars/ojdbc10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
