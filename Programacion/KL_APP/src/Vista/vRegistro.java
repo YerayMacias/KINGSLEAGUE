@@ -12,25 +12,68 @@ import java.awt.event.FocusEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
+ * Ventana de registro de usuario
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vRegistro {
     private JPanel pInfo;
+    /**
+     * Boton de registra
+     */
     private JButton bRegistro;
+    /**
+     * Textfield del nombre
+     */
     private JTextField tfNombre;
     private JButton button1;
+    /**
+     * Para la contraseña
+     */
     private JPasswordField pfPassword;
+    /**
+     * Para confirmar la contraseña
+     */
     private JPasswordField pfPassword2;
+    /**
+     * CheckBox del admin
+     */
     private JCheckBox ckAdmin;
+    /**
+     * Panel principal donde estaran todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Textfield del correo
+     */
     private JTextField tfEmail;
+    /**
+     * Para la contraseña de administrador
+     */
     private JPasswordField pfPasswordAdm;
+    /**
+     * Para ocultar la contraseña
+     */
     private JButton bVisible;
+    /**
+     * Para ocultar la contraseña de confirmacion
+     */
     private JButton bVisible2;
+    /**
+     * Para ocultar la contraseña de admin
+     */
     private JButton bVisibleAdm;
+    /**
+     * Para ir a la ventana de login
+     */
     private JButton bAtras;
+    /**
+     * Variable global para los botones de ocultar las contraseña
+     */
     private int contador;
+    /**
+     * Variable global de la contraseña de admin
+     */
     private String passAdm;
 
     /**
