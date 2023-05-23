@@ -77,6 +77,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
+ * Clase controladora
+ * Realiza la creacion de objetos, llamadas a BD,...
  * @author Explotacion de Iker
  * @version 1.0
  */

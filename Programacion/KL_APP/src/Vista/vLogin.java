@@ -9,19 +9,41 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 /**
+ * Ventana para entrar en la app
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vLogin {
+    /**
+     * Panel principal que tendra todos los elementos
+     */
     private JPanel pPrincipal;
+    /**
+     * Textfield del nombre
+     */
     private JTextField tfNombre;
     private JPanel pInfo;
+    /**
+     * Boton para iniciar sesion
+     */
     private JButton bIniciarSesion;
+    /**
+     * Boton para la ventana registro
+     */
     private JButton bRegistro;
+    /**
+     * Para poner la contraseña
+     */
     private JPasswordField pfPassword;
     private JButton button1;
+    /**
+     * Boton para ocultar la contraseña
+     */
     private JButton bVisible;
     private JLabel icono;
+    /**
+     * Variable global para poder ocultar la contraseña
+     */
     private int contador;
 
     /**

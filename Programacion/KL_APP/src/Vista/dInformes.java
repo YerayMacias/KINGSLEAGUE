@@ -8,16 +8,38 @@ import java.util.ArrayList;
 import Controlador.*;
 
 /**
+ * Cuadro de dialogo para ver los informes
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class dInformes extends JDialog {
+    /**
+     * Panel contenedor de todos los componentes
+     */
     private JPanel contentPane;
+    /**
+     * Botono de OK
+     */
     private JButton buttonOK;
+    /**
+     * Boton de Cane¡cel
+     */
     private JButton buttonCancel;
+    /**
+     * Label del titulo del informe
+     */
     private JLabel lInforme;
+    /**
+     * Scroll para la tabla
+     */
     private JScrollPane spTabla;
+    /**
+     * La tabla
+     */
     private JTable tTabla;
+    /**
+     * Variable global para el tipo de informe
+     */
     private String tipoGen;
 
     /**

@@ -172,6 +172,10 @@ public class vPlayOffs {
         datos();
     }
 
+    /**
+     * Para obtener los datos
+     * @throws Exception
+     */
     public void datos() throws Exception {
 
         ArrayList<Object> listaArrays = TTemporadas.buscarClasificacion();
@@ -200,6 +204,10 @@ public class vPlayOffs {
 
     }
 
+    /**
+     * Para ver los equipos de las semifinales
+     * @throws Exception
+     */
     public void semis() throws Exception {
         Equipo preset = new Equipo();
         preset.setNombre(lEquipo1.getText());
@@ -269,6 +277,11 @@ public class vPlayOffs {
             lEquipoSemiDerBot.setText(equipoVisitante4.getNombre());
         }
     }
+
+    /**
+     * Para poner el ganador de la final
+     * @throws Exception
+     */
     public void finalKL() throws Exception {
         Equipo preset = new Equipo();
         preset.setNombre(lEquipo1.getText());

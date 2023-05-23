@@ -7,74 +7,270 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
+ * Ventana del panel de administrador
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vAdminPanel {
+    /**
+     * Label del nombre
+     */
     private JLabel lNombre;
+    /**
+     * Menu Item de base de datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu item de Usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Menu item de icono de perfil
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Label del nombre de menu
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label del tipo de usuario
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu item del perfil
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu item del panel de admin
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu Item de cerrar sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu Item de la clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu item de partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu item del equipo
+     */
     private JMenuItem miEquipo;
+    /**
+     * Panel principal donde estaran todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Boton insert jugadores
+     */
     private JButton bInsert;
+    /**
+     * Boton borrar jugador
+     */
     private JButton bDelete;
+    /**
+     * Botono insertar equipo
+     */
     private JButton bInsertE;
+    /**
+     * Boton borrar equipo
+     */
     private JButton bDeleteE;
+    /**
+     * Boton Insertar Jugadores
+     */
     private JButton bInsertJ;
+    /**
+     * Boton borrar Jornada
+     */
     private JButton bDeleteJ;
+    /**
+     * Boton insertar jornada
+     */
     private JButton bInserT;
+    /**
+     * Boton borrar temporada
+     */
     private JButton bDeteleT;
+    /**
+     * Boton modificar temporada
+     */
     private JButton bUpdateT;
+    /**
+     * Boton buscar todas las temporadas
+     */
     private JButton bBuscarTodosT;
+    /**
+     * Boton insertar partido
+     */
     private JButton bInsertarP;
+    /**
+     * Boton borrar partido
+     */
     private JButton bDeleteP;
+    /**
+     * Boton modificar partido
+     */
     private JButton bUpdateP;
+    /**
+     * Boton buscar todos los partidos
+     */
     private JButton bBuscarTodosP;
+    /**
+     * Boton insertar presidente
+     */
     private JButton bInsertarPres;
+    /**
+     * Boton borrar presidente
+     */
     private JButton bDeletePres;
+    /**
+     * Boton modificar presidente
+     */
     private JButton bUpdatePres;
+    /**
+     * Boton buscar presidentes
+     */
     private JButton bBuscarPres;
+    /**
+     * Boton insert staff
+     */
     private JButton bInsertS;
+    /**
+     * Boton borrar staff
+     */
     private JButton bDeleteS;
+    /**
+     * Boton actualizar staff
+     */
     private JButton bUpdateS;
+    /**
+     * Boton buscar todos los staffs
+     */
     private JButton bBuscarTodosS;
+    /**
+     * Boton insertar usuario
+     */
     private JButton bInsertarU;
+    /**
+     * Boton borrar usuario
+     */
     private JButton bDeleteU;
+    /**
+     * Boton modificar usuario
+     */
     private JButton bUpdateU;
+    /**
+     * Boton buscar todos los usuarios
+     */
     private JButton bBuscarTodosu;
+    /**
+     * Boton modificar jugadores
+     */
     private JButton bUpdateJ;
+    /**
+     * Boton modificar jugadores
+     */
     private JButton updateButton;
+    /**
+     * Boton buscar todas las jornadas
+     */
     private JButton bBuscarTodosJ;
+    /**
+     * Panel del titulo
+     */
     private JPanel pTitulo;
+    /**
+     * Panel de las comboBox
+     */
     private JPanel pCombo;
+    /**
+     * Menu item de los playoffs
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Botono modificar equipos
+     */
     private JButton bUpdateEquipos;
+    /**
+     * Boton buscar todos los equipos
+     */
     private JButton bBuscarTodosEquipos;
+    /**
+     * Boton buscar jornadas
+     */
     private JButton bBuscarJornadas;
+    /**
+     * Menu item de la ventana principal
+     */
     private JMenuItem miPrincipal;
+    /**
+     * Boton insertar StaffEquipo
+     */
     private JButton SEinsert;
+    /**
+     * Boton borrar StaffEquipo
+     */
     private JButton SEDelete;
+    /**
+     * Boton modificar StaffEquipo
+     */
     private JButton SEUpdate;
+    /**
+     * Boton buscar staffequipo
+     */
     private JButton SEBuscar;
+    /**
+     * Boton generar el calendario
+     */
     private JButton bGenCal;
+    /**
+     * Boton para ver enfrentamientos
+     */
     private JButton bVerEnf;
+    /**
+     * Boton para ver el Informe de los jugadores
+     */
     private JButton bInfJug;
+    /**
+     * Boton para ver el Informe clasificacion
+     */
     private JButton bInfCla;
+    /**
+     * Boton para ultima jornada
+     */
     private JButton bUltJor;
+    /**
+     * Boton para todas las jornadas
+     */
     private JButton bAllJor;
+    /**
+     * Boton de la clasificacion
+     */
     private JButton bClasi;
+    /**
+     * Boton insertar jugador equipo
+     */
     private JButton JEinsert;
+    /**
+     * Boton modificar equipo
+     */
     private JButton JEUpdate;
+    /**
+     * Boton borrar jugador equipo
+     */
     private JButton JEDelete;
+    /**
+     * Boton buscar jugador equipo
+     */
     private JButton JEBuscar;
+    /**
+     * Variable global para comprobar la fecha de expiracion
+     */
     private boolean expirado;
 
     public JPanel getpPrincipal() {
