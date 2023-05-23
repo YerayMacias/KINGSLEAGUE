@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="KL_APP:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/KL_APP_jar</output-path>
+    <root id="archive" name="KL_APP.jar">
+      <element id="module-output" name="KL_APP" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/jars/ojdbc10.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
