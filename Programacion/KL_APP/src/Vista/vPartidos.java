@@ -8,29 +8,81 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 /**
+ * Para ver los partidos de la competicion
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vPartidos {
     private JPanel pMenu;
+    /**
+     * Label del nombre
+     */
     private JLabel lNombre;
+    /**
+     * ComboBox de las jornadas
+     */
     private JComboBox cbJornadas;
+    /**
+     * Panel que tendra todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Menu de base de datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu de usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Label para el nombre del menu
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label del tipo de usuario
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu del perfil del usuario
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu del panel de admin
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu de cerrar sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu de partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu de equipos
+     */
     private JMenuItem miEquipo;
+    /**
+     * Panel de los partidos
+     */
     private JPanel pPartidos;
+    /**
+     * Menu del icono de perfil
+     */
     private JMenu mIconoPerfil;
     private JPanel pTitulo;
     private JPanel pCombo;
+    /**
+     * Menu de los playoff
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Menu de la ventana principal
+     */
     private JMenuItem miPrincipal;
 
     /**

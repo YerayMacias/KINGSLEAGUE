@@ -7,28 +7,86 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
+ * Ventana para ver la clasificacion
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vClasificacion {
+    /**
+     * Panel del menu
+     */
     private JPanel pMenu;
+    /**
+     * Label del nombre
+     */
     private JLabel lNombre;
+    /**
+     * Panel que tendra la tabla de la clasificacion
+     */
     private JPanel pClasificacion;
+    /**
+     * Panel que contendra todos los elementos
+     */
     private JPanel pPrincipal;
+    /**
+     * Menu item de base de datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Label del nombre del menu
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label del tipo de usuario
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu del perfil del usuario
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu del panel de admin
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu de cerrar sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Menu de clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu de partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu de equipos
+     */
     private JMenuItem miEquipo;
+    /**
+     * Menu del icono de perfil
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Panel del titulo
+     */
     private JPanel pTitulo;
+    /**
+     * Panel de la combo
+     */
     private JPanel pCombo;
+    /**
+     * Menu de PlayOffs
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Menu de la ventana principal
+     */
     private JMenuItem miPrincipal;
 
     /**

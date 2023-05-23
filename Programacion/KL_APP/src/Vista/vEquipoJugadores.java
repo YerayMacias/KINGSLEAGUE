@@ -6,18 +6,46 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
+ * Ventana para ver la informacion de los jugadores de un equipo
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vEquipoJugadores {
+    /**
+     * Panel que contendra todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Panel del nombre del equipo
+     */
     private JLabel jlNombreEquipo;
+    /**
+     * Textfield del nombre
+     */
     private JTextField tfNombre;
+    /**
+     * Textfield del apellido
+     */
     private JTextField tfApellido;
+    /**
+     * Textfield de posicion del jugador
+     */
     private JTextField tfPosicion;
+    /**
+     * Textfield del tipo de jugador
+     */
     private JTextField tfTipoJugador;
+    /**
+     * Boton de ir al inicio
+     */
     private JButton bInicio;
+    /**
+     * Boton de ir al final
+     */
     private JButton bFinal;
+    /**
+     * Boton de ir ataras
+     */
     private JButton bAtras;
 
     public JTextField getTfNombre() {
@@ -36,7 +64,13 @@ public class vEquipoJugadores {
         return tfTipoJugador;
     }
 
+    /**
+     * Boton de ir al siguiente
+     */
     private JButton bSiguiente;
+    /**
+     * Boton de salir
+     */
     private JButton bSalir;
 
     /**

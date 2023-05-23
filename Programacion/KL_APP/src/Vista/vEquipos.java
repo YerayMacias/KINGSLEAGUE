@@ -12,26 +12,75 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 /**
+ * Ventana para ver todos los equipos
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vEquipos {
+    /**
+     * Label del nombre
+     */
     private JLabel lNombre;
+    /**
+     * Menu de base de datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu de usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Label del nombre del menu
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label del tipo de usuario
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu del perfil de usuario
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu del panel de admin
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu de cerrar sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de la clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu de los partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu de equipos
+     */
     private JMenuItem miEquipo;
     private JButton b1KFC;
+    /**
+     * Panel que contendra todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Menu del icono de perfil de usuario
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Panel secunadario
+     */
     private JPanel pSecundario;
+    /**
+     * Menu de PlayOffs
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Menu de la ventana principal
+     */
     private JMenuItem miPrincipal;
     private JPanel pTitulo;
     private JPanel pCombo;
@@ -46,7 +95,9 @@ public class vEquipos {
     private JButton bSaiyansFC;
     private JButton bUltimateMostoles;
     private JButton bXbuyerTeam;
-
+    /**
+     * Variable global para el listener de los botones de equipos
+     */
     private String nombreEquipo;
 
     /**
