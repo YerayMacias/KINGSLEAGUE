@@ -9,46 +9,158 @@ import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
+ * Ventana del Perfil de Usuario
  * @author Explotacion de Iker
  * @version 1.0
  */
 public class vPerfil {
+    /**
+     * Label Nombre de Usuario
+     */
     private JLabel lNombre;
+    /**
+     * Menu de Base de Datos
+     */
     private JMenuItem miBaseDatos;
+    /**
+     * Menu de Usuarios
+     */
     private JMenuItem miUsuarios;
+    /**
+     * Menu de icono de perfil
+     */
     private JMenu mIconoPerfil;
+    /**
+     * Label nombre del menu desplegable
+     */
     private JLabel lNombreMenu;
+    /**
+     * Label tipo de usuario menu desplegable
+     */
     private JLabel lTipoUsuario;
+    /**
+     * Menu de perfil
+     */
     private JMenuItem miPerfil;
+    /**
+     * Menu de Panel
+     */
     private JMenuItem miPanel;
+    /**
+     * Menu de Cerrar Sesion
+     */
     private JMenuItem miCerrarSesion;
+    /**
+     * Menu de Clasificacion
+     */
     private JMenuItem miClasificacion;
+    /**
+     * Menu de Partidos
+     */
     private JMenuItem miPartidos;
+    /**
+     * Menu de Equipos
+     */
     private JMenuItem miEquipo;
+    /**
+     * Panel de Titulo
+     */
     private JPanel pTitulo;
+    /**
+     * Panel de Texto del Titulo
+     */
     private JPanel pCombo;
+    /**
+     * Panel de Información
+     */
     private JPanel pInfo;
+    /**
+     * Panel contenedor de todos los componentes
+     */
     private JPanel pPrincipal;
+    /**
+     * Label del Nombre de Usuario del Titulo
+     */
     private JLabel lNombreTitulo;
+    /**
+     * Panel de Datos
+     */
     private JPanel pDatos;
+    /**
+     * Label del formulario de Datos
+     */
     private JLabel lTituloDatos;
+    /**
+     * TextField del Nombre
+     */
     private JTextField tfNombre;
+    /**
+     * TextField del email
+     */
     private JTextField tfEmail;
+    /**
+     * PasswordField de la Contraseña Nueva de Usuario
+     */
     private JPasswordField pfPassNew;
+    /**
+     * PasswordField de la Confirmación de Contraseña Nueva de Usuario
+     */
     private JPasswordField pfPassNew2;
+    /**
+     * Panel del Boton de Guardar Datos
+     */
     private JPanel pGuardar2;
+    /**
+     * Boton de Guardar Contraseña
+     */
     private JButton bGuardarPass;
+    /**
+     * Label del Tipo de Usuario en el Titulo
+     */
     private JLabel lTipoUsuarioTitulo;
+    /**
+     * PasswordField de la Contraseña Antigua
+     */
     private JPasswordField pfPassVieja;
+    /**
+     * Boton para mostrar Contraseña Antigua
+     */
     private JButton bVisibleViejo;
+    /**
+     * Boton para mostrar Contraseña Nueva
+     */
     private JButton bVisibleNew;
+    /**
+     * Boton para mostrar Confirmar Contraseña Nueva
+     */
     private JButton bVisibleNew2;
+    /**
+     * Boton de Guardar Datos
+     */
     private JButton bGuardarDatos;
+    /**
+     * Menu de PlayOffs
+     */
     private JMenuItem miPlayOffs;
+    /**
+     * Menu Principal
+     */
     private JMenuItem miPrincipal;
-    private JMenu mPrincipal;
+    /**
+     * Label del Titulo de Formulario de Contraseña
+     */
+    private JLabel lTituloContraseña;
+    /**
+     * Contador para los botones de contraseñas
+     */
     private int contador;
+    /**
+     * Cadena en la cual se guarda la contraseña actual del usuario
+     */
     private String passUser;
+    /**
+     * Cadena en la cual se guarda el usuario actual
+     */
     private String usuario;
 
     /**

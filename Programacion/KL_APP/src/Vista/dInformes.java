@@ -18,7 +18,7 @@ public class dInformes extends JDialog {
      */
     private JPanel contentPane;
     /**
-     * Botono de OK
+     * Boton de OK
      */
     private JButton buttonOK;
     /**
